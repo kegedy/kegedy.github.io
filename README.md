@@ -1,1 +1,0 @@
-# kegedy.github.io
