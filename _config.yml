@@ -3,7 +3,7 @@
 
 title: Portfolio
 author: Kevin Egedy
-logo: mylogo.jpg
+logo: mylogo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
