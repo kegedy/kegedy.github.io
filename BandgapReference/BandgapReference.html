@@ -62,6 +62,14 @@ const thebe_selector_output = ".output, .cell_output"
 
     <!-- Google Analytics -->
     
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-C3J0M23XR2"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-C3J0M23XR2');
+                </script>
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
 <!-- Checkboxes to toggle the left sidebar -->
@@ -452,8 +460,11 @@ V_{BE} &amp;= V_T\ ln{\left(\frac{I_C}{I_S} \right)}  \\[0.5em]
 </section>
 <section id="ptat-proportional-to-absolute-temperature">
 <h2>PTAT: Proportional to Absolute Temperature<a class="headerlink" href="#ptat-proportional-to-absolute-temperature" title="Permalink to this headline">#</a></h2>
-<figure class="align-default">
+<figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/PTAT.png"><img alt="../_images/PTAT.png" src="../_images/PTAT.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">PTAT Circuit</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
 </figure>
 <p>Figure 1 shows two bipolar transistors operating with ideal current sources. The difference between their base-emitter voltages is directly proportional to absolute temperature. The circuit emphasizes design choices by scaling bias current <em>n</em> and number of devices <em>m</em>.</p>
 <div class="math notranslate nohighlight">
@@ -480,11 +491,11 @@ V_{BE} &amp;= V_T\ ln{\left(\frac{I_C}{I_S} \right)}  \\[0.5em]
 V_{REF} &amp;= \alpha_1 V_{BE} + \alpha_2 V_T ln(nm)
 \end{align*}
 \]</div>
-<p>Now a temperature independent reference can be obtained by combining the negative and positive coefficients mentioned previously. The reference is defined as</p>
+<p>For simplicity, <span class="math notranslate nohighlight">\(\alpha_1\)</span> is chosen to be 1. Then <span class="math notranslate nohighlight">\(V_{REF}\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align*}
-V_{REF} &amp;= \alpha_1 V_{BE} + \alpha_2 V_T ln(nm)
+V_{REF} &amp;= V_{BE} + \alpha_2 V_T ln(m)
 \end{align*}
 \]</div>
 </section>
