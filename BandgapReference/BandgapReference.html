@@ -372,13 +372,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#complementary-to-absolute-temperature-ctat">
-   Complementary to Absolute Temperature (CTAT)
+  <a class="reference internal nav-link" href="#ctat-complementary-to-absolute-temperature">
+   CTAT: Complementary to Absolute Temperature
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#proportional-to-absolute-temperature-ptat">
-   Proportional to Absolute Temperature (PTAT)
+  <a class="reference internal nav-link" href="#ptat-proportional-to-absolute-temperature">
+   PTAT: Proportional to Absolute Temperature
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -406,13 +406,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#complementary-to-absolute-temperature-ctat">
-   Complementary to Absolute Temperature (CTAT)
+  <a class="reference internal nav-link" href="#ctat-complementary-to-absolute-temperature">
+   CTAT: Complementary to Absolute Temperature
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#proportional-to-absolute-temperature-ptat">
-   Proportional to Absolute Temperature (PTAT)
+  <a class="reference internal nav-link" href="#ptat-proportional-to-absolute-temperature">
+   PTAT: Proportional to Absolute Temperature
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -433,8 +433,8 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="bandgap-reference">
 <h1>Bandgap Reference<a class="headerlink" href="#bandgap-reference" title="Permalink to this headline">#</a></h1>
 <p>The need for temperature-independent references are essential for modern applications and rapidly changing environments. This article discusses the negative and positive temperature coefficients (TC) of a bipolar device and how to cancel their effects to create a stable reference.</p>
-<section id="complementary-to-absolute-temperature-ctat">
-<h2>Complementary to Absolute Temperature (CTAT)<a class="headerlink" href="#complementary-to-absolute-temperature-ctat" title="Permalink to this headline">#</a></h2>
+<section id="ctat-complementary-to-absolute-temperature">
+<h2>CTAT: Complementary to Absolute Temperature<a class="headerlink" href="#ctat-complementary-to-absolute-temperature" title="Permalink to this headline">#</a></h2>
 <p>For a bipolar device, the forward voltage of a <em>pn</em>-junction diode exhibits a negative TC.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -450,8 +450,9 @@ V_{BE} &amp;= V_T\ ln{\left(\frac{I_C}{I_S} \right)}  \\[0.5em]
 \end{split}\]</div>
 <p>Thus, at <span class="math notranslate nohighlight">\(T=300K\)</span> and <span class="math notranslate nohighlight">\(V_{BE} \approx 750\)</span>mV, the change in TC voltage with respect to temperature is <span class="math notranslate nohighlight">\(\partial V_{BE}/ \partial T \approx -1.5\)</span>mV.</p>
 </section>
-<section id="proportional-to-absolute-temperature-ptat">
-<h2>Proportional to Absolute Temperature (PTAT)<a class="headerlink" href="#proportional-to-absolute-temperature-ptat" title="Permalink to this headline">#</a></h2>
+<section id="ptat-proportional-to-absolute-temperature">
+<h2>PTAT: Proportional to Absolute Temperature<a class="headerlink" href="#ptat-proportional-to-absolute-temperature" title="Permalink to this headline">#</a></h2>
+<img src="PTAT.png" width=300>
 <p>Figure 1 shows two bipolar transistors operating with ideal current sources. The difference between their base-emitter voltages is directly proportional to absolute temperature. The circuit emphasizes design choices by scaling bias current <em>n</em> and number of devices <em>m</em>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -464,7 +465,9 @@ V_{BE} &amp;= V_T\ ln{\left(\frac{I_C}{I_S} \right)}  \\[0.5em]
 &amp;= \dfrac{k}{q}\ ln{(nm)}
 \end{align*}
 \end{split}\]</div>
-<p>The positive temperature coefficient is proportional to <span class="math notranslate nohighlight">\(\frac{k}{q}\)</span> such that $<span class="math notranslate nohighlight">\(\dfrac{\partial }{\partial T}\Delta V_{BE} =  \alpha\ 0.087 \text{mV/C.}\)</span>$</p>
+<p>The positive temperature coefficient is proportional to <span class="math notranslate nohighlight">\(\frac{k}{q}\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\dfrac{\partial }{\partial T}\Delta V_{BE} =  \alpha\ 0.087 \text{mV/C.}\]</div>
 </section>
 <section id="id1">
 <h2>Bandgap Reference<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
