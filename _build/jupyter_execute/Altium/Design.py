@@ -11,10 +11,16 @@
 
 # ## Design Rules
 
-# Plane >> Polygon Connect Style >> PolygonConnect >> **Select from dropdown** Direct Connect [default is relief connect]
+# **Select from dropdown** Direct Connect [default is relief connect]
 # 
 # ![](img/PolygonDirectConnect.png)
 
 # ## Design Rule Checker
 
-# Design Rule Checker >> **Select** 'All' and **Unselect** 'Signal Integrity and Testpoint'
+# **Select** 'All' and **Unselect** 'Signal Integrity and Testpoint'
+
+# In[ ]:
+
+
+
+

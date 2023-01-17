@@ -3,7 +3,7 @@
 
 # # Tools Preferences
 
-# ## Mouse Wheel  Configuration
+# ## Mouse Wheel  Config
 
 # **Uncheck** System >> Mouse Wheel Configuration >> Zoom Main Window >> Ctrl
 # 
@@ -11,7 +11,7 @@
 
 # ## PCB Editor General
 
-# **Uncheck** PCB Editor >> General >> Enable Auto Pan
+# **Uncheck** Enable Auto Pan
 # 
 # ![](img/EnableAutoPan.png)
 
@@ -23,11 +23,11 @@
 
 # ## Board Insight Display
 
-# **Uncheck** PCB Editor >> Board Insight Display >> ‘Live highlighting only when shift key down’
+# **Uncheck** ‘Live highlighting only when shift key down’
 # 
 # ![](img/LiveHighlighting.png)
 
-# **Uncheck** PCB Editor >> Board Insight Display >> 'Hide Other Layers' and 'Monochrome Other Layers'. 
+# **Uncheck** 'Hide Other Layers' and 'Monochrome Other Layers'. 
 # 
 # **Check** 'Gray Scale Other Layers'
 # 
@@ -37,7 +37,7 @@
 
 # ## DRC Violations Display
 
-# **Select** PCB Editor >> DRC Violations Display >> Silk To Silk Clearance
+# **Select** 'Silk To Silk Clearance' for Violation Overlay 
 # 
 # **Shortcut: Ctrl + \[** to control brightness intensity
 # 

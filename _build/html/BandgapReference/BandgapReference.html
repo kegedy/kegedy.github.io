@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Altium Tips" href="../Altium/AltiumIndex.html" />
@@ -370,8 +372,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#something">
-   Something
+  <a class="reference internal nav-link" href="#complementary-to-absolute-temperature-ctat">
+   Complementary to Absolute Temperature (CTAT)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proportional-to-absolute-temperature-ptat">
+   Proportional to Absolute Temperature (PTAT)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Bandgap Reference
   </a>
  </li>
 </ul>
@@ -394,8 +406,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#something">
-   Something
+  <a class="reference internal nav-link" href="#complementary-to-absolute-temperature-ctat">
+   Complementary to Absolute Temperature (CTAT)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proportional-to-absolute-temperature-ptat">
+   Proportional to Absolute Temperature (PTAT)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Bandgap Reference
   </a>
  </li>
 </ul>
@@ -410,9 +432,56 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="bandgap-reference">
 <h1>Bandgap Reference<a class="headerlink" href="#bandgap-reference" title="Permalink to this headline">#</a></h1>
-<p>The beginning of bandgap references.</p>
-<section id="something">
-<h2>Something<a class="headerlink" href="#something" title="Permalink to this headline">#</a></h2>
+<p>The need for temperature-independent references are essential for modern applications and rapidly changing environments. This article discusses the negative and positive temperature coefficients (TC) of a bipolar device and how to cancel their effects to create a stable reference.</p>
+<section id="complementary-to-absolute-temperature-ctat">
+<h2>Complementary to Absolute Temperature (CTAT)<a class="headerlink" href="#complementary-to-absolute-temperature-ctat" title="Permalink to this headline">#</a></h2>
+<p>For a bipolar device, the forward voltage of a <em>pn</em>-junction diode exhibits a negative TC.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+I_C &amp;= I_s\ e^{(V_{BE}/V_T)} \text{ where } V_T = \frac{kT}{q} \\
+I_S &amp;= bT^{4+m}\ e^{(-\frac{Eg}{kT})} \\[0.5em]
+V_{BE} &amp;= V_T\ ln{\left(\frac{I_C}{I_S} \right)}  \\[0.5em]
+\dfrac{\partial V_{BE}}{\partial T} &amp;= \dfrac{\partial V_T}{\partial T}\ ln{\dfrac{I_C}{I_S}} - \dfrac{V_T}{I_S} \dfrac{\partial I_S}{\partial T}  \\[0.5em]
+\dfrac{V_T}{I_S} \dfrac{\partial I_S}{\partial T} &amp;= (4+m)\dfrac{V_T}{T} + \dfrac{E_g}{kT^2}V_T \\[0.5em]
+\dfrac{\partial V_{BE}}{\partial T} &amp;= \dfrac{V_T}{T}\ ln{\dfrac{I_C}{I_S}} - (4+m)\dfrac{V_T}{T} + \dfrac{E_g}{kT^2}V_T \\[0.5em]
+&amp;= \dfrac{V_{BE}-(4+m)V_T - E_g/q}{T}
+\end{align*}
+\end{split}\]</div>
+<p>Thus, at <span class="math notranslate nohighlight">\(T=300K\)</span> and <span class="math notranslate nohighlight">\(V_{BE} \approx 750\)</span>mV, the change in TC voltage with respect to temperature is <span class="math notranslate nohighlight">\(\partial V_{BE}/ \partial T \approx -1.5\)</span>mV.</p>
+</section>
+<section id="proportional-to-absolute-temperature-ptat">
+<h2>Proportional to Absolute Temperature (PTAT)<a class="headerlink" href="#proportional-to-absolute-temperature-ptat" title="Permalink to this headline">#</a></h2>
+<p>Figure 1 shows two bipolar transistors operating with ideal current sources. The difference between their base-emitter voltages is directly proportional to absolute temperature. The circuit emphasizes design choices by scaling bias current <em>n</em> and number of devices <em>m</em>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\Delta V_{BE} &amp;= V_{BE1} - V_{BE2} \\[0.5em]
+&amp;= V_T\ ln{(\dfrac{n I_0}{I_{S}})} - V_T\ ln{(\dfrac{I_0}{mI_{S}})} \\[0.5em]
+&amp;= V_T\ ln{(nm)} \\[0.5em]
+&amp;= \dfrac{kT}{q}\ ln{(nm)} \\[0.5em]
+\dfrac{\partial}{\partial T} \Delta V_{BE} &amp;=  \dfrac{\partial}{\partial T} \dfrac{kT}{q}\ ln{(nm)}\\[0.5em]
+&amp;= \dfrac{k}{q}\ ln{(nm)}
+\end{align*}
+\end{split}\]</div>
+<p>The positive temperature coefficient is proportional to <span class="math notranslate nohighlight">\(\frac{k}{q}\)</span> such that $<span class="math notranslate nohighlight">\(\dfrac{\partial }{\partial T}\Delta V_{BE} =  \alpha\ 0.087 \text{mV/C.}\)</span>$</p>
+</section>
+<section id="id1">
+<h2>Bandgap Reference<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>Now a temperature independent reference can be obtained by combining the negative and positive coefficients mentioned previously. The reference is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+V_{REF} &amp;= \alpha_1 V_{BE} + \alpha_2 V_T ln(nm)
+\end{align*}
+\]</div>
+<p>Now a temperature independent reference can be obtained by combining the negative and positive coefficients mentioned previously. The reference is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+V_{REF} &amp;= \alpha_1 V_{BE} + \alpha_2 V_T ln(nm)
+\end{align*}
+\]</div>
 </section>
 </section>
 
