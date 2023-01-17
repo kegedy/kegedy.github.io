@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Design &#8212; Kevin&#39;s Portfolio</title>
+    <title>PCB Library &#8212; Kevin&#39;s Portfolio</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="PCB Library" href="PCB_Library.html" />
-    <link rel="prev" title="Altium Tips" href="AltiumIndex.html" />
+    <link rel="next" title="Project: Settings" href="Project.html" />
+    <link rel="prev" title="Design" href="Design.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -141,13 +141,13 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Design.html">
      Design
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="PCB_Library.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      PCB Library
     </a>
    </li>
@@ -222,7 +222,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Altium/Design.ipynb"
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Altium/PCB_Library.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -282,7 +282,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAltium/Design.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAltium/PCB_Library.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -310,7 +310,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/Altium/Design.ipynb"
+        <a href="../_sources/Altium/PCB_Library.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -347,80 +347,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#update-pcb-document">
-   Update PCB Document
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#design-rules">
-   Design Rules
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#design-rule-checker">
-   Design Rule Checker
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Design</h1>
+                <h1>PCB Library</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#update-pcb-document">
-   Update PCB Document
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#design-rules">
-   Design Rules
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#design-rule-checker">
-   Design Rule Checker
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -428,22 +371,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="design">
-<h1>Design<a class="headerlink" href="#design" title="Permalink to this headline">#</a></h1>
-<section id="update-pcb-document">
-<h2>Update PCB Document<a class="headerlink" href="#update-pcb-document" title="Permalink to this headline">#</a></h2>
-<p><strong>Create shortcut</strong> Reposition Selected Components</p>
-<p><img alt="" src="../_images/RepositionSelectedComponents.png" /></p>
-</section>
-<section id="design-rules">
-<h2>Design Rules<a class="headerlink" href="#design-rules" title="Permalink to this headline">#</a></h2>
-<p><strong>Select from dropdown</strong> Plane &gt;&gt; Polygon Connect Style &gt;&gt; PolygonConnect &gt;&gt; Direct Connect [default is relief connect]</p>
-<p><img alt="" src="../_images/PolygonDirectConnect.png" /></p>
-</section>
-<section id="design-rule-checker">
-<h2>Design Rule Checker<a class="headerlink" href="#design-rule-checker" title="Permalink to this headline">#</a></h2>
-<p>Design Rule Checker &gt;&gt; <strong>Select</strong> ‘All’ and <strong>Unselect</strong> ‘Signal Integrity and Testpoint’</p>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="pcb-library">
+<h1>PCB Library<a class="headerlink" href="#pcb-library" title="Permalink to this headline">#</a></h1>
+<p>Update PCB with new footprint</p>
+<p><img alt="" src="../_images/NewFootprint.png" /></p>
+<p>When copying polygons, use Edit &gt;&gt; Paste Special &gt;&gt; Keep net name</p>
+<p><img alt="" src="../_images/PolygonNetName.png" /></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -473,17 +406,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="AltiumIndex.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Design.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Altium Tips</p>
+            <p class="prev-next-title">Design</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="PCB_Library.html" title="next page">
+    <a class='right-next' id="next-link" href="Project.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">PCB Library</p>
+        <p class="prev-next-title">Project: Settings</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
