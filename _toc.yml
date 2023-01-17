@@ -3,5 +3,16 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: BandgapReference
+parts: 
+- caption: IC Design
+  chapters:
+  - file: BandgapReference/BandgapReference
+
+- caption: Altium
+  chapters:
+  - file: Altium/AltiumIndex
+    sections:
+    - file: Altium/Design
+    - file: Altium/Project
+    - file: Altium/Tools
+
