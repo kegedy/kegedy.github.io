@@ -10,9 +10,3 @@
 # When copying polygons, use Edit >> Paste Special >> Keep net name
 # 
 # ![](img/PolygonNetName.png)
-
-# In[ ]:
-
-
-
-

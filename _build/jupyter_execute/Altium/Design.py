@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Design
+# # Design Settings
 
 # ## Update PCB Document
 
@@ -11,7 +11,7 @@
 
 # ## Design Rules
 
-# **Select from dropdown** Plane >> Polygon Connect Style >> PolygonConnect >> Direct Connect [default is relief connect]
+# Plane >> Polygon Connect Style >> PolygonConnect >> **Select from dropdown** Direct Connect [default is relief connect]
 # 
 # ![](img/PolygonDirectConnect.png)
 

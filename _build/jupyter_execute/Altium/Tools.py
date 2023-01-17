@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Tools: Preferences
+# # Tools Preferences
 
 # ## Mouse Wheel  Configuration
 
@@ -16,6 +16,7 @@
 # ![](img/EnableAutoPan.png)
 
 # **Check** Repour Polygons After Modification
+# 
 # **Check** Repour all dependent polygons after editing
 # 
 # ![](img/PolygonRebuild.png)
