@@ -3,12 +3,6 @@
 
 # # Tools: Preferences
 
-# In[1]:
-
-
-## System
-
-
 # **Uncheck** System >> Mouse Wheel Configuration >> Zoom Main Window >> Ctrl
 # 
 # ![](img/MouseWheelConfig.png)
