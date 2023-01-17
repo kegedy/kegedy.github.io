@@ -1,11 +1,16 @@
 # Welcome to Kevin's Portfolio
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+This is a collection of projects and topics I've worked on over the years. My goal is to share my experiences so that I can help others in their journey towards hardware design.
 
-Check out the content pages bundled with this sample book to see more.
 
+"What I hear, I forget. What I see, I remember. What I do, I understand." Xunzi (340 - 245 BC) 
+
+
+## Table of Contents
 ```{tableofcontents}
+```
+## Bibliography
+
+```{bibliography}
+:all:
 ```
