@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Design Settings &#8212; Kevin&#39;s Portfolio</title>
+    <title>Tools Preferences &#8212; Kevin&#39;s Portfolio</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="PCB Library" href="PCB_Library.html" />
-    <link rel="prev" title="Altium Tips" href="AltiumIndex.html" />
+    <link rel="prev" title="Project Settings" href="project.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -123,49 +122,66 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  IC Design
+  Hardware Design
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../BandgapReference/BandgapReference.html">
-   Bandgap Reference
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../linear-IC/index.html">
+   Linear IC
   </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Altium
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="AltiumIndex.html">
-   Altium Tips
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../linear-IC/bandgap-reference.html">
+     Bandgap Reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../linear-IC/current-mirrors.html">
+     Current Mirrors
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  PCB
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Altium Tips
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="design.html">
      Design Settings
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="PCB_Library.html">
+    <a class="reference internal" href="pcb-library.html">
      PCB Library
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Project.html">
+    <a class="reference internal" href="project.html">
      Project Settings
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Tools.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Tools Preferences
     </a>
    </li>
@@ -230,7 +246,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Altium/Design.ipynb"
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/altium/tools.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -290,7 +306,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FAltium/Design.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Faltium/tools.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -318,7 +334,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/Altium/Design.ipynb"
+        <a href="../_sources/altium/tools.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -378,18 +394,28 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#update-pcb-document">
-   Update PCB Document
+  <a class="reference internal nav-link" href="#mouse-wheel-config">
+   Mouse Wheel  Config
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#design-rules">
-   Design Rules
+  <a class="reference internal nav-link" href="#pcb-editor-general">
+   PCB Editor General
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#design-rule-checker">
-   Design Rule Checker
+  <a class="reference internal nav-link" href="#board-insight-display">
+   Board Insight Display
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#drc-violations-display">
+   DRC Violations Display
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interactive-routing">
+   Interactive Routing
   </a>
  </li>
 </ul>
@@ -401,7 +427,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Design Settings</h1>
+                <h1>Tools Preferences</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -412,18 +438,28 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#update-pcb-document">
-   Update PCB Document
+  <a class="reference internal nav-link" href="#mouse-wheel-config">
+   Mouse Wheel  Config
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#design-rules">
-   Design Rules
+  <a class="reference internal nav-link" href="#pcb-editor-general">
+   PCB Editor General
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#design-rule-checker">
-   Design Rule Checker
+  <a class="reference internal nav-link" href="#board-insight-display">
+   Board Insight Display
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#drc-violations-display">
+   DRC Violations Display
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interactive-routing">
+   Interactive Routing
   </a>
  </li>
 </ul>
@@ -436,21 +472,41 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="design-settings">
-<h1>Design Settings<a class="headerlink" href="#design-settings" title="Permalink to this headline">#</a></h1>
-<section id="update-pcb-document">
-<h2>Update PCB Document<a class="headerlink" href="#update-pcb-document" title="Permalink to this headline">#</a></h2>
-<p><strong>Create shortcut</strong> Reposition Selected Components</p>
-<p><img alt="" src="../_images/RepositionSelectedComponents.png" /></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="tools-preferences">
+<h1>Tools Preferences<a class="headerlink" href="#tools-preferences" title="Permalink to this headline">#</a></h1>
+<section id="mouse-wheel-config">
+<h2>Mouse Wheel  Config<a class="headerlink" href="#mouse-wheel-config" title="Permalink to this headline">#</a></h2>
+<p><strong>Uncheck</strong> System &gt;&gt; Mouse Wheel Configuration &gt;&gt; Zoom Main Window &gt;&gt; Ctrl</p>
+<p><img alt="" src="../_images/MouseWheelConfig.png" /></p>
 </section>
-<section id="design-rules">
-<h2>Design Rules<a class="headerlink" href="#design-rules" title="Permalink to this headline">#</a></h2>
-<p><strong>Select from dropdown</strong> Direct Connect [default is relief connect]</p>
-<p><img alt="" src="../_images/PolygonDirectConnect.png" /></p>
+<section id="pcb-editor-general">
+<h2>PCB Editor General<a class="headerlink" href="#pcb-editor-general" title="Permalink to this headline">#</a></h2>
+<p><strong>Uncheck</strong> Enable Auto Pan</p>
+<p><img alt="" src="../_images/EnableAutoPan.png" /></p>
+<p><strong>Check</strong> Repour Polygons After Modification</p>
+<p><strong>Check</strong> Repour all dependent polygons after editing</p>
+<p><img alt="" src="../_images/PolygonRebuild.png" /></p>
 </section>
-<section id="design-rule-checker">
-<h2>Design Rule Checker<a class="headerlink" href="#design-rule-checker" title="Permalink to this headline">#</a></h2>
-<p><strong>Select</strong> ‘All’ and <strong>Unselect</strong> ‘Signal Integrity and Testpoint’</p>
+<section id="board-insight-display">
+<h2>Board Insight Display<a class="headerlink" href="#board-insight-display" title="Permalink to this headline">#</a></h2>
+<p><strong>Uncheck</strong> ‘Live highlighting only when shift key down’</p>
+<p><img alt="" src="../_images/LiveHighlighting.png" /></p>
+<p><strong>Uncheck</strong> ‘Hide Other Layers’ and ‘Monochrome Other Layers’.</p>
+<p><strong>Check</strong> ‘Gray Scale Other Layers’</p>
+<p><strong>Shortcut: Shift + s</strong> to make background layers grayscale</p>
+<p><img alt="" src="../_images/GrayscaleLayers.png" /></p>
+</section>
+<section id="drc-violations-display">
+<h2>DRC Violations Display<a class="headerlink" href="#drc-violations-display" title="Permalink to this headline">#</a></h2>
+<p><strong>Select</strong> ‘Silk To Silk Clearance’ for Violation Overlay</p>
+<p><strong>Shortcut: Ctrl + [</strong> to control brightness intensity</p>
+<p><img alt="" src="../_images/SilkToSilkClearance.png" /></p>
+</section>
+<section id="interactive-routing">
+<h2>Interactive Routing<a class="headerlink" href="#interactive-routing" title="Permalink to this headline">#</a></h2>
+<p><strong>Uncheck</strong> Allow Via Pushing [my preference since it leads to errors]</p>
+<p><strong>Shortcut: Shift + r</strong> to change interactive routing mode</p>
+<p><img alt="" src="../_images/InteractiveRoutingOptions.png" /></p>
 </section>
 </section>
 
@@ -467,7 +523,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./Altium"
+            path: "./altium"
         },
         predefinedOutput: true
     }
@@ -481,19 +537,12 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="AltiumIndex.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="project.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Altium Tips</p>
+            <p class="prev-next-title">Project Settings</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="PCB_Library.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">PCB Library</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
