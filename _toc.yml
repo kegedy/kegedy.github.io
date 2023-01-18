@@ -4,16 +4,19 @@
 format: jb-book
 root: intro
 parts: 
-- caption: IC Design
-  chapters:
-  - file: BandgapReference/BandgapReference
 
-- caption: Altium
+- caption: Hardware Design
   chapters:
-  - file: Altium/AltiumIndex
+  - file: linear-IC/index
     sections:
-    - file: Altium/Design
-    - file: Altium/PCB_Library
-    - file: Altium/Project
-    - file: Altium/Tools
+    - file: linear-IC/bandgap-reference
+    - file: linear-IC/current-mirrors
 
+- caption: PCB
+  chapters:
+  - file: altium/index
+    sections:
+    - file: altium/design
+    - file: altium/pcb-library
+    - file: altium/project
+    - file: altium/tools
