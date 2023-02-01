@@ -14,9 +14,13 @@ parts:
 
 - caption: PCB
   chapters:
-  - file: altium/index
+  - file: pcb/projects/index
     sections:
-    - file: altium/design
-    - file: altium/pcb-library
-    - file: altium/project
-    - file: altium/tools
+    - file: pcb/projects/ISL6236A
+  chapters:
+  - file: pcb/altium/index
+    sections:
+    - file: pcb/altium/design
+    - file: pcb/altium/pcb-library
+    - file: pcb/altium/project
+    - file: pcb/altium/tools
