@@ -1,4 +1,4 @@
-# Welcome to Kevin's Portfolio
+# Welcome
 
 This is a collection of thoughts and concepts I've worked on over the years. Hope you enjoy!
 

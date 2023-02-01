@@ -1,4 +1,0 @@
-# Altium Tips
-
-```{tableofcontents}
-```

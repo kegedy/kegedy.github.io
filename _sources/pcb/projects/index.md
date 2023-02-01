@@ -1,4 +1,4 @@
-# Altium Tips
+# Projects
 
 ```{tableofcontents}
 ```
