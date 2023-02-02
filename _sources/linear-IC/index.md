@@ -1,4 +1,4 @@
-# Linear IC
+# Linear Integrated Circuits
 
 ```{tableofcontents}
 ```
