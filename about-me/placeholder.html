@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Bandgap Reference &#8212; Kevin&#39;s Portfolio</title>
+    <title>&lt;no title&gt; &#8212; Kevin&#39;s Portfolio</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,12 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Current Mirrors" href="current-mirrors.html" />
-    <link rel="prev" title="Linear Integrated Circuits" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -128,24 +124,24 @@ const thebe_selector_output = ".output, .cell_output"
   Hardware Design
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="index.html">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../linear-integrated-circuits/index.html">
    Linear Integrated Circuits
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../linear-integrated-circuits/bandgap-reference.html">
      Bandgap Reference
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="current-mirrors.html">
+    <a class="reference internal" href="../linear-integrated-circuits/current-mirrors.html">
      Current Mirrors
     </a>
    </li>
@@ -258,35 +254,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/linear-IC/bandgap-reference.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -326,7 +293,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Flinear-IC/bandgap-reference.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fabout-me/placeholder.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -343,7 +310,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/linear-IC/bandgap-reference.ipynb"
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/about-me/placeholder.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -371,7 +338,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/linear-IC/bandgap-reference.ipynb"
+        <a href="../_sources/about-me/placeholder.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -382,7 +349,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -429,22 +396,7 @@ title="Print to PDF"
         <i class="fas fa-list"></i> Contents
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ctat-complementary-to-absolute-temperature">
-   CTAT: Complementary to Absolute Temperature
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ptat-proportional-to-absolute-temperature">
-   PTAT: Proportional to Absolute Temperature
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Bandgap Reference
-  </a>
- </li>
+        <ul class="simple visible nav section-nav flex-column">
 </ul>
 
     </nav>
@@ -454,7 +406,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Bandgap Reference</h1>
+                <h1><no title></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -463,22 +415,7 @@ title="Print to PDF"
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ctat-complementary-to-absolute-temperature">
-   CTAT: Complementary to Absolute Temperature
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ptat-proportional-to-absolute-temperature">
-   PTAT: Proportional to Absolute Temperature
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Bandgap Reference
-  </a>
- </li>
+                            <ul class="simple visible nav section-nav flex-column">
 </ul>
 
                         </nav>
@@ -489,69 +426,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="bandgap-reference">
-<h1>Bandgap Reference<a class="headerlink" href="#bandgap-reference" title="Permalink to this headline">#</a></h1>
-<p>The need for temperature-independent references are essential for modern applications and rapidly changing environments. This article discusses the negative and positive temperature coefficients (TC) of a bipolar device and how to cancel their effects to create a stable reference.</p>
-<section id="ctat-complementary-to-absolute-temperature">
-<h2>CTAT: Complementary to Absolute Temperature<a class="headerlink" href="#ctat-complementary-to-absolute-temperature" title="Permalink to this headline">#</a></h2>
-<p>For a bipolar device, the forward voltage of a <em>pn</em>-junction diode exhibits a negative TC.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-I_C &amp;= I_s\ e^{(V_{BE}/V_T)} \text{ where } V_T = \frac{kT}{q} \\
-I_S &amp;= bT^{4+m}\ e^{(-\frac{Eg}{kT})} \\[0.5em]
-V_{BE} &amp;= V_T\ ln{\left(\frac{I_C}{I_S} \right)}  \\[0.5em]
-\dfrac{\partial V_{BE}}{\partial T} &amp;= \dfrac{\partial V_T}{\partial T}\ ln{\dfrac{I_C}{I_S}} - \dfrac{V_T}{I_S} \dfrac{\partial I_S}{\partial T}  \\[0.5em]
-\dfrac{V_T}{I_S} \dfrac{\partial I_S}{\partial T} &amp;= (4+m)\dfrac{V_T}{T} + \dfrac{E_g}{kT^2}V_T \\[0.5em]
-\dfrac{\partial V_{BE}}{\partial T} &amp;= \dfrac{V_T}{T}\ ln{\dfrac{I_C}{I_S}} - (4+m)\dfrac{V_T}{T} + \dfrac{E_g}{kT^2}V_T \\[0.5em]
-&amp;= \dfrac{V_{BE}-(4+m)V_T - E_g/q}{T}
-\end{align*}
-\end{split}\]</div>
-<p>Thus, at <span class="math notranslate nohighlight">\(T=300K\)</span> and <span class="math notranslate nohighlight">\(V_{BE} \approx 750\)</span>mV, the change in TC voltage with respect to temperature is <span class="math notranslate nohighlight">\(\partial V_{BE}/ \partial T \approx -1.5\)</span>mV.</p>
-</section>
-<section id="ptat-proportional-to-absolute-temperature">
-<h2>PTAT: Proportional to Absolute Temperature<a class="headerlink" href="#ptat-proportional-to-absolute-temperature" title="Permalink to this headline">#</a></h2>
-<figure class="align-default" id="id2">
-<a class="reference internal image-reference" href="../_images/PTAT.png"><img alt="../_images/PTAT.png" src="../_images/PTAT.png" style="width: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">PTAT Circuit</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Figure 1 shows two bipolar transistors operating with ideal current sources. The difference between their base-emitter voltages is directly proportional to absolute temperature. The circuit emphasizes design choices by scaling bias current <em>n</em> and number of devices <em>m</em>.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\Delta V_{BE} &amp;= V_{BE1} - V_{BE2} \\[0.5em]
-&amp;= V_T\ ln{(\dfrac{n I_0}{I_{S}})} - V_T\ ln{(\dfrac{I_0}{mI_{S}})} \\[0.5em]
-&amp;= V_T\ ln{(nm)} \\[0.5em]
-&amp;= \dfrac{kT}{q}\ ln{(nm)} \\[0.5em]
-\dfrac{\partial}{\partial T} \Delta V_{BE} &amp;=  \dfrac{\partial}{\partial T} \dfrac{kT}{q}\ ln{(nm)}\\[0.5em]
-&amp;= \dfrac{k}{q}\ ln{(nm)}
-\end{align*}
-\end{split}\]</div>
-<p>The positive temperature coefficient is proportional to <span class="math notranslate nohighlight">\(\frac{k}{q}\)</span> such that</p>
-<div class="math notranslate nohighlight">
-\[\dfrac{\partial }{\partial T}\Delta V_{BE} =  \alpha\ 0.087 \text{mV/C.}\]</div>
-</section>
-<section id="id1">
-<h2>Bandgap Reference<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
-<p>Now a temperature independent reference can be obtained by combining the negative and positive coefficients mentioned previously. The reference is defined as</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align*}
-V_{REF} &amp;= \alpha_1 V_{BE} + \alpha_2 V_T ln(nm)
-\end{align*}
-\]</div>
-<p>For simplicity, <span class="math notranslate nohighlight">\(\alpha_1\)</span> is chosen to be 1. Then <span class="math notranslate nohighlight">\(V_{REF}\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align*}
-V_{REF} &amp;= V_{BE} + \alpha_2 V_T ln(m)
-\end{align*}
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(m\)</span> is the number of devices.</p>
-</section>
-</section>
+  <p>placeholder</p>
 
     <script type="text/x-thebe-config">
     {
@@ -566,7 +441,7 @@ V_{REF} &amp;= V_{BE} + \alpha_2 V_T ln(m)
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./linear-IC"
+            path: "./about-me"
         },
         predefinedOutput: true
     }
@@ -580,20 +455,6 @@ V_{REF} &amp;= V_{BE} + \alpha_2 V_T ln(m)
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Linear Integrated Circuits</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="current-mirrors.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Current Mirrors</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
