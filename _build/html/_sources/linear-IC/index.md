@@ -1,4 +1,0 @@
-# Linear Integrated Circuits
-
-```{tableofcontents}
-```

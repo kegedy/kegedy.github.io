@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Linear Integrated Circuits &#8212; Kevin&#39;s Portfolio</title>
+    <title>Current Drivers for Neural Stimulation &#8212; Kevin&#39;s Portfolio</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,10 +50,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bandgap Reference" href="bandgap-reference.html" />
-    <link rel="prev" title="Welcome" href="../intro.html" />
+    <link rel="next" title="Boost Controller" href="../converter/boost-controller.html" />
+    <link rel="prev" title="Current Mirrors" href="current-mirrors.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -128,7 +130,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="index.html">
    Linear Integrated Circuits
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -136,7 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="bandgap-reference.html">
      Bandgap Reference
@@ -147,8 +149,8 @@ const thebe_selector_output = ".output, .cell_output"
      Current Mirrors
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="current-source-drivers.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Current Drivers for Neural Stimulation
     </a>
    </li>
@@ -278,6 +280,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/linear-integrated-circuits/current-source-drivers.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -317,7 +348,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Flinear-integrated-circuits/index.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Flinear-integrated-circuits/current-source-drivers.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -334,7 +365,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/linear-integrated-circuits/index.md"
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/linear-integrated-circuits/current-source-drivers.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -362,7 +393,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/linear-integrated-circuits/index.md"
+        <a href="../_sources/linear-integrated-circuits/current-source-drivers.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -373,7 +404,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -411,7 +442,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Linear Integrated Circuits</h1>
+                <h1>Current Drivers for Neural Stimulation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -423,15 +454,35 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="linear-integrated-circuits">
-<h1>Linear Integrated Circuits<a class="headerlink" href="#linear-integrated-circuits" title="Permalink to this headline">#</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="bandgap-reference.html">Bandgap Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="current-mirrors.html">Current Mirrors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="current-source-drivers.html">Current Drivers for Neural Stimulation</a></li>
-</ul>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="current-drivers-for-neural-stimulation">
+<h1>Current Drivers for Neural Stimulation<a class="headerlink" href="#current-drivers-for-neural-stimulation" title="Permalink to this headline">#</a></h1>
+<p>…</p>
+<figure class="align-default" id="id1">
+<img alt="../_images/TopLevelSchematic.png" src="../_images/TopLevelSchematic.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Top Level View</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<aside class="sidebar">
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/ElectrodeDrivers.png"><img alt="../_images/ElectrodeDrivers.png" src="../_images/ElectrodeDrivers.png" style="width: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Gain Boosted Driver</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</aside>
+<p>The output resistance is seen as the cascode output resistance multiplied by the gain. The cascode amplifier and PTAT current source are investigated to determine how much gain needs to be designed.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+|A_V| &amp;= G_m R_{out} \\[0.25em]
+|A_V| &amp;\approx g_{m1} \left[r_{02}+(A_1 + 1)g_{m2} r_{02} + r_{01}\right] \\[0.25em]
+|A_V| &amp;\approx g_{m1} \left[g_{m2} r_{01} r_{02}A_1\right]
+\end{align*}
+\end{split}\]</div>
+<p>The ideal gain for a differential telescopic amp is</p>
+<div class="math notranslate nohighlight">
+\[ A_v = g_{m1} (g_{m2} r_{04} r_{05} || g_{m6} r_{06} r_{07}).\]</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -461,17 +512,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="current-mirrors.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Welcome</p>
+            <p class="prev-next-title">Current Mirrors</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="bandgap-reference.html" title="next page">
+    <a class='right-next' id="next-link" href="../converter/boost-controller.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bandgap Reference</p>
+        <p class="prev-next-title">Boost Controller</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

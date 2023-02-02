@@ -5,21 +5,23 @@ format: jb-book
 root: intro
 parts: 
 
-- caption: About Me
-  chapters:
-  - file: about-me/resume
-
 - caption: Hardware Design
   chapters:
   - file: linear-integrated-circuits/index
     sections:
     - file: linear-integrated-circuits/bandgap-reference
     - file: linear-integrated-circuits/current-mirrors
+    - file: linear-integrated-circuits/current-source-drivers
+
+- caption: Controller Design
+  chapters:
+    - file: converter/boost-controller
 
 - caption: PCB
   chapters:
   - file: pcb/projects/index
     sections:
+    - file: pcb/projects/arduino-uno
     - file: pcb/projects/ISL6236A
   - file: pcb/altium/index
     sections:
