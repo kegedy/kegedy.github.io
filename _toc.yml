@@ -5,19 +5,22 @@ format: jb-book
 root: intro
 parts: 
 
+- caption: About Me
+  chapters:
+  - file: about-me/resume
+
 - caption: Hardware Design
   chapters:
-  - file: linear-IC/index
+  - file: linear-integrated-circuits/index
     sections:
-    - file: linear-IC/bandgap-reference
-    - file: linear-IC/current-mirrors
+    - file: linear-integrated-circuits/bandgap-reference
+    - file: linear-integrated-circuits/current-mirrors
 
 - caption: PCB
   chapters:
   - file: pcb/projects/index
     sections:
     - file: pcb/projects/ISL6236A
-  chapters:
   - file: pcb/altium/index
     sections:
     - file: pcb/altium/design
