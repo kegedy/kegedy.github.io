@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Boost Controller" href="../converter/boost-controller.html" />
@@ -461,12 +463,26 @@ title="Print to PDF"
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text">Top Level View</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<aside class="sidebar">
 <figure class="align-default" id="id2">
-<img alt="../_images/ElectrodeDrivers.png" src="../_images/ElectrodeDrivers.png" />
+<a class="reference internal image-reference" href="../_images/ElectrodeDrivers.png"><img alt="../_images/ElectrodeDrivers.png" src="../_images/ElectrodeDrivers.png" style="width: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Simplified Driver Schematic</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Gain Boosted Driver</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+</aside>
+<p>The output resistance is seen as the cascode output resistance multiplied by the gain. The cascode amplifier and PTAT current source are investigated to determine how much gain needs to be designed.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+|A_V| &amp;= G_m R_{out} \\[0.25em]
+|A_V| &amp;\approx g_{m1} \left[r_{02}+(A_1 + 1)g_{m2} r_{02} + r_{01}\right] \\[0.25em]
+|A_V| &amp;\approx g_{m1} \left[g_{m2} r_{01} r_{02}A_1\right]
+\end{align*}
+\end{split}\]</div>
+<p>The ideal gain for a differential telescopic amp is</p>
+<div class="math notranslate nohighlight">
+\[ A_v = g_{m1} (g_{m2} r_{04} r_{05} || g_{m6} r_{06} r_{07}).\]</div>
 </section>
 
     <script type="text/x-thebe-config">
