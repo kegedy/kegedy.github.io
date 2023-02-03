@@ -1,4 +1,4 @@
-# Altium Tips
+# Altium Settings
 
 ```{tableofcontents}
 ```

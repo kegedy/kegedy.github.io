@@ -3,7 +3,8 @@
 
 # # Current Drivers for Neural Stimulation
 
-# ...
+# Design a PTAT current sink driver with largest output
+# impedance possible. Assume $I_{source}$ is an ideal current source.
 
 # ```{figure} current-source-drivers/TopLevelSchematic.png
 # Top Level View
@@ -32,6 +33,8 @@
 # 
 # 
 # $$ A_v = g_{m1} (g_{m2} r_{04} r_{05} || g_{m6} r_{06} r_{07}).$$
+
+# ...
 
 # In[ ]:
 

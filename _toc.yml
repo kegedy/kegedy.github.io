@@ -5,6 +5,10 @@ format: jb-book
 root: intro
 parts: 
 
+#- caption: Application Guides
+#  chapters:
+#  - file: application-guides/texas-instruments
+
 - caption: Hardware Design
   chapters:
   - file: linear-integrated-circuits/index
@@ -12,6 +16,9 @@ parts:
     - file: linear-integrated-circuits/bandgap-reference
     - file: linear-integrated-circuits/current-mirrors
     - file: linear-integrated-circuits/current-source-drivers
+  - file: radio-frequency/index
+    sections:
+    - file: radio-frequency/desensitization
 
 - caption: Controller Design
   chapters:
@@ -19,13 +26,15 @@ parts:
 
 - caption: PCB
   chapters:
-  - file: pcb/projects/index
-    sections:
-    - file: pcb/projects/arduino-uno
-    - file: pcb/projects/ISL6236A
   - file: pcb/altium/index
     sections:
     - file: pcb/altium/design
     - file: pcb/altium/pcb-library
     - file: pcb/altium/project
     - file: pcb/altium/tools
+  - file: pcb/common-questions/common-questions
+  - file: pcb/projects/index
+    sections:
+    - file: pcb/projects/arduino-uno
+    - file: pcb/projects/ISL6236A
+
