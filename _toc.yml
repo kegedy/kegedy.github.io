@@ -13,12 +13,13 @@ parts:
   chapters:
   - file: linear-integrated-circuits/index
     sections:
+    - file: linear-integrated-circuits/single-stage
     - file: linear-integrated-circuits/bandgap-reference
     - file: linear-integrated-circuits/current-mirrors
     - file: linear-integrated-circuits/current-source-drivers
-  - file: radio-frequency/index
+  - file: non-linear-systems/index
     sections:
-    - file: radio-frequency/desensitization
+    - file: non-linear-systems/desensitization
 
 - caption: Controller Design
   chapters:
