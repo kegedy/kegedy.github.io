@@ -5,10 +5,6 @@ format: jb-book
 root: intro
 parts: 
 
-#- caption: Application Guides
-#  chapters:
-#  - file: application-guides/texas-instruments
-
 - caption: Hardware Design
   chapters:
   - file: linear-integrated-circuits/index
