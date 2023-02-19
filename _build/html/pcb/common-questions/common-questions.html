@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Common Questions &#8212; Kevin&#39;s Portfolio</title>
+    <title>Common Questions</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Projects" href="../projects/index.html" />
-    <link rel="prev" title="Tools Preferences" href="../altium/tools.html" />
+    <link rel="prev" title="Boost Controller" href="../../converter/boost-controller.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -107,8 +107,6 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="../../_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">Kevin's Portfolio</h1>
-      
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
@@ -119,7 +117,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Welcome
+                    Welcome!
                 </a>
             </li>
         </ul>
@@ -197,38 +195,6 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../altium/index.html">
-   Altium Settings
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../altium/design.html">
-     Design Settings
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../altium/pcb-library.html">
-     PCB Library
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../altium/project.html">
-     Project Settings
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../altium/tools.html">
-     Tools Preferences
-    </a>
-   </li>
-  </ul>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Common Questions
@@ -238,8 +204,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../projects/index.html">
    Projects
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -553,7 +519,10 @@ title="Print to PDF"
 <section id="q1-how-wide-should-i-make-my-trace">
 <h2>Q1: How wide should I make my trace?<a class="headerlink" href="#q1-how-wide-should-i-make-my-trace" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://resources.altium.com/p/pcb-trace-inductance-and-width-how-wide-too-wide">PCB Trace Inductance and Width: How Wide is Too Wide?</a></p>
-<p>Goal is to minimize PCB trace inductance per unit length while keeping impedance constant</p>
+<ul class="simple">
+<li><p>Goal: minimize PCB trace inductance per unit length while keeping impedance constant</p></li>
+<li><p>Wheeler implementation produces less than 0.7% error which is much better than IPC-2141</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -594,11 +563,11 @@ title="Print to PDF"
 <h2>Q4: How do I choose I gate driver for my design?<a class="headerlink" href="#q4-how-do-i-choose-i-gate-driver-for-my-design" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://www.infineon.com/dgdl/Infineon-EiceDRIVER-Gate_resistor_for_power_devices-ApplicationNotes-v01_00-EN.pdf?fileId=5546d462518ffd8501523ee694b74f18">Gate resistor for power devices</a><br />
 <a class="reference external" href="https://www.analog.com/en/analog-dialogue/articles/isolated-gate-drivers-what-why-and-how.html">Isolated Gate Drivers—What, Why, and How?</a><br />
-<span class="xref myst">Peak Current of Isolated Gate Drivers</span></p>
+<a class="reference external" href="https://www.analog.com/en/analog-dialogue/articles/peak-current-of-isolated-gate-drivers.html">Peak Current of Isolated Gate Drivers</a></p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-align:left head"><p><!-- --></p></th>
-<th class="text-align:left head"><p><!-- --></p></th>
+<tr class="row-odd"><th class="text-align:left head"><p>Design</p></th>
+<th class="text-align:left head"><p>Component</p></th>
 </tr>
 </thead>
 <tbody>
@@ -659,11 +628,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../altium/tools.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../../converter/boost-controller.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Tools Preferences</p>
+            <p class="prev-next-title">Boost Controller</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../projects/index.html" title="next page">
