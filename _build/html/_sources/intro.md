@@ -1,7 +1,7 @@
-# Welcome!
-
-```{figure} background.jpg
+```{figure} background.gif
 ```
+
+# Ready, Set, Go!
 
 This is a collection of thoughts and concepts I've worked on over the years. Hope you enjoy!
 
