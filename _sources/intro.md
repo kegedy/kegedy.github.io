@@ -1,4 +1,7 @@
 ```{figure} background.gif
+---
+alt: Best Electrical Engineering Projects
+---
 ```
 
 # Ready, Set, Go!
