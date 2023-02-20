@@ -7,6 +7,10 @@
 # 
 # Part of fedeval academy curriculum with Robert Feranec [Learn Altium Essentials](https://academy.fedevel.com/courses/online-switching-power-supply-design-course).
 
+# ```{figure} ISL6236A/ISL6236A_schematic.png
+# Schematic
+# ```
+
 # ```{figure} ISL6236A/ISL6236A-all-layers.png
 # All Layers
 # ```
@@ -21,8 +25,4 @@
 
 # ```{figure} ISL6236A/ISL6236A-bottom-3D.png
 # Bottom 3D View
-# ```
-
-# ```{figure} ISL6236A/ISL6236A_schematic.png
-# Schematic
 # ```
