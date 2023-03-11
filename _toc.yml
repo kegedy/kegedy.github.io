@@ -29,7 +29,7 @@ parts:
   #   - file: pcb/altium/pcb-library
   #   - file: pcb/altium/project
   #   - file: pcb/altium/tools
-  - file: pcb/common-questions/common-questions
+  - file: pcb/common-discussions/common-discussions
   - file: pcb/projects/index
     sections:
     - file: pcb/projects/arduino-uno
