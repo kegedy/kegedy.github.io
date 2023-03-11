@@ -4,7 +4,7 @@ alt: Best Electrical Engineering Projects
 ---
 ```
 
-# Ready, Set, Go!
+# Summary
 
 This is a collection of thoughts and concepts I've worked on over the years. Hope you enjoy!
 
