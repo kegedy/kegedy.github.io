@@ -14,7 +14,7 @@
 # \begin{align*}
 #  L &= \dfrac{Z_0(w,h,t)}{c} \sqrt{\epsilon_{eff}(w,h,t)}  \\[0.5em]
 #  C &= \dfrac{L}{Z_0(w,h,t)^2} \\[0.5em]
-#  Z_0 &= \text{defined by Waddell’s equations for microstrip impedance}
+#  Z_0 &= \text{Waddell’s equations for microstrip impedance}
 # \end{align*}
 # $$
 
