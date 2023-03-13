@@ -50,7 +50,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"HTML-CSS": {"matchFontHeight": false, "scale": 20}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -139,11 +139,6 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../linear-integrated-circuits/single-stage.html">
-     Single Stage Summary
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear-integrated-circuits/bandgap-reference.html">
      Bandgap Reference
@@ -453,8 +448,15 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#differential-equations">
-     Differential Equations
+    <a class="reference internal nav-link" href="#averaged-inductor-current-langle-i-t-rangle-and-averaged-capacitor-voltage-langle-v-t-rangle">
+     Averaged Inductor Current
+     <span class="math notranslate nohighlight">
+      \(\langle i(t) \rangle\)
+     </span>
+     and Averaged Capacitor Voltage
+     <span class="math notranslate nohighlight">
+      \(\langle v(t) \rangle\)
+     </span>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -494,8 +496,15 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#differential-equations">
-     Differential Equations
+    <a class="reference internal nav-link" href="#averaged-inductor-current-langle-i-t-rangle-and-averaged-capacitor-voltage-langle-v-t-rangle">
+     Averaged Inductor Current
+     <span class="math notranslate nohighlight">
+      \(\langle i(t) \rangle\)
+     </span>
+     and Averaged Capacitor Voltage
+     <span class="math notranslate nohighlight">
+      \(\langle v(t) \rangle\)
+     </span>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -524,9 +533,8 @@ title="Print to PDF"
 <h1>Boost Controller<a class="headerlink" href="#boost-controller" title="Permalink to this headline">#</a></h1>
 <section id="dynamic-modeling">
 <h2>Dynamic Modeling<a class="headerlink" href="#dynamic-modeling" title="Permalink to this headline">#</a></h2>
-<section id="differential-equations">
-<h3>Differential Equations<a class="headerlink" href="#differential-equations" title="Permalink to this headline">#</a></h3>
-<p><strong>Derive differential equations for averaged inductor current <span class="math notranslate nohighlight">\(\langle i(t) \rangle\)</span> and averaged capacitor voltage</strong> <span class="math notranslate nohighlight">\(\langle v(t) \rangle\)</span></p>
+<section id="averaged-inductor-current-langle-i-t-rangle-and-averaged-capacitor-voltage-langle-v-t-rangle">
+<h3>Averaged Inductor Current <span class="math notranslate nohighlight">\(\langle i(t) \rangle\)</span> and Averaged Capacitor Voltage <span class="math notranslate nohighlight">\(\langle v(t) \rangle\)</span><a class="headerlink" href="#averaged-inductor-current-langle-i-t-rangle-and-averaged-capacitor-voltage-langle-v-t-rangle" title="Permalink to this headline">#</a></h3>
 <p><strong>Volt-Seconds</strong></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
@@ -557,7 +565,7 @@ C\frac{d}{dt} \langle v(t)\rangle &amp;=
 \bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] \\[1em]
 \end{align*}
 \end{split}\]</div>
-<p><strong>Solution</strong></p>
+<p><strong>Differential Solution</strong></p>
 <p>Given  <span class="math notranslate nohighlight">\(\ x = 
 \begin{bmatrix}
 \langle i(t)\rangle \\
@@ -636,34 +644,29 @@ I &amp;= \dfrac{1}{D'R}\cdot \frac{V_g}{D'}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^
 I &amp;= \frac{V_g}{D'^2 R}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
 \end{align*}\end{split}\]</div>
 <p><strong>Find A, B, C, D</strong></p>
-<p><span class="math notranslate nohighlight">\(
-A = \dfrac{d}{d\hat{x}(t)} f(x(t),u(t))\bigg|_{x=X,u=U}\)</span> =
-<span class="math notranslate nohighlight">\(
-\begin{bmatrix}
-\dfrac{\partial f_1}{\partial x_1} &amp; \dfrac{\partial f_1}{\partial x_2} \\[1.5em] 
+<p><span class="math notranslate nohighlight">\(A = \dfrac{d}{d\hat{x}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} = \)</span></p>
+<p><span class="math notranslate nohighlight">\(\begin{bmatrix}
+\dfrac{\partial f_1}{\partial x_1} &amp; \dfrac{\partial f_1}{\partial x_2} \\[.5em] 
 \dfrac{\partial f_2}{\partial x_1} &amp; \dfrac{\partial f_2}{\partial x_2}
 \end{bmatrix} = 
 \begin{bmatrix}
-\dfrac{\partial f_1}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v}(t)\rangle} \\[1.5em] 
+\dfrac{\partial f_1}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v}(t)\rangle} \\[.5em] 
 \dfrac{\partial f_2}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_2}{\partial \langle \hat{v}(t)\rangle}
-\end{bmatrix} \\[1.5em]
-\)</span></p>
-<p>A =
-<span class="math notranslate nohighlight">\(\begin{bmatrix}
-\dfrac{-R_{on}}{L} &amp; \dfrac{-D'}{L} \\[1em]
-\dfrac{D'}{C} &amp; \dfrac{-1}{RC}
-\end{bmatrix}\)</span></p>
-<p><span class="math notranslate nohighlight">\( B = \dfrac{d}{d\hat{u}(t)} f(x(t),u(t))\bigg|_{x=X,u=U}\)</span> =
-<span class="math notranslate nohighlight">\(
+\end{bmatrix} = 
 \begin{bmatrix}
+\dfrac{-R_{on}}{L} &amp; \dfrac{-D'}{L} \\[.5em]
+\dfrac{D'}{C} &amp; \dfrac{-1}{RC}
+\end{bmatrix}
+\)</span></p>
+<p><span class="math notranslate nohighlight">\( B = \dfrac{d}{\partial{\hat{u}(t)}} f(x(t),u(t))\bigg|_{x=X,u=U} =  \)</span></p>
+<p><span class="math notranslate nohighlight">\(\begin{bmatrix}
 \dfrac{\partial f_1}{\partial u_1} &amp; \dfrac{\partial f_1}{\partial u_2} \\[0.5em] 
 \dfrac{\partial f_2}{\partial u_1} &amp; \dfrac{\partial f_2}{\partial u_2}
 \end{bmatrix} = 
 \begin{bmatrix}
 \dfrac{\partial f_1}{\partial \hat{d}(t)} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v_g}(t)\rangle} \\[1.5em] 
 \dfrac{\partial f_2}{\partial \hat{d}(t)} &amp; \dfrac{\partial f_2}{\partial \langle \hat{v_g}(t)\rangle}
-\end{bmatrix} \\[1.5em]\)</span></p>
-<p>B =
+\end{bmatrix} =\)</span>
 <span class="math notranslate nohighlight">\(\begin{bmatrix}
 \dfrac{V}{L} &amp; \dfrac{1}{L} \\[0.5em]
 \dfrac{-I}{C} &amp; 0
@@ -694,7 +697,7 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \hat{x}(s) &amp;= \left(sI-A\right)^{-1}B \hat{u}(s) \\[0.5em]
 \hat{y}(s) &amp;= \bigg(C(sI-A)^{-1}B +E \bigg)\hat{u}(s) = G(s) \hat{u}(s)
 \end{align*}\)</span></p>
-<p><strong>Solve with solver</strong></p>
+<p><strong>Solver</strong></p>
 <p><span class="math notranslate nohighlight">\(G(s) = 
 \begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
