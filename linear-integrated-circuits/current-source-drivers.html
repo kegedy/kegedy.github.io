@@ -447,7 +447,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="current-drivers-for-neural-stimulation">
 <h1>Current Drivers for Neural Stimulation<a class="headerlink" href="#current-drivers-for-neural-stimulation" title="Permalink to this headline">#</a></h1>
 <p>Design a PTAT current sink driver with largest output
-impedance possible. Assume <span class="math notranslate nohighlight">\(I_{source}\)</span> is an ideal current source.</p>
+impedance possible. Assume $I_{source}$ is an ideal current source.</p>
 <figure class="align-default" id="id1">
 <img alt="../_images/TopLevelSchematic.png" src="../_images/TopLevelSchematic.png" />
 <figcaption>
@@ -463,17 +463,16 @@ impedance possible. Assume <span class="math notranslate nohighlight">\(I_{sourc
 </figure>
 </aside>
 <p>The output resistance is seen as the cascode output resistance multiplied by the gain. The cascode amplifier and PTAT current source are investigated to determine how much gain needs to be designed.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 |A_V| &amp;= G_m R_{out} \\[0.25em]
 |A_V| &amp;\approx g_{m1} \left[r_{02}+(A_1 + 1)g_{m2} r_{02} + r_{01}\right] \\[0.25em]
 |A_V| &amp;\approx g_{m1} \left[g_{m2} r_{01} r_{02}A_1\right]
-\end{align*}
-\end{split}\]</div>
+\end{align*}\]</div>
+<p>$$</p>
 <p>The ideal gain for a differential telescopic amp is</p>
-<div class="math notranslate nohighlight">
-\[ A_v = g_{m1} (g_{m2} r_{04} r_{05} || g_{m6} r_{06} r_{07}).\]</div>
+<p>$$ A_v = g_{m1} (g_{m2} r_{04} r_{05} || g_{m6} r_{06} r_{07}).$$</p>
 <p>…</p>
 </section>
 
