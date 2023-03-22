@@ -10,13 +10,11 @@
 # - Goal: minimize PCB trace inductance per unit length while keeping impedance constant  
 # - Wheeler implementation produces less than 0.7% error which is much better than IPC-2141
 # 
-# $$
 # \begin{align*}
 #  L &= \dfrac{Z_0(w,h,t)}{c} \sqrt{\epsilon_{eff}(w,h,t)}  \\[0.5em]
 #  C &= \dfrac{L}{Z_0(w,h,t)^2} \\[0.5em]
 #  Z_0 &= \text{Waddell’s equations for microstrip impedance}
 # \end{align*}
-# $$
 
 # ```{figure} trace-geometry.png
 # Trace Geometry
@@ -60,15 +58,33 @@
 
 # Given PVCC = 5V, VBO = 20V and gate driver specs:  
 # 
-# | Source | Source | Sink | $R_{\text{DS_on}}$ | $R_{\text{DS_off}}$ |
-# | :-- | :-- | :-- | :-- | :-- |
-# | 6.0V | 1.3A | 2.4A | 2.0$\Omega$ | 1.2$\Omega$ |
-# | 15V  | 5.5A | 6.0A | 1.25$\Omega$ | 0.9$\Omega$ |
-# 
+# <table class="colwidths-auto table">
+# <thead>
+# <tr class="row-odd"><th class="text-align:left head"><p>Source</p></th>
+# <th class="text-align:left head"><p>Source</p></th>
+# <th class="text-align:left head"><p>Sink</p></th>
+# <th class="text-align:left head"><p>R_{DS_on}</p></th>
+# <th class="text-align:left head"><p>R_{DS_off}</p></th>
+# </tr>
+# </thead>
+# <tbody>
+# <tr class="row-even"><td class="text-align:left"><p>6.0 V</p></td>
+# <td class="text-align:left"><p>1.3 A</p></td>
+# <td class="text-align:left"><p>2.4 A</p></td>
+# <td class="text-align:left"><p>2.0 Ohms</p></td>
+# <td class="text-align:left"><p>1.2 Ohms</p></td>
+# </tr>
+# <tr class="row-odd"><td class="text-align:left"><p>15 V</p></td>
+# <td class="text-align:left"><p>5.5 A</p></td>
+# <td class="text-align:left"><p>6.0 A</p></td>
+# <td class="text-align:left"><p>1.25 Ohms</p></td>
+# <td class="text-align:left"><p>0.9 Ohms</p></td>
+# </tr>
+# </tbody>
+# </table>
 
 # **High Side Calculations**  
 # 
-# $
 # \begin{align*}
 # I_{\text{charging_peak}} &= \dfrac{V_{BO}}{R_{\text{DS_on}} + R_{\text{G_on}}} \\[0.5em]
 # 5.5A &= \dfrac{20}{1.25 + R_{\text{G_on}}} \\[0.5em]
@@ -77,12 +93,10 @@
 # 6.0A &= \dfrac{20}{0.9 + R_{\text{G_off}}} \\[0.5em]
 # R_{\text{G_off}} &= 2.43 \Omega \\[0.5em]
 # \end{align*}
-# $
 # 
 
 # **Low Side Calculations** 
 # 
-# $
 # \begin{align*}
 # I_{\text{charging_peak}} &= \dfrac{PVCC}{R_{\text{DS_on}} + R_{\text{G_on}}} \\[0.5em]
 # 1.3A &= \dfrac{5}{2.0 + R_{\text{G_on}}} \\[0.5em]
@@ -91,10 +105,13 @@
 # 2.4A &= \dfrac{5}{1.2 + R_{\text{G_off}}} \\[0.5em]
 # R_{\text{G_off}} &= 0.89 \Omega \\[0.5em]
 # \end{align*}
-# $
 
 # **Resistor Size**
 # 
-# Additionally, power dissipated through the resistor is $P  = C V^2 f$ for selecting components.
+# Additionally, power dissipated through the resistor is 
+# \begin{equation} 
+# P = C V^2 f 
+# \end{equation}
+# for selecting components.
 
 # 

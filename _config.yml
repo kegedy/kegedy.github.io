@@ -39,7 +39,7 @@ sphinx:
     mathjax_config:
       "HTML-CSS": {
         matchFontHeight: false,
-        scale: 80
+        scale: 90
       }
 
 parse:

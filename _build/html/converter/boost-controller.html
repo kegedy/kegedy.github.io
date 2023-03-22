@@ -50,7 +50,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"HTML-CSS": {"matchFontHeight": false, "scale": 80}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"HTML-CSS": {"matchFontHeight": false, "scale": 90}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -551,14 +551,14 @@ C\frac{d}{dt} \langle v(t)\rangle &amp;=
 \end{align*}\]</div>
 <p><strong>Differential Solution</strong></p>
 <p>x =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0007b8a1-a9e7-4625-8f11-fa5679cbb889">
-<span class="eqno">(1)<a class="headerlink" href="#equation-0007b8a1-a9e7-4625-8f11-fa5679cbb889" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-2a3f5b28-81ff-49cb-a949-99037fe4ed86">
+<span class="eqno">(1)<a class="headerlink" href="#equation-2a3f5b28-81ff-49cb-a949-99037fe4ed86" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 \langle i(t)\rangle \\
 \langle v(t)\rangle
 \end{bmatrix}\]</div>
 <p>u =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b1fe126c-eb0a-4e00-82bd-39574ba6ef8f">
-<span class="eqno">(2)<a class="headerlink" href="#equation-b1fe126c-eb0a-4e00-82bd-39574ba6ef8f" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-16985d2f-3734-450d-9cc5-faafd50afae8">
+<span class="eqno">(2)<a class="headerlink" href="#equation-16985d2f-3734-450d-9cc5-faafd50afae8" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 d(t) \\
 \langle v_g(t)\rangle
 \end{bmatrix}\]</div>
@@ -588,8 +588,8 @@ d(t) \\
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-1b34245b-7e29-4bd4-b5b3-63e5329f253e">
-<span class="eqno">(3)<a class="headerlink" href="#equation-1b34245b-7e29-4bd4-b5b3-63e5329f253e" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-db465d6f-8703-40a2-ae18-2ffa8fad7bed">
+<span class="eqno">(3)<a class="headerlink" href="#equation-db465d6f-8703-40a2-ae18-2ffa8fad7bed" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -663,14 +663,14 @@ B &amp;=
 \end{bmatrix} \\[1em]
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-352fd09a-8729-4c37-a7b4-cc9b8699c4b3">
-<span class="eqno">(4)<a class="headerlink" href="#equation-352fd09a-8729-4c37-a7b4-cc9b8699c4b3" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-03de4c5b-29e7-4914-af43-a06208072f92">
+<span class="eqno">(4)<a class="headerlink" href="#equation-03de4c5b-29e7-4914-af43-a06208072f92" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-80897f53-3545-4b1a-a4a3-f79515a5783e">
-<span class="eqno">(5)<a class="headerlink" href="#equation-80897f53-3545-4b1a-a4a3-f79515a5783e" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-0f0b6d42-94ff-44f7-a893-f8b83390072a">
+<span class="eqno">(5)<a class="headerlink" href="#equation-0f0b6d42-94ff-44f7-a893-f8b83390072a" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -689,8 +689,8 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f20d6184-0622-42e1-b4f4-8ab168893d3b">
-<span class="eqno">(6)<a class="headerlink" href="#equation-f20d6184-0622-42e1-b4f4-8ab168893d3b" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-75d9ea39-9f10-47af-a1ab-8634b9b821e6">
+<span class="eqno">(6)<a class="headerlink" href="#equation-75d9ea39-9f10-47af-a1ab-8634b9b821e6" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
