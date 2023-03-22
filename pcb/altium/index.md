@@ -1,4 +1,0 @@
-# Altium Settings
-
-```{tableofcontents}
-```

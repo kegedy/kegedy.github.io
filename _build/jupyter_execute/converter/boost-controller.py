@@ -5,13 +5,11 @@
 
 # ## Dynamic Modeling
 
-# ### Differential Equations
-
-# **Derive differential equations for averaged inductor current $\langle i(t) \rangle$ and averaged capacitor voltage** $\langle v(t) \rangle$ 
+# ### Averaged Inductor Current $\langle i(t) \rangle$ and Averaged Capacitor Voltage $\langle v(t) \rangle$ 
 
 # **Volt-Seconds**
 
-# \begin{align*}
+# $$\begin{align*}
 # \langle v_{L}(t)\rangle = L\frac{d}{dt} \langle i(t)\rangle &= 
 # \bigg[\bigg(\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} \bigg)d(t) + \bigg( \langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle \bigg)d'(t) \bigg] \\[0.5em]
 # \langle v_{L}(t)\rangle = L\frac{d}{dt} \langle i(t)\rangle &= 
@@ -21,7 +19,7 @@
 # \dfrac{1}{L} \\[1em]
 # \end{matrix} 
 # \bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg] \\[0.5em]
-# \end{align*}
+# \end{align*}$$
 
 # **Charge Balance**
 
@@ -41,7 +39,7 @@
 # \end{align*}
 # $$
 
-# **Solution** 
+# **Differential Solution** 
 
 # Given  $\ x = 
 # \begin{bmatrix}
@@ -102,7 +100,7 @@
 
 # **Volt-Seconds (Large Signal)**
 # 
-# \begin{align*}
+# $$\begin{align*}
 # \langle v_{L}(t)\rangle &= L\frac{d}{dt} \langle i(t)\rangle = 
 # \bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg]  = 0\\[0.5em]
 # 0 &=  V_g - I R_{on} - VD'   \\[0.5em]
@@ -110,11 +108,11 @@
 # V &= \dfrac{V_g - I R_{on}}{D'} \bigg|_{I = \dfrac{V}{D'R} }  \\[0.5em]
 # V &= \dfrac{V_g - \dfrac{V}{D'R} R_{on}}{D'} \\[0.5em]
 # V &= \dfrac{V_g}{D'}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[0.5em]
-# \end{align*}
+# \end{align*}$$
 
 # **Charge Balance (Large Signal)**
 # 
-# \begin{align*}
+# $$\begin{align*}
 # \langle i_C (t) \rangle &= 
 # C\frac{d}{dt} \langle v(t)\rangle = 
 # \bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] = 0\\[1em]
@@ -122,43 +120,42 @@
 # I &= \dfrac{V}{D'R} \\[1em]
 # I &= \dfrac{1}{D'R}\cdot \frac{V_g}{D'}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
 # I &= \frac{V_g}{D'^2 R}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
-# \end{align*}
+# \end{align*}$$
 
 # **Find A, B, C, D**
 
-# $
-# A = \dfrac{d}{d\hat{x}(t)} f(x(t),u(t))\bigg|_{x=X,u=U}$ = 
-# $
-# \begin{bmatrix}
-# \dfrac{\partial f_1}{\partial x_1} & \dfrac{\partial f_1}{\partial x_2} \\[1.5em] 
+# $A = \dfrac{d}{d\hat{x}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} = $  
+# 
+# $\begin{bmatrix}
+# \dfrac{\partial f_1}{\partial x_1} & \dfrac{\partial f_1}{\partial x_2} \\[.5em] 
 # \dfrac{\partial f_2}{\partial x_1} & \dfrac{\partial f_2}{\partial x_2}
 # \end{bmatrix} = 
 # \begin{bmatrix}
-# \dfrac{\partial f_1}{\partial \langle \hat{i}(t)\rangle} & \dfrac{\partial f_1}{\partial \langle \hat{v}(t)\rangle} \\[1.5em] 
+# \dfrac{\partial f_1}{\partial \langle \hat{i}(t)\rangle} & \dfrac{\partial f_1}{\partial \langle \hat{v}(t)\rangle} \\[.5em] 
 # \dfrac{\partial f_2}{\partial \langle \hat{i}(t)\rangle} & \dfrac{\partial f_2}{\partial \langle \hat{v}(t)\rangle}
-# \end{bmatrix} 
-# $ = 
-# $\begin{bmatrix}
-# \dfrac{-R_{on}}{L} & \dfrac{-D'}{L} \\[1em]
-# \dfrac{D'}{C} & \dfrac{-1}{RC}
-# \end{bmatrix}$
-
-# $ B = \dfrac{d}{d\hat{u}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} = 
+# \end{bmatrix} = 
 # \begin{bmatrix}
-# \dfrac{\partial f_1}{\partial u_1} & \dfrac{\partial f_1}{\partial u_2} \\[1.5em] 
+# \dfrac{-R_{on}}{L} & \dfrac{-D'}{L} \\[.5em]
+# \dfrac{D'}{C} & \dfrac{-1}{RC}
+# \end{bmatrix}
+# $
+
+# $ B = \dfrac{d}{\partial{\hat{u}(t)}} f(x(t),u(t))\bigg|_{x=X,u=U} =  $  
+# 
+# $\begin{bmatrix}
+# \dfrac{\partial f_1}{\partial u_1} & \dfrac{\partial f_1}{\partial u_2} \\[0.5em] 
 # \dfrac{\partial f_2}{\partial u_1} & \dfrac{\partial f_2}{\partial u_2}
 # \end{bmatrix} = 
 # \begin{bmatrix}
 # \dfrac{\partial f_1}{\partial \hat{d}(t)} & \dfrac{\partial f_1}{\partial \langle \hat{v_g}(t)\rangle} \\[1.5em] 
 # \dfrac{\partial f_2}{\partial \hat{d}(t)} & \dfrac{\partial f_2}{\partial \langle \hat{v_g}(t)\rangle}
-# \end{bmatrix} 
-# =
-# \begin{bmatrix}
-# \dfrac{V}{L} & \dfrac{1}{L} \\[1em]
+# \end{bmatrix} =$
+# $\begin{bmatrix}
+# \dfrac{V}{L} & \dfrac{1}{L} \\[0.5em]
 # \dfrac{-I}{C} & 0
 # \end{bmatrix} = 
 # \begin{bmatrix}
-# \dfrac{V_g}{D'L}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} & \dfrac{1}{L} \\[1.5em]
+# \dfrac{V_g}{D'L}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} & \dfrac{1}{L} \\[0.5em]
 # \dfrac{-V_g}{D'^2 RC}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} & 0
 # \end{bmatrix} $
 
@@ -186,7 +183,7 @@
 # \hat{y}(s) &= \bigg(C(sI-A)^{-1}B +E \bigg)\hat{u}(s) = G(s) \hat{u}(s)
 # \end{align*}$
 
-# **Solve with solver** 
+# **Solver** 
 # 
 # $G(s) = 
 # \begin{bmatrix}

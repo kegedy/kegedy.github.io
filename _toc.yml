@@ -9,7 +9,7 @@ parts:
   chapters:
   - file: linear-integrated-circuits/index
     sections:
-    - file: linear-integrated-circuits/single-stage
+#    - file: linear-integrated-circuits/single-stage
     - file: linear-integrated-circuits/bandgap-reference
     - file: linear-integrated-circuits/current-mirrors
     - file: linear-integrated-circuits/current-source-drivers
@@ -23,15 +23,8 @@ parts:
 
 - caption: PCB
   chapters:
-  # - file: pcb/altium/index
-  #   sections:
-  #   - file: pcb/altium/design
-  #   - file: pcb/altium/pcb-library
-  #   - file: pcb/altium/project
-  #   - file: pcb/altium/tools
   - file: pcb/common-discussions/common-discussions
   - file: pcb/projects/index
     sections:
     - file: pcb/projects/arduino-uno
     - file: pcb/projects/ISL6236A
-

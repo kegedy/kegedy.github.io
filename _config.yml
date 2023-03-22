@@ -32,3 +32,13 @@ html:
   use_repository_button: true
   use_edit_page_button: true
   google_analytics_id: G-C3J0M23XR2
+
+sphinx:
+  config:
+    html_extra_path: ['resume']
+
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - amsmath

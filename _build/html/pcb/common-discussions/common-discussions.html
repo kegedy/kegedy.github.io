@@ -140,11 +140,6 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../linear-integrated-circuits/single-stage.html">
-     Single Stage Summary
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../../linear-integrated-circuits/bandgap-reference.html">
      Bandgap Reference
     </a>
@@ -525,14 +520,14 @@ title="Print to PDF"
 <li><p>Goal: minimize PCB trace inductance per unit length while keeping impedance constant</p></li>
 <li><p>Wheeler implementation produces less than 0.7% error which is much better than IPC-2141</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
  L &amp;= \dfrac{Z_0(w,h,t)}{c} \sqrt{\epsilon_{eff}(w,h,t)}  \\[0.5em]
  C &amp;= \dfrac{L}{Z_0(w,h,t)^2} \\[0.5em]
  Z_0 &amp;= \text{Waddell’s equations for microstrip impedance}
-\end{align*}
-\end{split}\]</div>
+\end{align*}\]</div>
+<p>$$</p>
 <figure class="align-default" id="id1">
 <img alt="../../_images/trace-geometry.png" src="../../_images/trace-geometry.png" />
 <figcaption>
@@ -592,49 +587,51 @@ title="Print to PDF"
 <tr class="row-odd"><th class="text-align:left head"><p>Source</p></th>
 <th class="text-align:left head"><p>Source</p></th>
 <th class="text-align:left head"><p>Sink</p></th>
-<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(R_{\text{DS_on}}\)</span></p></th>
-<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(R_{\text{DS_off}}\)</span></p></th>
+<th class="text-align:left head"><p>$R_{\text{DS_on}}$</p></th>
+<th class="text-align:left head"><p>$R_{\text{DS_off}}$</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-align:left"><p>6.0V</p></td>
 <td class="text-align:left"><p>1.3A</p></td>
 <td class="text-align:left"><p>2.4A</p></td>
-<td class="text-align:left"><p>2.0<span class="math notranslate nohighlight">\(\Omega\)</span></p></td>
-<td class="text-align:left"><p>1.2<span class="math notranslate nohighlight">\(\Omega\)</span></p></td>
+<td class="text-align:left"><p>2.0$\Omega$</p></td>
+<td class="text-align:left"><p>1.2$\Omega$</p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:left"><p>15V</p></td>
 <td class="text-align:left"><p>5.5A</p></td>
 <td class="text-align:left"><p>6.0A</p></td>
-<td class="text-align:left"><p>1.25<span class="math notranslate nohighlight">\(\Omega\)</span></p></td>
-<td class="text-align:left"><p>0.9<span class="math notranslate nohighlight">\(\Omega\)</span></p></td>
+<td class="text-align:left"><p>1.25$\Omega$</p></td>
+<td class="text-align:left"><p>0.9$\Omega$</p></td>
 </tr>
 </tbody>
 </table>
 <p><strong>High Side Calculations</strong></p>
-<p><span class="math notranslate nohighlight">\(
-\begin{align*}
+<p>$</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 I_{\text{charging_peak}} &amp;= \dfrac{V_{BO}}{R_{\text{DS_on}} + R_{\text{G_on}}} \\[0.5em]
 5.5A &amp;= \dfrac{20}{1.25 + R_{\text{G_on}}} \\[0.5em]
 R_{\text{G_on}} &amp;= 2.39 \Omega \\[0.5em]
 I_{\text{discharging_peak}} &amp;= \dfrac{V_{BO}}{R_{\text{DS_off}} + R_{\text{G_off}}}\\[0.5em] 
 6.0A &amp;= \dfrac{20}{0.9 + R_{\text{G_off}}} \\[0.5em]
 R_{\text{G_off}} &amp;= 2.43 \Omega \\[0.5em]
-\end{align*}
-\)</span></p>
+\end{align*}\]</div>
+<p>$</p>
 <p><strong>Low Side Calculations</strong></p>
-<p><span class="math notranslate nohighlight">\(
-\begin{align*}
+<p>$</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 I_{\text{charging_peak}} &amp;= \dfrac{PVCC}{R_{\text{DS_on}} + R_{\text{G_on}}} \\[0.5em]
 1.3A &amp;= \dfrac{5}{2.0 + R_{\text{G_on}}} \\[0.5em]
 R_{\text{G_on}} &amp;= 1.85 \Omega \\[0.5em]
 I_{\text{discharging_peak}} &amp;= \dfrac{PVCC}{R_{\text{DS_off}} + R_{\text{G_off}}}\\[0.5em] 
 2.4A &amp;= \dfrac{5}{1.2 + R_{\text{G_off}}} \\[0.5em]
 R_{\text{G_off}} &amp;= 0.89 \Omega \\[0.5em]
-\end{align*}
-\)</span></p>
+\end{align*}\]</div>
+<p>$</p>
 <p><strong>Resistor Size</strong></p>
-<p>Additionally, power dissipated through the resistor is <span class="math notranslate nohighlight">\(P  = C V^2 f\)</span> for selecting components.</p>
+<p>Additionally, power dissipated through the resistor is $P  = C V^2 f$ for selecting components.</p>
 </section>
 </section>
 
