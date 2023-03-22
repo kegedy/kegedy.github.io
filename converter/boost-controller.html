@@ -552,14 +552,14 @@ C\frac{d}{dt} \langle v(t)\rangle &amp;=
 \end{align*}\]</div>
 <p><strong>Differential Solution</strong></p>
 <p>x =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dbbf171e-36c4-4d89-8e37-c8367fd46a66">
-<span class="eqno">(1)<a class="headerlink" href="#equation-dbbf171e-36c4-4d89-8e37-c8367fd46a66" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-acce15fa-44ae-4cfd-b264-c4f887b09f0d">
+<span class="eqno">(1)<a class="headerlink" href="#equation-acce15fa-44ae-4cfd-b264-c4f887b09f0d" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 \langle i(t)\rangle \\
 \langle v(t)\rangle
 \end{bmatrix}\]</div>
 <p>u =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3a3aa0f3-912d-44b9-98de-1a65db58e864">
-<span class="eqno">(2)<a class="headerlink" href="#equation-3a3aa0f3-912d-44b9-98de-1a65db58e864" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-2f25a2d8-86a8-4c8d-a891-bb507b13b6d8">
+<span class="eqno">(2)<a class="headerlink" href="#equation-2f25a2d8-86a8-4c8d-a891-bb507b13b6d8" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 d(t) \\
 \langle v_g(t)\rangle
 \end{bmatrix}\]</div>
@@ -589,8 +589,8 @@ d(t) \\
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-29dfee84-6005-4bcd-ac28-af39e021bace">
-<span class="eqno">(3)<a class="headerlink" href="#equation-29dfee84-6005-4bcd-ac28-af39e021bace" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-42809839-7b18-417e-bd8b-5224ad034c2a">
+<span class="eqno">(3)<a class="headerlink" href="#equation-42809839-7b18-417e-bd8b-5224ad034c2a" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -630,11 +630,11 @@ I &amp;= \frac{V_g}{D'^2 R}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
 \[\begin{align*}
 A = \dfrac{d}{d\hat{x}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &amp;= 
 \begin{bmatrix}
-\dfrac{\partial f_1}{\partial x_1} &amp; \dfrac{\partial f_1}{\partial x_2} \\[1.5em] 
+\dfrac{\partial f_1}{\partial x_1} &amp; \dfrac{\partial f_1}{\partial x_2} \\[1em] 
 \dfrac{\partial f_2}{\partial x_1} &amp; \dfrac{\partial f_2}{\partial x_2}
 \end{bmatrix}\bigg|_{x,u} = 
 \begin{bmatrix}
-\dfrac{\partial f_1}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v}(t)\rangle} \\[1.5em] 
+\dfrac{\partial f_1}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v}(t)\rangle} \\[1em] 
 \dfrac{\partial f_2}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_2}{\partial \langle \hat{v}(t)\rangle}
 \end{bmatrix}\bigg|_{x,u} \\[1em]
 A &amp;= 
@@ -646,11 +646,11 @@ A &amp;=
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*} B = \dfrac{d}{d\hat{u}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &amp;= 
 \begin{bmatrix}
-\dfrac{\partial f_1}{\partial u_1} &amp; \dfrac{\partial f_1}{\partial u_2} \\[1.5em] 
+\dfrac{\partial f_1}{\partial u_1} &amp; \dfrac{\partial f_1}{\partial u_2} \\[1em] 
 \dfrac{\partial f_2}{\partial u_1} &amp; \dfrac{\partial f_2}{\partial u_2}
 \end{bmatrix}\bigg|_{x,u} = 
 \begin{bmatrix}
-\dfrac{\partial f_1}{\partial \hat{d'}(t)} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v_g}(t)\rangle} \\[1.5em] 
+\dfrac{\partial f_1}{\partial \hat{d'}(t)} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v_g}(t)\rangle} \\[1em] 
 \dfrac{\partial f_2}{\partial \hat{d'}(t)} &amp; \dfrac{\partial f_2}{\partial \langle \hat{v_g}(t)\rangle}
 \end{bmatrix}\bigg|_{x,u} \\[1em]
 B &amp;= 
@@ -664,14 +664,14 @@ B &amp;=
 \end{bmatrix} \\[1em]
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d79ff719-ff9f-4407-869f-651f54029fc8">
-<span class="eqno">(4)<a class="headerlink" href="#equation-d79ff719-ff9f-4407-869f-651f54029fc8" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-c77e705b-ecd3-47f9-bb52-5b6b5d22d04b">
+<span class="eqno">(4)<a class="headerlink" href="#equation-c77e705b-ecd3-47f9-bb52-5b6b5d22d04b" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-224733e5-9626-42ab-b3fb-59138539890c">
-<span class="eqno">(5)<a class="headerlink" href="#equation-224733e5-9626-42ab-b3fb-59138539890c" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-e8b58d6a-3a2c-47d5-9b1d-58c47017bb9c">
+<span class="eqno">(5)<a class="headerlink" href="#equation-e8b58d6a-3a2c-47d5-9b1d-58c47017bb9c" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -690,8 +690,8 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-47470442-783b-4567-9068-6fcbe2f198e6">
-<span class="eqno">(6)<a class="headerlink" href="#equation-47470442-783b-4567-9068-6fcbe2f198e6" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-92c7f07b-f28e-4a35-9bf3-9f59bb6b73bf">
+<span class="eqno">(6)<a class="headerlink" href="#equation-92c7f07b-f28e-4a35-9bf3-9f59bb6b73bf" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
