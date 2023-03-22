@@ -58,30 +58,18 @@
 
 # Given PVCC = 5V, VBO = 20V and gate driver specs:  
 # 
-# <table class="colwidths-auto table">
-# <thead>
-# <tr class="row-odd"><th class="text-align:left head"><p>Source</p></th>
-# <th class="text-align:left head"><p>Source</p></th>
-# <th class="text-align:left head"><p>Sink</p></th>
-# <th class="text-align:left head"><p>R_{DS_on}</p></th>
-# <th class="text-align:left head"><p>R_{DS_off}</p></th>
-# </tr>
-# </thead>
-# <tbody>
-# <tr class="row-even"><td class="text-align:left"><p>6.0 V</p></td>
-# <td class="text-align:left"><p>1.3 A</p></td>
-# <td class="text-align:left"><p>2.4 A</p></td>
-# <td class="text-align:left"><p>2.0 Ohms</p></td>
-# <td class="text-align:left"><p>1.2 Ohms</p></td>
-# </tr>
-# <tr class="row-odd"><td class="text-align:left"><p>15 V</p></td>
-# <td class="text-align:left"><p>5.5 A</p></td>
-# <td class="text-align:left"><p>6.0 A</p></td>
-# <td class="text-align:left"><p>1.25 Ohms</p></td>
-# <td class="text-align:left"><p>0.9 Ohms</p></td>
-# </tr>
-# </tbody>
-# </table>
+# | Source | Source | Sink | $R_{\text{DS_on}}$ | $R_{\text{DS_off}}$ |
+# | :-- | :-- | :-- | :-- | :-- |
+# | 6.0V | 1.3A | 2.4A | 2.0$\Omega$ | 1.2$\Omega$ |
+# | 15V  | 5.5A | 6.0A | 1.25$\Omega$ | 0.9$\Omega$ |
+
+# \begin{center}
+# \begin{tabular}{ c c c }
+#  cell1 & cell2 & cell3 \\ 
+#  cell4 & cell5 & cell6 \\  
+#  cell7 & cell8 & cell9    
+# \end{tabular}
+# \end{center}
 
 # **High Side Calculations**  
 # 
