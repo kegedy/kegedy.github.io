@@ -36,6 +36,11 @@ html:
 sphinx:
   config:
     html_extra_path: ['resume']
+    mathjax_config:
+      "HTML-CSS": {
+        matchFontHeight: false,
+        scale: 80
+      }
 
 parse:
   myst_enable_extensions:

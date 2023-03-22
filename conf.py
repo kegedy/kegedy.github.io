@@ -27,6 +27,7 @@ html_title = 'Kevin Egedy'
 jupyter_cache = ''
 jupyter_execute_notebooks = 'force'
 latex_engine = 'pdflatex'
+mathjax3_config = {'HTML-CSS': {'matchFontHeight': False, 'scale': 80}}
 myst_enable_extensions = ['amsmath']
 myst_url_schemes = ['mailto', 'http', 'https']
 nb_output_stderr = 'show'
