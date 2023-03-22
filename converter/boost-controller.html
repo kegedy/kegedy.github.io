@@ -50,7 +50,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"HTML-CSS": {"matchFontHeight": false, "scale": 80}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -448,8 +448,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#averaged-inductor-current-langle-i-t-rangle-and-averaged-capacitor-voltage-langle-v-t-rangle">
-     Averaged Inductor Current $\langle i(t) \rangle$ and Averaged Capacitor Voltage $\langle v(t) \rangle$
+    <a class="reference internal nav-link" href="#averaged-inductor-current-and-capacitor-voltage">
+     Averaged Inductor Current and Capacitor Voltage
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -489,8 +489,8 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#averaged-inductor-current-langle-i-t-rangle-and-averaged-capacitor-voltage-langle-v-t-rangle">
-     Averaged Inductor Current $\langle i(t) \rangle$ and Averaged Capacitor Voltage $\langle v(t) \rangle$
+    <a class="reference internal nav-link" href="#averaged-inductor-current-and-capacitor-voltage">
+     Averaged Inductor Current and Capacitor Voltage
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -519,23 +519,22 @@ title="Print to PDF"
 <h1>Boost Controller<a class="headerlink" href="#boost-controller" title="Permalink to this headline">#</a></h1>
 <section id="dynamic-modeling">
 <h2>Dynamic Modeling<a class="headerlink" href="#dynamic-modeling" title="Permalink to this headline">#</a></h2>
-<section id="averaged-inductor-current-langle-i-t-rangle-and-averaged-capacitor-voltage-langle-v-t-rangle">
-<h3>Averaged Inductor Current $\langle i(t) \rangle$ and Averaged Capacitor Voltage $\langle v(t) \rangle$<a class="headerlink" href="#averaged-inductor-current-langle-i-t-rangle-and-averaged-capacitor-voltage-langle-v-t-rangle" title="Permalink to this headline">#</a></h3>
+<section id="averaged-inductor-current-and-capacitor-voltage">
+<h3>Averaged Inductor Current and Capacitor Voltage<a class="headerlink" href="#averaged-inductor-current-and-capacitor-voltage" title="Permalink to this headline">#</a></h3>
 <p><strong>Volt-Seconds</strong></p>
-<p>$$\begin{align*}
-\langle v_{L}(t)\rangle = L\frac{d}{dt} \langle i(t)\rangle &amp;=
-\bigg[\bigg(\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} \bigg)d(t) + \bigg( \langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle \bigg)d’(t) \bigg] \[0.5em]
-\langle v_{L}(t)\rangle = L\frac{d}{dt} \langle i(t)\rangle &amp;=
-\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d’(t) \bigg] \[0.5em]
-\frac{d}{dt} \langle i(t)\rangle &amp;=</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4f7ce0f1-e20e-426d-9128-4338669c4ba6">
-<span class="eqno">(1)<a class="headerlink" href="#equation-4f7ce0f1-e20e-426d-9128-4338669c4ba6" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\langle v_{L}(t)\rangle = L\frac{d}{dt} \langle i(t)\rangle &amp;= 
+\bigg[\bigg(\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} \bigg)d(t) + \bigg( \langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle \bigg)d'(t) \bigg] \\[0.5em]
+\langle v_{L}(t)\rangle = L\frac{d}{dt} \langle i(t)\rangle &amp;= 
+\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg] \\[0.5em]
+\frac{d}{dt} \langle i(t)\rangle &amp;= 
+\begin{matrix}
 \dfrac{1}{L} \\[1em]
-\end{matrix}\]</div>
-<p>\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d’(t) \bigg] \[0.5em]
-\end{align*}$$</p>
+\end{matrix} 
+\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg] \\[0.5em]
+\end{align*}\]</div>
 <p><strong>Charge Balance</strong></p>
-<p>$$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \langle i_C (t) \rangle = 
@@ -550,20 +549,19 @@ C\frac{d}{dt} \langle v(t)\rangle &amp;=
 \end{matrix}
 \bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] \\[1em]
 \end{align*}\]</div>
-<p>$$</p>
 <p><strong>Differential Solution</strong></p>
-<p>Given  $\ x =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-721203d0-1109-463e-a80f-ae599e25cd22">
-<span class="eqno">(2)<a class="headerlink" href="#equation-721203d0-1109-463e-a80f-ae599e25cd22" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<p>x =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0007b8a1-a9e7-4625-8f11-fa5679cbb889">
+<span class="eqno">(1)<a class="headerlink" href="#equation-0007b8a1-a9e7-4625-8f11-fa5679cbb889" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 \langle i(t)\rangle \\
 \langle v(t)\rangle
 \end{bmatrix}\]</div>
-<p>u =
-$\begin{bmatrix}
-d(t) \
+<p>u =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b1fe126c-eb0a-4e00-82bd-39574ba6ef8f">
+<span class="eqno">(2)<a class="headerlink" href="#equation-b1fe126c-eb0a-4e00-82bd-39574ba6ef8f" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+d(t) \\
 \langle v_g(t)\rangle
-\end{bmatrix}$</p>
-<p>$$</p>
+\end{bmatrix}\]</div>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \dot{x} &amp;= f(x(t),u(t)) = \dfrac{d}{dt}
@@ -584,17 +582,14 @@ d(t) \
 <section id="linearized-small-signal-model">
 <h3>Linearized Small-Signal Model<a class="headerlink" href="#linearized-small-signal-model" title="Permalink to this headline">#</a></h3>
 <p><strong>Derive a linearized small-signal model</strong></p>
-<p>$$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \dot{\hat{x}}(t) &amp;\approx A \hat{x}(t) + B \hat{u}(t) \\[0.5em]
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
-<p>$$</p>
 <p><strong>where</strong></p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b711cd71-1ae9-4445-884a-c9156ff2ec68">
-<span class="eqno">(3)<a class="headerlink" href="#equation-b711cd71-1ae9-4445-884a-c9156ff2ec68" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-1b34245b-7e29-4bd4-b5b3-63e5329f253e">
+<span class="eqno">(3)<a class="headerlink" href="#equation-1b34245b-7e29-4bd4-b5b3-63e5329f253e" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -607,95 +602,98 @@ V_g
 \end{bmatrix}
 \\[0.5em]
 \end{matrix}\]</div>
-<p>$$</p>
 <p><strong>Volt-Seconds (Large Signal)</strong></p>
-<p>$$\begin{align*}
-\langle v_{L}(t)\rangle &amp;= L\frac{d}{dt} \langle i(t)\rangle =
-\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d’(t) \bigg]  = 0\[0.5em]
-0 &amp;=  V_g - I R_{on} - VD’   \[0.5em]
-VD’ &amp;= V_g - I R_{on} \[0.5em]
-V &amp;= \dfrac{V_g - I R_{on}}{D’} \bigg|<em>{I = \dfrac{V}{D’R} }  \[0.5em]
-V &amp;= \dfrac{V_g - \dfrac{V}{D’R} R</em>{on}}{D’} \[0.5em]
-V &amp;= \dfrac{V_g}{D’}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D’^2 R}} \[0.5em]
-\end{align*}$$</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\langle v_{L}(t)\rangle &amp;= L\frac{d}{dt} \langle i(t)\rangle = 
+\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg]  = 0\\[0.5em]
+0 &amp;=  V_g - I R_{on} - VD'   \\[0.5em]
+VD' &amp;= V_g - I R_{on} \\[0.5em]
+V &amp;= \dfrac{V_g - I R_{on}}{D'} \bigg|_{I = \dfrac{V}{D'R} }  \\[0.5em]
+V &amp;= \dfrac{V_g - \dfrac{V}{D'R} R_{on}}{D'} \\[0.5em]
+V &amp;= \dfrac{V_g}{D'}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[0.5em]
+\end{align*}\]</div>
 <p><strong>Charge Balance (Large Signal)</strong></p>
-<p>$$\begin{align*}
-\langle i_C (t) \rangle &amp;=
-C\frac{d}{dt} \langle v(t)\rangle =
-\bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d’(t) \bigg] = 0\[1em]
-0 &amp;=\dfrac{-V}{R} + I D’ \[1em]
-I &amp;= \dfrac{V}{D’R} \[1em]
-I &amp;= \dfrac{1}{D’R}\cdot \frac{V_g}{D’}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D’^2 R}} \[1em]
-I &amp;= \frac{V_g}{D’^2 R}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D’^2 R}} \[1em]
-\end{align*}$$</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\langle i_C (t) \rangle &amp;= 
+C\frac{d}{dt} \langle v(t)\rangle = 
+\bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] = 0\\[1em]
+0 &amp;=\dfrac{-V}{R} + I D' \\[1em]
+I &amp;= \dfrac{V}{D'R} \\[1em]
+I &amp;= \dfrac{1}{D'R}\cdot \frac{V_g}{D'}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
+I &amp;= \frac{V_g}{D'^2 R}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
+\end{align*}\]</div>
 <p><strong>Find A, B, C, D</strong></p>
-<p>$A = \dfrac{d}{d\hat{x}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} = $</p>
-<p>$\begin{bmatrix}
-\dfrac{\partial f_1}{\partial x_1} &amp; \dfrac{\partial f_1}{\partial x_2} \[.5em]
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+A = \dfrac{d}{d\hat{x}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &amp;= 
+\begin{bmatrix}
+\dfrac{\partial f_1}{\partial x_1} &amp; \dfrac{\partial f_1}{\partial x_2} \\[1.5em] 
 \dfrac{\partial f_2}{\partial x_1} &amp; \dfrac{\partial f_2}{\partial x_2}
-\end{bmatrix} =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b4d73807-1cda-47f6-8590-8454e5fbea58">
-<span class="eqno">(4)<a class="headerlink" href="#equation-b4d73807-1cda-47f6-8590-8454e5fbea58" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
-\dfrac{\partial f_1}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v}(t)\rangle} \\[.5em] 
+\end{bmatrix}\bigg|_{x,u} = 
+\begin{bmatrix}
+\dfrac{\partial f_1}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v}(t)\rangle} \\[1.5em] 
 \dfrac{\partial f_2}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_2}{\partial \langle \hat{v}(t)\rangle}
-\end{bmatrix}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-a8d0c0ac-b58c-4948-be5f-8cecf42436c5">
-<span class="eqno">(5)<a class="headerlink" href="#equation-a8d0c0ac-b58c-4948-be5f-8cecf42436c5" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
-\dfrac{-R_{on}}{L} &amp; \dfrac{-D'}{L} \\[.5em]
+\end{bmatrix}\bigg|_{x,u} \\[1em]
+A &amp;= 
+\begin{bmatrix}
+\dfrac{-R_{on}}{L} &amp; \dfrac{-D'}{L} \\[1em]
 \dfrac{D'}{C} &amp; \dfrac{-1}{RC}
-\end{bmatrix}\]</div>
-<p>$</p>
-<p>$ B = \dfrac{d}{\partial{\hat{u}(t)}} f(x(t),u(t))\bigg|_{x=X,u=U} =  $</p>
-<p>$\begin{bmatrix}
-\dfrac{\partial f_1}{\partial u_1} &amp; \dfrac{\partial f_1}{\partial u_2} \[0.5em]
+\end{bmatrix} \\[1em]
+\end{align*}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*} B = \dfrac{d}{d\hat{u}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &amp;= 
+\begin{bmatrix}
+\dfrac{\partial f_1}{\partial u_1} &amp; \dfrac{\partial f_1}{\partial u_2} \\[1.5em] 
 \dfrac{\partial f_2}{\partial u_1} &amp; \dfrac{\partial f_2}{\partial u_2}
-\end{bmatrix} =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7256481b-cf6b-464f-8b8a-e1743a445efa">
-<span class="eqno">(6)<a class="headerlink" href="#equation-7256481b-cf6b-464f-8b8a-e1743a445efa" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
-\dfrac{\partial f_1}{\partial \hat{d}(t)} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v_g}(t)\rangle} \\[1.5em] 
-\dfrac{\partial f_2}{\partial \hat{d}(t)} &amp; \dfrac{\partial f_2}{\partial \langle \hat{v_g}(t)\rangle}
-\end{bmatrix}\]</div>
-<p>$\begin{bmatrix}
-\dfrac{V}{L} &amp; \dfrac{1}{L} \[0.5em]
+\end{bmatrix}\bigg|_{x,u} = 
+\begin{bmatrix}
+\dfrac{\partial f_1}{\partial \hat{d'}(t)} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v_g}(t)\rangle} \\[1.5em] 
+\dfrac{\partial f_2}{\partial \hat{d'}(t)} &amp; \dfrac{\partial f_2}{\partial \langle \hat{v_g}(t)\rangle}
+\end{bmatrix}\bigg|_{x,u} \\[1em]
+B &amp;= 
+\begin{bmatrix}
+\dfrac{V}{L} &amp; \dfrac{1}{L} \\[1em]
 \dfrac{-I}{C} &amp; 0
-\end{bmatrix} =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4cfe7685-812f-4c1c-b3d6-c521a5f13c1d">
-<span class="eqno">(7)<a class="headerlink" href="#equation-4cfe7685-812f-4c1c-b3d6-c521a5f13c1d" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
-\dfrac{V_g}{D'L}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} &amp; \dfrac{1}{L} \\[0.5em]
+\end{bmatrix} = 
+\begin{bmatrix}
+\dfrac{V_g}{D'L}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} &amp; \dfrac{1}{L} \\[1.5em]
 \dfrac{-V_g}{D'^2 RC}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} &amp; 0
-\end{bmatrix}\]</div>
-<p>$C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e971132d-4602-40c6-95bb-31c4decb5682">
-<span class="eqno">(8)<a class="headerlink" href="#equation-e971132d-4602-40c6-95bb-31c4decb5682" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+\end{bmatrix} \\[1em]
+\end{align*}\]</div>
+<p>C =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-352fd09a-8729-4c37-a7b4-cc9b8699c4b3">
+<span class="eqno">(4)<a class="headerlink" href="#equation-352fd09a-8729-4c37-a7b4-cc9b8699c4b3" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
-<p>$E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4f2f8782-cbc8-4ea3-8348-3d75d91a1603">
-<span class="eqno">(9)<a class="headerlink" href="#equation-4f2f8782-cbc8-4ea3-8348-3d75d91a1603" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<p>E =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-80897f53-3545-4b1a-a4a3-f79515a5783e">
+<span class="eqno">(5)<a class="headerlink" href="#equation-80897f53-3545-4b1a-a4a3-f79515a5783e" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
 </section>
 <section id="system-outputs-in-frequency-domain">
 <h3>System Outputs in Frequency Domain<a class="headerlink" href="#system-outputs-in-frequency-domain" title="Permalink to this headline">#</a></h3>
-<p>$\begin{align*}
-\dot{\hat{x}}(t) &amp;= A \hat{x}(t) + B \hat{u}(t) \[0.5em]
-\dot{\hat{y}}(t) &amp;= C \hat{x}(t) + D \hat{u}(t) \[0.5em]
-\text{Laplace Transform } &amp;\[0.5em]
-s\hat{x}(s) &amp;= A \hat{x}(s) + B \hat{u}(s) \[0.5em]
-sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \[0.5em]
-\hat{x}(s) &amp;= \left(sI-A\right)^{-1}B \hat{u}(s) \[0.5em]
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\dot{\hat{x}}(t) &amp;= A \hat{x}(t) + B \hat{u}(t) \\[0.5em]
+\dot{\hat{y}}(t) &amp;= C \hat{x}(t) + D \hat{u}(t) \\[0.5em]
+ \text{Laplace Transform } &amp;\\[0.5em]
+s\hat{x}(s) &amp;= A \hat{x}(s) + B \hat{u}(s) \\[0.5em]
+sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
+\hat{x}(s) &amp;= \left(sI-A\right)^{-1}B \hat{u}(s) \\[0.5em]
 \hat{y}(s) &amp;= \bigg(C(sI-A)^{-1}B +E \bigg)\hat{u}(s) = G(s) \hat{u}(s)
-\end{align*}$</p>
+\end{align*}\]</div>
 <p><strong>Solver</strong></p>
-<p>$G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b1c0cc43-8e41-4192-b242-f4a97aaf1235">
-<span class="eqno">(10)<a class="headerlink" href="#equation-b1c0cc43-8e41-4192-b242-f4a97aaf1235" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<p>G(s) =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f20d6184-0622-42e1-b4f4-8ab168893d3b">
+<span class="eqno">(6)<a class="headerlink" href="#equation-f20d6184-0622-42e1-b4f4-8ab168893d3b" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
-<p>$</p>
 </section>
 </section>
 </section>
