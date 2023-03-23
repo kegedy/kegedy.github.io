@@ -13,7 +13,7 @@ execute:
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
-    targetname: book.tex
+    targetname: Egedy.Kevin.tex
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
@@ -33,17 +33,17 @@ html:
   use_edit_page_button: true
   google_analytics_id: G-C3J0M23XR2
 
-sphinx:
-  config:
-    html_extra_path: ['resume']
-    mathjax_config:
-      "HTML-CSS": {
-        matchFontHeight: false,
-        scale: 90
-      }
-
 parse:
   myst_enable_extensions:
     # don't forget to list any other extensions you want enabled,
     # including those that are enabled by default!
     ["dollarmath", "amsmath"]
+
+sphinx:
+  config:
+    html_extra_path: ['resume']
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    mathjax3_config:
+      "HTML-CSS": {
+        scale: 85
+      }

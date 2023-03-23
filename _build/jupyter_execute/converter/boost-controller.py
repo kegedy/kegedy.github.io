@@ -3,9 +3,7 @@
 
 # # Boost Controller
 
-# ## Dynamic Modeling
-
-# ### Averaged Inductor Current and Capacitor Voltage 
+# ## Averaged Inductor Current and Capacitor Voltage 
 
 # **Volt-Seconds**
 
@@ -66,7 +64,7 @@
 # \end{bmatrix} \\[0.5em]
 # \end{align*}
 
-# ### Linearized Small-Signal Model
+# ## Linearized Small-Signal Model
 
 # **Derive a linearized small-signal model**
 
@@ -120,11 +118,11 @@
 # \begin{align*}
 # A = \dfrac{d}{d\hat{x}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &= 
 # \begin{bmatrix}
-# \dfrac{\partial f_1}{\partial x_1} & \dfrac{\partial f_1}{\partial x_2} \\[1.5em] 
-# \dfrac{\partial f_2}{\partial x_1} & \dfrac{\partial f_2}{\partial x_2}
+# \ \ \dfrac{\partial f_1}{\partial x_1} & \dfrac{\partial f_1}{\partial x_2} \ \ \\[1em] 
+# \ \ \dfrac{\partial f_2}{\partial x_1} & \dfrac{\partial f_2}{\partial x_2} \ \
 # \end{bmatrix}\bigg|_{x,u} = 
 # \begin{bmatrix}
-# \dfrac{\partial f_1}{\partial \langle \hat{i}(t)\rangle} & \dfrac{\partial f_1}{\partial \langle \hat{v}(t)\rangle} \\[1.5em] 
+# \dfrac{\partial f_1}{\partial \langle \hat{i}(t)\rangle} & \dfrac{\partial f_1}{\partial \langle \hat{v}(t)\rangle} \\[1em] 
 # \dfrac{\partial f_2}{\partial \langle \hat{i}(t)\rangle} & \dfrac{\partial f_2}{\partial \langle \hat{v}(t)\rangle}
 # \end{bmatrix}\bigg|_{x,u} \\[1em]
 # A &= 
@@ -136,11 +134,11 @@
 
 # \begin{align*} B = \dfrac{d}{d\hat{u}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &= 
 # \begin{bmatrix}
-# \dfrac{\partial f_1}{\partial u_1} & \dfrac{\partial f_1}{\partial u_2} \\[1.5em] 
+# \dfrac{\partial f_1}{\partial u_1} & \dfrac{\partial f_1}{\partial u_2} \\[1em] 
 # \dfrac{\partial f_2}{\partial u_1} & \dfrac{\partial f_2}{\partial u_2}
 # \end{bmatrix}\bigg|_{x,u} = 
 # \begin{bmatrix}
-# \dfrac{\partial f_1}{\partial \hat{d'}(t)} & \dfrac{\partial f_1}{\partial \langle \hat{v_g}(t)\rangle} \\[1.5em] 
+# \dfrac{\partial f_1}{\partial \hat{d'}(t)} & \dfrac{\partial f_1}{\partial \langle \hat{v_g}(t)\rangle} \\[1em] 
 # \dfrac{\partial f_2}{\partial \hat{d'}(t)} & \dfrac{\partial f_2}{\partial \langle \hat{v_g}(t)\rangle}
 # \end{bmatrix}\bigg|_{x,u} \\[1em]
 # B &= 
@@ -166,7 +164,7 @@
 # 0 & 0
 # \end{bmatrix}
 
-# ### System Outputs in Frequency Domain
+# ## System Outputs in Frequency Domain
 
 # \begin{align*}
 # \dot{\hat{x}}(t) &= A \hat{x}(t) + B \hat{u}(t) \\[0.5em]
