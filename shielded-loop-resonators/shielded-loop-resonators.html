@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Common Discussions" href="../pcb/common-discussions/common-discussions.html" />
-    <link rel="prev" title="Boost Controller" href="../converter/boost-controller.html" />
+    <link rel="prev" title="Definition of Variables" href="variables.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -193,6 +193,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="variables.html">
+   Definition of Variables
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Wireless Power Transfer
@@ -607,7 +612,7 @@ Z_{out} = R_2 + j\bigg(\omega L_2 - \dfrac{1}{\omega C_2} \bigg) + \dfrac{(\omeg
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-Z_{in} &amp;= -j Z_0 \cot(\beta l) \bigg|_{\beta l &lt;&lt; 1} \\[0.5em]
+Z_{in} &amp;= -j Z_0 \cot(\beta l) \bigg|_{\beta l \ll 1} \\[0.5em]
 Z_{in} &amp;= -j \dfrac{Z_0}{\beta l} \\[0.5em]
 Z_{in} &amp;= -j \dfrac{\sqrt{L'/C'}}{\omega \sqrt{L' C'} l} \\[0.5em]
 Z_{in} &amp;= -j \dfrac{1}{\omega C' l} \\[0.5em]
@@ -711,6 +716,22 @@ f_0 &amp;= \dfrac{1}{2\pi \sqrt{LC}}
 </section>
 <section id="resonant-frequency-results">
 <h2>Resonant Frequency Results<a class="headerlink" href="#resonant-frequency-results" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://www.keysight.com/us/en/product/E5063A/e5063a-ena-vector-network-analyzer.html">E5063A ENA Vector Network Analyzer</a></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Loop</p></th>
+<th class="text-align:left head"><p>Resonant Frequency</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>5 cm loop</p></td>
+<td class="text-align:left"><p>f_0 = 85.7 MHz</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>9 cm loop</p></td>
+<td class="text-align:left"><p>f_0 = 47.4 MHz</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="de-embedding-the-feedline">
 <h2>De-embedding the Feedline<a class="headerlink" href="#de-embedding-the-feedline" title="Permalink to this headline">#</a></h2>
@@ -744,11 +765,11 @@ f_0 &amp;= \dfrac{1}{2\pi \sqrt{LC}}
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../converter/boost-controller.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="variables.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Boost Controller</p>
+            <p class="prev-next-title">Definition of Variables</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../pcb/common-discussions/common-discussions.html" title="next page">
