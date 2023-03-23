@@ -444,26 +444,19 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dynamic-modeling">
-   Dynamic Modeling
+  <a class="reference internal nav-link" href="#averaged-inductor-current-and-capacitor-voltage">
+   Averaged Inductor Current and Capacitor Voltage
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#averaged-inductor-current-and-capacitor-voltage">
-     Averaged Inductor Current and Capacitor Voltage
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#linearized-small-signal-model">
-     Linearized Small-Signal Model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#system-outputs-in-frequency-domain">
-     System Outputs in Frequency Domain
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linearized-small-signal-model">
+   Linearized Small-Signal Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-outputs-in-frequency-domain">
+   System Outputs in Frequency Domain
+  </a>
  </li>
 </ul>
 
@@ -485,26 +478,19 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dynamic-modeling">
-   Dynamic Modeling
+  <a class="reference internal nav-link" href="#averaged-inductor-current-and-capacitor-voltage">
+   Averaged Inductor Current and Capacitor Voltage
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#averaged-inductor-current-and-capacitor-voltage">
-     Averaged Inductor Current and Capacitor Voltage
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#linearized-small-signal-model">
-     Linearized Small-Signal Model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#system-outputs-in-frequency-domain">
-     System Outputs in Frequency Domain
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linearized-small-signal-model">
+   Linearized Small-Signal Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-outputs-in-frequency-domain">
+   System Outputs in Frequency Domain
+  </a>
  </li>
 </ul>
 
@@ -518,10 +504,8 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="boost-controller">
 <h1>Boost Controller<a class="headerlink" href="#boost-controller" title="Permalink to this headline">#</a></h1>
-<section id="dynamic-modeling">
-<h2>Dynamic Modeling<a class="headerlink" href="#dynamic-modeling" title="Permalink to this headline">#</a></h2>
 <section id="averaged-inductor-current-and-capacitor-voltage">
-<h3>Averaged Inductor Current and Capacitor Voltage<a class="headerlink" href="#averaged-inductor-current-and-capacitor-voltage" title="Permalink to this headline">#</a></h3>
+<h2>Averaged Inductor Current and Capacitor Voltage<a class="headerlink" href="#averaged-inductor-current-and-capacitor-voltage" title="Permalink to this headline">#</a></h2>
 <p><strong>Volt-Seconds</strong></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -552,14 +536,14 @@ C\frac{d}{dt} \langle v(t)\rangle &amp;=
 \end{align*}\]</div>
 <p><strong>Differential Solution</strong></p>
 <p>x =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-acce15fa-44ae-4cfd-b264-c4f887b09f0d">
-<span class="eqno">(1)<a class="headerlink" href="#equation-acce15fa-44ae-4cfd-b264-c4f887b09f0d" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-a7e816c4-f019-47fd-a8b4-d0e0ab38bb5b">
+<span class="eqno">(1)<a class="headerlink" href="#equation-a7e816c4-f019-47fd-a8b4-d0e0ab38bb5b" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 \langle i(t)\rangle \\
 \langle v(t)\rangle
 \end{bmatrix}\]</div>
 <p>u =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2f25a2d8-86a8-4c8d-a891-bb507b13b6d8">
-<span class="eqno">(2)<a class="headerlink" href="#equation-2f25a2d8-86a8-4c8d-a891-bb507b13b6d8" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-d0859a68-1da3-4cac-ba75-c2900edb7ccc">
+<span class="eqno">(2)<a class="headerlink" href="#equation-d0859a68-1da3-4cac-ba75-c2900edb7ccc" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 d(t) \\
 \langle v_g(t)\rangle
 \end{bmatrix}\]</div>
@@ -581,7 +565,7 @@ d(t) \\
 \end{align*}\]</div>
 </section>
 <section id="linearized-small-signal-model">
-<h3>Linearized Small-Signal Model<a class="headerlink" href="#linearized-small-signal-model" title="Permalink to this headline">#</a></h3>
+<h2>Linearized Small-Signal Model<a class="headerlink" href="#linearized-small-signal-model" title="Permalink to this headline">#</a></h2>
 <p><strong>Derive a linearized small-signal model</strong></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -589,8 +573,8 @@ d(t) \\
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-42809839-7b18-417e-bd8b-5224ad034c2a">
-<span class="eqno">(3)<a class="headerlink" href="#equation-42809839-7b18-417e-bd8b-5224ad034c2a" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-51d5ca15-3fbb-4328-b3a0-c006334e8292">
+<span class="eqno">(3)<a class="headerlink" href="#equation-51d5ca15-3fbb-4328-b3a0-c006334e8292" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -630,8 +614,8 @@ I &amp;= \frac{V_g}{D'^2 R}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
 \[\begin{align*}
 A = \dfrac{d}{d\hat{x}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &amp;= 
 \begin{bmatrix}
-\dfrac{\partial f_1}{\partial x_1} &amp; \dfrac{\partial f_1}{\partial x_2} \\[1em] 
-\dfrac{\partial f_2}{\partial x_1} &amp; \dfrac{\partial f_2}{\partial x_2}
+\ \ \dfrac{\partial f_1}{\partial x_1} &amp; \dfrac{\partial f_1}{\partial x_2} \ \ \\[1em] 
+\ \ \dfrac{\partial f_2}{\partial x_1} &amp; \dfrac{\partial f_2}{\partial x_2} \ \
 \end{bmatrix}\bigg|_{x,u} = 
 \begin{bmatrix}
 \dfrac{\partial f_1}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v}(t)\rangle} \\[1em] 
@@ -664,20 +648,20 @@ B &amp;=
 \end{bmatrix} \\[1em]
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c77e705b-ecd3-47f9-bb52-5b6b5d22d04b">
-<span class="eqno">(4)<a class="headerlink" href="#equation-c77e705b-ecd3-47f9-bb52-5b6b5d22d04b" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-fe39cba6-fb56-4ee9-b216-2688ab49567a">
+<span class="eqno">(4)<a class="headerlink" href="#equation-fe39cba6-fb56-4ee9-b216-2688ab49567a" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e8b58d6a-3a2c-47d5-9b1d-58c47017bb9c">
-<span class="eqno">(5)<a class="headerlink" href="#equation-e8b58d6a-3a2c-47d5-9b1d-58c47017bb9c" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-37b8ded9-f543-4220-9df3-d8e48be30a5f">
+<span class="eqno">(5)<a class="headerlink" href="#equation-37b8ded9-f543-4220-9df3-d8e48be30a5f" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
 </section>
 <section id="system-outputs-in-frequency-domain">
-<h3>System Outputs in Frequency Domain<a class="headerlink" href="#system-outputs-in-frequency-domain" title="Permalink to this headline">#</a></h3>
+<h2>System Outputs in Frequency Domain<a class="headerlink" href="#system-outputs-in-frequency-domain" title="Permalink to this headline">#</a></h2>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \dot{\hat{x}}(t) &amp;= A \hat{x}(t) + B \hat{u}(t) \\[0.5em]
@@ -690,12 +674,11 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-92c7f07b-f28e-4a35-9bf3-9f59bb6b73bf">
-<span class="eqno">(6)<a class="headerlink" href="#equation-92c7f07b-f28e-4a35-9bf3-9f59bb6b73bf" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-de1f57c9-10bc-4609-b4f2-b6dd3a0ddd6d">
+<span class="eqno">(6)<a class="headerlink" href="#equation-de1f57c9-10bc-4609-b4f2-b6dd3a0ddd6d" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
-</section>
 </section>
 </section>
 
