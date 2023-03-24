@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Shielded-Loop Resonators &#8212; Kevin Egedy</title>
+    <title>Impedance Matching and Frequency Tuning &#8212; Kevin Egedy</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Coupled Resonators and Voltage Rectification" href="coupled-resonators-and-voltage-rectification.html" />
-    <link rel="prev" title="Boost Controller" href="../converter/boost-controller.html" />
+    <link rel="next" title="Common Discussions" href="../pcb/common-discussions/common-discussions.html" />
+    <link rel="prev" title="Coupled Resonators and Voltage Rectification" href="coupled-resonators-and-voltage-rectification.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -193,8 +193,8 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="shielded-loop-resonators.html">
    Shielded-Loop Resonators
   </a>
  </li>
@@ -203,8 +203,8 @@ const thebe_selector_output = ".output, .cell_output"
    Coupled Resonators and Voltage Rectification
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="impedance-matching-and-frequency-tuning.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Impedance Matching and Frequency Tuning
   </a>
  </li>
@@ -301,7 +301,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/wireless-power-transfer/shielded-loop-resonators.ipynb"
+        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/wireless-power-transfer/impedance-matching-and-frequency-tuning.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -361,7 +361,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fwireless-power-transfer/shielded-loop-resonators.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fwireless-power-transfer/impedance-matching-and-frequency-tuning.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -378,7 +378,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/wireless-power-transfer/shielded-loop-resonators.ipynb"
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/wireless-power-transfer/impedance-matching-and-frequency-tuning.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -406,7 +406,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/wireless-power-transfer/shielded-loop-resonators.ipynb"
+        <a href="../_sources/wireless-power-transfer/impedance-matching-and-frequency-tuning.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -471,33 +471,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#useful-equations">
-   Useful Equations
+  <a class="reference internal nav-link" href="#complex-conjugate-matching">
+   Complex-Conjugate Matching
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#magnetically-coupled-resonators">
-   Magnetically-Coupled Resonators
+  <a class="reference internal nav-link" href="#matching-network-topologies">
+   Matching Network Topologies
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#shielded-loop-model">
-   Shielded-Loop Model
+  <a class="reference internal nav-link" href="#simultaneous-matching">
+   Simultaneous Matching
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#de-embedding-the-feedline">
-   De-embedding the Feedline
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#characterize-the-resonator-as-an-rlc-circuit">
-   Characterize the Resonator as an RLC Circuit
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
+  <a class="reference internal nav-link" href="#maximum-power-transfer-efficiency">
+   Maximum Power Transfer Efficiency
   </a>
  </li>
 </ul>
@@ -509,7 +499,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Shielded-Loop Resonators</h1>
+                <h1>Impedance Matching and Frequency Tuning</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -525,33 +515,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#useful-equations">
-   Useful Equations
+  <a class="reference internal nav-link" href="#complex-conjugate-matching">
+   Complex-Conjugate Matching
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#magnetically-coupled-resonators">
-   Magnetically-Coupled Resonators
+  <a class="reference internal nav-link" href="#matching-network-topologies">
+   Matching Network Topologies
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#shielded-loop-model">
-   Shielded-Loop Model
+  <a class="reference internal nav-link" href="#simultaneous-matching">
+   Simultaneous Matching
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#de-embedding-the-feedline">
-   De-embedding the Feedline
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#characterize-the-resonator-as-an-rlc-circuit">
-   Characterize the Resonator as an RLC Circuit
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
+  <a class="reference internal nav-link" href="#maximum-power-transfer-efficiency">
+   Maximum Power Transfer Efficiency
   </a>
  </li>
 </ul>
@@ -564,353 +544,189 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="shielded-loop-resonators">
-<h1>Shielded-Loop Resonators<a class="headerlink" href="#shielded-loop-resonators" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="impedance-matching-and-frequency-tuning">
+<h1>Impedance Matching and Frequency Tuning<a class="headerlink" href="#impedance-matching-and-frequency-tuning" title="Permalink to this headline">#</a></h1>
 <section id="topics">
 <h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Measurements of isolated (uncoupled) shielded-loop resonators</p></li>
-<li><p>De-embedding the feedline</p></li>
-<li><p>Modeling the resonator as an RLC circuit</p></li>
+<li><p>Lumped element matching circuits</p></li>
+<li><p>Frequency-tuned, wireless non-radiative power transfer systems</p></li>
+<li><p>Lighting up a light-emitting diode (LED) using a WNPT system</p></li>
+<li><p>Use frequency tuning to maintain the brightness of the LED</p></li>
 </ul>
 </section>
-<section id="useful-equations">
-<h2>Useful Equations<a class="headerlink" href="#useful-equations" title="Permalink to this headline">#</a></h2>
+<section id="complex-conjugate-matching">
+<h2>Complex-Conjugate Matching<a class="headerlink" href="#complex-conjugate-matching" title="Permalink to this headline">#</a></h2>
+<p><strong>Given</strong></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\lambda &amp;= \dfrac{u_p}{f} \ (m) \\[0.5em]
-u_p &amp;= \dfrac{\omega}{\beta} = \dfrac{2l}{\Delta t} \ (m/s) \\[0.5em]
-\epsilon_r &amp;= \bigg(\dfrac{c}{u_p} \bigg)^2 \\[0.5em]
-Z_0 &amp;= \sqrt{\dfrac{L'}{C'}} \ (\Omega) \\[0.5em]
-\beta \ &amp;= \omega \sqrt{\mu \epsilon} = \omega \sqrt{L' C'} \ (rad/m) \\[0.5em]
-Z_{in} &amp;= Z_0 \dfrac{Z_L + jZ_0 \tan(\beta l)}{Z_0 + jZ_L\tan(\beta l)} \ (\Omega)
+Z_S &amp;= R_S + jX_S \\[0.5em]
+Z_L &amp;= R_L + jX_L 
 \end{align*}
 \end{split}\]</div>
-</section>
-<section id="magnetically-coupled-resonators">
-<h2>Magnetically-Coupled Resonators<a class="headerlink" href="#magnetically-coupled-resonators" title="Permalink to this headline">#</a></h2>
 <figure class="align-default" id="id1">
-<img alt="../_images/resonator-schematic.png" src="../_images/resonator-schematic.png" />
+<img alt="../_images/complex-conjugate-matching.png" src="../_images/complex-conjugate-matching.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Schematic of Magnetically-Coupled Resonators</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Reference Circuit</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Given</p>
 <div class="math notranslate nohighlight">
-\[
+\[\begin{split}
 \begin{align*}
-Z_{in} &amp;= \dfrac{v_x}{i_1} = R_1 + j\bigg(\omega L_1 - \dfrac{1}{\omega C_1} \bigg) + \dfrac{(\omega M)^2}{R_2 + R_L + j\bigg(\omega L_2 - \dfrac{1}{\omega C_2} \bigg)}
+Z_S &amp;= R_S + jX_S \\[0.5em]
+Z_L &amp;= R_L + jX_L 
 \end{align*}
-\]</div>
+\end{split}\]</div>
+<p>Voltage and current across load <span class="math notranslate nohighlight">\(Z_L\)</span> is defined as</p>
 <div class="math notranslate nohighlight">
-\[
+\[\begin{split}
 \begin{align*}
-Z_{out} = R_2 + j\bigg(\omega L_2 - \dfrac{1}{\omega C_2} \bigg) + \dfrac{(\omega M)^2}{R_1 + R_S + j\bigg(\omega L_1 - \dfrac{1}{\omega C_1} \bigg)}
+v_A &amp;= v_S \dfrac{Z_L}{Z_S + Z_L} \\[0.5em]
+i &amp;= \dfrac{v_S}{Z_S + Z_L}
 \end{align*}
-\]</div>
-</section>
-<section id="shielded-loop-model">
-<h2>Shielded-Loop Model<a class="headerlink" href="#shielded-loop-model" title="Permalink to this headline">#</a></h2>
+\end{split}\]</div>
+<p>Power <span class="math notranslate nohighlight">\(P_D\)</span> delivered to load <span class="math notranslate nohighlight">\(Z_L\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P_D = \dfrac{1}{2} Re\{v_A i^* \} &amp;= \dfrac{|v_S|^2}{2} \dfrac{Re\{Z_L \}}{|Z_S + Z_L|^2} \\[0.5em]
+    &amp;= \dfrac{|v_S|^2}{2} \dfrac{R_L}{(R_S+R_L)^2 + (X_S + X_L)^2}
+\end{align*}
+\end{split}\]</div>
+<p>Analyzing the power relation, it is shown that maximum power transfer occurs when <span class="math notranslate nohighlight">\(Z_S = Z_L^*\)</span>.</p>
 <figure class="align-default" id="id2">
-<img alt="../_images/open-circuited-stub.png" src="../_images/open-circuited-stub.png" />
+<img alt="../_images/two-port-network.png" src="../_images/two-port-network.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Shielded-Loop Resonator as Open-Circuited Stub</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Impedance Matched, Two Port Network</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="matching-network-topologies">
+<h2>Matching Network Topologies<a class="headerlink" href="#matching-network-topologies" title="Permalink to this headline">#</a></h2>
+<p>Lumped element matching networks are chosen for this design since the resonating frequencies are less than 100 MHz. Other solutions are obtained with transmission line models, however it is difficult to design reasonably sized lines and stubs due to the operating frequencies. Set input impedance <span class="math notranslate nohighlight">\(Z_S = Z_0\)</span> and find the matching network for load <span class="math notranslate nohighlight">\(Z_L = R_L + jX_L\)</span>.</p>
 <figure class="align-default" id="id3">
-<img alt="../_images/open-circuited-stub-schematic.png" src="../_images/open-circuited-stub-schematic.png" />
+<img alt="../_images/matching-network-topologies.png" src="../_images/matching-network-topologies.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Open-Circuited Stub Completes Resonant Circuit</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Left: Load-Parallel-Series;      Right: Load-Series-Parallel</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p><strong>Loop capacitance for open-circuited transmission line stub</strong></p>
+<p><strong>Lump Element: Load-Parallel-Series</strong></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-Z_{in} &amp;= -j Z_0 \cot(\beta l) \bigg|_{\beta l \ll 1} \\[0.5em]
-Z_{in} &amp;= -j \dfrac{Z_0}{\beta l} \\[0.5em]
-Z_{in} &amp;= -j \dfrac{\sqrt{L'/C'}}{\omega \sqrt{L' C'} l} \\[0.5em]
-Z_{in} &amp;= -j \dfrac{1}{\omega C' l} \\[0.5em]
-C &amp;\approx C' l
+X_s &amp;= -Xp + \dfrac{X_L Z_0}{R_L} + \dfrac{X_p Z_0}{R_L} \\[0.5em]
+X_p &amp;= -\dfrac{R_L^2 + X_L^2}{X_L \pm \sqrt{R_L/Z_0}\sqrt{R_L^2 + X_L^2 - Z_0 R_L}}
 \end{align*}
 \end{split}\]</div>
-<p><span class="math notranslate nohighlight">\(C'\)</span> is the per-unit-length capacitance of the tranmission line</p>
-<p><strong>Line parameters</strong></p>
+<p><strong>Solution Conditions</strong></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-C' &amp;= \dfrac{\sqrt{\mu \epsilon}}{Z_0} = \dfrac{\sqrt{\epsilon_r} }{c Z_0} \\[0.5em]
-C &amp;= \dfrac{\sqrt{\epsilon_r}}{c Z_0} l \\[0.5em] 
-L &amp;= \mu r \bigg[\ln{\bigg(\dfrac{8r}{a_0} \bigg)}-1.75 \bigg], \ {a_0 = \dfrac{d}{4}} \\[0.5em] 
-L &amp;= \mu r \bigg[\ln{\bigg(\dfrac{32r}{d} \bigg)}-1.75 \bigg] \\[0.5em] 
-\beta &amp;= \omega \sqrt{L' C'} = \dfrac{\omega \sqrt{\epsilon_r}}{c}
+Re\{{\dfrac{1}{Z_L}}\} &lt; \dfrac{1}{Z_0} \\[0.5em]
+\dfrac{R_L}{R_L^2 + X_L^2} &lt; \dfrac{1}{Z_0} \\[0.5em]
+R_L^2 + X_L^2 - Z_0 R_L &gt; 0
 \end{align*}
 \end{split}\]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\mu\)</span> is the permeability of the surrounding medium</p></li>
-<li><p><span class="math notranslate nohighlight">\(r\)</span> is the radius of the loop</p></li>
-<li><p><span class="math notranslate nohighlight">\(a_0\)</span> is the cross-sectional radius of the loop; defined where rectangular cross-section wire and circular cross-section wire are approximately equal</p></li>
-<li><p><span class="math notranslate nohighlight">\(d\)</span> is the width of the rectangular wire</p></li>
-</ul>
-<p><strong>Resonant Frequency</strong></p>
+<p><strong>Lump Element: Load-Series-Parallel</strong></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-0 &amp;= j \omega_0 L + \dfrac{1}{j \omega_0 C} \\[0.5em]
-\omega_0 &amp;= \dfrac{1}{\sqrt{LC}} \\[0.5em]
-f_0 &amp;= \dfrac{1}{2\pi \sqrt{LC}}
+X_s &amp;= \sqrt{R_L(Z_0 - R_L)} - X_L &amp; \ &amp;
+X_p = -\dfrac{\sqrt{R_L}Z_0}{\sqrt{Z_0-R_L}} \\
+X_s &amp;= -\sqrt{R_L(Z_0 - R_L)} - X_L &amp; \ &amp;
+X_p = \dfrac{\sqrt{R_L}Z_0}{\sqrt{Z_0-R_L}}
 \end{align*}
 \end{split}\]</div>
-<p><strong>Given shielded-loop parameters</strong></p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Dielectric Properties</p></th>
-<th class="text-align:left head"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p>Material</p></td>
-<td class="text-align:left"><p>Rogers RT/Duroid 5880</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>Relative Permitivity</p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\epsilon_r = 2.2\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p>Loss Tangent</p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\tan \delta = 0.009\)</span></p></td>
-</tr>
-</tbody>
-</table>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Conductor Properties</p></th>
-<th class="text-align:left head"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p>Material</p></td>
-<td class="text-align:left"><p>copper</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>Conductivity</p></td>
-<td class="text-align:left"><p>5.8E7 Siemens</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p>Thickness</p></td>
-<td class="text-align:left"><p>70 <span class="math notranslate nohighlight">\(\mu\)</span>m</p></td>
-</tr>
-</tbody>
-</table>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Geometry</p></th>
-<th class="text-align:left head"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p>Radii</p></td>
-<td class="text-align:left"><p>5cm and 9cm</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>Cross-sectional width</p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(d = 15\)</span> mm</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p>Cross-sectional thickness</p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(3.32\)</span> mm</p></td>
-</tr>
-</tbody>
-</table>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Stripline Tranmission Line</p></th>
-<th class="text-align:left head"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p>Characteristic impedance</p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(Z_0 = 50\Omega\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </section>
-<section id="de-embedding-the-feedline">
-<h2>De-embedding the Feedline<a class="headerlink" href="#de-embedding-the-feedline" title="Permalink to this headline">#</a></h2>
+<section id="simultaneous-matching">
+<h2>Simultaneous Matching<a class="headerlink" href="#simultaneous-matching" title="Permalink to this headline">#</a></h2>
 <figure class="align-default" id="id4">
-<img alt="../_images/reflection-coefficient.png" src="../_images/reflection-coefficient.png" />
+<img alt="../_images/coupled-shielded-loop-resonators-with-matching-networks.png" src="../_images/coupled-shielded-loop-resonators-with-matching-networks.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Effect of Transmission Line on Reflection Coefficient</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Coupled Shielded-Loop Resonators with Matching Networks</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Inductively-coupled RLC circuits assuming identical loops</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+Z_{in} &amp;= R + j\bigg(\omega L - \dfrac{1}{\omega C} \bigg) + \dfrac{(\omega M)^2}{R + Z_L + j\bigg(\omega L - \dfrac{1}{\omega C} \bigg)} \\[0.5em]
+Z_{out} &amp;= R + j\bigg(\omega L - \dfrac{1}{\omega C} \bigg) + \dfrac{(\omega M)^2}{R + Z_S + j\bigg(\omega L - \dfrac{1}{\omega C} \bigg)}
+\end{align*}
+\end{split}\]</div>
+<p>For a simultaneous, complex-conjugate match, we must ensure that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+Z_S &amp;= Z_{in}^* \\[0.5em]
+Z_L &amp;= Z_{out}^*
+\end{align*}
+\end{split}\]</div>
+<p>Then the simulataneous matching is satisfied by</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align*}
-\Gamma_{in}' &amp;= \Gamma_{in}e^{-2j \beta l}
+Z_{L}^{OPT} = Z_{S}^{OPT} = j\bigg(\omega L - \dfrac{1}{\omega C}\bigg) + \sqrt{R^2 + (\omega M)^2}
 \end{align*}
 \]</div>
-<p>The insertion of a transmission line with characteristic impedance <span class="math notranslate nohighlight">\(Z_0\)</span> will change the phase
-of the load input reflection coefficient. Thus, the phase of <span class="math notranslate nohighlight">\(\Gamma_{in}'\)</span> should be increased by 2𝛽𝑙 to find the reflection coefficient of the RLC portion of the loop (<span class="math notranslate nohighlight">\(\Gamma_{in}\)</span>). Note <span class="math notranslate nohighlight">\(\beta\)</span> is frequency dependent so each frequency point must be adjusted by a different phase value.</p>
-<p>De-embedding is the process of removing feedline effects.</p>
-</section>
-<section id="characterize-the-resonator-as-an-rlc-circuit">
-<h2>Characterize the Resonator as an RLC Circuit<a class="headerlink" href="#characterize-the-resonator-as-an-rlc-circuit" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://www.keysight.com/us/en/product/E5063A/e5063a-ena-vector-network-analyzer.html">E5063A ENA Vector Network Analyzer</a></p>
-<p><strong>Measurements</strong></p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Loop</p></th>
-<th class="text-align:left head"><p>Resonant Frequency</p></th>
-<th class="text-align:left head"><p>Reflection Coefficient <span class="math notranslate nohighlight">\(\Gamma_{in}'(f_0)\)</span></p></th>
-<th class="text-align:left head"><p>Phase <span class="math notranslate nohighlight">\(\phi\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p>5 cm loop</p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(f_0 = 85.7\)</span> MHz</p></td>
-<td class="text-align:left"><p></p></td>
-<td class="text-align:left"><p></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>9 cm loop</p></td>
-<td class="text-align:left"><p><span class="math notranslate nohighlight">\(f_0 = 47.4\)</span> MHz</p></td>
-<td class="text-align:left"><p></p></td>
-<td class="text-align:left"><p></p></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Calculate: Electrical Length</strong></p>
+<figure class="align-default" id="id5">
+<img alt="../_images/ideal-coupled-shielded-loop-resonators-with-matching-networks.png" src="../_images/ideal-coupled-shielded-loop-resonators-with-matching-networks.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Including Feedline Effects</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Factoring in feedline effects, the adjusted source and load impedance become</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+Z_{S}^{'} &amp;= Z_0 \dfrac{Z_S - j Z_0 \tan(\beta l)}{Z_0 - j Z_S \tan(\beta l)} \\[0.5em]
+Z_{L}^{'} &amp;= Z_0 \dfrac{Z_L - j Z_0 \tan(\beta l)}{Z_0 - j Z_L \tan(\beta l)} 
+\end{align*}
+\end{split}\]</div>
+<p>Then the simulataneous matching is satisfied by</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align*}
-2\beta l = (180^{\circ} - \phi)\cdot \dfrac{pi}{180^{\circ}}
+Z_{L}^{OPT} = Z_{S}^{OPT} = Z_0 \dfrac{j\bigg(\omega L - \dfrac{1}{\omega C}\bigg) + \sqrt{R^2 + (\omega M)^2} - j Z_0 \tan(\beta l)}{Z_0 - j\bigg[j\bigg(\omega L - \dfrac{1}{\omega C}\bigg) + \sqrt{R^2 + (\omega M)^2}\bigg]\tan(\beta l)}
 \end{align*}
 \]</div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Loop</p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\beta l\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p>5 cm loop</p></td>
-<td class="text-align:center"><p></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>9 cm loop</p></td>
-<td class="text-align:center"><p></p></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Finding R</strong></p>
-<p>At resonance, the input impedance <span class="math notranslate nohighlight">\(Z_{in}\)</span> is purely real.  <span class="math notranslate nohighlight">\(Z_{in} = R_{in} &lt; Z_0.\)</span> Note the input reflection coefficient is purely real and negative.</p>
+<p>At resonant frequency this simplifies to</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
+\[
 \begin{align*}
-R = R_{in}(f_0) &amp;= Z_0 \dfrac{1 + \Gamma_{in}}{1 - \Gamma_{in}} \\[0.5em]
-&amp;= Z_0 \dfrac{1 - |\Gamma_{in}|}{1 + |\Gamma_{in}|}
+Z_{L}^{OPT}(\omega_0) = Z_{S}^{OPT}(\omega_0) = Z_0 \dfrac{\sqrt{R^2 + (\omega_0 M)^2} - j Z_0 \tan(\beta l)}{Z_0 - j\sqrt{R^2 + (\omega_0 M)^2} \tan(\beta l)}
 \end{align*}
-\end{split}\]</div>
-<p>Additionally, if the feedline is lossless, then <span class="math notranslate nohighlight">\(|\Gamma_{in}'| = \Gamma_{in}|\)</span>.</p>
-<p><strong>Finding L and C</strong></p>
-<p>To find <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(C\)</span>, we need measurements at two distinct frequencies.</p>
+\]</div>
+<p><strong>Calculate</strong></p>
+<p>Assuming coupling distance of 5cm, determine</p>
+<ul class="simple">
+<li><p>mutual inductance <span class="math notranslate nohighlight">\(M\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R,L,C\)</span> of the shielded resonator loop</p></li>
+<li><p><span class="math notranslate nohighlight">\(Z_S = Z_L\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Z_S^{*} = Z_L^{*}\)</span></p></li>
+<li><p>Matching network lump elements</p></li>
+</ul>
+<p>If the system is mismatched, incident power from the source gets refected back and is measured via return loss.</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\omega_a = 2 \pi (f_0 - 2 \text{MHz}) &amp; \ &amp; \omega_b = 2 \pi (f_0 + 2 \text{MHz}) \\[0.5em]
-\Gamma_a' = \Gamma_{in}'(\omega_a) &amp; \ &amp; \Gamma_b' =\Gamma_{in}'(\omega_b) \\[0.5em]
-\Gamma_a = \Gamma_a' e^{2j \beta_a l} &amp; \ &amp; \Gamma_b = \Gamma_b' e^{2j \beta_b l} 
-\end{align*}
-\end{split}\]</div>
-<p><strong>Measurements: Reflection Coefficient</strong></p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Loop</p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\Gamma_{a}'\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\Gamma_{b}'\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p>5 cm loop</p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>9 cm loop</p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Calculate: Electric Length</strong></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\beta_a l = \beta l \cdot \bigg(\dfrac{f_0 -2\text{MHz}}{f_0}\bigg) &amp;  &amp; 
-\beta_b l = \beta l \cdot \bigg(\dfrac{f_0 +2\text{MHz}}{f_0}\bigg) \\
-\end{align*}
-\end{split}\]</div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Loop</p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\beta_a l\)</span></p></th>
-<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\beta_b l\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p>5 cm loop</p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>9 cm loop</p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-</tr>
-</tbody>
-</table>
-<p>Using the de-embedded input reflection coefficients, the following is defined</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-X_a = Im\bigg\{Z_0\dfrac{1+\Gamma_a}{1-\Gamma_a} \bigg\} = \omega_a L - \dfrac{1}{\omega_a C} \\[0.5em]
-X_b = Im\bigg\{Z_0\dfrac{1+\Gamma_b}{1-\Gamma_b} \bigg\} = \omega_b L - \dfrac{1}{\omega_b C}
-\end{align*}
-\end{split}\]</div>
-<p>Solving these relations simultaneously results in expressions for <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(C\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-C &amp;= \dfrac{\omega_b^2 - \omega_a^2}{\omega_a^2 \omega_b X_b - \omega_b^2 \omega_a X_a} \\[0.5em]
-L &amp;= \dfrac{\omega_b X_b + \dfrac{1}{C}}{\omega_b^2}
-\end{align*}
-\end{split}\]</div>
-<p><strong>Q Factor</strong></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-Q(f_0) = \dfrac{\omega_0 L}{R} &amp;= \dfrac{1}{\omega_0 R C} \\[0.5em]
-    &amp;= \dfrac{\sqrt{LC}}{RC} \\[0.5em]
-    &amp;= \dfrac{1}{R}\sqrt{\dfrac{L}{C}}
-\end{align*}
-\end{split}\]</div>
+\[\text{Return Loss} = -20\log_{10}|\Gamma|\]</div>
 </section>
-<section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p></p></th>
-<th class="head"><p><span class="math notranslate nohighlight">\(R \ (\Omega)\)</span></p></th>
-<th class="head"><p><span class="math notranslate nohighlight">\(L \ (nH)\)</span></p></th>
-<th class="head"><p><span class="math notranslate nohighlight">\(C \ (pF)\)</span></p></th>
-<th class="head"><p><span class="math notranslate nohighlight">\(Q\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>5 cm loop</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>9 cm loop</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
+<section id="maximum-power-transfer-efficiency">
+<h2>Maximum Power Transfer Efficiency<a class="headerlink" href="#maximum-power-transfer-efficiency" title="Permalink to this headline">#</a></h2>
+<p>Recall the power transfer efficiency for a system operating at resonant frequency <span class="math notranslate nohighlight">\(\omega_0\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\eta = \dfrac{4R_L^2(\omega_0 M)^2}{\bigg((R+R_L)^2 + (\omega_0 M)^2\bigg)^2}\]</div>
+<p>Examining the impedance-matched system for magnetically coupled loops, we see it only satisfies the weak coupling condition. (for <span class="math notranslate nohighlight">\(R \neq 0\)</span>)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+R_L^{OPT} = Re\{Z_{L}^{OPT}\} = \sqrt{R^2 + (\omega M)^2} &gt; \omega M \\[0.5em]
+\end{align*}
+\end{split}\]</div>
+<p>Thus, subsituting in R_L^{OPT}<span class="math notranslate nohighlight">\(, the maximum possible power transfer efficiency for a system at resonant frequency \)</span>\omega_0$ is</p>
+<div class="math notranslate nohighlight">
+\[\eta = \dfrac{4\bigg(R^2 + (\omega M)^2\bigg)^2(\omega_0 M)^2}{\bigg(\bigg(R+\sqrt{R^2 + (\omega M)^2}\bigg)^2 + (\omega_0 M)^2\bigg)^2}\]</div>
 </section>
 </section>
 
@@ -941,17 +757,17 @@ Q(f_0) = \dfrac{\omega_0 L}{R} &amp;= \dfrac{1}{\omega_0 R C} \\[0.5em]
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../converter/boost-controller.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="coupled-resonators-and-voltage-rectification.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Boost Controller</p>
+            <p class="prev-next-title">Coupled Resonators and Voltage Rectification</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="coupled-resonators-and-voltage-rectification.html" title="next page">
+    <a class='right-next' id="next-link" href="../pcb/common-discussions/common-discussions.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Coupled Resonators and Voltage Rectification</p>
+        <p class="prev-next-title">Common Discussions</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
