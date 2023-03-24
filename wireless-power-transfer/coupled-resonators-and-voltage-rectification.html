@@ -627,9 +627,9 @@ Z_{in}(\omega_0) &amp;= R_{in}(\omega_0) = R_1 + \dfrac{(\omega_0 M)^2}{R_2 + R_
 <div class="math notranslate nohighlight">
 \[Z_L = Z_0 = 50 \Omega\]</div>
 <figure class="align-default" id="id3">
-<img alt="wireless-power-transfer/img/impedance-simplification.png" src="wireless-power-transfer/img/impedance-simplification.png" />
+<img alt="../_images/impedance-simplification.png" src="../_images/impedance-simplification.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Mutual Inductance for Axially Aligned Coupled Loops</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Impedance Simplification</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -642,8 +642,9 @@ Z_{in}(\omega_0) &amp;= R_{in}(\omega_0) = R_1 + \dfrac{(\omega_0 M)^2}{R_2 + R_
 <div class="math notranslate nohighlight">
 \[\bigg(\omega L - \dfrac{1}{\omega C} \bigg)^2 = (\omega M)^2 - (R + R_L)^2 \]</div>
 <p>Solving this quadratic equation results in multiple solutions depending on the mutual inductance as a function of distance.</p>
-<p><strong>Strong coupling</strong>
-$<span class="math notranslate nohighlight">\(\omega M &gt; R + R_L\)</span>$</p>
+<p><strong>Strong coupling</strong></p>
+<div class="math notranslate nohighlight">
+\[\omega M &gt; R + R_L\]</div>
 <ul class="simple">
 <li><p>Odd mode solution: resonance is slightly less than <span class="math notranslate nohighlight">\(\omega_0\)</span> and the currents in the coupled loops are 180° out-of-phase</p></li>
 <li><p>Even mode solution: resonance is slightly greater than <span class="math notranslate nohighlight">\(\omega_0\)</span> and the currents in the coupled loops are in-phase</p></li>
@@ -682,14 +683,14 @@ load <span class="math notranslate nohighlight">\(P_L\)</span> and the power ava
 <section id="voltage-rectification">
 <h2>Voltage Rectification<a class="headerlink" href="#voltage-rectification" title="Permalink to this headline">#</a></h2>
 <figure class="align-default" id="id4">
-<img alt="wireless-power-transfer/img/full-wave-bridge-rectifier.png" src="wireless-power-transfer/img/full-wave-bridge-rectifier.png" />
+<img alt="../_images/full-wave-bridge-rectifier.png" src="../_images/full-wave-bridge-rectifier.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 12 </span><span class="caption-text">Full Wave Bridge Rectifier</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In this circuit, the negative cycle of the input AC signal is not blocked. Instead it is converted to a
 positive value for the RC filter to “smooth”</p>
-<p>Given metrics since the vector analyzer has maximum output power of 0 dBm.</p>
+<p>Given metrics since vector analyzer has maximum output power of 0 dBm.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p></p></th>
@@ -711,11 +712,11 @@ positive value for the RC filter to “smooth”</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p>Distance (cm)</p></th>
-<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(\Gamma_{in}'\)</span> (mU)</p></th>
-<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(S_{21}\)</span> (dB)</p></th>
+<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(\Gamma_{in}' (mU)\)</span></p></th>
+<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(S_{21} (dB)\)</span></p></th>
 <th class="text-align:left head"><p><span class="math notranslate nohighlight">\(R_{in}\)</span></p></th>
-<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(M\)</span> (calc.)</p></th>
-<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(\eta\)</span> (calc.)</p></th>
+<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(M (calc.)\)</span></p></th>
+<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(\eta (calc.)\)</span></p></th>
 </tr>
 </thead>
 <tbody>
@@ -781,11 +782,11 @@ positive value for the RC filter to “smooth”</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p>Distance (cm)</p></th>
-<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(\Gamma_{in}'\)</span> (mU)</p></th>
-<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(S_{21}\)</span> (dB)</p></th>
+<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(\Gamma_{in}' (mU)\)</span></p></th>
+<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(S_{21} (dB)\)</span></p></th>
 <th class="text-align:left head"><p><span class="math notranslate nohighlight">\(R_{in}\)</span></p></th>
-<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(M\)</span> (calc.)</p></th>
-<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(\eta\)</span> (calc.)</p></th>
+<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(M (calc.)\)</span></p></th>
+<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(\eta (calc.)\)</span></p></th>
 </tr>
 </thead>
 <tbody>
