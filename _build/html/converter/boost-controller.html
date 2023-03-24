@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Common Discussions" href="../pcb/common-discussions/common-discussions.html" />
+    <link rel="next" title="Shielded-Loop Resonators" href="../wireless-power-transfer/shielded-loop-resonators.html" />
     <link rel="prev" title="Desensitization" href="../non-linear-systems/desensitization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -184,6 +184,23 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Boost Controller
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Wireless Power Transfer
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../wireless-power-transfer/shielded-loop-resonators.html">
+   Shielded-Loop Resonators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../wireless-power-transfer/coupled-resonators-and-voltage-rectification.html">
+   Coupled Resonators and Voltage Rectification
   </a>
  </li>
 </ul>
@@ -536,14 +553,14 @@ C\frac{d}{dt} \langle v(t)\rangle &amp;=
 \end{align*}\]</div>
 <p><strong>Differential Solution</strong></p>
 <p>x =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a7e816c4-f019-47fd-a8b4-d0e0ab38bb5b">
-<span class="eqno">(1)<a class="headerlink" href="#equation-a7e816c4-f019-47fd-a8b4-d0e0ab38bb5b" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-f46b20c3-8fca-4ea5-92d7-ed80f1061cbc">
+<span class="eqno">(1)<a class="headerlink" href="#equation-f46b20c3-8fca-4ea5-92d7-ed80f1061cbc" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 \langle i(t)\rangle \\
 \langle v(t)\rangle
 \end{bmatrix}\]</div>
 <p>u =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d0859a68-1da3-4cac-ba75-c2900edb7ccc">
-<span class="eqno">(2)<a class="headerlink" href="#equation-d0859a68-1da3-4cac-ba75-c2900edb7ccc" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-cedd6e4c-9823-4581-97bc-86a402f6fac2">
+<span class="eqno">(2)<a class="headerlink" href="#equation-cedd6e4c-9823-4581-97bc-86a402f6fac2" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 d(t) \\
 \langle v_g(t)\rangle
 \end{bmatrix}\]</div>
@@ -573,8 +590,8 @@ d(t) \\
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-51d5ca15-3fbb-4328-b3a0-c006334e8292">
-<span class="eqno">(3)<a class="headerlink" href="#equation-51d5ca15-3fbb-4328-b3a0-c006334e8292" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-b3847224-6859-47e8-adf5-32ba2052d658">
+<span class="eqno">(3)<a class="headerlink" href="#equation-b3847224-6859-47e8-adf5-32ba2052d658" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -648,14 +665,14 @@ B &amp;=
 \end{bmatrix} \\[1em]
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fe39cba6-fb56-4ee9-b216-2688ab49567a">
-<span class="eqno">(4)<a class="headerlink" href="#equation-fe39cba6-fb56-4ee9-b216-2688ab49567a" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-d0021cca-b108-4fb9-81d7-59cf94b087f8">
+<span class="eqno">(4)<a class="headerlink" href="#equation-d0021cca-b108-4fb9-81d7-59cf94b087f8" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-37b8ded9-f543-4220-9df3-d8e48be30a5f">
-<span class="eqno">(5)<a class="headerlink" href="#equation-37b8ded9-f543-4220-9df3-d8e48be30a5f" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-f0bbfb60-d63b-4837-8bf7-8b41062e637d">
+<span class="eqno">(5)<a class="headerlink" href="#equation-f0bbfb60-d63b-4837-8bf7-8b41062e637d" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -674,8 +691,8 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-de1f57c9-10bc-4609-b4f2-b6dd3a0ddd6d">
-<span class="eqno">(6)<a class="headerlink" href="#equation-de1f57c9-10bc-4609-b4f2-b6dd3a0ddd6d" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-8e7c3bc7-2792-40a0-b4f6-bd5607f88e12">
+<span class="eqno">(6)<a class="headerlink" href="#equation-8e7c3bc7-2792-40a0-b4f6-bd5607f88e12" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
@@ -716,10 +733,10 @@ G_{vd}(s) &amp; G_{vg}(s)
             <p class="prev-next-title">Desensitization</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../pcb/common-discussions/common-discussions.html" title="next page">
+    <a class='right-next' id="next-link" href="../wireless-power-transfer/shielded-loop-resonators.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Common Discussions</p>
+        <p class="prev-next-title">Shielded-Loop Resonators</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

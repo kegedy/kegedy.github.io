@@ -21,6 +21,12 @@ parts:
   chapters:
     - file: converter/boost-controller
 
+- caption: Wireless Power Transfer
+  chapters:
+#  - file: wireless-power-transfer/variables
+  - file: wireless-power-transfer/shielded-loop-resonators
+  - file: wireless-power-transfer/coupled-resonators-and-voltage-rectification
+
 - caption: PCB
   chapters:
   - file: pcb/common-discussions/common-discussions

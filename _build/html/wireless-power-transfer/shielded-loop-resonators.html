@@ -1,0 +1,978 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Shielded-Loop Resonators &#8212; Kevin Egedy</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"HTML-CSS": {"scale": 85}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Coupled Resonators and Voltage Rectification" href="coupled-resonators-and-voltage-rectification.html" />
+    <link rel="prev" title="Boost Controller" href="../converter/boost-controller.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-C3J0M23XR2"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-C3J0M23XR2');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Kevin Egedy</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Summary
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Hardware Design
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../linear-integrated-circuits/index.html">
+   Linear Integrated Circuits
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../linear-integrated-circuits/bandgap-reference.html">
+     Bandgap Reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../linear-integrated-circuits/current-mirrors.html">
+     Current Mirrors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../linear-integrated-circuits/current-source-drivers.html">
+     Current Drivers for Neural Stimulation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../non-linear-systems/index.html">
+   Non-Linear Systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../non-linear-systems/desensitization.html">
+     Desensitization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Controller Design
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../converter/boost-controller.html">
+   Boost Controller
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Wireless Power Transfer
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Shielded-Loop Resonators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coupled-resonators-and-voltage-rectification.html">
+   Coupled Resonators and Voltage Rectification
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  PCB
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../pcb/common-discussions/common-discussions.html">
+   Common Discussions
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../pcb/projects/index.html">
+   Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pcb/projects/arduino-uno.html">
+     Arduino Uno
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../pcb/projects/ISL6236A.html">
+     ISL6236A
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/wireless-power-transfer/shielded-loop-resonators.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/kegedy/kegedy.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fwireless-power-transfer/shielded-loop-resonators.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/wireless-power-transfer/shielded-loop-resonators.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/wireless-power-transfer/shielded-loop-resonators.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#topics">
+   Topics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#useful-equations">
+   Useful Equations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#magnetically-coupled-resonators">
+   Magnetically-Coupled Resonators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shielded-loop-model">
+   Shielded-Loop Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#de-embedding-the-feedline">
+   De-embedding the Feedline
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#characterize-the-resonator-as-an-rlc-circuit">
+   Characterize the Resonator as an RLC Circuit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Shielded-Loop Resonators</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#topics">
+   Topics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#useful-equations">
+   Useful Equations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#magnetically-coupled-resonators">
+   Magnetically-Coupled Resonators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shielded-loop-model">
+   Shielded-Loop Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#de-embedding-the-feedline">
+   De-embedding the Feedline
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#characterize-the-resonator-as-an-rlc-circuit">
+   Characterize the Resonator as an RLC Circuit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="shielded-loop-resonators">
+<h1>Shielded-Loop Resonators<a class="headerlink" href="#shielded-loop-resonators" title="Permalink to this headline">#</a></h1>
+<section id="topics">
+<h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Measurements of isolated (uncoupled) shielded-loop resonators</p></li>
+<li><p>De-embedding the feedline</p></li>
+<li><p>Modeling the resonator as an RLC circuit</p></li>
+</ul>
+</section>
+<section id="useful-equations">
+<h2>Useful Equations<a class="headerlink" href="#useful-equations" title="Permalink to this headline">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\lambda &amp;= \dfrac{u_p}{f} \ (m) \\[0.5em]
+u_p &amp;= \dfrac{\omega}{\beta} = \dfrac{2l}{\Delta t} \ (m/s) \\[0.5em]
+\epsilon_r &amp;= \bigg(\dfrac{c}{u_p} \bigg)^2 \\[0.5em]
+Z_0 &amp;= \sqrt{\dfrac{L'}{C'}} \ (\Omega) \\[0.5em]
+\beta \ &amp;= \omega \sqrt{\mu \epsilon} = \omega \sqrt{L' C'} \ (rad/m) \\[0.5em]
+Z_{in} &amp;= Z_0 \dfrac{Z_L + jZ_0 \tan(\beta l)}{Z_0 + jZ_L\tan(\beta l)} \ (\Omega)
+\end{align*}
+\end{split}\]</div>
+</section>
+<section id="magnetically-coupled-resonators">
+<h2>Magnetically-Coupled Resonators<a class="headerlink" href="#magnetically-coupled-resonators" title="Permalink to this headline">#</a></h2>
+<figure class="align-default" id="id1">
+<img alt="../_images/resonator-schematic.png" src="../_images/resonator-schematic.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Schematic of Magnetically-Coupled Resonators with Parasitics</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+Z_{in} &amp;= \dfrac{v_x}{i_1} = R_1 + j\bigg(\omega L_1 - \dfrac{1}{\omega C_1} \bigg) + \dfrac{(\omega M)^2}{R_2 + R_L + j\bigg(\omega L_2 - \dfrac{1}{\omega C_2} \bigg)}
+\end{align*}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+Z_{out} = R_2 + j\bigg(\omega L_2 - \dfrac{1}{\omega C_2} \bigg) + \dfrac{(\omega M)^2}{R_1 + R_S + j\bigg(\omega L_1 - \dfrac{1}{\omega C_1} \bigg)}
+\end{align*}
+\]</div>
+</section>
+<section id="shielded-loop-model">
+<h2>Shielded-Loop Model<a class="headerlink" href="#shielded-loop-model" title="Permalink to this headline">#</a></h2>
+<figure class="align-default" id="id2">
+<img alt="../_images/open-circuited-stub.png" src="../_images/open-circuited-stub.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Shielded-Loop Resonator as Open-Circuited Stub</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
+<img alt="../_images/open-circuited-stub-schematic.png" src="../_images/open-circuited-stub-schematic.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Open-Circuited Stub Completes Resonant Circuit</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Loop capacitance for open-circuited transmission line stub</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+Z_{in} &amp;= -j Z_0 \cot(\beta l) \bigg|_{\beta l \ll 1} \\[0.5em]
+Z_{in} &amp;= -j \dfrac{Z_0}{\beta l} \\[0.5em]
+Z_{in} &amp;= -j \dfrac{\sqrt{L'/C'}}{\omega \sqrt{L' C'} l} \\[0.5em]
+Z_{in} &amp;= -j \dfrac{1}{\omega C' l} \\[0.5em]
+C &amp;\approx C' l
+\end{align*}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(C'\)</span> is the per-unit-length capacitance of the tranmission line</p>
+<p><strong>Line parameters</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+C' &amp;= \dfrac{\sqrt{\mu \epsilon}}{Z_0} = \dfrac{\sqrt{\epsilon_r} }{c Z_0} \\[0.5em]
+C &amp;= \dfrac{\sqrt{\epsilon_r}}{c Z_0} l \\[0.5em] 
+L &amp;= \mu r \bigg[\ln{\bigg(\dfrac{8r}{a_0} \bigg)}-1.75 \bigg], \ {a_0 = \dfrac{d}{4}} \\[0.5em] 
+L &amp;= \mu r \bigg[\ln{\bigg(\dfrac{32r}{d} \bigg)}-1.75 \bigg] \\[0.5em] 
+\beta &amp;= \omega \sqrt{L' C'} = \dfrac{\omega \sqrt{\epsilon_r}}{c}
+\end{align*}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mu\)</span> is the permeability of the surrounding medium</p></li>
+<li><p><span class="math notranslate nohighlight">\(r\)</span> is the radius of the loop</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_0\)</span> is the cross-sectional radius of the loop; defined where rectangular cross-section wire and circular cross-section wire are approximately equal</p></li>
+<li><p><span class="math notranslate nohighlight">\(d\)</span> is the width of the rectangular wire</p></li>
+</ul>
+<p><strong>Resonant Frequency</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+0 &amp;= j \omega_0 L + \dfrac{1}{j \omega_0 C} \\[0.5em]
+\omega_0 &amp;= \dfrac{1}{\sqrt{LC}} \\[0.5em]
+f_0 &amp;= \dfrac{1}{2\pi \sqrt{LC}}
+\end{align*}
+\end{split}\]</div>
+<p><strong>Given shielded-loop parameters</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Dielectric Properties</p></th>
+<th class="text-align:left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Material</p></td>
+<td class="text-align:left"><p>Rogers RT/Duroid 5880</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Relative Permitivity</p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\epsilon_r = 2.2\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Loss Tangent</p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\tan \delta = 0.009\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Conductor Properties</p></th>
+<th class="text-align:left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Material</p></td>
+<td class="text-align:left"><p>copper</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Conductivity</p></td>
+<td class="text-align:left"><p>5.8E7 Siemens</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Thickness</p></td>
+<td class="text-align:left"><p>70 <span class="math notranslate nohighlight">\(\mu\)</span>m</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Geometry</p></th>
+<th class="text-align:left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Radii</p></td>
+<td class="text-align:left"><p>5cm and 9cm</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Cross-sectional width</p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(d = 15\)</span> mm</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Cross-sectional thickness</p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(3.32\)</span> mm</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Stripline Tranmission Line</p></th>
+<th class="text-align:left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Characteristic impedance</p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(Z_0 = 50\Omega\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="de-embedding-the-feedline">
+<h2>De-embedding the Feedline<a class="headerlink" href="#de-embedding-the-feedline" title="Permalink to this headline">#</a></h2>
+<figure class="align-default" id="id4">
+<img alt="../_images/reflection-coefficient.png" src="../_images/reflection-coefficient.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Effect of Transmission Line on Reflection Coefficient</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+\Gamma_{in}' &amp;= \Gamma_{in}e^{-2j \beta l}
+\end{align*}
+\]</div>
+<p>The insertion of a transmission line with characteristic impedance <span class="math notranslate nohighlight">\(Z_0\)</span> will change the phase
+of the load input reflection coefficient. Thus, the phase of <span class="math notranslate nohighlight">\(\Gamma_{in}'\)</span> should be increased by 2𝛽𝑙 to find the reflection coefficient of the RLC portion of the loop (<span class="math notranslate nohighlight">\(\Gamma_{in}\)</span>). Note <span class="math notranslate nohighlight">\(\beta\)</span> is frequency dependent so each frequency point must be adjusted by a different phase value.</p>
+<p>De-embedding is the process of removing feedline effects.</p>
+</section>
+<section id="characterize-the-resonator-as-an-rlc-circuit">
+<h2>Characterize the Resonator as an RLC Circuit<a class="headerlink" href="#characterize-the-resonator-as-an-rlc-circuit" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://www.keysight.com/us/en/product/E5063A/e5063a-ena-vector-network-analyzer.html">E5063A ENA Vector Network Analyzer</a></p>
+<p><strong>Measurements</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Loop</p></th>
+<th class="text-align:left head"><p>Resonant Frequency</p></th>
+<th class="text-align:left head"><p>Reflection Coefficient <span class="math notranslate nohighlight">\(\Gamma_{in}'(f_0)\)</span></p></th>
+<th class="text-align:left head"><p>Phase <span class="math notranslate nohighlight">\(\phi\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>5 cm loop</p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(f_0 = 85.7\)</span> MHz</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>9 cm loop</p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(f_0 = 47.4\)</span> MHz</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Calculate: Electrical Length</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+2\beta l = (180^{\circ} - \phi)\cdot \dfrac{pi}{180^{\circ}}
+\end{align*}
+\]</div>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Loop</p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\beta l\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>5 cm loop</p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>9 cm loop</p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Finding R</strong></p>
+<p>At resonance, the input impedance <span class="math notranslate nohighlight">\(Z_{in}\)</span> is purely real.  <span class="math notranslate nohighlight">\(Z_{in} = R_{in} &lt; Z_0.\)</span> Note the input reflection coefficient is purely real and negative.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+R = R_{in}(f_0) &amp;= Z_0 \dfrac{1 + \Gamma_{in}}{1 - \Gamma_{in}} \\[0.5em]
+&amp;= Z_0 \dfrac{1 - |\Gamma_{in}|}{1 + |\Gamma_{in}|}
+\end{align*}
+\end{split}\]</div>
+<p>Additionally, if the feedline is lossless, then <span class="math notranslate nohighlight">\(|\Gamma_{in}'| = \Gamma_{in}|\)</span>.</p>
+<p><strong>Finding L and C</strong></p>
+<p>To find <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(C\)</span>, we need measurements at two distinct frequencies.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\omega_a = 2 \pi (f_0 - 2 \text{MHz}) &amp; \ &amp; \omega_b = 2 \pi (f_0 + 2 \text{MHz}) \\[0.5em]
+\Gamma_a' = \Gamma_{in}'(\omega_a) &amp; \ &amp; \Gamma_b' =\Gamma_{in}'(\omega_b) \\[0.5em]
+\Gamma_a = \Gamma_a' e^{2j \beta_a l} &amp; \ &amp; \Gamma_b = \Gamma_b' e^{2j \beta_b l} 
+\end{align*}
+\end{split}\]</div>
+<p><strong>Measurements: Reflection Coefficient</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Loop</p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\Gamma_{a}'\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\Gamma_{b}'\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>5 cm loop</p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>9 cm loop</p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Calculate: Electric Length</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\beta_a l = \beta l \cdot \bigg(\dfrac{f_0 -2\text{MHz}}{f_0}\bigg) &amp;  &amp; 
+\beta_b l = \beta l \cdot \bigg(\dfrac{f_0 +2\text{MHz}}{f_0}\bigg) \\
+\end{align*}
+\end{split}\]</div>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Loop</p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\beta_a l\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\beta_b l\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>5 cm loop</p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>9 cm loop</p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>Using the de-embedded input reflection coefficients, the following is defined</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+X_a = Im\bigg\{Z_0\dfrac{1+\Gamma_a}{1-\Gamma_a} \bigg\} = \omega_a L - \dfrac{1}{\omega_a C} \\[0.5em]
+X_b = Im\bigg\{Z_0\dfrac{1+\Gamma_b}{1-\Gamma_b} \bigg\} = \omega_b L - \dfrac{1}{\omega_b C}
+\end{align*}
+\end{split}\]</div>
+<p>Solving these relations simultaneously results in expressions for <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(C\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+C &amp;= \dfrac{\omega_b^2 - \omega_a^2}{\omega_a^2 \omega_b X_b - \omega_b^2 \omega_a X_a} \\[0.5em]
+L &amp;= \dfrac{\omega_b X_b + \dfrac{1}{C}}{\omega_b^2}
+\end{align*}
+\end{split}\]</div>
+<p><strong>Q Factor</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+Q(f_0) = \dfrac{\omega_0 L}{R} &amp;= \dfrac{1}{\omega_0 R C} \\[0.5em]
+    &amp;= \dfrac{\sqrt{LC}}{RC} \\[0.5em]
+    &amp;= \dfrac{1}{R}\sqrt{\dfrac{L}{C}}
+\end{align*}
+\end{split}\]</div>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(R \ (\Omega)\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(L \ (nH)\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(C \ (pF)\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(Q\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>5 cm loop</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>9 cm loop</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./wireless-power-transfer"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../converter/boost-controller.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Boost Controller</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="coupled-resonators-and-voltage-rectification.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Coupled Resonators and Voltage Rectification</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kevin Egedy<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
