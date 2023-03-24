@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Common Discussions" href="../pcb/common-discussions/common-discussions.html" />
+    <link rel="next" title="Coupled Resonators and Voltage Rectification" href="coupled-resonators-and-voltage-rectification.html" />
     <link rel="prev" title="Boost Controller" href="../converter/boost-controller.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -196,6 +196,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Shielded-Loop Resonators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coupled-resonators-and-voltage-rectification.html">
+   Coupled Resonators and Voltage Rectification
   </a>
  </li>
 </ul>
@@ -456,8 +461,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#advantages">
-   Advantages
+  <a class="reference internal nav-link" href="#topics">
+   Topics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -510,8 +515,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#advantages">
-   Advantages
+  <a class="reference internal nav-link" href="#topics">
+   Topics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -556,12 +561,12 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="shielded-loop-resonators">
 <h1>Shielded-Loop Resonators<a class="headerlink" href="#shielded-loop-resonators" title="Permalink to this headline">#</a></h1>
-<section id="advantages">
-<h2>Advantages<a class="headerlink" href="#advantages" title="Permalink to this headline">#</a></h2>
+<section id="topics">
+<h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>safe: magnetic fields interact weakly with dielectric objects and living organisms, compared to electrostatic induction methods which interact strongly</p></li>
-<li><p>affordable</p></li>
-<li><p>simple to implement</p></li>
+<li><p>Measurements of isolated (uncoupled) shielded-loop resonators</p></li>
+<li><p>De-embedding the feedline</p></li>
+<li><p>Modeling the resonator as an RLC circuit</p></li>
 </ul>
 </section>
 <section id="useful-equations">
@@ -604,13 +609,13 @@ Z_{out} = R_2 + j\bigg(\omega L_2 - \dfrac{1}{\omega C_2} \bigg) + \dfrac{(\omeg
 <figure class="align-default" id="id2">
 <img alt="../_images/open-circuited-stub.png" src="../_images/open-circuited-stub.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Shielded-Loop Resonator Modeled as Open-Circuited Stub</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Shielded-Loop Resonator as Open-Circuited Stub</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
 <img alt="../_images/open-circuited-stub-schematic.png" src="../_images/open-circuited-stub-schematic.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Open-Circuited Stub Acts as a Capacitance</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Open-Circuited Stub Completes Resonant Circuit</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Loop capacitance for open-circuited transmission line stub</strong></p>
@@ -639,7 +644,7 @@ L &amp;= \mu r \bigg[\ln{\bigg(\dfrac{32r}{d} \bigg)}-1.75 \bigg] \\[0.5em]
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mu\)</span> is the permeability of the surrounding medium</p></li>
 <li><p><span class="math notranslate nohighlight">\(r\)</span> is the radius of the loop</p></li>
-<li><p><span class="math notranslate nohighlight">\(a_0\)</span> is the cross-sectional radius of the loop; defined where rectangular cross-section wire and circular cross-section wire are approximately equivalent</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_0\)</span> is the cross-sectional radius of the loop; defined where rectangular cross-section wire and circular cross-section wire are approximately equal</p></li>
 <li><p><span class="math notranslate nohighlight">\(d\)</span> is the width of the rectangular wire</p></li>
 </ul>
 <p><strong>Resonant Frequency</strong></p>
@@ -938,10 +943,10 @@ Q(f_0) = \dfrac{\omega_0 L}{R} &amp;= \dfrac{1}{\omega_0 R C} \\[0.5em]
             <p class="prev-next-title">Boost Controller</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../pcb/common-discussions/common-discussions.html" title="next page">
+    <a class='right-next' id="next-link" href="coupled-resonators-and-voltage-rectification.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Common Discussions</p>
+        <p class="prev-next-title">Coupled Resonators and Voltage Rectification</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

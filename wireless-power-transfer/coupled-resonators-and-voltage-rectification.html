@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Boost Controller &#8212; Kevin Egedy</title>
+    <title>Coupled Resonators and Voltage Rectification &#8212; Kevin Egedy</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Shielded-Loop Resonators" href="../wireless-power-transfer/shielded-loop-resonators.html" />
-    <link rel="prev" title="Desensitization" href="../non-linear-systems/desensitization.html" />
+    <link rel="next" title="Common Discussions" href="../pcb/common-discussions/common-discussions.html" />
+    <link rel="prev" title="Shielded-Loop Resonators" href="shielded-loop-resonators.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -180,9 +180,9 @@ const thebe_selector_output = ".output, .cell_output"
   Controller Design
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../converter/boost-controller.html">
    Boost Controller
   </a>
  </li>
@@ -192,14 +192,14 @@ const thebe_selector_output = ".output, .cell_output"
   Wireless Power Transfer
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../wireless-power-transfer/shielded-loop-resonators.html">
+  <a class="reference internal" href="shielded-loop-resonators.html">
    Shielded-Loop Resonators
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../wireless-power-transfer/coupled-resonators-and-voltage-rectification.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Coupled Resonators and Voltage Rectification
   </a>
  </li>
@@ -296,7 +296,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/converter/boost-controller.ipynb"
+        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/wireless-power-transfer/coupled-resonators-and-voltage-rectification.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -356,7 +356,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fconverter/boost-controller.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fwireless-power-transfer/coupled-resonators-and-voltage-rectification.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -373,7 +373,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/converter/boost-controller.ipynb"
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/wireless-power-transfer/coupled-resonators-and-voltage-rectification.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -401,7 +401,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/converter/boost-controller.ipynb"
+        <a href="../_sources/wireless-power-transfer/coupled-resonators-and-voltage-rectification.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -461,18 +461,38 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#averaged-inductor-current-and-capacitor-voltage">
-   Averaged Inductor Current and Capacitor Voltage
+  <a class="reference internal nav-link" href="#topics">
+   Topics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linearized-small-signal-model">
-   Linearized Small-Signal Model
+  <a class="reference internal nav-link" href="#calculating-mutual-inductance">
+   Calculating Mutual Inductance
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#system-outputs-in-frequency-domain">
-   System Outputs in Frequency Domain
+  <a class="reference internal nav-link" href="#input-impedance-of-coupled-shielded-loop-resonators">
+   Input Impedance of Coupled Shielded-Loop Resonators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feedline-effects">
+   Feedline Effects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#weak-critical-and-strong-coupling">
+   Weak, Critical and Strong Coupling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#power-transfer">
+   Power Transfer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#voltage-rectification">
+   Voltage Rectification
   </a>
  </li>
 </ul>
@@ -484,7 +504,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Boost Controller</h1>
+                <h1>Coupled Resonators and Voltage Rectification</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -495,18 +515,38 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#averaged-inductor-current-and-capacitor-voltage">
-   Averaged Inductor Current and Capacitor Voltage
+  <a class="reference internal nav-link" href="#topics">
+   Topics
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linearized-small-signal-model">
-   Linearized Small-Signal Model
+  <a class="reference internal nav-link" href="#calculating-mutual-inductance">
+   Calculating Mutual Inductance
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#system-outputs-in-frequency-domain">
-   System Outputs in Frequency Domain
+  <a class="reference internal nav-link" href="#input-impedance-of-coupled-shielded-loop-resonators">
+   Input Impedance of Coupled Shielded-Loop Resonators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feedline-effects">
+   Feedline Effects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#weak-critical-and-strong-coupling">
+   Weak, Critical and Strong Coupling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#power-transfer">
+   Power Transfer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#voltage-rectification">
+   Voltage Rectification
   </a>
  </li>
 </ul>
@@ -519,183 +559,115 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="boost-controller">
-<h1>Boost Controller<a class="headerlink" href="#boost-controller" title="Permalink to this headline">#</a></h1>
-<section id="averaged-inductor-current-and-capacitor-voltage">
-<h2>Averaged Inductor Current and Capacitor Voltage<a class="headerlink" href="#averaged-inductor-current-and-capacitor-voltage" title="Permalink to this headline">#</a></h2>
-<p><strong>Volt-Seconds</strong></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\langle v_{L}(t)\rangle = L\frac{d}{dt} \langle i(t)\rangle &amp;= 
-\bigg[\bigg(\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} \bigg)d(t) + \bigg( \langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle \bigg)d'(t) \bigg] \\[0.5em]
-\langle v_{L}(t)\rangle = L\frac{d}{dt} \langle i(t)\rangle &amp;= 
-\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg] \\[0.5em]
-\frac{d}{dt} \langle i(t)\rangle &amp;= 
-\begin{matrix}
-\dfrac{1}{L} \\[1em]
-\end{matrix} 
-\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg] \\[0.5em]
-\end{align*}\]</div>
-<p><strong>Charge Balance</strong></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\langle i_C (t) \rangle = 
-C\frac{d}{dt} \langle v(t)\rangle &amp;= 
-\bigg[\bigg(\dfrac{-\langle v(t)\rangle}{R}\bigg)d(t) +\bigg(\langle i(t)\rangle -\frac{\langle v(t)\rangle}{R} \bigg)d'(t)\bigg] \\[1em]
-\langle i_C (t) \rangle = 
-C\frac{d}{dt} \langle v(t)\rangle &amp;= 
-\bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] \\[1em]
- \frac{d}{dt} \langle v(t)\rangle &amp;= 
-\begin{matrix}
-\dfrac{1}{C} \\[1em]
-\end{matrix}
-\bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] \\[1em]
-\end{align*}\]</div>
-<p><strong>Differential Solution</strong></p>
-<p>x =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f46b20c3-8fca-4ea5-92d7-ed80f1061cbc">
-<span class="eqno">(1)<a class="headerlink" href="#equation-f46b20c3-8fca-4ea5-92d7-ed80f1061cbc" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
-\langle i(t)\rangle \\
-\langle v(t)\rangle
-\end{bmatrix}\]</div>
-<p>u =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cedd6e4c-9823-4581-97bc-86a402f6fac2">
-<span class="eqno">(2)<a class="headerlink" href="#equation-cedd6e4c-9823-4581-97bc-86a402f6fac2" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
-d(t) \\
-\langle v_g(t)\rangle
-\end{bmatrix}\]</div>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\dot{x} &amp;= f(x(t),u(t)) = \dfrac{d}{dt}
-\begin{bmatrix}
-\langle i(t)\rangle \\[1em]
-\langle v(t)\rangle
-\end{bmatrix} = 
-\begin{matrix}
-\dfrac{1}{L} \\[0.5em]
-\dfrac{1}{C}
-\end{matrix}
-\begin{bmatrix}
-\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \\[1em]
-\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t)s
-\end{bmatrix} \\[0.5em]
-\end{align*}\]</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="coupled-resonators-and-voltage-rectification">
+<h1>Coupled Resonators and Voltage Rectification<a class="headerlink" href="#coupled-resonators-and-voltage-rectification" title="Permalink to this headline">#</a></h1>
+<section id="topics">
+<h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Mutual inductance of two shielded-loop resonators</p></li>
+<li><p>Effects of distance and alignment on mutual inductance</p></li>
+<li><p>Critical coupling distance</p></li>
+<li><p>Full-wave bridge rectifiers</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<img alt="../_images/complete-circuit-model.png" src="../_images/complete-circuit-model.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Coupled Shielded-Loop Resonator with Load</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
-<section id="linearized-small-signal-model">
-<h2>Linearized Small-Signal Model<a class="headerlink" href="#linearized-small-signal-model" title="Permalink to this headline">#</a></h2>
-<p><strong>Derive a linearized small-signal model</strong></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\dot{\hat{x}}(t) &amp;\approx A \hat{x}(t) + B \hat{u}(t) \\[0.5em]
-\hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
-\end{align*}\]</div>
-<p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-b3847224-6859-47e8-adf5-32ba2052d658">
-<span class="eqno">(3)<a class="headerlink" href="#equation-b3847224-6859-47e8-adf5-32ba2052d658" title="Permalink to this equation">#</a></span>\[\begin{matrix}
-x(t) = \hat{x}(t) + X &amp;&amp; X = 
-\begin{bmatrix}
-I \\
-V
-\end{bmatrix} \\[0.5em] 
-u(t) = \hat{u}(t) + U &amp;&amp; U = 
-\begin{bmatrix}
-D \\
-V_g 
-\end{bmatrix}
-\\[0.5em]
-\end{matrix}\]</div>
-<p><strong>Volt-Seconds (Large Signal)</strong></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\langle v_{L}(t)\rangle &amp;= L\frac{d}{dt} \langle i(t)\rangle = 
-\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg]  = 0\\[0.5em]
-0 &amp;=  V_g - I R_{on} - VD'   \\[0.5em]
-VD' &amp;= V_g - I R_{on} \\[0.5em]
-V &amp;= \dfrac{V_g - I R_{on}}{D'} \bigg|_{I = \dfrac{V}{D'R} }  \\[0.5em]
-V &amp;= \dfrac{V_g - \dfrac{V}{D'R} R_{on}}{D'} \\[0.5em]
-V &amp;= \dfrac{V_g}{D'}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[0.5em]
-\end{align*}\]</div>
-<p><strong>Charge Balance (Large Signal)</strong></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\langle i_C (t) \rangle &amp;= 
-C\frac{d}{dt} \langle v(t)\rangle = 
-\bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] = 0\\[1em]
-0 &amp;=\dfrac{-V}{R} + I D' \\[1em]
-I &amp;= \dfrac{V}{D'R} \\[1em]
-I &amp;= \dfrac{1}{D'R}\cdot \frac{V_g}{D'}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
-I &amp;= \frac{V_g}{D'^2 R}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
-\end{align*}\]</div>
-<p><strong>Find A, B, C, D</strong></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-A = \dfrac{d}{d\hat{x}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &amp;= 
-\begin{bmatrix}
-\ \ \dfrac{\partial f_1}{\partial x_1} &amp; \dfrac{\partial f_1}{\partial x_2} \ \ \\[1em] 
-\ \ \dfrac{\partial f_2}{\partial x_1} &amp; \dfrac{\partial f_2}{\partial x_2} \ \
-\end{bmatrix}\bigg|_{x,u} = 
-\begin{bmatrix}
-\dfrac{\partial f_1}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v}(t)\rangle} \\[1em] 
-\dfrac{\partial f_2}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_2}{\partial \langle \hat{v}(t)\rangle}
-\end{bmatrix}\bigg|_{x,u} \\[1em]
-A &amp;= 
-\begin{bmatrix}
-\dfrac{-R_{on}}{L} &amp; \dfrac{-D'}{L} \\[1em]
-\dfrac{D'}{C} &amp; \dfrac{-1}{RC}
-\end{bmatrix} \\[1em]
-\end{align*}\]</div>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*} B = \dfrac{d}{d\hat{u}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &amp;= 
-\begin{bmatrix}
-\dfrac{\partial f_1}{\partial u_1} &amp; \dfrac{\partial f_1}{\partial u_2} \\[1em] 
-\dfrac{\partial f_2}{\partial u_1} &amp; \dfrac{\partial f_2}{\partial u_2}
-\end{bmatrix}\bigg|_{x,u} = 
-\begin{bmatrix}
-\dfrac{\partial f_1}{\partial \hat{d'}(t)} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v_g}(t)\rangle} \\[1em] 
-\dfrac{\partial f_2}{\partial \hat{d'}(t)} &amp; \dfrac{\partial f_2}{\partial \langle \hat{v_g}(t)\rangle}
-\end{bmatrix}\bigg|_{x,u} \\[1em]
-B &amp;= 
-\begin{bmatrix}
-\dfrac{V}{L} &amp; \dfrac{1}{L} \\[1em]
-\dfrac{-I}{C} &amp; 0
-\end{bmatrix} = 
-\begin{bmatrix}
-\dfrac{V_g}{D'L}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} &amp; \dfrac{1}{L} \\[1.5em]
-\dfrac{-V_g}{D'^2 RC}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} &amp; 0
-\end{bmatrix} \\[1em]
-\end{align*}\]</div>
-<p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d0021cca-b108-4fb9-81d7-59cf94b087f8">
-<span class="eqno">(4)<a class="headerlink" href="#equation-d0021cca-b108-4fb9-81d7-59cf94b087f8" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
-0 &amp; 1  \\
-1 &amp; 0
-\end{bmatrix}\]</div>
-<p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f0bbfb60-d63b-4837-8bf7-8b41062e637d">
-<span class="eqno">(5)<a class="headerlink" href="#equation-f0bbfb60-d63b-4837-8bf7-8b41062e637d" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
-0 &amp; 0 \\
-0 &amp; 0
-\end{bmatrix}\]</div>
+<section id="calculating-mutual-inductance">
+<h2>Calculating Mutual Inductance<a class="headerlink" href="#calculating-mutual-inductance" title="Permalink to this headline">#</a></h2>
+<figure class="align-default" id="id2">
+<img alt="../_images/axially-aligned-coupled-loops.png" src="../_images/axially-aligned-coupled-loops.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Mutual Inductance for Axially Aligned Coupled Loops</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+M = \mu \sqrt{r_1 r_2}\bigg((\dfrac{2}{k} - k)\ K(k) - \dfrac{2}{k}E(k) \bigg)
+\end{align*}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(K(k)\)</span> is the complete elliptical integral with radius <span class="math notranslate nohighlight">\(r_1\)</span> and <span class="math notranslate nohighlight">\(E(k)\)</span> is the complete elliptical integral with radius <span class="math notranslate nohighlight">\(r_2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+K(k) &amp;= \int_{0}^{\frac{\pi}{2}} \dfrac{d \beta}{\sqrt{1-k^2 sin^2 \beta}} \\[0.5em]
+E(k) &amp;= \int_{0}^{\frac{\pi}{2}} d\beta \sqrt{1-k^2 sin^2 \beta} \\[0.5em]
+k &amp;= \sqrt{\dfrac{4r_1 r_2}{(r_1 + r_2)^2 + d^2}}
+\end{align*}
+\end{split}\]</div>
 </section>
-<section id="system-outputs-in-frequency-domain">
-<h2>System Outputs in Frequency Domain<a class="headerlink" href="#system-outputs-in-frequency-domain" title="Permalink to this headline">#</a></h2>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\dot{\hat{x}}(t) &amp;= A \hat{x}(t) + B \hat{u}(t) \\[0.5em]
-\dot{\hat{y}}(t) &amp;= C \hat{x}(t) + D \hat{u}(t) \\[0.5em]
- \text{Laplace Transform } &amp;\\[0.5em]
-s\hat{x}(s) &amp;= A \hat{x}(s) + B \hat{u}(s) \\[0.5em]
-sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
-\hat{x}(s) &amp;= \left(sI-A\right)^{-1}B \hat{u}(s) \\[0.5em]
-\hat{y}(s) &amp;= \bigg(C(sI-A)^{-1}B +E \bigg)\hat{u}(s) = G(s) \hat{u}(s)
-\end{align*}\]</div>
-<p><strong>Solver</strong></p>
-<p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8e7c3bc7-2792-40a0-b4f6-bd5607f88e12">
-<span class="eqno">(6)<a class="headerlink" href="#equation-8e7c3bc7-2792-40a0-b4f6-bd5607f88e12" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
-G_{id}(s) &amp; G_{ig}(s) \\[1em]
-G_{vd}(s) &amp; G_{vg}(s)
-\end{bmatrix}\]</div>
+<section id="input-impedance-of-coupled-shielded-loop-resonators">
+<h2>Input Impedance of Coupled Shielded-Loop Resonators<a class="headerlink" href="#input-impedance-of-coupled-shielded-loop-resonators" title="Permalink to this headline">#</a></h2>
+<p>At resonance, the input impedance to the coupled shielded-loop simplifies to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+Z_{in} &amp;= \dfrac{v_x}{i_1} = R_1 + j\bigg(\omega L_1 - \dfrac{1}{\omega C_1} \bigg) + \dfrac{(\omega M)^2}{R_2 + R_L + j\bigg(\omega L_2 - \dfrac{1}{\omega C_2} \bigg)} \bigg|_{\ \omega \ = \ \omega_0} \\[0.5em]
+Z_{in}(\omega_0) &amp;= R_{in}(\omega_0) = R_1 + \dfrac{(\omega_0 M)^2}{R_2 + R_L} 
+\end{align*}
+\end{split}\]</div>
+</section>
+<section id="feedline-effects">
+<h2>Feedline Effects<a class="headerlink" href="#feedline-effects" title="Permalink to this headline">#</a></h2>
+<p>The load impedance <span class="math notranslate nohighlight">\(Z_L\)</span> is designed to the characteristic impedance <span class="math notranslate nohighlight">\(Z_0\)</span> of the transmission line to eliminate feedline effect and reduce the circuit model.</p>
+<div class="math notranslate nohighlight">
+\[Z_L = Z_0 = 50 \Omega\]</div>
+<figure class="align-default" id="id3">
+<img alt="wireless-power-transfer/img/impedance-simplification.png" src="wireless-power-transfer/img/impedance-simplification.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Mutual Inductance for Axially Aligned Coupled Loops</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="weak-critical-and-strong-coupling">
+<h2>Weak, Critical and Strong Coupling<a class="headerlink" href="#weak-critical-and-strong-coupling" title="Permalink to this headline">#</a></h2>
+<p>Isolated loop resonance occurs when</p>
+<div class="math notranslate nohighlight">
+\[\omega = \omega_0 = \dfrac{1}{\sqrt{LC}} \]</div>
+<p>Coupled loop resonance also occurs when</p>
+<div class="math notranslate nohighlight">
+\[\bigg(\omega L - \dfrac{1}{\omega C} \bigg)^2 = (\omega M)^2 - (R + R_L)^2 \]</div>
+<p>Solving this quadratic equation results in multiple solutions depending on the mutual inductance and/or distance.</p>
+<p><strong>Strong coupling</strong>
+$<span class="math notranslate nohighlight">\(\omega M &gt; R + R_L\)</span>$</p>
+<ul class="simple">
+<li><p>Odd mode solution: resonance is slightly less than <span class="math notranslate nohighlight">\(\omega_0\)</span> and the currents in the coupled loops are 180° out-of-phase</p></li>
+<li><p>Even mode solution: resonance is slightly greater than <span class="math notranslate nohighlight">\(\omega_0\)</span> and the currents in the coupled loops are in-phase</p></li>
+<li><p>Resonant frequency <span class="math notranslate nohighlight">\(\omega_0\)</span>, the current in the load loop leads that of the source loop by approximately 90°</p></li>
+</ul>
+<p><strong>Critical coupling</strong></p>
+<div class="math notranslate nohighlight">
+\[\omega M = R + R_L\]</div>
+<p>The even and odd mode frequencies merge into the resonant frequency <span class="math notranslate nohighlight">\(\omega_0\)</span></p>
+<p><strong>Weak coupling</strong></p>
+<div class="math notranslate nohighlight">
+\[\omega M &lt; R + R_L\]</div>
+<p>In weak coupling, there is only one resonant frequency <span class="math notranslate nohighlight">\(\omega_0\)</span></p>
+</section>
+<section id="power-transfer">
+<h2>Power Transfer<a class="headerlink" href="#power-transfer" title="Permalink to this headline">#</a></h2>
+<p>The power transfer efficiency of a wireless power transfer system is the ratio of power delivered to the
+load <span class="math notranslate nohighlight">\(P_L\)</span> and the power available from the source <span class="math notranslate nohighlight">\(P_A\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[P_A = \dfrac{|V_S|^2}{8Re\{Z_S\}}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Z_S\)</span> characteristic impedance of the voltage source where <span class="math notranslate nohighlight">\(Re\{Z_S\} = R_S\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(V_S\)</span> peak voltage of the source</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_A\)</span> power available from the source if the source impedance is terminated in an impedance equal to its complex conjugate</p></li>
+</ul>
+<p>For a system operating at critical or weak coupling, the power transfer efficiency is</p>
+<div class="math notranslate nohighlight">
+\[\eta = \dfrac{4R_L^2(\omega_0 M)^2}{\bigg((R+R_L)^2 + (\omega_0 M)^2\bigg)^2}\]</div>
+<p>For a system operating at strong coupling, the power transfer efficiency is</p>
+<div class="math notranslate nohighlight">
+\[\eta = \dfrac{R_L^2}{(R+R_L)^2}\]</div>
+</section>
+<section id="voltage-rectification">
+<h2>Voltage Rectification<a class="headerlink" href="#voltage-rectification" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 
@@ -712,7 +684,7 @@ G_{vd}(s) &amp; G_{vg}(s)
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./converter"
+            path: "./wireless-power-transfer"
         },
         predefinedOutput: true
     }
@@ -726,17 +698,17 @@ G_{vd}(s) &amp; G_{vg}(s)
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../non-linear-systems/desensitization.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="shielded-loop-resonators.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Desensitization</p>
+            <p class="prev-next-title">Shielded-Loop Resonators</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../wireless-power-transfer/shielded-loop-resonators.html" title="next page">
+    <a class='right-next' id="next-link" href="../pcb/common-discussions/common-discussions.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Shielded-Loop Resonators</p>
+        <p class="prev-next-title">Common Discussions</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
