@@ -221,6 +221,11 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../microwave-transmission-lines/common-discussions.html">
+   Common Discussions
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../microwave-transmission-lines/time-domain-response/time-domain-response.html">
    Time-Domain Analysis
   </a>
@@ -228,11 +233,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../microwave-transmission-lines/coupled-noise/coupled-noise.html">
    Coupled Noises Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../microwave-transmission-lines/common-discussions.html">
-   Common Discussions
   </a>
  </li>
 </ul>
@@ -585,14 +585,14 @@ C\frac{d}{dt} \langle v(t)\rangle &amp;=
 \end{align*}\]</div>
 <p><strong>Differential Solution</strong></p>
 <p>x =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a1d9c03d-e31d-4aa0-bf23-37e08e95e812">
-<span class="eqno">(1)<a class="headerlink" href="#equation-a1d9c03d-e31d-4aa0-bf23-37e08e95e812" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-0bd2d144-ab1a-449e-8419-620be42ed88c">
+<span class="eqno">(1)<a class="headerlink" href="#equation-0bd2d144-ab1a-449e-8419-620be42ed88c" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 \langle i(t)\rangle \\
 \langle v(t)\rangle
 \end{bmatrix}\]</div>
 <p>u =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-db60c036-b38a-4907-9ab6-e296df442c92">
-<span class="eqno">(2)<a class="headerlink" href="#equation-db60c036-b38a-4907-9ab6-e296df442c92" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-6db9a00f-7564-4dc9-b2a8-8283a50df4f6">
+<span class="eqno">(2)<a class="headerlink" href="#equation-6db9a00f-7564-4dc9-b2a8-8283a50df4f6" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 d(t) \\
 \langle v_g(t)\rangle
 \end{bmatrix}\]</div>
@@ -622,8 +622,8 @@ d(t) \\
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-d0e4b9a1-34bf-428f-8006-e1757131f14a">
-<span class="eqno">(3)<a class="headerlink" href="#equation-d0e4b9a1-34bf-428f-8006-e1757131f14a" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-82d4278f-2bc7-4ad6-8f8c-2f3b9ed2a161">
+<span class="eqno">(3)<a class="headerlink" href="#equation-82d4278f-2bc7-4ad6-8f8c-2f3b9ed2a161" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -697,14 +697,14 @@ B &amp;=
 \end{bmatrix} \\[1em]
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4ecdde15-a9b9-4562-980e-5c153a1e2977">
-<span class="eqno">(4)<a class="headerlink" href="#equation-4ecdde15-a9b9-4562-980e-5c153a1e2977" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-2c1c5bea-18e3-4186-ad7b-3a0a148670fd">
+<span class="eqno">(4)<a class="headerlink" href="#equation-2c1c5bea-18e3-4186-ad7b-3a0a148670fd" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-de165386-092d-4140-a92b-4f3e93a99a3b">
-<span class="eqno">(5)<a class="headerlink" href="#equation-de165386-092d-4140-a92b-4f3e93a99a3b" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-01ad2061-e5a9-4a5b-b7bf-a4dc47ccf310">
+<span class="eqno">(5)<a class="headerlink" href="#equation-01ad2061-e5a9-4a5b-b7bf-a4dc47ccf310" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -723,8 +723,8 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-46c359d8-30b0-4e49-b7cf-86b662257554">
-<span class="eqno">(6)<a class="headerlink" href="#equation-46c359d8-30b0-4e49-b7cf-86b662257554" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-7040dd35-dd72-47f1-9133-d9749732fef1">
+<span class="eqno">(6)<a class="headerlink" href="#equation-7040dd35-dd72-47f1-9133-d9749732fef1" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
