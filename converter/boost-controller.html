@@ -51,11 +51,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"HTML-CSS": {"scale": 85}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"HTML-CSS": {"scale": 85, "availableFonts": ["STIX", "TeX"], "preferredFont": "TeX", "webFont": "TeX", "imageFont": "TeX", "mtextFontInherit": false, "matchFontHeight": false}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Shielded-Loop Resonators" href="../wireless-power-transfer/shielded-loop-resonators.html" />
+    <link rel="next" title="Definition of Variables" href="../wireless-power-transfer/variables.html" />
     <link rel="prev" title="Desensitization" href="../non-linear-systems/desensitization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -194,6 +194,11 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../wireless-power-transfer/variables.html">
+   Definition of Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../wireless-power-transfer/shielded-loop-resonators.html">
    Shielded-Loop Resonators
   </a>
@@ -206,6 +211,23 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../wireless-power-transfer/impedance-matching-and-frequency-tuning.html">
    Impedance Matching and Frequency Tuning
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Microwave Transmission Lines
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../microwave-transmission-lines/time-domain-response/time-domain-response.html">
+   Time-Domain Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../microwave-transmission-lines/coupled-noise/coupled-noise.html">
+   Coupled Noises Analysis
   </a>
  </li>
 </ul>
@@ -558,14 +580,14 @@ C\frac{d}{dt} \langle v(t)\rangle &amp;=
 \end{align*}\]</div>
 <p><strong>Differential Solution</strong></p>
 <p>x =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-57cdb6a5-6550-4c63-b2cb-4f601c8429fc">
-<span class="eqno">(1)<a class="headerlink" href="#equation-57cdb6a5-6550-4c63-b2cb-4f601c8429fc" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-0921c262-12d8-4ad3-9d35-3acf3f1fb64f">
+<span class="eqno">(1)<a class="headerlink" href="#equation-0921c262-12d8-4ad3-9d35-3acf3f1fb64f" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 \langle i(t)\rangle \\
 \langle v(t)\rangle
 \end{bmatrix}\]</div>
 <p>u =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c620f5e2-8486-49b4-bf8c-d077465a0c21">
-<span class="eqno">(2)<a class="headerlink" href="#equation-c620f5e2-8486-49b4-bf8c-d077465a0c21" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-fa476a59-9057-454d-8c0f-f3d90264320f">
+<span class="eqno">(2)<a class="headerlink" href="#equation-fa476a59-9057-454d-8c0f-f3d90264320f" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 d(t) \\
 \langle v_g(t)\rangle
 \end{bmatrix}\]</div>
@@ -595,8 +617,8 @@ d(t) \\
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-099b0116-55b7-4371-94d0-a7f779384a25">
-<span class="eqno">(3)<a class="headerlink" href="#equation-099b0116-55b7-4371-94d0-a7f779384a25" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-887c4e11-bf5f-421c-8792-824bf5b574c5">
+<span class="eqno">(3)<a class="headerlink" href="#equation-887c4e11-bf5f-421c-8792-824bf5b574c5" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -670,14 +692,14 @@ B &amp;=
 \end{bmatrix} \\[1em]
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c8d00737-03ec-4b6b-91a7-c5aa8a368a4a">
-<span class="eqno">(4)<a class="headerlink" href="#equation-c8d00737-03ec-4b6b-91a7-c5aa8a368a4a" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-0f31ef9f-4533-4c4d-9602-2bad7b8e941c">
+<span class="eqno">(4)<a class="headerlink" href="#equation-0f31ef9f-4533-4c4d-9602-2bad7b8e941c" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7e67ee39-e511-4831-bd92-c7594c17a0b5">
-<span class="eqno">(5)<a class="headerlink" href="#equation-7e67ee39-e511-4831-bd92-c7594c17a0b5" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-da960e87-3bc2-430a-9ca0-c3ee159f5d07">
+<span class="eqno">(5)<a class="headerlink" href="#equation-da960e87-3bc2-430a-9ca0-c3ee159f5d07" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -696,8 +718,8 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-997146bd-fd60-4ae7-b538-106cab4da5ec">
-<span class="eqno">(6)<a class="headerlink" href="#equation-997146bd-fd60-4ae7-b538-106cab4da5ec" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-aa384f7c-e425-4780-9d60-6e633cfe251f">
+<span class="eqno">(6)<a class="headerlink" href="#equation-aa384f7c-e425-4780-9d60-6e633cfe251f" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
@@ -738,10 +760,10 @@ G_{vd}(s) &amp; G_{vg}(s)
             <p class="prev-next-title">Desensitization</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../wireless-power-transfer/shielded-loop-resonators.html" title="next page">
+    <a class='right-next' id="next-link" href="../wireless-power-transfer/variables.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Shielded-Loop Resonators</p>
+        <p class="prev-next-title">Definition of Variables</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
