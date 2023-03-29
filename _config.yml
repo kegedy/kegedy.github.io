@@ -45,5 +45,11 @@ sphinx:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     mathjax3_config:
       "HTML-CSS": {
-        scale: 85
+        scale: 85,
+        availableFonts: ["STIX","TeX"],
+        preferredFont: "TeX",
+        webFont: "TeX",
+        imageFont: "TeX",
+        mtextFontInherit: false,
+        matchFontHeight: false
       }

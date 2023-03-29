@@ -54,7 +54,7 @@
 # $$Z_L = Z_0 = 50 \Omega$$
 
 # ```{figure} img/impedance-simplification.png
-# Mutual Inductance for Axially Aligned Coupled Loops
+# Impedance Simplification
 # ```
 
 # ## Weak, Critical and Strong Coupling
@@ -67,14 +67,15 @@
 # 
 # $$\bigg(\omega L - \dfrac{1}{\omega C} \bigg)^2 = (\omega M)^2 - (R + R_L)^2 $$
 
-# Solving this quadratic equation results in multiple solutions depending on the mutual inductance and/or distance.  
+# Solving this quadratic equation results in multiple solutions depending on the mutual inductance as a function of distance.  
 # 
-# **Strong coupling**
+# **Strong coupling**  
+# 
 # $$\omega M > R + R_L$$
 # 
-# - Odd mode solution: resonance is slightly less than $\omega_0$ and the currents in the coupled loops are 180° out-of-phase
-# - Even mode solution: resonance is slightly greater than $\omega_0$ and the currents in the coupled loops are in-phase
-# - Resonant frequency $\omega_0$, the current in the load loop leads that of the source loop by approximately 90°
+# - **Odd mode solution:** frequency is slightly less than $\omega_0$ and the currents in the coupled loops are 180° out-of-phase
+# - **Even mode solution:** frequency is slightly greater than $\omega_0$ and the currents in the coupled loops are in-phase
+# - **Resonant frequency:** $\omega_0$ the current in the load loop leads that of the source loop by approximately 90°
 
 # **Critical coupling**
 # 
@@ -103,11 +104,55 @@
 # 
 # $$\eta = \dfrac{4R_L^2(\omega_0 M)^2}{\bigg((R+R_L)^2 + (\omega_0 M)^2\bigg)^2}$$
 
-# For a system operating at strong coupling, the power transfer efficiency is  
+# For a system operating at strong coupling (even or odd), the power transfer efficiency is  
 # 
 # $$\eta = \dfrac{R_L^2}{(R+R_L)^2}$$
 
+# For matched source and load impedances ($50 \Omega$), the power transfer efficiency is
+# 
+# $$\eta = |S_{21}|^2$$
+
 # ## Voltage Rectification
+
+# ```{figure} img/full-wave-bridge-rectifier.png
+# Full Wave Bridge Rectifier
+# ```
+# In this circuit, the negative cycle of the input AC signal is not blocked. Instead it is converted to a
+# positive value for the RC filter to “smooth”
+
+# Given metrics since vector analyzer has maximum output power of 0 dBm.
+# 
+# |   | Input Return Loss (dB)  | Input Impedance ($\Omega$)  |
+# |:---|:---:|:---:|
+# | Rectifier at $\omega = \omega_0$  | $-0.486$ | $9.221 - j119.4$   |
+
+# ## Measurements
+
+# **5 cm loop and $\omega = \omega_0$**
+# 
+# | Distance (cm) | $\Gamma_{in}' (mU)$ | $S_{21} (dB)$  | $R_{in}$  | $M (calc.)$  | $\eta (calc.)$  |
+# |:---:|:---|:---|:---|:---|:---|
+# | 2  |   |   |   |   |   |
+# | 4  |   |   |   |   |   |
+# | 6  |   |   |   |   |   |
+# | 8  |   |   |   |   |   |
+# | 10  |   |   |   |   |   |
+# | 12  |   |   |   |   |   |
+# | 14  |   |   |   |   |   |
+# | 16  |   |   |   |   |   |
+
+# **9 cm loop and $\omega = \omega_0$**
+# 
+# | Distance (cm) | $\Gamma_{in}' (mU)$ | $S_{21} (dB)$  | $R_{in}$  | $M (calc.)$  | $\eta (calc.)$  |
+# |:---:|:---|:---|:---|:---|:---|
+# | 2  |   |   |   |   |   |
+# | 4  |   |   |   |   |   |
+# | 6  |   |   |   |   |   |
+# | 8  |   |   |   |   |   |
+# | 10  |   |   |   |   |   |
+# | 12  |   |   |   |   |   |
+# | 14  |   |   |   |   |   |
+# | 16  |   |   |   |   |   |
 
 # In[ ]:
 

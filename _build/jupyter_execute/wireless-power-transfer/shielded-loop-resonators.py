@@ -25,7 +25,7 @@
 # ## Magnetically-Coupled Resonators
 
 # ```{figure} img/resonator-schematic.png
-# Schematic of Magnetically-Coupled Resonators with Parasitics
+# Schematic of Magnetically-Coupled Resonators
 # ```
 
 # $$
@@ -92,25 +92,25 @@
 
 # **Given shielded-loop parameters**
 
-# | Dielectric Properties |   |
+# | <div style="width:250px">Dielectric Properties</div> | <div style="width:250px"></div>  |
 # |:---|:---|
 # | Material  | Rogers RT/Duroid 5880  |
 # | Relative Permitivity  | $\epsilon_r = 2.2$  |
 # | Loss Tangent  | $\tan \delta = 0.009$  |
 
-# | Conductor Properties |   |
+# | <div style="width:250px">Conductor Properties</div>  | <div style="width:250px"></div>   |
 # |:---|:---|
 # | Material  | copper  |
 # | Conductivity  | 5.8E7 Siemens  |
 # | Thickness  | 70 $\mu$m  |
 
-# | Geometry  |   |
+# | <div style="width:250px">Geometry</div>  | <div style="width:250px"></div>  |
 # |:---|:---|
 # | Radii  | 5cm and 9cm  |
 # | Cross-sectional width  | $d = 15$ mm  |
 # | Cross-sectional thickness  | $3.32$ mm  |
 
-# | Stripline Tranmission Line  |   |
+# | <div style="width:250px">Stripline Tranmission Line</div>  | <div style="width:250px"></div>  |
 # |:---|:---|
 # | Characteristic impedance  | $Z_0 = 50\Omega$  |
 

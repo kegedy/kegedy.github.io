@@ -51,12 +51,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"HTML-CSS": {"scale": 85}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"HTML-CSS": {"scale": 85, "availableFonts": ["STIX", "TeX"], "preferredFont": "TeX", "webFont": "TeX", "imageFont": "TeX", "mtextFontInherit": false, "matchFontHeight": false}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Projects" href="../projects/index.html" />
-    <link rel="prev" title="Coupled Resonators and Voltage Rectification" href="../../wireless-power-transfer/coupled-resonators-and-voltage-rectification.html" />
+    <link rel="prev" title="Coupled Noises Analysis" href="../../microwave-transmission-lines/coupled-noise/coupled-noise.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -194,6 +194,11 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../../wireless-power-transfer/variables.html">
+   Definition of Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../wireless-power-transfer/shielded-loop-resonators.html">
    Shielded-Loop Resonators
   </a>
@@ -201,6 +206,28 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../../wireless-power-transfer/coupled-resonators-and-voltage-rectification.html">
    Coupled Resonators and Voltage Rectification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../wireless-power-transfer/impedance-matching-and-frequency-tuning.html">
+   Impedance Matching and Frequency Tuning
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Microwave Transmission Lines
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../microwave-transmission-lines/time-domain-response/time-domain-response.html">
+   Time-Domain Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../microwave-transmission-lines/coupled-noise/coupled-noise.html">
+   Coupled Noises Analysis
   </a>
  </li>
 </ul>
@@ -547,7 +574,7 @@ title="Print to PDF"
 <figure class="align-default" id="id1">
 <img alt="../../_images/trace-geometry.png" src="../../_images/trace-geometry.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Trace Geometry</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Trace Geometry</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -568,7 +595,7 @@ title="Print to PDF"
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../../_images/Rsense.jpg"><img alt="../../_images/Rsense.jpg" src="../../_images/Rsense.jpg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Sense Resistor in Switch Mode Power Supply</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Sense Resistor in Switch Mode Power Supply</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -579,7 +606,7 @@ title="Print to PDF"
 <figure class="align-default" id="id3">
 <img alt="../../_images/TypicalApplication.png" src="../../_images/TypicalApplication.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Typical Application</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Typical Application</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <table class="colwidths-auto table">
@@ -651,8 +678,8 @@ R_{\text{G_off}} &amp;= 0.89 \Omega \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Resistor Size</strong></p>
 <p>Additionally, power dissipated through the resistor is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-af920077-c094-4080-89f0-005b73477b5a">
-<span class="eqno">(7)<a class="headerlink" href="#equation-af920077-c094-4080-89f0-005b73477b5a" title="Permalink to this equation">#</a></span>\[\begin{equation} 
+<div class="amsmath math notranslate nohighlight" id="equation-eb0622ac-e0ca-40df-bf67-c3de33571b16">
+<span class="eqno">(7)<a class="headerlink" href="#equation-eb0622ac-e0ca-40df-bf67-c3de33571b16" title="Permalink to this equation">#</a></span>\[\begin{equation} 
 P = C V^2 f 
 \end{equation}\]</div>
 <p>for selecting components.</p>
@@ -686,11 +713,11 @@ P = C V^2 f
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../../wireless-power-transfer/coupled-resonators-and-voltage-rectification.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../../microwave-transmission-lines/coupled-noise/coupled-noise.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Coupled Resonators and Voltage Rectification</p>
+            <p class="prev-next-title">Coupled Noises Analysis</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../projects/index.html" title="next page">

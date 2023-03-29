@@ -1,0 +1,1729 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Time-Domain Analysis &#8212; Kevin Egedy</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"HTML-CSS": {"scale": 85, "availableFonts": ["STIX", "TeX"], "preferredFont": "TeX", "webFont": "TeX", "imageFont": "TeX", "mtextFontInherit": false, "matchFontHeight": false}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Coupled Noises Analysis" href="../coupled-noise/coupled-noise.html" />
+    <link rel="prev" title="Impedance Matching and Frequency Tuning" href="../../wireless-power-transfer/impedance-matching-and-frequency-tuning.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-C3J0M23XR2"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-C3J0M23XR2');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Kevin Egedy</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Summary
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Hardware Design
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../linear-integrated-circuits/index.html">
+   Linear Integrated Circuits
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../linear-integrated-circuits/bandgap-reference.html">
+     Bandgap Reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../linear-integrated-circuits/current-mirrors.html">
+     Current Mirrors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../linear-integrated-circuits/current-source-drivers.html">
+     Current Drivers for Neural Stimulation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../non-linear-systems/index.html">
+   Non-Linear Systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../non-linear-systems/desensitization.html">
+     Desensitization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Controller Design
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../converter/boost-controller.html">
+   Boost Controller
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Wireless Power Transfer
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../wireless-power-transfer/variables.html">
+   Definition of Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../wireless-power-transfer/shielded-loop-resonators.html">
+   Shielded-Loop Resonators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../wireless-power-transfer/coupled-resonators-and-voltage-rectification.html">
+   Coupled Resonators and Voltage Rectification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../wireless-power-transfer/impedance-matching-and-frequency-tuning.html">
+   Impedance Matching and Frequency Tuning
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Microwave Transmission Lines
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Time-Domain Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../coupled-noise/coupled-noise.html">
+   Coupled Noises Analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  PCB
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../pcb/common-discussions/common-discussions.html">
+   Common Discussions
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../pcb/projects/index.html">
+   Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../pcb/projects/arduino-uno.html">
+     Arduino Uno
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../pcb/projects/ISL6236A.html">
+     ISL6236A
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/microwave-transmission-lines/time-domain-response/time-domain-response.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/kegedy/kegedy.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fmicrowave-transmission-lines/time-domain-response/time-domain-response.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/microwave-transmission-lines/time-domain-response/time-domain-response.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/microwave-transmission-lines/time-domain-response/time-domain-response.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectives">
+   Objectives
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constants">
+     Constants
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#helpful-equations">
+     Helpful Equations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tds8200-setup">
+     TDS8200 setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#measurement-of-the-verification-devices">
+   (1) Measurement of the Verification Devices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unmatched-transmission-line">
+   (2) Unmatched Transmission Line
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unknown-loads">
+   (3) Unknown Loads
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part1-unknown1">
+     Part1_unknown1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#small-inductance">
+   (4) Small Inductance
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Time-Domain Analysis</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectives">
+   Objectives
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constants">
+     Constants
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#helpful-equations">
+     Helpful Equations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tds8200-setup">
+     TDS8200 setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#measurement-of-the-verification-devices">
+   (1) Measurement of the Verification Devices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unmatched-transmission-line">
+   (2) Unmatched Transmission Line
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unknown-loads">
+   (3) Unknown Loads
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part1-unknown1">
+     Part1_unknown1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#small-inductance">
+   (4) Small Inductance
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="time-domain-analysis">
+<h1>Time-Domain Analysis<a class="headerlink" href="#time-domain-analysis" title="Permalink to this headline">#</a></h1>
+<p>Due: January 22, 2020</p>
+<p>Author: Kevin Egedy</p>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<p><strong>I. Measurement of the verification devices:</strong></p>
+<ul class="simple">
+<li><p>Match the waveforms to the three loads: short, open and match, and find the reflection coefficient of each.</p></li>
+</ul>
+<p><strong>II. Unmatached TL:</strong></p>
+<ul class="simple">
+<li><p>Identify the location of the impedance discontinuity.</p></li>
+<li><p>Evaluate the values of characteristic impedance of each TL section of the board. Main one is 100 ohm section.</p></li>
+<li><p>Estimate the dielectric constant of 100 ohm TL.</p></li>
+</ul>
+<p><strong>III. Unknown loads:</strong></p>
+<ul class="simple">
+<li><p>Based on the expected responses and the time-domain responses of complex loads, estimate the characteristics (capacitive, resistive, inductive, or combination of these?) and values of these loads(include the analysis process)</p></li>
+</ul>
+<p><strong>IV. Small Inductance</strong></p>
+<ul class="simple">
+<li><p>From the measured decay constant, using the relation <span class="math notranslate nohighlight">\(L = R_st\)</span>, compute the inductance of the DUT. If the decay time is too short, skip this part.</p></li>
+<li><p>From the measured total area under a response curve, compute the inductance of the DUT.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Libraries</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">pch</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="kn">import</span> <span class="n">InteractiveShell</span>
+<span class="n">InteractiveShell</span><span class="o">.</span><span class="n">ast_node_interactivity</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">files</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;calib_matched_garman&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;calib_open_garman&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;calib_short_garman&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Part1-PCBduroid&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Part1-unknown1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Part1-unknown2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Part1-unknown3_1ns&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Part1-unknown3_260ps&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Part2-board2_280ps&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Part2-calib_ch2_Thu&#39;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
+<span class="c1"># Read .xlsx files and convert them into .csv</span>
+<span class="c1">#</span>
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;data/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">.xlsx&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;data/csv/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">,</span><span class="s1">&#39;w+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f0</span><span class="p">:</span> <span class="n">f0</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read .csv files in lab01/data/csv</span>
+<span class="c1">#</span>
+<span class="n">calib_matched_garman</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/csv/calib_matched_garman.csv&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">calib_open_garman</span>    <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/csv/calib_open_garman.csv&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">calib_short_garman</span>   <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/csv/calib_short_garman.csv&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">Part1_PCBduroid</span>      <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/csv/Part1-PCBduroid.csv&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">Part1_unknown1</span>       <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/csv/Part1-unknown1.csv&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">Part1_unknown2</span>       <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/csv/Part1-unknown2.csv&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">Part1_unknown3_1ns</span>   <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/csv/Part1-unknown3_1ns.csv&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">Part1_unknown3_260ps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/csv/Part1-unknown3_260ps.csv&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">Part2_board2_280ps</span>   <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/csv/Part2-board2_280ps.csv&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">Part2_calib_ch2_Thu</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/csv/Part2-calib_ch2_Thu.csv&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot Overview</span>
+<span class="c1">#   Number of points: 4000pts</span>
+<span class="c1">#   Total Time: 200ns</span>
+<span class="c1">#   Resolution: 0.05 ns/pt</span>
+<span class="c1">#</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.35</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.20</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">calib_matched_garman</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">calib_open_garman</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">calib_short_garman</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Part1_PCBduroid</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Part1_unknown1</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Part1_unknown2</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Part1_unknown3_1ns</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Part1_unknown3_260ps</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Part2_board2_280ps</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Part2_calib_ch2_Thu</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;calib_matched_garman&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;calib_open_garman&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;calib_short_garman&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Part1_PCBduroid&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Part1_unknown1&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Part1_unknown2&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Part1_unknown3_1ns&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Part1_unknown3_260ps&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Part2_board2_280ps&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Part2_calib_ch2_Thu&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Overview Lab Data&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/time-domain-response_6_0.png" src="../../_images/time-domain-response_6_0.png" />
+</div>
+</div>
+<hr>
+<section id="constants">
+<h3>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Permittivity of free-space <span class="math notranslate nohighlight">\(= \epsilon_0 = 8.854 \cdot 10^{-12} F/m\)</span></p></li>
+<li><p>Permeability of free-space <span class="math notranslate nohighlight">\(= \mu_0 = 4\pi \cdot 10^{-7} H/m\)</span></p></li>
+<li><p>Impedance of free-space <span class="math notranslate nohighlight">\(= \eta_0 = 120\pi = 376.7\Omega\)</span></p></li>
+<li><p>Velocity of light in free-space <span class="math notranslate nohighlight">\(= c = 2.998 \cdot 10^8 m/s\)</span></p></li>
+</ul>
+</section>
+<section id="helpful-equations">
+<h3>Helpful Equations<a class="headerlink" href="#helpful-equations" title="Permalink to this headline">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\begin{align}
+\Gamma_L &amp;= \frac{V^-}{V^+} = \frac{Z_L-Z_0}{Z_L+Z_0} 
+\end{align}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Delta T = \frac{2L}{v} \)</span> where <span class="math notranslate nohighlight">\(L\)</span> = length, <span class="math notranslate nohighlight">\(T\)</span> = time delay and <span class="math notranslate nohighlight">\(v\)</span> = velocity</p>
+<p><span class="math notranslate nohighlight">\(\tau\)</span> is time to reach <span class="math notranslate nohighlight">\(63.2\%\)</span> of its final value in an increasing system and <span class="math notranslate nohighlight">\(36.8\%\)</span> is a decreasing system.</p>
+<p>Characteristic Impedance of TL: TEM</p>
+<p><span class="math notranslate nohighlight">\(\begin{eqnarray}
+z_0 &amp;=&amp; \sqrt{\frac{L}{C}} &amp;=&amp; \sqrt{\frac{\mu}{\epsilon}}\\
+v   &amp;=&amp; \frac{1}{\sqrt{LC}} &amp;=&amp; \frac{1}{\sqrt{\mu \epsilon}} &amp;=&amp; \frac{c_0}{\sqrt{\epsilon_r}}
+\end{eqnarray}\)</span></p>
+<p>Microstrip Effective Permitivity <span class="math notranslate nohighlight">\(\epsilon_{eff}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\begin{eqnarray}
+\epsilon_{eff} &amp;=&amp; \frac{\epsilon_r+1}{2} + \frac{\epsilon_r-1}{2} 
+(\frac{1}{\sqrt{1+12d/W}}) 
+\end{eqnarray}\)</span></p>
+<hr></section>
+<section id="tds8200-setup">
+<h3>TDS8200 setup<a class="headerlink" href="#tds8200-setup" title="Permalink to this headline">#</a></h3>
+<p>Instructions</p>
+<ul class="simple">
+<li><p>Read the attached file for instruction</p></li>
+<li><p>Only Ch 1 must be set to TDR (red LED ON). Under MEASURE</p></li>
+<li><p>The red LED of Ch 2 must be OFF</p></li>
+<li><p>Time scale and number of points: These can be found from Setup-&gt;Hori</p></li>
+</ul>
+<hr></section>
+</section>
+<section id="measurement-of-the-verification-devices">
+<h2>(1) Measurement of the Verification Devices<a class="headerlink" href="#measurement-of-the-verification-devices" title="Permalink to this headline">#</a></h2>
+<p>Instructions</p>
+<ul class="simple">
+<li><p>Attach SHORT to the end of cable and obtain the reflection from it</p>
+<ul>
+<li><p>Save data into PC</p></li>
+</ul>
+</li>
+<li><p>Attach the matched load and obtain the reflection from it</p></li>
+<li><p>Do not attach any devices and measure the reflection (OPEN)</p></li>
+</ul>
+<p>Questions</p>
+<ul class="simple">
+<li><p>Find the reflection coefficient from the open, short and matched waveforms</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Measured Values: Part1_unknown1</span>
+<span class="c1">#</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.35</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">calib_short_garman</span><span class="p">))</span>
+
+<span class="c1"># Plot</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">calib_short_garman</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Short&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">calib_matched_garman</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Matched&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">calib_open_garman</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Open&#39;</span><span class="p">)</span>
+
+<span class="c1"># Labels</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Short&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Matched&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Open&#39;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Calibration Measured Values&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/time-domain-response_11_0.png" src="../../_images/time-domain-response_11_0.png" />
+</div>
+</div>
+<p>Reflection Coefficients</p>
+<p><span class="math notranslate nohighlight">\(\begin{align}
+\Gamma_L &amp;= \frac{V^-}{V^+}
+\end{align}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\begin{align}
+&amp;V^+ =&amp; -1.0V  &amp;&amp; V^- &amp;=&amp; 1.0V &amp;&amp; \rightarrow \Gamma_{short}  &amp;=-1  \\
+&amp;V^+ =&amp; 0.25V  &amp;&amp; V^- &amp;=&amp; 0V     &amp;&amp; \rightarrow \Gamma_{match}   &amp;= 0  \\
+&amp;V^+ =&amp; 0.25V  &amp;&amp; V^- &amp;=&amp; 0.25V  &amp;&amp; \rightarrow \Gamma_{open}  &amp;= 1 
+\end{align}\)</span></p>
+<hr></section>
+<section id="unmatched-transmission-line">
+<h2>(2) Unmatched Transmission Line<a class="headerlink" href="#unmatched-transmission-line" title="Permalink to this headline">#</a></h2>
+<p>Instructions</p>
+<ul class="simple">
+<li><p>Connect a test board with the matched impedance (terminated with <span class="math notranslate nohighlight">\(Z_L=50\)</span>) and measure the reflection from it.</p>
+<ul>
+<li><p>Save data into PC.</p></li>
+</ul>
+</li>
+</ul>
+<p>Questions</p>
+<ul class="simple">
+<li><p>Identify the location of the impedance discontinuity and values of the characteristic impedance</p></li>
+<li><p>From the measured time delay, estimate the dielectric constant and characteristic impedance of each TL section of the board</p></li>
+</ul>
+<p><img alt="" src="../../_images/duroid.png" /></p>
+<p><img alt="" src="../../_images/duroid_device.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Measured Values: Part1_unknown1</span>
+<span class="c1">#</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">Part1_PCBduroid</span><span class="p">))</span>
+<span class="n">res</span> <span class="o">=</span> <span class="mf">1.25</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># 1.25 ps</span>
+
+<span class="c1"># Impedance Discontinuity</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mi">1125</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="mi">1935</span>
+
+<span class="c1"># Plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Part1_PCBduroid</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Measured Values&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="n">Part1_PCBduroid</span><span class="p">[</span><span class="n">x1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x2</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="n">Part1_PCBduroid</span><span class="p">[</span><span class="n">x2</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Impedance Discontinuity&#39;</span><span class="p">)</span>
+
+<span class="c1"># Labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Measured Values Part1_PCBduroid&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/time-domain-response_15_0.png" src="../../_images/time-domain-response_15_0.png" />
+</div>
+</div>
+<p>Find velocity:</p>
+<p><span class="math notranslate nohighlight">\(\begin{eqnarray}
+\Delta T &amp;=&amp; \frac{2L}{v} \\
+v        &amp;=&amp; \frac{2L}{\Delta T}
+\end{eqnarray}\)</span></p>
+<p>Use velocity to find <span class="math notranslate nohighlight">\(\epsilon_{r}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\begin{eqnarray}
+v                 &amp;=&amp; \frac{c_0}{\sqrt{\epsilon_r}} \\
+\sqrt{\epsilon_r} &amp;=&amp; \frac{c_0}{v}      \\
+\epsilon_r        &amp;=&amp; (\frac{c_0}{v})^2  
+\end{eqnarray}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate Dielectric Constant</span>
+
+<span class="c1"># speed of light</span>
+<span class="n">c0</span><span class="o">=</span> <span class="mf">2.998</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># length</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mf">0.10</span>
+
+<span class="c1"># time</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">x2</span><span class="o">*</span><span class="n">res</span> <span class="o">-</span> <span class="n">x1</span><span class="o">*</span><span class="n">res</span>
+
+<span class="c1"># velocity</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">L</span><span class="o">/</span><span class="n">t</span>
+
+<span class="c1"># dielectric constant</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="p">(</span><span class="n">c0</span><span class="o">/</span><span class="n">v</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Dielectric constant: measured = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1"> F/m, given: 2.33 F/m&#39;</span><span class="p">)</span> <span class="c1"># 100 Ohm TL Section</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dielectric constant: measured = 2.3035 F/m, given: 2.33 F/m
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check by solving dielectric effective (microstrip)</p>
+<p><span class="math notranslate nohighlight">\(\begin{eqnarray}
+\epsilon_{eff} &amp;=&amp; \frac{\epsilon_r+1}{2} + \frac{\epsilon_r-1}{2} 
+(\frac{1}{\sqrt{1+12d/W}}) 
+\end{eqnarray}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check Measured Values</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">eps_eff</span><span class="p">(</span><span class="n">Er</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">W</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">Er</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">Er</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">12</span><span class="o">*</span><span class="n">d</span><span class="o">/</span><span class="n">W</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="n">Er</span> <span class="o">=</span> <span class="mf">2.3035</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mf">0.00157</span>
+<span class="n">W</span> <span class="o">=</span> <span class="mf">0.00136</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Dielectric effective: measured = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">eps_eff</span><span class="p">(</span><span class="n">Er</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">W</span><span class="p">),</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1"> F/m, </span><span class="se">\</span>
+<span class="s1">given: 1.85 F/m&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dielectric effective: measured = 1.8209 F/m, given: 1.85 F/m
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use reflection coefficient to find characteristic impedance <span class="math notranslate nohighlight">\(Z_0\)</span></p>
+<p><span class="math notranslate nohighlight">\(\begin{eqnarray}
+\Gamma_{t_1}  &amp;=&amp; \frac{V^-}{V^+} &amp;=&amp; \frac{(0.33-0.25)}{0.25} &amp;=&amp; 0.32 \\ 
+\Gamma_{t_2} &amp;=&amp; \frac{V^-}{V^+} &amp;=&amp; \frac{(0.33-0.25)}{0.25} &amp;=&amp; -0.32
+\end{eqnarray}\)</span></p>
+<p>Given test board is terminated with 50 Ohms - work from sink to source.</p>
+<p><span class="math notranslate nohighlight">\(\begin{align}
+\Gamma_L     &amp;= \frac{Z_L-Z_0}{Z_L+Z_0} \\
+\Gamma_{t_2} &amp;= -0.32    &amp;=&amp; \frac{50-Z_0}{50+Z_0} &amp;&amp; \rightarrow Z_L = 50, Z_0 = 97.06 \\
+\Gamma_{t_1} &amp;=  0.32    &amp;=&amp; \frac{97.06-Z_0}{97.06+Z_0} &amp;&amp; \rightarrow Z_L = 97.06, Z_0 = 50
+\end{align}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;TL Section 1 Z0: measured = 50.00 Ohms, given 50 Ohms&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;TL Section 2 Z0: measured = 97.06 Ohms, given 100 Ohms&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;TL Section 3 Z0: measured = 50.00 Ohms, given 50 Ohms&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TL Section 1 Z0: measured = 50.00 Ohms, given 50 Ohms
+TL Section 2 Z0: measured = 97.06 Ohms, given 100 Ohms
+TL Section 3 Z0: measured = 50.00 Ohms, given 50 Ohms
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Unmatched Transmission Line Summary</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Section 1</p></th>
+<th class="head"><p>Section 2</p></th>
+<th class="head"><p>Section 3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>dielectric constant (F/m)</p></td>
+<td><p>NA</p></td>
+<td><p>2.3035</p></td>
+<td><p>NA</p></td>
+</tr>
+<tr class="row-odd"><td><p>characteristic impedance (Ohms)</p></td>
+<td><p>50.0</p></td>
+<td><p>97.06</p></td>
+<td><p>50.0</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="unknown-loads">
+<h2>(3) Unknown Loads<a class="headerlink" href="#unknown-loads" title="Permalink to this headline">#</a></h2>
+<p>Instructions</p>
+<ul class="simple">
+<li><p>Measure three unknown loads and save results.</p></li>
+</ul>
+<p>Questions</p>
+<ul class="simple">
+<li><p>Using the analytical model, estimate the characteristics (capacitive, resistive, inductive, or combination of these?) and values of these loads.</p></li>
+<li><p>See the expected responses and the time-domain responses of complex loads.</p></li>
+</ul>
+<section id="part1-unknown1">
+<h3>Part1_unknown1<a class="headerlink" href="#part1-unknown1" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find V0</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">Part1_unknown1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">res</span> <span class="o">=</span> <span class="mf">0.05</span> <span class="c1"># resolution = 0.05ns</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Part1_unknown1</span><span class="p">)</span>
+
+<span class="c1"># Time Constant</span>
+<span class="n">V1</span> <span class="o">=</span> <span class="mf">0.368</span> <span class="o">*</span> <span class="n">V0</span>   <span class="c1"># 0.1538</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">Part1_unknown1</span><span class="o">&gt;</span><span class="mf">0.153</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Part1_unknown1</span><span class="o">&lt;</span><span class="mf">0.154</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Print</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Initial Voltage     = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">V0</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1">V at t = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ns&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;System Response 1/e = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">V1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1">V at t = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ns&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time Response Tau   = </span><span class="si">{</span><span class="nb">round</span><span class="p">((</span><span class="n">x1</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1">ns&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial Voltage     = 0.4179V at t = 18.4ns
+System Response 1/e = 0.1538V at t = 36.9ns
+Time Response Tau   = 18.5ns
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Measured Values: Part1_unknown1</span>
+<span class="c1">#</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">Part1_unknown1</span><span class="p">))</span>
+<span class="n">Ures</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">res</span> <span class="o">=</span> <span class="mf">0.05</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Part1_unknown1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;measured values&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="n">Part1_unknown1</span><span class="p">[</span><span class="n">x0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">V0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">V @ </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span><span class="n">Ures</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ns&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="n">Part1_unknown1</span><span class="p">[</span><span class="n">x1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">V1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">V @ </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">Ures</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ns&#39;</span><span class="p">)</span>
+
+<span class="c1"># Labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Measured Values Part1_unknown1&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/time-domain-response_27_0.png" src="../../_images/time-domain-response_27_0.png" />
+</div>
+</div>
+<p><img alt="" src="../../_images/shuntR_L.png" /></p>
+<p>Known:</p>
+<p><span class="math notranslate nohighlight">\(\begin{align}
+Z_0  &amp;= 50 \\
+Ei   &amp;= 0.25 \\
+V_0  &amp;= 0.4179 \\
+\tau &amp;= 18.5 ns
+\end{align}\)</span></p>
+<p>Solve:</p>
+<p><span class="math notranslate nohighlight">\(\begin{align}
+0.4179 &amp;= E_i + E_i\frac{R-Z_0}{R+Z_0} &amp; \rightarrow R &amp;= 254.46 \Omega \\
+\tau   &amp;= \frac{R+Z_0}{RZ_0}L &amp; \rightarrow L &amp;= 773 nH
+\end{align}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculated Values</span>
+<span class="c1">#</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">254.46</span>           <span class="c1"># 220 ohms from &#39;Values of complex loads 2020-v2 better.pdf&#39;</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">773</span> <span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span>    <span class="c1"># 786 nH   from &#39;Values of complex loads 2020-v2 better.pdf&#39;</span>
+<span class="n">Z0</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">Ei</span> <span class="o">=</span> <span class="mf">0.25</span>
+
+<span class="c1"># range:[-100ns,100ns] with resolution 0.05ns</span>
+<span class="n">t</span><span class="p">,</span><span class="n">width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.0000001</span><span class="p">,</span><span class="mf">0.0000001</span><span class="p">,</span><span class="mi">4000</span><span class="p">,</span><span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">retstep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Theoretical response</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">shuntR_L</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Z0</span><span class="p">,</span><span class="n">Ei</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">Tao</span> <span class="o">=</span> <span class="n">L</span><span class="o">*</span><span class="p">(</span><span class="n">Z0</span><span class="o">+</span><span class="n">R</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">Z0</span><span class="o">*</span><span class="n">R</span><span class="p">)</span>
+    <span class="n">const</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">Z0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">Z0</span><span class="p">)</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="o">&lt;=-</span><span class="mf">0.00000005</span><span class="p">]</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">t</span><span class="p">[(</span><span class="n">t</span><span class="o">&gt;-</span><span class="mf">0.00000005</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)]</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y0</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Ei</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Ei</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">const</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">Tao</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">y0</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span>\
+            <span class="n">y1</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span>\
+            <span class="n">y2</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="c1"># Plot</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">shuntR_L</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Z0</span><span class="p">,</span><span class="n">Ei</span><span class="p">,</span><span class="n">t</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;theoretical values&#39;</span><span class="p">)</span>
+
+<span class="c1"># Labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Theoretical Response shuntR_L&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/time-domain-response_31_0.png" src="../../_images/time-domain-response_31_0.png" />
+</div>
+</div>
+<hr>
+<p><strong>Part1_unknown2</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find V0</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">330</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="n">Part1_unknown2</span><span class="p">[</span><span class="n">x0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">res</span> <span class="o">=</span> <span class="mf">0.05</span>   <span class="c1"># resolution = 0.05ns</span>
+
+<span class="c1"># Time Constant</span>
+<span class="n">V1</span> <span class="o">=</span> <span class="n">V0</span> <span class="o">+</span> <span class="mf">0.632</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">Ei</span><span class="o">-</span><span class="n">V0</span><span class="p">)</span>  <span class="c1"># 0.4349</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">Part1_unknown2</span><span class="o">&gt;</span><span class="mf">0.43</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Part1_unknown2</span><span class="o">&lt;</span><span class="mf">0.44</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Print</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Initial Voltage       = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">V0</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1">V at t = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ns&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;System Response 1-1/e = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">V1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1">V at t = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ns&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time Response Tau     = </span><span class="si">{</span><span class="nb">round</span><span class="p">((</span><span class="n">x1</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ns&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial Voltage       = 0.3195V at t = 16.5ns
+System Response 1-1/e = 0.4336V at t = 41.0ns
+Time Response Tau     = 24.5ns
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Measured Values: Part1_unknown2</span>
+<span class="c1">#</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">Part1_unknown1</span><span class="p">))</span>
+<span class="n">Ures</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">res</span> <span class="o">=</span> <span class="mf">0.05</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Part1_unknown2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;measured values&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="n">Part1_unknown2</span><span class="p">[</span><span class="n">x0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">V0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">V @ </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span><span class="n">Ures</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ns&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="n">Part1_unknown2</span><span class="p">[</span><span class="n">x1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">V1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">V @ </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">Ures</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ns&#39;</span><span class="p">)</span>
+
+<span class="c1"># Labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Measured Values Part1_unknown2&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/time-domain-response_34_0.png" src="../../_images/time-domain-response_34_0.png" />
+</div>
+</div>
+<p><img alt="" src="../../_images/seriesR_C.png" /></p>
+<p>Known:</p>
+<p><span class="math notranslate nohighlight">\(\begin{align}
+Z_0  &amp;= 50 \\
+Ei   &amp;= 0.25 \\
+V_0  &amp;= 0.3231 \\
+\tau &amp;= 24.5ns
+\end{align}\)</span></p>
+<p>Solve:</p>
+<p><span class="math notranslate nohighlight">\(\begin{align}
+0.3231 &amp;= E_i + E_i\frac{R-Z_0}{R+Z_0} &amp; \rightarrow R &amp;= 91.39 \Omega \\
+\tau   &amp;= (R+Z_0)C &amp; \rightarrow C &amp;= 0.163 nF
+\end{align}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculated Values</span>
+<span class="c1">#</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">91.39</span>           <span class="c1"># 100 Ohms from &#39;Values of complex loads 2020-v2 better.pdf&#39;</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mf">0.163</span> <span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span> <span class="c1"># 0.184 nF from &#39;Values of complex loads 2020-v2 better.pdf&#39;</span>
+<span class="n">Z0</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">Ei</span> <span class="o">=</span> <span class="mf">0.25</span>
+
+<span class="c1"># range:[-100ns,100ns] with resolution 0.05ns</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.0000001</span><span class="p">,</span><span class="mf">0.0000001</span><span class="p">,</span><span class="mi">4000</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Theoretical Response Part1_unknown2</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">seriesR_C</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">Z0</span><span class="p">,</span><span class="n">Ei</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">Tao</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">Z0</span><span class="p">)</span><span class="o">*</span><span class="n">C</span>
+    <span class="n">const</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">Z0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">Z0</span><span class="p">)</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="o">&lt;=-</span><span class="mf">0.00000005</span><span class="p">]</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">t</span><span class="p">[(</span><span class="n">t</span><span class="o">&gt;-</span><span class="mf">0.00000005</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)]</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y0</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Ei</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Ei</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">const</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">Tao</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">y0</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span>\
+            <span class="n">y1</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span>\
+            <span class="n">y2</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="c1"># Plot</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">seriesR_C</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">Z0</span><span class="p">,</span><span class="n">Ei</span><span class="p">,</span><span class="n">t</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;theoretical values&#39;</span><span class="p">)</span>
+
+<span class="c1"># Labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Theoretical Response seriesR_C&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/time-domain-response_38_0.png" src="../../_images/time-domain-response_38_0.png" />
+</div>
+</div>
+<hr>
+<p><strong>Part1_unknown3</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find V0 </span>
+<span class="n">V0</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">Part1_unknown3_260ps</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Part1_unknown3_260ps</span><span class="p">)</span>
+
+<span class="c1"># Time Constant</span>
+<span class="n">V1</span> <span class="o">=</span> <span class="n">V0</span> <span class="o">-</span> <span class="mf">0.632</span> <span class="o">*</span> <span class="p">(</span><span class="n">V0</span><span class="o">-</span><span class="mf">0.25</span><span class="p">)</span>  <span class="c1"># 0.3068</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">Part1_unknown3_260ps</span><span class="o">&gt;</span><span class="mf">0.30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Part1_unknown3_260ps</span><span class="o">&lt;</span><span class="mf">0.31</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Resolution</span>
+<span class="n">x</span><span class="p">,</span><span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">2.6</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">Part1_unknown3_260ps</span><span class="p">),</span><span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">retstep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Ures</span> <span class="o">=</span> <span class="n">res</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">12</span>
+
+<span class="c1"># Print</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Initial Voltage       = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">V0</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1">V at t = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span><span class="n">Ures</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ps&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;System Response 1/e   = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">V1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1">V at t = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">Ures</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ps&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time Response Tau     = </span><span class="si">{</span><span class="nb">round</span><span class="p">((</span><span class="n">x1</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">*</span><span class="n">Ures</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ps&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial Voltage       = 0.4042V at t = 1114.8ps
+System Response 1/e   = 0.3068V at t = 1514.5ps
+Time Response Tau     = 399.8ps
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Measured Values: Part1_unknown3</span>
+<span class="c1">#</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">x</span><span class="p">,</span><span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">2.6</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">Part1_unknown3_260ps</span><span class="p">),</span><span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">retstep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Ures</span> <span class="o">=</span> <span class="n">res</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">12</span>
+
+<span class="c1"># Plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Part1_unknown3_260ps</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;measured values&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="n">Part1_unknown3_260ps</span><span class="p">[</span><span class="n">x0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">V0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">V @ </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span><span class="n">Ures</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ps&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="n">Part1_unknown3_260ps</span><span class="p">[</span><span class="n">x1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">V1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">V @ </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">Ures</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ps&#39;</span><span class="p">)</span>
+
+<span class="c1"># Labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Measured Values Part1_unknown3&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/time-domain-response_41_0.png" src="../../_images/time-domain-response_41_0.png" />
+</div>
+</div>
+<p><img alt="" src="../../_images/seriesR_L.png" /></p>
+<p>Known:</p>
+<p><span class="math notranslate nohighlight">\(\begin{align}
+Z_0  &amp;= 50 \\
+Ei   &amp;= 0.25 \\
+V_0  &amp;= 0.4044 \\
+\tau &amp;= 399.8 ps
+\end{align}\)</span></p>
+<p>Solve:</p>
+<p><span class="math notranslate nohighlight">\(\begin{align}
+E_i  &amp;= (1+\frac{R-Z_0}{R+Z_0})E_i &amp; \rightarrow R &amp;= 50 \Omega \\
+\tau &amp;= \frac{L}{Z_0+R}            &amp; \rightarrow L &amp;= 40 nH
+\end{align}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculated Values</span>
+<span class="c1">#</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mi">50</span>              <span class="c1"># R = 50 Ohms from &#39;Values of complex loads 2020-v2 better.pdf&#39;</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">40</span> <span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span>   <span class="c1"># L = 29 nH from &#39;Values of complex loads 2020-v2 better.pdf&#39;</span>
+<span class="n">Ei</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">Z0</span> <span class="o">=</span> <span class="mi">50</span> 
+
+<span class="c1"># range:[-2.5ns,2.5ns]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.0000000025</span><span class="p">,</span><span class="mf">0.0000000025</span><span class="p">,</span><span class="mi">4000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Theoretical Response Part1_unknown3</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">seriesR_L</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Z0</span><span class="p">,</span><span class="n">Ei</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">Tao</span> <span class="o">=</span> <span class="n">L</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">Z0</span><span class="p">)</span>
+    <span class="n">const</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">Z0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">Z0</span><span class="p">)</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="o">&lt;=-</span><span class="mf">0.0000000010</span><span class="p">]</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">t</span><span class="p">[(</span><span class="n">t</span><span class="o">&gt;-</span><span class="mf">0.0000000010</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)]</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y0</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Ei</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Ei</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">const</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">const</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">Tao</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">y0</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span>\
+            <span class="n">y1</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span>\
+            <span class="n">y2</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Theoretical Response</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="n">seriesR_L</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Z0</span><span class="p">,</span><span class="n">Ei</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">vals</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;theoretical values&#39;</span><span class="p">)</span>
+
+<span class="c1"># Labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Theoretical Response seriesR_L&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/time-domain-response_46_0.png" src="../../_images/time-domain-response_46_0.png" />
+</div>
+</div>
+<p><strong>Uknown Loads Summary</strong></p>
+<p>Unknown1: Shunt R-L</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>R (Ohms)</p></th>
+<th class="head"><p>L (nH)</p></th>
+<th class="head"><p>C (nF)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>measured</p></td>
+<td><p>254.46</p></td>
+<td><p>773</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p>provided</p></td>
+<td><p>220</p></td>
+<td><p>786</p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
+<p>Unknown2: Series R-C</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>R (Ohms)</p></th>
+<th class="head"><p>L (nH)</p></th>
+<th class="head"><p>C (nF)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>measured</p></td>
+<td><p>91.39</p></td>
+<td><p>-</p></td>
+<td><p>0.163</p></td>
+</tr>
+<tr class="row-odd"><td><p>provided</p></td>
+<td><p>100</p></td>
+<td><p>-</p></td>
+<td><p>0.184</p></td>
+</tr>
+</tbody>
+</table>
+<p>Unknown3: Series R-L</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>R (Ohms)</p></th>
+<th class="head"><p>L (nH)</p></th>
+<th class="head"><p>C (nF)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>measured</p></td>
+<td><p>50</p></td>
+<td><p>40</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p>provided</p></td>
+<td><p>50</p></td>
+<td><p>29</p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="small-inductance">
+<h2>(4) Small Inductance<a class="headerlink" href="#small-inductance" title="Permalink to this headline">#</a></h2>
+<p><img alt="" src="../../_images/part2DUT.png" /></p>
+<p>Instructions: characteristics of the input wave form</p>
+<ul class="simple">
+<li><p>Connect the cable channel 1 and Channel 2 directly as Fig.II-2</p></li>
+<li><p>Adjust the voltage scale to see the details</p></li>
+<li><p>Using the THRU measurement, obtain the peak voltage and rise time of the input signal</p></li>
+<li><p>Read data into PC and use MATLAB or other software to get the peak voltage and rise-time.</p></li>
+</ul>
+<p>Questions</p>
+<ul class="simple">
+<li><p>From the measured decay constant, using the relation <span class="math notranslate nohighlight">\(L = R_s \tau\)</span> , compute the inductance of the DUT.  If the decay time is too short, skip this part.</p></li>
+</ul>
+<p>Find equivalent circuit <span class="math notranslate nohighlight">\(R_s\)</span></p>
+<p><span class="math notranslate nohighlight">\(\begin{eqnarray}
+R_s &amp;=&amp; (50+39)//10//50 \\
+R_s &amp;=&amp; (\frac{89 \cdot 10}{89 + 10})//50 \\
+R_s &amp;=&amp; 8.99 // 50 \\
+R_s &amp;=&amp; (\frac{8.99 \cdot 50}{8.99 + 50}) \\
+R_s &amp;=&amp; 7.6
+\end{eqnarray}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find Rise Time</span>
+
+<span class="c1"># Median of final 10% elements = 0.2340</span>
+<span class="n">fsv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">Part2_calib_ch2_Thu</span><span class="p">[</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.1</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Part2_calib_ch2_Thu</span><span class="p">)):])</span>
+
+<span class="c1"># 10% value = 0.0234</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">fsv</span>
+
+<span class="c1"># 90% value = 0.2106</span>
+<span class="n">V1</span> <span class="o">=</span> <span class="mf">0.9</span><span class="o">*</span><span class="n">fsv</span>
+
+<span class="c1"># start</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">Part2_calib_ch2_Thu</span><span class="o">&gt;</span><span class="mf">0.023</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Part2_calib_ch2_Thu</span><span class="o">&lt;</span><span class="mf">0.024</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1">#end</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">Part2_calib_ch2_Thu</span><span class="o">&gt;</span><span class="mf">0.210</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Part2_calib_ch2_Thu</span><span class="o">&lt;</span><span class="mf">0.211</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Measured Values: Part2_calib_ch2_Thu</span>
+<span class="c1">#</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">x</span><span class="p">,</span><span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.2</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">Part2_calib_ch2_Thu</span><span class="p">),</span><span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">retstep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Ures</span> <span class="o">=</span> <span class="n">res</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">12</span>
+
+<span class="c1"># Plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Part2_calib_ch2_Thu</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Measured Values&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="n">Part2_calib_ch2_Thu</span><span class="p">[</span><span class="n">x0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;10% @ </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span><span class="n">Ures</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ps&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="n">Part2_calib_ch2_Thu</span><span class="p">[</span><span class="n">x1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;90% @ </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="n">Ures</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">ps&#39;</span><span class="p">)</span>
+
+<span class="c1"># Labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Measured Values Part2_board2_280ps&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/time-domain-response_52_0.png" src="../../_images/time-domain-response_52_0.png" />
+</div>
+</div>
+<p>Instructions: The inductance of the DUT</p>
+<ul class="simple">
+<li><p>Connect cable 1 to the Test Board port (IN) and cable 2 to the Test Board port (OUT)</p></li>
+<li><p>Adjust TDR to see the response</p></li>
+<li><p>Save the measured data</p></li>
+</ul>
+<p>Questions</p>
+<ul class="simple">
+<li><p>From the measured total area under a response curve, compute the inductance of the DUT</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V0</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">Part2_board2_280ps</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Part2_board2_280ps</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;V_max is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">V0</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>V_max is 0.1466
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Area Approximation Part2_board2_280ps Calculation</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">approx</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">res</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Returns the integral approximation of f(x)dx from a to b</span>
+<span class="sd">    f : continuous waveform</span>
+<span class="sd">    a : starting point</span>
+<span class="sd">    b : ending point</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">apprx</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">dxs</span><span class="p">,</span><span class="n">width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">retstep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">dx</span> <span class="ow">in</span> <span class="n">dxs</span><span class="p">:</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dx</span><span class="p">)</span>
+        <span class="n">midpoint</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">dx</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="n">dx</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span> <span class="c1"># Use the midpoint approximation</span>
+        <span class="n">apprx</span> <span class="o">+=</span> <span class="n">width</span><span class="o">*</span><span class="n">midpoint</span> <span class="c1"># width is 1 nanosecond</span>
+    <span class="k">return</span> <span class="n">apprx</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">res</span>
+
+<span class="c1"># Define range and function</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">250</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2400</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">b</span><span class="o">-</span><span class="n">a</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">Part2_board2_280ps</span>
+<span class="n">x</span><span class="p">,</span><span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">2.8</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">Part2_board2_280ps</span><span class="p">),</span><span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">retstep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">approx</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">res</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Area approximation is </span><span class="si">{</span><span class="n">A</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Area approximation is 6.797642459999998e-11
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Measured Values: Part2_board2_280ps</span>
+<span class="c1">#</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">x</span><span class="p">,</span><span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">2.8</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">Part2_board2_280ps</span><span class="p">),</span><span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">retstep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">Part2_board2_280ps</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Measured Values&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span><span class="n">res</span><span class="p">,</span><span class="n">V0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;V_max = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">V0</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Measured Values Part2_board2_280ps&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/time-domain-response_56_0.png" src="../../_images/time-domain-response_56_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Area Approximation Part2_board2_280ps Plot</span>
+<span class="c1">#</span>
+<span class="n">dxs</span><span class="p">,</span><span class="n">width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">retstep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># plot</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">dx</span> <span class="ow">in</span> <span class="n">dxs</span><span class="p">:</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dx</span><span class="p">)</span>
+    <span class="n">midpoint</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">dx</span><span class="p">]</span><span class="o">+</span><span class="n">f</span><span class="p">[</span><span class="n">dx</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">rect</span> <span class="o">=</span> <span class="n">pch</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">dx</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">width</span><span class="p">,</span><span class="n">midpoint</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#D3D3D3&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dxs</span><span class="p">,</span><span class="n">f</span><span class="p">[</span><span class="n">a</span><span class="p">:</span><span class="n">b</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;area = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Area Approximation Part2_board2_280ps&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/time-domain-response_57_0.png" src="../../_images/time-domain-response_57_0.png" />
+</div>
+</div>
+<p>Solve:</p>
+<p><span class="math notranslate nohighlight">\(\begin{eqnarray}
+V      &amp;=&amp; &amp;&amp; L \frac{di}{dt} \\
+\int V &amp;=&amp; &amp;&amp; L \int \frac{di}{dt} \\
+\text{area}   &amp;=&amp; &amp;&amp; L[I(\infty) - I(0)] \\
+L      &amp;=&amp; &amp;&amp; \frac{(\text{area})}{DI} \\
+L      &amp;=&amp; &amp;&amp; \frac{(\text{area})R_s}{DV} \\
+L      &amp;=&amp; &amp;&amp; \frac{6.80 \cdot 10^{-11} \cdot 7.6}{0.1466} \\
+L      &amp;=&amp; &amp;&amp; 3.52 nH
+\end{eqnarray}\)</span></p>
+<p><strong>Small Inductance Summary</strong></p>
+<p>The inductance of the DUT is 3.52 nH.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./microwave-transmission-lines/time-domain-response"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../../wireless-power-transfer/impedance-matching-and-frequency-tuning.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Impedance Matching and Frequency Tuning</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../coupled-noise/coupled-noise.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Coupled Noises Analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kevin Egedy<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

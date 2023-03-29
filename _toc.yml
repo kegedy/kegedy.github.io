@@ -23,9 +23,15 @@ parts:
 
 - caption: Wireless Power Transfer
   chapters:
-#  - file: wireless-power-transfer/variables
+  - file: wireless-power-transfer/variables
   - file: wireless-power-transfer/shielded-loop-resonators
   - file: wireless-power-transfer/coupled-resonators-and-voltage-rectification
+  - file: wireless-power-transfer/impedance-matching-and-frequency-tuning
+
+- caption: Microwave Transmission Lines
+  chapters:
+  - file: microwave-transmission-lines/time-domain-response/time-domain-response
+  - file: microwave-transmission-lines/coupled-noise/coupled-noise
 
 - caption: PCB
   chapters:
