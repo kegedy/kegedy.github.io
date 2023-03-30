@@ -51,7 +51,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"HTML-CSS": {"scale": 85, "availableFonts": ["STIX", "TeX"], "preferredFont": "TeX", "webFont": "TeX", "imageFont": "TeX", "mtextFontInherit": false, "matchFontHeight": false}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"chtml": {"scale": 0.85}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -126,13 +126,13 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Hardware Design
+  Integrated Circuit Design
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../linear-integrated-circuits/index.html">
-   Linear Integrated Circuits
+   Analog Linear Design
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -588,8 +588,8 @@ I &amp;= \dfrac{V}{R}
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-7e2445fd-ace6-4a7c-b160-acabfe935f8e">
-<span class="eqno">(8)<a class="headerlink" href="#equation-7e2445fd-ace6-4a7c-b160-acabfe935f8e" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-ddbbfebe-bb26-4ffd-9f5a-4279d821704c">
+<span class="eqno">(8)<a class="headerlink" href="#equation-ddbbfebe-bb26-4ffd-9f5a-4279d821704c" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -637,14 +637,14 @@ B &amp;=
 \end{bmatrix}
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d5bdf55d-4f3b-459f-be6a-9a10ec910a33">
-<span class="eqno">(9)<a class="headerlink" href="#equation-d5bdf55d-4f3b-459f-be6a-9a10ec910a33" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-447acd6d-c113-4588-a087-f20548c72002">
+<span class="eqno">(9)<a class="headerlink" href="#equation-447acd6d-c113-4588-a087-f20548c72002" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8b664fc9-c729-4604-9965-18b5108bba88">
-<span class="eqno">(10)<a class="headerlink" href="#equation-8b664fc9-c729-4604-9965-18b5108bba88" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-2b73eb46-e607-446a-b28b-801ebe813a87">
+<span class="eqno">(10)<a class="headerlink" href="#equation-2b73eb46-e607-446a-b28b-801ebe813a87" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -663,13 +663,13 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-70a71a10-c503-400b-86ac-b351e8475f65">
-<span class="eqno">(11)<a class="headerlink" href="#equation-70a71a10-c503-400b-86ac-b351e8475f65" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-8cfb28da-4971-455b-a149-54ac574edfad">
+<span class="eqno">(11)<a class="headerlink" href="#equation-8cfb28da-4971-455b-a149-54ac574edfad" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-f032abdd-7726-43fb-9e56-e3c80ae73e67">
-<span class="eqno">(12)<a class="headerlink" href="#equation-f032abdd-7726-43fb-9e56-e3c80ae73e67" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-5dc00f34-6f5c-485e-9040-eaa6b5304463">
+<span class="eqno">(12)<a class="headerlink" href="#equation-5dc00f34-6f5c-485e-9040-eaa6b5304463" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 V_g \dfrac{RCs+1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} &amp; 
 D \dfrac{RCs+1}{RRLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} \\[1em]
 R V_g \dfrac{1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} &amp; 

@@ -23,6 +23,7 @@
 
 # ```{figure} img/complex-conjugate-matching.png
 # Reference Circuit
+# width: 250px
 # ```
 
 # Given
@@ -58,6 +59,8 @@
 # Impedance Matched, Two Port Network
 # ```
 
+# <hr>
+# 
 # ## Matching Network Topologies
 
 # Lumped element matching networks are chosen for this design since the resonating frequencies are less than 100 MHz. Other solutions are obtained with transmission line models, however it is difficult to design reasonably sized lines and stubs due to the operating frequencies. Set input impedance $Z_S = Z_0$ and find the matching network for load $Z_L = R_L + jX_L$.
@@ -96,9 +99,11 @@
 # \end{align*}
 # $$
 
+# <hr>
+# 
 # ## Simultaneous Matching
 
-# ```{figure} img/coupled-shielded-loop-resonators-with-matching-networks.png
+# ```{figure} img/ideal-coupled-shielded-loop-resonators-with-matching-networks.png
 # Coupled Shielded-Loop Resonators with Matching Networks
 # ```
 
@@ -128,7 +133,7 @@
 # \end{align*}
 # $$
 
-# ```{figure} img/ideal-coupled-shielded-loop-resonators-with-matching-networks.png
+# ```{figure} img/coupled-shielded-loop-resonators-with-matching-networks.png
 # Including Feedline Effects
 # ```
 
@@ -170,6 +175,8 @@
 # 
 # $$\text{Return Loss} = -20\log_{10}|\Gamma|$$
 
+# <hr>
+# 
 # ## Maximum Power Transfer Efficiency
 
 # Recall the power transfer efficiency for a system operating at resonant frequency $\omega_0$ is 

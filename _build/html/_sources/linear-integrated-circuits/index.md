@@ -1,4 +1,4 @@
-# Linear Integrated Circuits
+# Analog Linear Design
 
 ```{figure} MOS-structure/simple-device.jpg
 ```

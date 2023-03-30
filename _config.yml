@@ -37,19 +37,13 @@ parse:
   myst_enable_extensions:
     # don't forget to list any other extensions you want enabled,
     # including those that are enabled by default!
-    ["dollarmath", "amsmath"]
+    ["dollarmath", "amsmath", "html_image"]
 
 sphinx:
   config:
     html_extra_path: ['resume']
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-    mathjax3_config:
-      "HTML-CSS": {
-        scale: 85,
-        availableFonts: ["STIX","TeX"],
-        preferredFont: "TeX",
-        webFont: "TeX",
-        imageFont: "TeX",
-        mtextFontInherit: false,
-        matchFontHeight: false
+    mathjax_config:
+      chtml: {
+        "scale": 0.85
       }
