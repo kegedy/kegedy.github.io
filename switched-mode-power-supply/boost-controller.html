@@ -210,12 +210,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../wireless-power-transfer/coupled-resonators-and-voltage-rectification.html">
-   Coupled Resonators and Voltage Rectification
+   Coupled Resonators
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../wireless-power-transfer/impedance-matching-and-frequency-tuning.html">
-   Impedance Matching and Frequency Tuning
+   Impedance-Matched Networks
   </a>
  </li>
 </ul>
@@ -320,24 +320,6 @@ title="Toggle navigation"
   </button>
   <div class="menu-dropdown__content">
     <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/switched-mode-power-supply/boost-controller.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
     </ul>
   </div>
 </div>
@@ -581,14 +563,14 @@ C\frac{d}{dt} \langle v(t)\rangle &amp;=
 \end{align*}\]</div>
 <p><strong>Differential Solution</strong></p>
 <p>x =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-073f8172-8258-4b05-a1d0-9ba056d5f6c7">
-<span class="eqno">(1)<a class="headerlink" href="#equation-073f8172-8258-4b05-a1d0-9ba056d5f6c7" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-5751c0fb-1433-4491-be62-800befce3ab6">
+<span class="eqno">(1)<a class="headerlink" href="#equation-5751c0fb-1433-4491-be62-800befce3ab6" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 \langle i(t)\rangle \\
 \langle v(t)\rangle
 \end{bmatrix}\]</div>
 <p>u =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-217cfd7c-cb9a-47af-91d3-177fc3551c37">
-<span class="eqno">(2)<a class="headerlink" href="#equation-217cfd7c-cb9a-47af-91d3-177fc3551c37" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-ca8ae3eb-2992-497d-8f40-c900520c5569">
+<span class="eqno">(2)<a class="headerlink" href="#equation-ca8ae3eb-2992-497d-8f40-c900520c5569" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 d(t) \\
 \langle v_g(t)\rangle
 \end{bmatrix}\]</div>
@@ -618,8 +600,8 @@ d(t) \\
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-2f74b6ca-e968-4510-bb13-1984b97bd91e">
-<span class="eqno">(3)<a class="headerlink" href="#equation-2f74b6ca-e968-4510-bb13-1984b97bd91e" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-2b313846-077f-41c6-a50a-3fad70017a56">
+<span class="eqno">(3)<a class="headerlink" href="#equation-2b313846-077f-41c6-a50a-3fad70017a56" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -693,14 +675,14 @@ B &amp;=
 \end{bmatrix} \\[1em]
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1733b0ae-d6fe-4bd3-ac45-4ba19b2e11a6">
-<span class="eqno">(4)<a class="headerlink" href="#equation-1733b0ae-d6fe-4bd3-ac45-4ba19b2e11a6" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-da58c955-91c9-4d31-b0ba-2fb285805bec">
+<span class="eqno">(4)<a class="headerlink" href="#equation-da58c955-91c9-4d31-b0ba-2fb285805bec" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6dccbf66-b6f0-4de2-adf0-6b41b869cd9f">
-<span class="eqno">(5)<a class="headerlink" href="#equation-6dccbf66-b6f0-4de2-adf0-6b41b869cd9f" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-ccedcdf3-dad4-4a42-9697-f1d7d94922ef">
+<span class="eqno">(5)<a class="headerlink" href="#equation-ccedcdf3-dad4-4a42-9697-f1d7d94922ef" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -719,14 +701,13 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-636dd0fc-8aa2-40ed-9548-9f7397ca559d">
-<span class="eqno">(6)<a class="headerlink" href="#equation-636dd0fc-8aa2-40ed-9548-9f7397ca559d" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-5f611cfc-b663-43e0-af48-a2414b5c8a7c">
+<span class="eqno">(6)<a class="headerlink" href="#equation-5f611cfc-b663-43e0-af48-a2414b5c8a7c" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
-<p>\nonumber</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8cefc584-806e-4608-9f8d-d622f1192aa8">
-<span class="eqno">(7)<a class="headerlink" href="#equation-8cefc584-806e-4608-9f8d-d622f1192aa8" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-2f7408aa-6323-4869-9ed4-7e1d34567954">
+<span class="eqno">(7)<a class="headerlink" href="#equation-2f7408aa-6323-4869-9ed4-7e1d34567954" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 \dfrac{D'RV_g}{D'^2R + R_{on}}\dfrac{(CRs + 2)}{(LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on})} &amp; \dfrac{RCs + 1}{LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on}} \\[1em]
 \dfrac{RV_g}{D'^2R + R_{on}}\dfrac{(D'^2R - R_{on}-Ls)}{(LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on})} &amp; \dfrac{D'R}{LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on}}
 \end{bmatrix}\]</div>
