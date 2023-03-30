@@ -51,7 +51,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"HTML-CSS": {"scale": 85, "availableFonts": ["STIX", "TeX"], "preferredFont": "TeX", "webFont": "TeX", "imageFont": "TeX", "mtextFontInherit": false, "matchFontHeight": false}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -588,8 +588,8 @@ I &amp;= \dfrac{V}{R}
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-b44461ec-48d0-4629-b455-abdb7274feeb">
-<span class="eqno">(8)<a class="headerlink" href="#equation-b44461ec-48d0-4629-b455-abdb7274feeb" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-7c214922-2ce8-44aa-9ffd-112b0f83155a">
+<span class="eqno">(8)<a class="headerlink" href="#equation-7c214922-2ce8-44aa-9ffd-112b0f83155a" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -637,14 +637,14 @@ B &amp;=
 \end{bmatrix}
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d23ad1c2-44d8-49b6-b422-827503c79d2a">
-<span class="eqno">(9)<a class="headerlink" href="#equation-d23ad1c2-44d8-49b6-b422-827503c79d2a" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-4ed77691-2585-4077-9925-2295a9de1417">
+<span class="eqno">(9)<a class="headerlink" href="#equation-4ed77691-2585-4077-9925-2295a9de1417" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-55f08b79-274d-4df0-ae45-5ad2a3468a3a">
-<span class="eqno">(10)<a class="headerlink" href="#equation-55f08b79-274d-4df0-ae45-5ad2a3468a3a" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-0d5876ab-4014-4bd6-bef2-1058ac4b30c2">
+<span class="eqno">(10)<a class="headerlink" href="#equation-0d5876ab-4014-4bd6-bef2-1058ac4b30c2" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -663,13 +663,13 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0b652162-74e4-44f2-8699-e36233f8df46">
-<span class="eqno">(11)<a class="headerlink" href="#equation-0b652162-74e4-44f2-8699-e36233f8df46" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-21d4abdd-6b44-4e56-978f-8817e8382810">
+<span class="eqno">(11)<a class="headerlink" href="#equation-21d4abdd-6b44-4e56-978f-8817e8382810" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-ef8c2f05-1e59-49b2-81fa-69449b925707">
-<span class="eqno">(12)<a class="headerlink" href="#equation-ef8c2f05-1e59-49b2-81fa-69449b925707" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-af8d16c5-33db-4902-85b0-90dbbac2d157">
+<span class="eqno">(12)<a class="headerlink" href="#equation-af8d16c5-33db-4902-85b0-90dbbac2d157" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 V_g \dfrac{RCs+1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} &amp; 
 D \dfrac{RCs+1}{RRLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} \\[1em]
 R V_g \dfrac{1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} &amp; 

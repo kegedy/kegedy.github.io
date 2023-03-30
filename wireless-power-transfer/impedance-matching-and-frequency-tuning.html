@@ -51,7 +51,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"HTML-CSS": {"scale": 85, "availableFonts": ["STIX", "TeX"], "preferredFont": "TeX", "webFont": "TeX", "imageFont": "TeX", "mtextFontInherit": false, "matchFontHeight": false}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -588,7 +588,8 @@ Z_L &amp;= R_L + jX_L
 <figure class="align-default" id="id1">
 <img alt="../_images/complex-conjugate-matching.png" src="../_images/complex-conjugate-matching.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Reference Circuit</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Reference Circuit
+width: 250px</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Given</p>
@@ -622,6 +623,7 @@ P_D = \dfrac{1}{2} Re\{v_A i^* \} &amp;= \dfrac{|v_S|^2}{2} \dfrac{Re\{Z_L \}}{|
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Impedance Matched, Two Port Network</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<hr>
 </section>
 <section id="matching-network-topologies">
 <h2>Matching Network Topologies<a class="headerlink" href="#matching-network-topologies" title="Permalink to this headline">#</a></h2>
@@ -659,11 +661,12 @@ X_s &amp;= -\sqrt{R_L(Z_0 - R_L)} - X_L &amp; \ &amp;
 X_p = \dfrac{\sqrt{R_L}Z_0}{\sqrt{Z_0-R_L}}
 \end{align*}
 \end{split}\]</div>
+<hr>
 </section>
 <section id="simultaneous-matching">
 <h2>Simultaneous Matching<a class="headerlink" href="#simultaneous-matching" title="Permalink to this headline">#</a></h2>
 <figure class="align-default" id="id4">
-<img alt="../_images/coupled-shielded-loop-resonators-with-matching-networks.png" src="../_images/coupled-shielded-loop-resonators-with-matching-networks.png" />
+<img alt="../_images/ideal-coupled-shielded-loop-resonators-with-matching-networks.png" src="../_images/ideal-coupled-shielded-loop-resonators-with-matching-networks.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">Coupled Shielded-Loop Resonators with Matching Networks</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -692,7 +695,7 @@ Z_{L}^{OPT} = Z_{S}^{OPT} = j\bigg(\omega L - \dfrac{1}{\omega C}\bigg) + \sqrt{
 \end{align*}
 \]</div>
 <figure class="align-default" id="id5">
-<img alt="../_images/ideal-coupled-shielded-loop-resonators-with-matching-networks.png" src="../_images/ideal-coupled-shielded-loop-resonators-with-matching-networks.png" />
+<img alt="../_images/coupled-shielded-loop-resonators-with-matching-networks.png" src="../_images/coupled-shielded-loop-resonators-with-matching-networks.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 17 </span><span class="caption-text">Including Feedline Effects</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -731,6 +734,7 @@ Z_{L}^{OPT}(\omega_0) = Z_{S}^{OPT}(\omega_0) = Z_0 \dfrac{\sqrt{R^2 + (\omega_0
 <p>If the system is mismatched, incident power from the source gets refected back and is measured via return loss.</p>
 <div class="math notranslate nohighlight">
 \[\text{Return Loss} = -20\log_{10}|\Gamma|\]</div>
+<hr>
 </section>
 <section id="maximum-power-transfer-efficiency">
 <h2>Maximum Power Transfer Efficiency<a class="headerlink" href="#maximum-power-transfer-efficiency" title="Permalink to this headline">#</a></h2>
