@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Impedance Matching and Frequency Tuning &#8212; Kevin Egedy</title>
+    <title>Boost Controller &#8212; Kevin Egedy</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Common Discussions" href="../microwave-transmission-lines/common-discussions.html" />
-    <link rel="prev" title="Coupled Resonators and Voltage Rectification" href="coupled-resonators-and-voltage-rectification.html" />
+    <link rel="next" title="Buck Controller" href="buck-controller.html" />
+    <link rel="prev" title="Desensitization" href="../non-linear-systems/desensitization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -180,14 +180,14 @@ const thebe_selector_output = ".output, .cell_output"
   Switched-Mode Power Supply
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../switched-mode-power-supply/boost-controller.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Boost Controller
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../switched-mode-power-supply/buck-controller.html">
+  <a class="reference internal" href="buck-controller.html">
    Buck Controller
   </a>
  </li>
@@ -197,24 +197,24 @@ const thebe_selector_output = ".output, .cell_output"
   Wireless Power Transfer
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="variables.html">
+  <a class="reference internal" href="../wireless-power-transfer/variables.html">
    Definition of Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="shielded-loop-resonators.html">
+  <a class="reference internal" href="../wireless-power-transfer/shielded-loop-resonators.html">
    Shielded-Loop Resonators
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="coupled-resonators-and-voltage-rectification.html">
+  <a class="reference internal" href="../wireless-power-transfer/coupled-resonators-and-voltage-rectification.html">
    Coupled Resonators and Voltage Rectification
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../wireless-power-transfer/impedance-matching-and-frequency-tuning.html">
    Impedance Matching and Frequency Tuning
   </a>
  </li>
@@ -321,7 +321,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/wireless-power-transfer/impedance-matching-and-frequency-tuning.ipynb"
+        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/switched-mode-power-supply/boost-controller.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -381,7 +381,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fwireless-power-transfer/impedance-matching-and-frequency-tuning.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fswitched-mode-power-supply/boost-controller.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -398,7 +398,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/wireless-power-transfer/impedance-matching-and-frequency-tuning.ipynb"
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/switched-mode-power-supply/boost-controller.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -426,7 +426,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/wireless-power-transfer/impedance-matching-and-frequency-tuning.ipynb"
+        <a href="../_sources/switched-mode-power-supply/boost-controller.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -486,28 +486,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#topics">
-   Topics
+  <a class="reference internal nav-link" href="#averaged-inductor-current-and-capacitor-voltage">
+   Averaged Inductor Current and Capacitor Voltage
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#complex-conjugate-matching">
-   Complex-Conjugate Matching
+  <a class="reference internal nav-link" href="#linearized-small-signal-model">
+   Linearized Small-Signal Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matching-network-topologies">
-   Matching Network Topologies
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simultaneous-matching">
-   Simultaneous Matching
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#maximum-power-transfer-efficiency">
-   Maximum Power Transfer Efficiency
+  <a class="reference internal nav-link" href="#system-outputs-in-frequency-domain">
+   System Outputs in Frequency Domain
   </a>
  </li>
 </ul>
@@ -519,7 +509,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Impedance Matching and Frequency Tuning</h1>
+                <h1>Boost Controller</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -530,28 +520,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#topics">
-   Topics
+  <a class="reference internal nav-link" href="#averaged-inductor-current-and-capacitor-voltage">
+   Averaged Inductor Current and Capacitor Voltage
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#complex-conjugate-matching">
-   Complex-Conjugate Matching
+  <a class="reference internal nav-link" href="#linearized-small-signal-model">
+   Linearized Small-Signal Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matching-network-topologies">
-   Matching Network Topologies
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simultaneous-matching">
-   Simultaneous Matching
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#maximum-power-transfer-efficiency">
-   Maximum Power Transfer Efficiency
+  <a class="reference internal nav-link" href="#system-outputs-in-frequency-domain">
+   System Outputs in Frequency Domain
   </a>
  </li>
 </ul>
@@ -564,189 +544,213 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="impedance-matching-and-frequency-tuning">
-<h1>Impedance Matching and Frequency Tuning<a class="headerlink" href="#impedance-matching-and-frequency-tuning" title="Permalink to this headline">#</a></h1>
-<section id="topics">
-<h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Lumped element matching circuits</p></li>
-<li><p>Frequency-tuned, wireless non-radiative power transfer systems</p></li>
-<li><p>Lighting up a light-emitting diode (LED) using a WNPT system</p></li>
-<li><p>Use frequency tuning to maintain the brightness of the LED</p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="boost-controller">
+<h1>Boost Controller<a class="headerlink" href="#boost-controller" title="Permalink to this headline">#</a></h1>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/boost-converter-schematic.png"><img alt="../_images/boost-converter-schematic.png" src="../_images/boost-converter-schematic.png" style="width: 400px;" /></a>
+</figure>
+<section id="averaged-inductor-current-and-capacitor-voltage">
+<h2>Averaged Inductor Current and Capacitor Voltage<a class="headerlink" href="#averaged-inductor-current-and-capacitor-voltage" title="Permalink to this headline">#</a></h2>
+<p><strong>Volt-Seconds</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\langle v_{L}(t)\rangle = L\frac{d}{dt} \langle i(t)\rangle &amp;= 
+\bigg[\bigg(\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} \bigg)d(t) + \bigg( \langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle \bigg)d'(t) \bigg] \\[0.5em]
+\langle v_{L}(t)\rangle = L\frac{d}{dt} \langle i(t)\rangle &amp;= 
+\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg] \\[0.5em]
+\frac{d}{dt} \langle i(t)\rangle &amp;= 
+\begin{matrix}
+\dfrac{1}{L} \\[1em]
+\end{matrix} 
+\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg] \\[0.5em]
+\end{align*}\]</div>
+<p><strong>Charge Balance</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\langle i_C (t) \rangle = 
+C\frac{d}{dt} \langle v(t)\rangle &amp;= 
+\bigg[\bigg(\dfrac{-\langle v(t)\rangle}{R}\bigg)d(t) +\bigg(\langle i(t)\rangle -\frac{\langle v(t)\rangle}{R} \bigg)d'(t)\bigg] \\[1em]
+\langle i_C (t) \rangle = 
+C\frac{d}{dt} \langle v(t)\rangle &amp;= 
+\bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] \\[1em]
+ \frac{d}{dt} \langle v(t)\rangle &amp;= 
+\begin{matrix}
+\dfrac{1}{C} \\[1em]
+\end{matrix}
+\bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] \\[1em]
+\end{align*}\]</div>
+<p><strong>Differential Solution</strong></p>
+<p>x =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a8273bee-82a1-400d-b796-ffacf03e7315">
+<span class="eqno">(1)<a class="headerlink" href="#equation-a8273bee-82a1-400d-b796-ffacf03e7315" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+\langle i(t)\rangle \\
+\langle v(t)\rangle
+\end{bmatrix}\]</div>
+<p>u =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a901d289-b451-446c-b920-56752f1d4fb4">
+<span class="eqno">(2)<a class="headerlink" href="#equation-a901d289-b451-446c-b920-56752f1d4fb4" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+d(t) \\
+\langle v_g(t)\rangle
+\end{bmatrix}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\dot{x} &amp;= f(x(t),u(t)) = \dfrac{d}{dt}
+\begin{bmatrix}
+\langle i(t)\rangle \\[1em]
+\langle v(t)\rangle
+\end{bmatrix} = 
+\begin{matrix}
+\dfrac{1}{L} \\[0.5em]
+\dfrac{1}{C}
+\end{matrix}
+\begin{bmatrix}
+\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \\[1em]
+\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t)s
+\end{bmatrix} \\[0.5em]
+\end{align*}\]</div>
 </section>
-<section id="complex-conjugate-matching">
-<h2>Complex-Conjugate Matching<a class="headerlink" href="#complex-conjugate-matching" title="Permalink to this headline">#</a></h2>
-<p><strong>Given</strong></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-Z_S &amp;= R_S + jX_S \\[0.5em]
-Z_L &amp;= R_L + jX_L 
-\end{align*}
-\end{split}\]</div>
-<figure class="align-default" id="id1">
-<img alt="../_images/complex-conjugate-matching.png" src="../_images/complex-conjugate-matching.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Reference Circuit</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Given</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-Z_S &amp;= R_S + jX_S \\[0.5em]
-Z_L &amp;= R_L + jX_L 
-\end{align*}
-\end{split}\]</div>
-<p>Voltage and current across load <span class="math notranslate nohighlight">\(Z_L\)</span> is defined as</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-v_A &amp;= v_S \dfrac{Z_L}{Z_S + Z_L} \\[0.5em]
-i &amp;= \dfrac{v_S}{Z_S + Z_L}
-\end{align*}
-\end{split}\]</div>
-<p>Power <span class="math notranslate nohighlight">\(P_D\)</span> delivered to load <span class="math notranslate nohighlight">\(Z_L\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-P_D = \dfrac{1}{2} Re\{v_A i^* \} &amp;= \dfrac{|v_S|^2}{2} \dfrac{Re\{Z_L \}}{|Z_S + Z_L|^2} \\[0.5em]
-    &amp;= \dfrac{|v_S|^2}{2} \dfrac{R_L}{(R_S+R_L)^2 + (X_S + X_L)^2}
-\end{align*}
-\end{split}\]</div>
-<p>Analyzing the power relation, it is shown that maximum power transfer occurs when <span class="math notranslate nohighlight">\(Z_S = Z_L^*\)</span>.</p>
-<figure class="align-default" id="id2">
-<img alt="../_images/two-port-network.png" src="../_images/two-port-network.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Impedance Matched, Two Port Network</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<section id="linearized-small-signal-model">
+<h2>Linearized Small-Signal Model<a class="headerlink" href="#linearized-small-signal-model" title="Permalink to this headline">#</a></h2>
+<p><strong>Derive a linearized small-signal model</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\dot{\hat{x}}(t) &amp;\approx A \hat{x}(t) + B \hat{u}(t) \\[0.5em]
+\hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
+\end{align*}\]</div>
+<p><strong>where</strong></p>
+<div class="amsmath math notranslate nohighlight" id="equation-9b054a2d-0367-456a-ace7-ccc6bb9abaac">
+<span class="eqno">(3)<a class="headerlink" href="#equation-9b054a2d-0367-456a-ace7-ccc6bb9abaac" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+x(t) = \hat{x}(t) + X &amp;&amp; X = 
+\begin{bmatrix}
+I \\
+V
+\end{bmatrix} \\[0.5em] 
+u(t) = \hat{u}(t) + U &amp;&amp; U = 
+\begin{bmatrix}
+D \\
+V_g 
+\end{bmatrix}
+\\[0.5em]
+\end{matrix}\]</div>
+<p><strong>Volt-Seconds (Large Signal)</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\langle v_{L}(t)\rangle &amp;= L\frac{d}{dt} \langle i(t)\rangle = 
+\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg]  = 0\\[0.5em]
+0 &amp;=  V_g - I R_{on} - VD'   \\[0.5em]
+VD' &amp;= V_g - I R_{on} \\[0.5em]
+V &amp;= \dfrac{V_g - I R_{on}}{D'} \bigg|_{I = \dfrac{V}{D'R} }  \\[0.5em]
+V &amp;= \dfrac{V_g - \dfrac{V}{D'R} R_{on}}{D'} \\[0.5em]
+V &amp;= \dfrac{V_g}{D'}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[0.5em]
+\end{align*}\]</div>
+<p><strong>Charge Balance (Large Signal)</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\langle i_C (t) \rangle &amp;= 
+C\frac{d}{dt} \langle v(t)\rangle = 
+\bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] = 0\\[1em]
+0 &amp;=\dfrac{-V}{R} + I D' \\[1em]
+I &amp;= \dfrac{V}{D'R} \\[1em]
+I &amp;= \dfrac{1}{D'R}\cdot \frac{V_g}{D'}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
+I &amp;= \frac{V_g}{D'^2 R}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
+\end{align*}\]</div>
+<p><strong>Find A, B, C, D</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+A = \dfrac{d}{d\hat{x}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &amp;= 
+\begin{bmatrix}
+\ \ \dfrac{\partial f_1}{\partial x_1} &amp; \dfrac{\partial f_1}{\partial x_2} \ \ \\[1em] 
+\ \ \dfrac{\partial f_2}{\partial x_1} &amp; \dfrac{\partial f_2}{\partial x_2} \ \
+\end{bmatrix}\bigg|_{x,u} = 
+\begin{bmatrix}
+\dfrac{\partial f_1}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v}(t)\rangle} \\[1em] 
+\dfrac{\partial f_2}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_2}{\partial \langle \hat{v}(t)\rangle}
+\end{bmatrix}\bigg|_{x,u} \\[1em]
+A &amp;= 
+\begin{bmatrix}
+\dfrac{-R_{on}}{L} &amp; \dfrac{-D'}{L} \\[1em]
+\dfrac{D'}{C} &amp; \dfrac{-1}{RC}
+\end{bmatrix} \\[1em]
+\end{align*}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*} B = \dfrac{d}{d\hat{u}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &amp;= 
+\begin{bmatrix}
+\dfrac{\partial f_1}{\partial u_1} &amp; \dfrac{\partial f_1}{\partial u_2} \\[1em] 
+\dfrac{\partial f_2}{\partial u_1} &amp; \dfrac{\partial f_2}{\partial u_2}
+\end{bmatrix}\bigg|_{x,u} = 
+\begin{bmatrix}
+\dfrac{\partial f_1}{\partial \hat{d'}(t)} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v_g}(t)\rangle} \\[1em] 
+\dfrac{\partial f_2}{\partial \hat{d'}(t)} &amp; \dfrac{\partial f_2}{\partial \langle \hat{v_g}(t)\rangle}
+\end{bmatrix}\bigg|_{x,u} \\[1em]
+B &amp;= 
+\begin{bmatrix}
+\dfrac{V}{L} &amp; \dfrac{1}{L} \\[1em]
+\dfrac{-I}{C} &amp; 0
+\end{bmatrix} = 
+\begin{bmatrix}
+\dfrac{V_g}{D'L}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} &amp; \dfrac{1}{L} \\[1.5em]
+\dfrac{-V_g}{D'^2 RC}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} &amp; 0
+\end{bmatrix} \\[1em]
+\end{align*}\]</div>
+<p>C =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-85fd642e-856d-4b12-8606-61e1eff12b96">
+<span class="eqno">(4)<a class="headerlink" href="#equation-85fd642e-856d-4b12-8606-61e1eff12b96" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+0 &amp; 1  \\
+1 &amp; 0
+\end{bmatrix}\]</div>
+<p>E =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-73b99d39-e27a-4a7f-b81e-10ff87274cd9">
+<span class="eqno">(5)<a class="headerlink" href="#equation-73b99d39-e27a-4a7f-b81e-10ff87274cd9" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+0 &amp; 0 \\
+0 &amp; 0
+\end{bmatrix}\]</div>
 </section>
-<section id="matching-network-topologies">
-<h2>Matching Network Topologies<a class="headerlink" href="#matching-network-topologies" title="Permalink to this headline">#</a></h2>
-<p>Lumped element matching networks are chosen for this design since the resonating frequencies are less than 100 MHz. Other solutions are obtained with transmission line models, however it is difficult to design reasonably sized lines and stubs due to the operating frequencies. Set input impedance <span class="math notranslate nohighlight">\(Z_S = Z_0\)</span> and find the matching network for load <span class="math notranslate nohighlight">\(Z_L = R_L + jX_L\)</span>.</p>
-<figure class="align-default" id="id3">
-<img alt="../_images/matching-network-topologies.png" src="../_images/matching-network-topologies.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Left: Load-Parallel-Series;      Right: Load-Series-Parallel</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p><strong>Lump Element: Load-Parallel-Series</strong></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-X_s &amp;= -Xp + \dfrac{X_L Z_0}{R_L} + \dfrac{X_p Z_0}{R_L} \\[0.5em]
-X_p &amp;= -\dfrac{R_L^2 + X_L^2}{X_L \pm \sqrt{R_L/Z_0}\sqrt{R_L^2 + X_L^2 - Z_0 R_L}}
-\end{align*}
-\end{split}\]</div>
-<p><strong>Solution Conditions</strong></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-Re\{{\dfrac{1}{Z_L}}\} &lt; \dfrac{1}{Z_0} \\[0.5em]
-\dfrac{R_L}{R_L^2 + X_L^2} &lt; \dfrac{1}{Z_0} \\[0.5em]
-R_L^2 + X_L^2 - Z_0 R_L &gt; 0
-\end{align*}
-\end{split}\]</div>
-<p><strong>Lump Element: Load-Series-Parallel</strong></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-X_s &amp;= \sqrt{R_L(Z_0 - R_L)} - X_L &amp; \ &amp;
-X_p = -\dfrac{\sqrt{R_L}Z_0}{\sqrt{Z_0-R_L}} \\
-X_s &amp;= -\sqrt{R_L(Z_0 - R_L)} - X_L &amp; \ &amp;
-X_p = \dfrac{\sqrt{R_L}Z_0}{\sqrt{Z_0-R_L}}
-\end{align*}
-\end{split}\]</div>
-</section>
-<section id="simultaneous-matching">
-<h2>Simultaneous Matching<a class="headerlink" href="#simultaneous-matching" title="Permalink to this headline">#</a></h2>
-<figure class="align-default" id="id4">
-<img alt="../_images/coupled-shielded-loop-resonators-with-matching-networks.png" src="../_images/coupled-shielded-loop-resonators-with-matching-networks.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Coupled Shielded-Loop Resonators with Matching Networks</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Inductively-coupled RLC circuits assuming identical loops</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-Z_{in} &amp;= R + j\bigg(\omega L - \dfrac{1}{\omega C} \bigg) + \dfrac{(\omega M)^2}{R + Z_L + j\bigg(\omega L - \dfrac{1}{\omega C} \bigg)} \\[0.5em]
-Z_{out} &amp;= R + j\bigg(\omega L - \dfrac{1}{\omega C} \bigg) + \dfrac{(\omega M)^2}{R + Z_S + j\bigg(\omega L - \dfrac{1}{\omega C} \bigg)}
-\end{align*}
-\end{split}\]</div>
-<p>For a simultaneous, complex-conjugate match, we must ensure that</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-Z_S &amp;= Z_{in}^* \\[0.5em]
-Z_L &amp;= Z_{out}^*
-\end{align*}
-\end{split}\]</div>
-<p>Then the simulataneous matching is satisfied by</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align*}
-Z_{L}^{OPT} = Z_{S}^{OPT} = j\bigg(\omega L - \dfrac{1}{\omega C}\bigg) + \sqrt{R^2 + (\omega M)^2}
-\end{align*}
-\]</div>
-<figure class="align-default" id="id5">
-<img alt="../_images/ideal-coupled-shielded-loop-resonators-with-matching-networks.png" src="../_images/ideal-coupled-shielded-loop-resonators-with-matching-networks.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Including Feedline Effects</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Factoring in feedline effects, the adjusted source and load impedance become</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-Z_{S}^{'} &amp;= Z_0 \dfrac{Z_S - j Z_0 \tan(\beta l)}{Z_0 - j Z_S \tan(\beta l)} \\[0.5em]
-Z_{L}^{'} &amp;= Z_0 \dfrac{Z_L - j Z_0 \tan(\beta l)}{Z_0 - j Z_L \tan(\beta l)} 
-\end{align*}
-\end{split}\]</div>
-<p>Then the simulataneous matching is satisfied by</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align*}
-Z_{L}^{OPT} = Z_{S}^{OPT} = Z_0 \dfrac{j\bigg(\omega L - \dfrac{1}{\omega C}\bigg) + \sqrt{R^2 + (\omega M)^2} - j Z_0 \tan(\beta l)}{Z_0 - j\bigg[j\bigg(\omega L - \dfrac{1}{\omega C}\bigg) + \sqrt{R^2 + (\omega M)^2}\bigg]\tan(\beta l)}
-\end{align*}
-\]</div>
-<p>At resonant frequency this simplifies to</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align*}
-Z_{L}^{OPT}(\omega_0) = Z_{S}^{OPT}(\omega_0) = Z_0 \dfrac{\sqrt{R^2 + (\omega_0 M)^2} - j Z_0 \tan(\beta l)}{Z_0 - j\sqrt{R^2 + (\omega_0 M)^2} \tan(\beta l)}
-\end{align*}
-\]</div>
-<p><strong>Calculate</strong></p>
-<p>Assuming coupling distance of 5cm, determine</p>
-<ul class="simple">
-<li><p>mutual inductance <span class="math notranslate nohighlight">\(M\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(R,L,C\)</span> of the shielded resonator loop</p></li>
-<li><p><span class="math notranslate nohighlight">\(Z_S = Z_L\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(Z_S^{*} = Z_L^{*}\)</span></p></li>
-<li><p>Matching network lump elements</p></li>
-</ul>
-<p>If the system is mismatched, incident power from the source gets refected back and is measured via return loss.</p>
-<div class="math notranslate nohighlight">
-\[\text{Return Loss} = -20\log_{10}|\Gamma|\]</div>
-</section>
-<section id="maximum-power-transfer-efficiency">
-<h2>Maximum Power Transfer Efficiency<a class="headerlink" href="#maximum-power-transfer-efficiency" title="Permalink to this headline">#</a></h2>
-<p>Recall the power transfer efficiency for a system operating at resonant frequency <span class="math notranslate nohighlight">\(\omega_0\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[\eta = \dfrac{4R_L^2(\omega_0 M)^2}{\bigg((R+R_L)^2 + (\omega_0 M)^2\bigg)^2}\]</div>
-<p>Examining the impedance-matched system for magnetically coupled loops, we see it only satisfies the weak coupling condition. (for <span class="math notranslate nohighlight">\(R \neq 0\)</span>)</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-R_L^{OPT} = Re\{Z_{L}^{OPT}\} = \sqrt{R^2 + (\omega M)^2} &gt; \omega M \\[0.5em]
-\end{align*}
-\end{split}\]</div>
-<p>Thus, subsituting in <span class="math notranslate nohighlight">\(R_L^{OPT}\)</span>, the maximum possible power transfer efficiency for a system at resonant frequency <span class="math notranslate nohighlight">\(\omega_0\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[\eta = \dfrac{4\bigg(R^2 + (\omega M)^2\bigg)^2(\omega_0 M)^2}{\bigg(\bigg(R+\sqrt{R^2 + (\omega M)^2}\bigg)^2 + (\omega_0 M)^2\bigg)^2}\]</div>
+<section id="system-outputs-in-frequency-domain">
+<h2>System Outputs in Frequency Domain<a class="headerlink" href="#system-outputs-in-frequency-domain" title="Permalink to this headline">#</a></h2>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\dot{\hat{x}}(t) &amp;= A \hat{x}(t) + B \hat{u}(t) \\[0.5em]
+\dot{\hat{y}}(t) &amp;= C \hat{x}(t) + D \hat{u}(t) \\[0.5em]
+ \text{Laplace Transform } &amp;\\[0.5em]
+s\hat{x}(s) &amp;= A \hat{x}(s) + B \hat{u}(s) \\[0.5em]
+sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
+\hat{x}(s) &amp;= \left(sI-A\right)^{-1}B \hat{u}(s) \\[0.5em]
+\hat{y}(s) &amp;= \bigg(C(sI-A)^{-1}B +E \bigg)\hat{u}(s) = G(s) \hat{u}(s)
+\end{align*}\]</div>
+<p><strong>Solver</strong></p>
+<p>G(s) =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0cb5aff7-fa57-4dfd-ab64-d114f20f1184">
+<span class="eqno">(6)<a class="headerlink" href="#equation-0cb5aff7-fa57-4dfd-ab64-d114f20f1184" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+G_{id}(s) &amp; G_{ig}(s) \\[1em]
+G_{vd}(s) &amp; G_{vg}(s)
+\end{bmatrix}\]</div>
+<p>\nonumber</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8beb55cb-6057-4bbe-a587-be6054a9ea82">
+<span class="eqno">(7)<a class="headerlink" href="#equation-8beb55cb-6057-4bbe-a587-be6054a9ea82" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+\dfrac{D'RV_g}{D'^2R + R_{on}}\dfrac{(CRs + 2)}{(LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on})} &amp; \dfrac{RCs + 1}{LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on}} \\[1em]
+\dfrac{RV_g}{D'^2R + R_{on}}\dfrac{(D'^2R - R_{on}-Ls)}{(LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on})} &amp; \dfrac{D'R}{LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on}}
+\end{bmatrix}\]</div>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Transfer Function</p></th>
+<th class="text-align:left head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(G_{id}(s)\)</span></p></td>
+<td class="text-align:left"><p>Small signal output current to duty ratio</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(G_{ig}(s)\)</span></p></td>
+<td class="text-align:left"><p>Small signal output current to supply voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(G_{vd}(s)\)</span></p></td>
+<td class="text-align:left"><p>Small signal output voltage to duty ratio</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(G_{vg}(s)\)</span></p></td>
+<td class="text-align:left"><p>Small signal output voltage to supply voltage</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 
@@ -763,7 +767,7 @@ R_L^{OPT} = Re\{Z_{L}^{OPT}\} = \sqrt{R^2 + (\omega M)^2} &gt; \omega M \\[0.5em
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./wireless-power-transfer"
+            path: "./switched-mode-power-supply"
         },
         predefinedOutput: true
     }
@@ -777,17 +781,17 @@ R_L^{OPT} = Re\{Z_{L}^{OPT}\} = \sqrt{R^2 + (\omega M)^2} &gt; \omega M \\[0.5em
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="coupled-resonators-and-voltage-rectification.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../non-linear-systems/desensitization.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Coupled Resonators and Voltage Rectification</p>
+            <p class="prev-next-title">Desensitization</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../microwave-transmission-lines/common-discussions.html" title="next page">
+    <a class='right-next' id="next-link" href="buck-controller.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Common Discussions</p>
+        <p class="prev-next-title">Buck Controller</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

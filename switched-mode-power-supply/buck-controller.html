@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Boost Controller &#8212; Kevin Egedy</title>
+    <title>Buck Controller &#8212; Kevin Egedy</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Definition of Variables" href="../wireless-power-transfer/variables.html" />
-    <link rel="prev" title="Desensitization" href="../non-linear-systems/desensitization.html" />
+    <link rel="prev" title="Boost Controller" href="boost-controller.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -177,13 +177,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Controller Design
+  Switched-Mode Power Supply
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="boost-controller.html">
+   Boost Controller
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Boost Controller
+   Buck Controller
   </a>
  </li>
 </ul>
@@ -316,7 +321,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/converter/boost-controller.ipynb"
+        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/switched-mode-power-supply/buck-controller.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -376,7 +381,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fconverter/boost-controller.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fswitched-mode-power-supply/buck-controller.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -393,7 +398,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/converter/boost-controller.ipynb"
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/switched-mode-power-supply/buck-controller.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -421,7 +426,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/converter/boost-controller.ipynb"
+        <a href="../_sources/switched-mode-power-supply/buck-controller.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -481,11 +486,6 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#averaged-inductor-current-and-capacitor-voltage">
-   Averaged Inductor Current and Capacitor Voltage
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linearized-small-signal-model">
    Linearized Small-Signal Model
   </a>
@@ -504,7 +504,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Boost Controller</h1>
+                <h1>Buck Controller</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -514,11 +514,6 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#averaged-inductor-current-and-capacitor-voltage">
-   Averaged Inductor Current and Capacitor Voltage
-  </a>
- </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linearized-small-signal-model">
    Linearized Small-Signal Model
@@ -539,68 +534,51 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="boost-controller">
-<h1>Boost Controller<a class="headerlink" href="#boost-controller" title="Permalink to this headline">#</a></h1>
-<section id="averaged-inductor-current-and-capacitor-voltage">
-<h2>Averaged Inductor Current and Capacitor Voltage<a class="headerlink" href="#averaged-inductor-current-and-capacitor-voltage" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="buck-controller">
+<h1>Buck Controller<a class="headerlink" href="#buck-controller" title="Permalink to this headline">#</a></h1>
+<p>Find the small signal output voltage to duty ratio <span class="math notranslate nohighlight">\(G_{vd}(s)\)</span> and small signal output current to duty ratio <span class="math notranslate nohighlight">\(G_{id}(s)\)</span> transfer functions. General form defined as</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+G_0 \dfrac{1-\dfrac{s}{w_z}}{1+\dfrac{s}{Qw_0}+ \left(\dfrac{s}{\omega_0} \right)^2} .\\
+\end{align*}\]</div>
 <p><strong>Volt-Seconds</strong></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\langle v_{L}(t)\rangle = L\frac{d}{dt} \langle i(t)\rangle &amp;= 
-\bigg[\bigg(\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} \bigg)d(t) + \bigg( \langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle \bigg)d'(t) \bigg] \\[0.5em]
-\langle v_{L}(t)\rangle = L\frac{d}{dt} \langle i(t)\rangle &amp;= 
-\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg] \\[0.5em]
-\frac{d}{dt} \langle i(t)\rangle &amp;= 
-\begin{matrix}
-\dfrac{1}{L} \\[1em]
-\end{matrix} 
-\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg] \\[0.5em]
+\langle v_{L}(t)\rangle &amp;= L\frac{d}{dt} \langle i(t)\rangle = 
+\bigg[\bigg(\langle{v_g}(t)\rangle -  \langle i(t)\rangle R_{on} - \langle i(t)\rangle R_L - \langle v(t)\rangle \bigg)d(t) + \bigg( -  \langle i(t)\rangle R_{on} - \langle i(t)\rangle R_L - \langle v(t)\rangle \bigg)d'(t) \bigg] \\[1em]
+\langle v_{L}(t)\rangle &amp;= L\frac{d}{dt} \langle i(t)\rangle = 
+\bigg[\langle{v_g}(t)\rangle d(t) -  \langle i(t)\rangle R_{on} - \langle i(t)\rangle R_L - \langle v(t)\rangle \bigg] \\[1em]
+V_L &amp;= V_g D - I R_{on} - I R_L - V \\[1em]
+V_L &amp;= V_g D - \dfrac{V}{R} R_{on} - \dfrac{V}{R} R_L - V \\[1em]
 \end{align*}\]</div>
 <p><strong>Charge Balance</strong></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\langle i_C (t) \rangle = 
-C\frac{d}{dt} \langle v(t)\rangle &amp;= 
-\bigg[\bigg(\dfrac{-\langle v(t)\rangle}{R}\bigg)d(t) +\bigg(\langle i(t)\rangle -\frac{\langle v(t)\rangle}{R} \bigg)d'(t)\bigg] \\[1em]
-\langle i_C (t) \rangle = 
-C\frac{d}{dt} \langle v(t)\rangle &amp;= 
-\bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] \\[1em]
- \frac{d}{dt} \langle v(t)\rangle &amp;= 
-\begin{matrix}
-\dfrac{1}{C} \\[1em]
-\end{matrix}
-\bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] \\[1em]
+\langle i_C (t) \rangle &amp;= 
+C\frac{d}{dt} \langle v(t)\rangle = 
+\bigg[\bigg(\langle i(t)\rangle -\frac{\langle v(t)\rangle}{R} \bigg)d(t) +\bigg(\langle i(t)\rangle -\frac{\langle v(t)\rangle}{R} \bigg)d'(t) \bigg] \\[1em]
+\langle i_C (t) \rangle &amp;= 
+C\frac{d}{dt} \langle v(t)\rangle = 
+\bigg[\langle i(t)\rangle -\frac{\langle v(t)\rangle}{R} \bigg] \\[1em]
+I &amp;= \dfrac{V}{R}
 \end{align*}\]</div>
-<p><strong>Differential Solution</strong></p>
-<p>x =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0ef8861f-58be-490e-91c2-972dd4e956b0">
-<span class="eqno">(1)<a class="headerlink" href="#equation-0ef8861f-58be-490e-91c2-972dd4e956b0" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
-\langle i(t)\rangle \\
-\langle v(t)\rangle
-\end{bmatrix}\]</div>
-<p>u =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-072804df-0ed5-4b02-89f7-edfe1897ac9a">
-<span class="eqno">(2)<a class="headerlink" href="#equation-072804df-0ed5-4b02-89f7-edfe1897ac9a" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
-d(t) \\
-\langle v_g(t)\rangle
-\end{bmatrix}\]</div>
+<p><strong>System Inputs</strong></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-\dot{x} &amp;= f(x(t),u(t)) = \dfrac{d}{dt}
+\dot{x} = \dfrac{d}{dt}
 \begin{bmatrix}
-\langle i(t)\rangle \\[1em]
-\langle v(t)\rangle
+\langle \hat{i}(t)\rangle \\
+\langle \hat{v}(t)\rangle
 \end{bmatrix} = 
 \begin{matrix}
-\dfrac{1}{L} \\[0.5em]
+\dfrac{1}{L} \\[1em]
 \dfrac{1}{C}
 \end{matrix}
 \begin{bmatrix}
-\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \\[1em]
-\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t)s
-\end{bmatrix} \\[0.5em]
+\langle{v_g}(t)\rangle d(t) -  \langle i(t)\rangle R_{on} - \langle i(t)\rangle R_L - \langle v(t)\rangle \\[1em]
+\langle i(t)\rangle - \dfrac{\langle v(t)\rangle}{R}
+\end{bmatrix} 
 \end{align*}\]</div>
-</section>
 <section id="linearized-small-signal-model">
 <h2>Linearized Small-Signal Model<a class="headerlink" href="#linearized-small-signal-model" title="Permalink to this headline">#</a></h2>
 <p><strong>Derive a linearized small-signal model</strong></p>
@@ -610,8 +588,8 @@ d(t) \\
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-748ac602-72fa-4df8-b83d-17c77ee538f4">
-<span class="eqno">(3)<a class="headerlink" href="#equation-748ac602-72fa-4df8-b83d-17c77ee538f4" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-7e2445fd-ace6-4a7c-b160-acabfe935f8e">
+<span class="eqno">(8)<a class="headerlink" href="#equation-7e2445fd-ace6-4a7c-b160-acabfe935f8e" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -624,28 +602,6 @@ V_g
 \end{bmatrix}
 \\[0.5em]
 \end{matrix}\]</div>
-<p><strong>Volt-Seconds (Large Signal)</strong></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\langle v_{L}(t)\rangle &amp;= L\frac{d}{dt} \langle i(t)\rangle = 
-\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg]  = 0\\[0.5em]
-0 &amp;=  V_g - I R_{on} - VD'   \\[0.5em]
-VD' &amp;= V_g - I R_{on} \\[0.5em]
-V &amp;= \dfrac{V_g - I R_{on}}{D'} \bigg|_{I = \dfrac{V}{D'R} }  \\[0.5em]
-V &amp;= \dfrac{V_g - \dfrac{V}{D'R} R_{on}}{D'} \\[0.5em]
-V &amp;= \dfrac{V_g}{D'}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[0.5em]
-\end{align*}\]</div>
-<p><strong>Charge Balance (Large Signal)</strong></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\langle i_C (t) \rangle &amp;= 
-C\frac{d}{dt} \langle v(t)\rangle = 
-\bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] = 0\\[1em]
-0 &amp;=\dfrac{-V}{R} + I D' \\[1em]
-I &amp;= \dfrac{V}{D'R} \\[1em]
-I &amp;= \dfrac{1}{D'R}\cdot \frac{V_g}{D'}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
-I &amp;= \frac{V_g}{D'^2 R}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
-\end{align*}\]</div>
 <p><strong>Find A, B, C, D</strong></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -660,9 +616,9 @@ A = \dfrac{d}{d\hat{x}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &amp;=
 \end{bmatrix}\bigg|_{x,u} \\[1em]
 A &amp;= 
 \begin{bmatrix}
-\dfrac{-R_{on}}{L} &amp; \dfrac{-D'}{L} \\[1em]
-\dfrac{D'}{C} &amp; \dfrac{-1}{RC}
-\end{bmatrix} \\[1em]
+\dfrac{-(R_{on} + R_L)}{L} &amp; \dfrac{-1}{L} \\[1em]
+\dfrac{1}{C} &amp; \dfrac{-1}{RC}
+\end{bmatrix}
 \end{align*}\]</div>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*} B = \dfrac{d}{d\hat{u}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &amp;= 
@@ -676,23 +632,19 @@ A &amp;=
 \end{bmatrix}\bigg|_{x,u} \\[1em]
 B &amp;= 
 \begin{bmatrix}
-\dfrac{V}{L} &amp; \dfrac{1}{L} \\[1em]
-\dfrac{-I}{C} &amp; 0
-\end{bmatrix} = 
-\begin{bmatrix}
-\dfrac{V_g}{D'L}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} &amp; \dfrac{1}{L} \\[1.5em]
-\dfrac{-V_g}{D'^2 RC}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} &amp; 0
-\end{bmatrix} \\[1em]
+\dfrac{V_g}{L} &amp; \dfrac{D}{L} \\[1em]
+0 &amp; 0
+\end{bmatrix}
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-95ddbeec-e07a-4718-9177-eed64370b17a">
-<span class="eqno">(4)<a class="headerlink" href="#equation-95ddbeec-e07a-4718-9177-eed64370b17a" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-d5bdf55d-4f3b-459f-be6a-9a10ec910a33">
+<span class="eqno">(9)<a class="headerlink" href="#equation-d5bdf55d-4f3b-459f-be6a-9a10ec910a33" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-88faf03b-ad1c-48a4-b540-9e7a13ed70a8">
-<span class="eqno">(5)<a class="headerlink" href="#equation-88faf03b-ad1c-48a4-b540-9e7a13ed70a8" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-8b664fc9-c729-4604-9965-18b5108bba88">
+<span class="eqno">(10)<a class="headerlink" href="#equation-8b664fc9-c729-4604-9965-18b5108bba88" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -711,11 +663,32 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d9d8684a-65ee-482c-98de-e9e0a1c04276">
-<span class="eqno">(6)<a class="headerlink" href="#equation-d9d8684a-65ee-482c-98de-e9e0a1c04276" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-70a71a10-c503-400b-86ac-b351e8475f65">
+<span class="eqno">(11)<a class="headerlink" href="#equation-70a71a10-c503-400b-86ac-b351e8475f65" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-f032abdd-7726-43fb-9e56-e3c80ae73e67">
+<span class="eqno">(12)<a class="headerlink" href="#equation-f032abdd-7726-43fb-9e56-e3c80ae73e67" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+V_g \dfrac{RCs+1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} &amp; 
+D \dfrac{RCs+1}{RRLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} \\[1em]
+R V_g \dfrac{1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} &amp; 
+R D \dfrac{1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}}
+\end{bmatrix}\]</div>
+<hr>
+<p><strong>Small signal output voltage to duty ratio transfer function</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+G_{vd}(s) &amp;= G_0 \dfrac{1-\dfrac{s}{w_z}}{1+\dfrac{s}{Qw_0}+ \left(\dfrac{s}{\omega_0} \right)^2} \\
+G_{vd}(s) &amp;= R V_g \dfrac{1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}}  \\
+\end{align*}\]</div>
+<hr>
+<p><strong>Small signal output current to duty ratio transfer function</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+G_{id}(s) &amp;= G_0 \dfrac{1-\dfrac{s}{w_z}}{1+\dfrac{s}{Qw_0}+ \left(\dfrac{s}{\omega_0} \right)^2} \\[1em]
+G_{id}(s) &amp;= V_g \dfrac{RCs+1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}}   \\[1em]
+\end{align*}\]</div>
 </section>
 </section>
 
@@ -732,7 +705,7 @@ G_{vd}(s) &amp; G_{vg}(s)
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./converter"
+            path: "./switched-mode-power-supply"
         },
         predefinedOutput: true
     }
@@ -746,11 +719,11 @@ G_{vd}(s) &amp; G_{vg}(s)
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../non-linear-systems/desensitization.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="boost-controller.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Desensitization</p>
+            <p class="prev-next-title">Boost Controller</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../wireless-power-transfer/variables.html" title="next page">
