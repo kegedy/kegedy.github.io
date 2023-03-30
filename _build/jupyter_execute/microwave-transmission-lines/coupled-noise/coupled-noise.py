@@ -523,7 +523,7 @@ WaveformRTimePlt(
 # | $K_L$     | 0.28879  | 0.26191 |
 # 
 
-# ### (3) Using the integration method, estimate the values of $K_C$ and $K_L$
+# #### (3) Using the integration method, estimate the values of $K_C$ and $K_L$
 
 # In[12]:
 

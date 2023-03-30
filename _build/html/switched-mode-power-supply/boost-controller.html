@@ -1,0 +1,823 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Boost Controller &#8212; Kevin Egedy</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"HTML-CSS": {"scale": 85, "availableFonts": ["STIX", "TeX"], "preferredFont": "TeX", "webFont": "TeX", "imageFont": "TeX", "mtextFontInherit": false, "matchFontHeight": false}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Buck Controller" href="buck-controller.html" />
+    <link rel="prev" title="Desensitization" href="../non-linear-systems/desensitization.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-C3J0M23XR2"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-C3J0M23XR2');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Kevin Egedy</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Summary
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Hardware Design
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../linear-integrated-circuits/index.html">
+   Linear Integrated Circuits
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../linear-integrated-circuits/bandgap-reference.html">
+     Bandgap Reference
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../linear-integrated-circuits/current-mirrors.html">
+     Current Mirrors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../linear-integrated-circuits/current-source-drivers.html">
+     Current Drivers for Neural Stimulation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../non-linear-systems/index.html">
+   Non-Linear Systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../non-linear-systems/desensitization.html">
+     Desensitization
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Switched-Mode Power Supply
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Boost Controller
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="buck-controller.html">
+   Buck Controller
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Wireless Power Transfer
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../wireless-power-transfer/variables.html">
+   Definition of Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../wireless-power-transfer/shielded-loop-resonators.html">
+   Shielded-Loop Resonators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../wireless-power-transfer/coupled-resonators-and-voltage-rectification.html">
+   Coupled Resonators and Voltage Rectification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../wireless-power-transfer/impedance-matching-and-frequency-tuning.html">
+   Impedance Matching and Frequency Tuning
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Microwave Transmission Lines
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../microwave-transmission-lines/common-discussions.html">
+   Common Discussions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../microwave-transmission-lines/time-domain-response/time-domain-response.html">
+   Time-Domain Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../microwave-transmission-lines/coupled-noise/coupled-noise.html">
+   Coupled Noises Analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/common-discussions/common-discussions.html">
+   Common Discussions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/arduino-uno.html">
+   Arduino Uno
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../projects/ISL6236A.html">
+   ISL6236A
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/switched-mode-power-supply/boost-controller.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/kegedy/kegedy.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fswitched-mode-power-supply/boost-controller.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/switched-mode-power-supply/boost-controller.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/switched-mode-power-supply/boost-controller.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#averaged-inductor-current-and-capacitor-voltage">
+   Averaged Inductor Current and Capacitor Voltage
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linearized-small-signal-model">
+   Linearized Small-Signal Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-outputs-in-frequency-domain">
+   System Outputs in Frequency Domain
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Boost Controller</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#averaged-inductor-current-and-capacitor-voltage">
+   Averaged Inductor Current and Capacitor Voltage
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linearized-small-signal-model">
+   Linearized Small-Signal Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-outputs-in-frequency-domain">
+   System Outputs in Frequency Domain
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="boost-controller">
+<h1>Boost Controller<a class="headerlink" href="#boost-controller" title="Permalink to this headline">#</a></h1>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/boost-converter-schematic.png"><img alt="../_images/boost-converter-schematic.png" src="../_images/boost-converter-schematic.png" style="width: 400px;" /></a>
+</figure>
+<section id="averaged-inductor-current-and-capacitor-voltage">
+<h2>Averaged Inductor Current and Capacitor Voltage<a class="headerlink" href="#averaged-inductor-current-and-capacitor-voltage" title="Permalink to this headline">#</a></h2>
+<p><strong>Volt-Seconds</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\langle v_{L}(t)\rangle = L\frac{d}{dt} \langle i(t)\rangle &amp;= 
+\bigg[\bigg(\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} \bigg)d(t) + \bigg( \langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle \bigg)d'(t) \bigg] \\[0.5em]
+\langle v_{L}(t)\rangle = L\frac{d}{dt} \langle i(t)\rangle &amp;= 
+\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg] \\[0.5em]
+\frac{d}{dt} \langle i(t)\rangle &amp;= 
+\begin{matrix}
+\dfrac{1}{L} \\[1em]
+\end{matrix} 
+\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg] \\[0.5em]
+\end{align*}\]</div>
+<p><strong>Charge Balance</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\langle i_C (t) \rangle = 
+C\frac{d}{dt} \langle v(t)\rangle &amp;= 
+\bigg[\bigg(\dfrac{-\langle v(t)\rangle}{R}\bigg)d(t) +\bigg(\langle i(t)\rangle -\frac{\langle v(t)\rangle}{R} \bigg)d'(t)\bigg] \\[1em]
+\langle i_C (t) \rangle = 
+C\frac{d}{dt} \langle v(t)\rangle &amp;= 
+\bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] \\[1em]
+ \frac{d}{dt} \langle v(t)\rangle &amp;= 
+\begin{matrix}
+\dfrac{1}{C} \\[1em]
+\end{matrix}
+\bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] \\[1em]
+\end{align*}\]</div>
+<p><strong>Differential Solution</strong></p>
+<p>x =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a8273bee-82a1-400d-b796-ffacf03e7315">
+<span class="eqno">(1)<a class="headerlink" href="#equation-a8273bee-82a1-400d-b796-ffacf03e7315" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+\langle i(t)\rangle \\
+\langle v(t)\rangle
+\end{bmatrix}\]</div>
+<p>u =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a901d289-b451-446c-b920-56752f1d4fb4">
+<span class="eqno">(2)<a class="headerlink" href="#equation-a901d289-b451-446c-b920-56752f1d4fb4" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+d(t) \\
+\langle v_g(t)\rangle
+\end{bmatrix}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\dot{x} &amp;= f(x(t),u(t)) = \dfrac{d}{dt}
+\begin{bmatrix}
+\langle i(t)\rangle \\[1em]
+\langle v(t)\rangle
+\end{bmatrix} = 
+\begin{matrix}
+\dfrac{1}{L} \\[0.5em]
+\dfrac{1}{C}
+\end{matrix}
+\begin{bmatrix}
+\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \\[1em]
+\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t)s
+\end{bmatrix} \\[0.5em]
+\end{align*}\]</div>
+</section>
+<section id="linearized-small-signal-model">
+<h2>Linearized Small-Signal Model<a class="headerlink" href="#linearized-small-signal-model" title="Permalink to this headline">#</a></h2>
+<p><strong>Derive a linearized small-signal model</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\dot{\hat{x}}(t) &amp;\approx A \hat{x}(t) + B \hat{u}(t) \\[0.5em]
+\hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
+\end{align*}\]</div>
+<p><strong>where</strong></p>
+<div class="amsmath math notranslate nohighlight" id="equation-9b054a2d-0367-456a-ace7-ccc6bb9abaac">
+<span class="eqno">(3)<a class="headerlink" href="#equation-9b054a2d-0367-456a-ace7-ccc6bb9abaac" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+x(t) = \hat{x}(t) + X &amp;&amp; X = 
+\begin{bmatrix}
+I \\
+V
+\end{bmatrix} \\[0.5em] 
+u(t) = \hat{u}(t) + U &amp;&amp; U = 
+\begin{bmatrix}
+D \\
+V_g 
+\end{bmatrix}
+\\[0.5em]
+\end{matrix}\]</div>
+<p><strong>Volt-Seconds (Large Signal)</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\langle v_{L}(t)\rangle &amp;= L\frac{d}{dt} \langle i(t)\rangle = 
+\bigg[\langle{v_g}(t)\rangle-\langle i(t)\rangle R_{on} - \langle v(t)\rangle d'(t) \bigg]  = 0\\[0.5em]
+0 &amp;=  V_g - I R_{on} - VD'   \\[0.5em]
+VD' &amp;= V_g - I R_{on} \\[0.5em]
+V &amp;= \dfrac{V_g - I R_{on}}{D'} \bigg|_{I = \dfrac{V}{D'R} }  \\[0.5em]
+V &amp;= \dfrac{V_g - \dfrac{V}{D'R} R_{on}}{D'} \\[0.5em]
+V &amp;= \dfrac{V_g}{D'}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[0.5em]
+\end{align*}\]</div>
+<p><strong>Charge Balance (Large Signal)</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\langle i_C (t) \rangle &amp;= 
+C\frac{d}{dt} \langle v(t)\rangle = 
+\bigg[\dfrac{-\langle v(t)\rangle}{R} + \langle i(t)\rangle d'(t) \bigg] = 0\\[1em]
+0 &amp;=\dfrac{-V}{R} + I D' \\[1em]
+I &amp;= \dfrac{V}{D'R} \\[1em]
+I &amp;= \dfrac{1}{D'R}\cdot \frac{V_g}{D'}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
+I &amp;= \frac{V_g}{D'^2 R}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} \\[1em]
+\end{align*}\]</div>
+<p><strong>Find A, B, C, D</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+A = \dfrac{d}{d\hat{x}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &amp;= 
+\begin{bmatrix}
+\ \ \dfrac{\partial f_1}{\partial x_1} &amp; \dfrac{\partial f_1}{\partial x_2} \ \ \\[1em] 
+\ \ \dfrac{\partial f_2}{\partial x_1} &amp; \dfrac{\partial f_2}{\partial x_2} \ \
+\end{bmatrix}\bigg|_{x,u} = 
+\begin{bmatrix}
+\dfrac{\partial f_1}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v}(t)\rangle} \\[1em] 
+\dfrac{\partial f_2}{\partial \langle \hat{i}(t)\rangle} &amp; \dfrac{\partial f_2}{\partial \langle \hat{v}(t)\rangle}
+\end{bmatrix}\bigg|_{x,u} \\[1em]
+A &amp;= 
+\begin{bmatrix}
+\dfrac{-R_{on}}{L} &amp; \dfrac{-D'}{L} \\[1em]
+\dfrac{D'}{C} &amp; \dfrac{-1}{RC}
+\end{bmatrix} \\[1em]
+\end{align*}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*} B = \dfrac{d}{d\hat{u}(t)} f(x(t),u(t))\bigg|_{x=X,u=U} &amp;= 
+\begin{bmatrix}
+\dfrac{\partial f_1}{\partial u_1} &amp; \dfrac{\partial f_1}{\partial u_2} \\[1em] 
+\dfrac{\partial f_2}{\partial u_1} &amp; \dfrac{\partial f_2}{\partial u_2}
+\end{bmatrix}\bigg|_{x,u} = 
+\begin{bmatrix}
+\dfrac{\partial f_1}{\partial \hat{d'}(t)} &amp; \dfrac{\partial f_1}{\partial \langle \hat{v_g}(t)\rangle} \\[1em] 
+\dfrac{\partial f_2}{\partial \hat{d'}(t)} &amp; \dfrac{\partial f_2}{\partial \langle \hat{v_g}(t)\rangle}
+\end{bmatrix}\bigg|_{x,u} \\[1em]
+B &amp;= 
+\begin{bmatrix}
+\dfrac{V}{L} &amp; \dfrac{1}{L} \\[1em]
+\dfrac{-I}{C} &amp; 0
+\end{bmatrix} = 
+\begin{bmatrix}
+\dfrac{V_g}{D'L}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} &amp; \dfrac{1}{L} \\[1.5em]
+\dfrac{-V_g}{D'^2 RC}\cdot \dfrac{1}{1+\dfrac{ R_{on}}{D'^2 R}} &amp; 0
+\end{bmatrix} \\[1em]
+\end{align*}\]</div>
+<p>C =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-85fd642e-856d-4b12-8606-61e1eff12b96">
+<span class="eqno">(4)<a class="headerlink" href="#equation-85fd642e-856d-4b12-8606-61e1eff12b96" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+0 &amp; 1  \\
+1 &amp; 0
+\end{bmatrix}\]</div>
+<p>E =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-73b99d39-e27a-4a7f-b81e-10ff87274cd9">
+<span class="eqno">(5)<a class="headerlink" href="#equation-73b99d39-e27a-4a7f-b81e-10ff87274cd9" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+0 &amp; 0 \\
+0 &amp; 0
+\end{bmatrix}\]</div>
+</section>
+<section id="system-outputs-in-frequency-domain">
+<h2>System Outputs in Frequency Domain<a class="headerlink" href="#system-outputs-in-frequency-domain" title="Permalink to this headline">#</a></h2>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\dot{\hat{x}}(t) &amp;= A \hat{x}(t) + B \hat{u}(t) \\[0.5em]
+\dot{\hat{y}}(t) &amp;= C \hat{x}(t) + D \hat{u}(t) \\[0.5em]
+ \text{Laplace Transform } &amp;\\[0.5em]
+s\hat{x}(s) &amp;= A \hat{x}(s) + B \hat{u}(s) \\[0.5em]
+sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
+\hat{x}(s) &amp;= \left(sI-A\right)^{-1}B \hat{u}(s) \\[0.5em]
+\hat{y}(s) &amp;= \bigg(C(sI-A)^{-1}B +E \bigg)\hat{u}(s) = G(s) \hat{u}(s)
+\end{align*}\]</div>
+<p><strong>Solver</strong></p>
+<p>G(s) =</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0cb5aff7-fa57-4dfd-ab64-d114f20f1184">
+<span class="eqno">(6)<a class="headerlink" href="#equation-0cb5aff7-fa57-4dfd-ab64-d114f20f1184" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+G_{id}(s) &amp; G_{ig}(s) \\[1em]
+G_{vd}(s) &amp; G_{vg}(s)
+\end{bmatrix}\]</div>
+<p>\nonumber</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8beb55cb-6057-4bbe-a587-be6054a9ea82">
+<span class="eqno">(7)<a class="headerlink" href="#equation-8beb55cb-6057-4bbe-a587-be6054a9ea82" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+\dfrac{D'RV_g}{D'^2R + R_{on}}\dfrac{(CRs + 2)}{(LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on})} &amp; \dfrac{RCs + 1}{LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on}} \\[1em]
+\dfrac{RV_g}{D'^2R + R_{on}}\dfrac{(D'^2R - R_{on}-Ls)}{(LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on})} &amp; \dfrac{D'R}{LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on}}
+\end{bmatrix}\]</div>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Transfer Function</p></th>
+<th class="text-align:left head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(G_{id}(s)\)</span></p></td>
+<td class="text-align:left"><p>Small signal output current to duty ratio</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(G_{ig}(s)\)</span></p></td>
+<td class="text-align:left"><p>Small signal output current to supply voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(G_{vd}(s)\)</span></p></td>
+<td class="text-align:left"><p>Small signal output voltage to duty ratio</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(G_{vg}(s)\)</span></p></td>
+<td class="text-align:left"><p>Small signal output voltage to supply voltage</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./switched-mode-power-supply"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../non-linear-systems/desensitization.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Desensitization</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="buck-controller.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Buck Controller</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kevin Egedy<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

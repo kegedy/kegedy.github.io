@@ -17,9 +17,10 @@ parts:
     sections:
     - file: non-linear-systems/desensitization
 
-- caption: Controller Design
+- caption: Switched-Mode Power Supply
   chapters:
-    - file: converter/boost-controller
+    - file: switched-mode-power-supply/boost-controller
+    - file: switched-mode-power-supply/buck-controller
 
 - caption: Wireless Power Transfer
   chapters:
@@ -30,13 +31,12 @@ parts:
 
 - caption: Microwave Transmission Lines
   chapters:
+  - file: microwave-transmission-lines/common-discussions
   - file: microwave-transmission-lines/time-domain-response/time-domain-response
   - file: microwave-transmission-lines/coupled-noise/coupled-noise
 
-- caption: PCB
+- caption: Projects
   chapters:
-  - file: pcb/common-discussions/common-discussions
-  - file: pcb/projects/index
-    sections:
-    - file: pcb/projects/arduino-uno
-    - file: pcb/projects/ISL6236A
+  - file: projects/common-discussions/common-discussions
+  - file: projects/arduino-uno
+  - file: projects/ISL6236A
