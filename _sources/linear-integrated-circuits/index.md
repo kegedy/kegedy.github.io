@@ -1,5 +1,9 @@
 # Analog Linear Design
 
+```{warning}
+Under Construction
+```
+
 ```{figure} MOS-structure/simple-device.jpg
 ```
 
