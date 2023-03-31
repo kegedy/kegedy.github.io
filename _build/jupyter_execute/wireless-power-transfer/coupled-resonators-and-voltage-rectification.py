@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Coupled Resonators and Voltage Rectification
+# # Coupled Resonators
 
 # ## Topics
 

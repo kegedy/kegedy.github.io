@@ -26,7 +26,7 @@
 
 # ## PTAT: Proportional to Absolute Temperature
 
-# ```{figure} PTAT.png
+# ```{figure} bandgap/PTAT.png
 # :width: 300px
 # PTAT Circuit
 # ```

@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Coupled Resonators and Voltage Rectification" href="coupled-resonators-and-voltage-rectification.html" />
+    <link rel="next" title="Coupled Resonators" href="coupled-resonators-and-voltage-rectification.html" />
     <link rel="prev" title="Definition of Variables" href="variables.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -172,6 +172,11 @@ const thebe_selector_output = ".output, .cell_output"
      Desensitization
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../non-linear-systems/low-noise-amplifier.html">
+     Low Noise Amplifier
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -210,12 +215,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="coupled-resonators-and-voltage-rectification.html">
-   Coupled Resonators and Voltage Rectification
+   Coupled Resonators
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="impedance-matching-and-frequency-tuning.html">
-   Impedance Matching and Frequency Tuning
+   Impedance-Matched Networks
   </a>
  </li>
 </ul>
@@ -243,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Projects
+  PCB Projects
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -320,24 +325,6 @@ title="Toggle navigation"
   </button>
   <div class="menu-dropdown__content">
     <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/kegedy/kegedy.github.io/main?urlpath=tree/wireless-power-transfer/shielded-loop-resonators.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
     </ul>
   </div>
 </div>
@@ -613,7 +600,7 @@ Z_{in} &amp;= Z_0 \dfrac{Z_L + jZ_0 \tan(\beta l)}{Z_0 + jZ_L\tan(\beta l)} \ (\
 <figure class="align-default" id="id1">
 <img alt="../_images/resonator-schematic.png" src="../_images/resonator-schematic.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Schematic of Magnetically-Coupled Resonators</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Schematic of Magnetically-Coupled Resonators</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="math notranslate nohighlight">
@@ -634,13 +621,13 @@ Z_{out} = R_2 + j\bigg(\omega L_2 - \dfrac{1}{\omega C_2} \bigg) + \dfrac{(\omeg
 <figure class="align-default" id="id2">
 <img alt="../_images/open-circuited-stub.png" src="../_images/open-circuited-stub.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Shielded-Loop Resonator as Open-Circuited Stub</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Shielded-Loop Resonator as Open-Circuited Stub</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
 <img alt="../_images/open-circuited-stub-schematic.png" src="../_images/open-circuited-stub-schematic.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Open-Circuited Stub Completes Resonant Circuit</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Open-Circuited Stub Completes Resonant Circuit</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Loop capacitance for open-circuited transmission line stub</strong></p>
@@ -754,7 +741,7 @@ f_0 &amp;= \dfrac{1}{2\pi \sqrt{LC}}
 <figure class="align-default" id="id4">
 <img alt="../_images/reflection-coefficient.png" src="../_images/reflection-coefficient.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Effect of Transmission Line on Reflection Coefficient</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Effect of Transmission Line on Reflection Coefficient</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="math notranslate nohighlight">
@@ -971,7 +958,7 @@ Q(f_0) = \dfrac{\omega_0 L}{R} &amp;= \dfrac{1}{\omega_0 R C} \\[0.5em]
     <a class='right-next' id="next-link" href="coupled-resonators-and-voltage-rectification.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Coupled Resonators and Voltage Rectification</p>
+        <p class="prev-next-title">Coupled Resonators</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -23,7 +23,7 @@ html_logo = 'logo.png'
 html_sourcelink_suffix = ''
 html_static_path = ['_static']
 html_theme = 'sphinx_book_theme'
-html_theme_options = {'search_bar_text': 'Search this book...', 'launch_buttons': {'notebook_interface': 'classic', 'binderhub_url': 'https://mybinder.org', 'jupyterhub_url': '', 'thebe': False, 'colab_url': ''}, 'path_to_docs': '', 'repository_url': 'https://github.com/kegedy/kegedy.github.io', 'repository_branch': 'main', 'google_analytics_id': 'G-C3J0M23XR2', 'extra_navbar': 'Powered by <a href="https://jupyterbook.org">Jupyter Book</a>', 'extra_footer': '', 'home_page_in_toc': True, 'announcement': '', 'use_repository_button': True, 'use_edit_page_button': True, 'use_issues_button': True}
+html_theme_options = {'search_bar_text': 'Search this book...', 'launch_buttons': {'notebook_interface': 'classic', 'binderhub_url': '', 'jupyterhub_url': '', 'thebe': False, 'colab_url': ''}, 'path_to_docs': '', 'repository_url': 'https://github.com/kegedy/kegedy.github.io', 'repository_branch': 'main', 'google_analytics_id': 'G-C3J0M23XR2', 'extra_navbar': 'Powered by <a href="https://jupyterbook.org">Jupyter Book</a>', 'extra_footer': '', 'home_page_in_toc': True, 'announcement': '', 'use_repository_button': True, 'use_edit_page_button': True, 'use_issues_button': True}
 html_title = 'Kevin Egedy'
 jupyter_cache = ''
 jupyter_execute_notebooks = 'force'

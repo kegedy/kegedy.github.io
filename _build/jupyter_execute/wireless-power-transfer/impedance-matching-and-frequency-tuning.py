@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Impedance Matching and Frequency Tuning
+# # Impedance-Matched Networks
 
 # ## Topics
 
@@ -22,18 +22,11 @@
 # $$
 
 # ```{figure} img/complex-conjugate-matching.png
+# ---
+# width: 200px
+# ---
 # Reference Circuit
-# width: 250px
 # ```
-
-# Given
-# 
-# $$
-# \begin{align*}
-# Z_S &= R_S + jX_S \\[0.5em]
-# Z_L &= R_L + jX_L 
-# \end{align*}
-# $$
 
 # Voltage and current across load $Z_L$ is defined as
 # 
