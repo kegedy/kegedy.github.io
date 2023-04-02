@@ -4,7 +4,7 @@
 # # Low Noise Amplifier
 
 # ```{figure} low-noise-amplifier/inductive-degeneration.jpg
-# :width: 300px
+# :width: 250px
 # Inductive Degeneration
 # ```
 

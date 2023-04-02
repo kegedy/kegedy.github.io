@@ -44,9 +44,9 @@ parse:
 
 sphinx:
   config:
-    html_extra_path: ['resume']
+    html_extra_path: ['resume','projects/arduino-uno', 'projects/ISL6236A']
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-    mathjax_config:
+    mathjax3_config:
       chtml: {
         "scale": 0.85
       }

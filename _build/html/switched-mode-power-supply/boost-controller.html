@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Buck Controller" href="buck-controller.html" />
-    <link rel="prev" title="Desensitization" href="../non-linear-systems/desensitization.html" />
+    <link rel="prev" title="Low Noise Amplifier" href="../non-linear-systems/low-noise-amplifier.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -170,6 +170,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../non-linear-systems/desensitization.html">
      Desensitization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../non-linear-systems/low-noise-amplifier.html">
+     Low Noise Amplifier
     </a>
    </li>
   </ul>
@@ -563,14 +568,14 @@ C\frac{d}{dt} \langle v(t)\rangle &amp;=
 \end{align*}\]</div>
 <p><strong>Differential Solution</strong></p>
 <p>x =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-63b4db6f-50db-46f7-b749-d00f0aa459ba">
-<span class="eqno">(1)<a class="headerlink" href="#equation-63b4db6f-50db-46f7-b749-d00f0aa459ba" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-668e6abb-d2bc-41d0-96a7-570182bdbef5">
+<span class="eqno">(1)<a class="headerlink" href="#equation-668e6abb-d2bc-41d0-96a7-570182bdbef5" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 \langle i(t)\rangle \\
 \langle v(t)\rangle
 \end{bmatrix}\]</div>
 <p>u =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0ab0d756-5071-45a0-8d5a-23f267e5fd58">
-<span class="eqno">(2)<a class="headerlink" href="#equation-0ab0d756-5071-45a0-8d5a-23f267e5fd58" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-abdf4488-a600-4511-b466-aa6cda52cde8">
+<span class="eqno">(2)<a class="headerlink" href="#equation-abdf4488-a600-4511-b466-aa6cda52cde8" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 d(t) \\
 \langle v_g(t)\rangle
 \end{bmatrix}\]</div>
@@ -600,8 +605,8 @@ d(t) \\
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-a539dc8c-6b42-47de-ad71-bd00f10b9736">
-<span class="eqno">(3)<a class="headerlink" href="#equation-a539dc8c-6b42-47de-ad71-bd00f10b9736" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-3e40419b-af5c-476b-9dd4-e14f1f17004c">
+<span class="eqno">(3)<a class="headerlink" href="#equation-3e40419b-af5c-476b-9dd4-e14f1f17004c" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -675,14 +680,14 @@ B &amp;=
 \end{bmatrix} \\[1em]
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f5684142-9478-464d-826e-7907d484a5af">
-<span class="eqno">(4)<a class="headerlink" href="#equation-f5684142-9478-464d-826e-7907d484a5af" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-b321a963-aaac-4a20-be33-8ec7f32f9bd9">
+<span class="eqno">(4)<a class="headerlink" href="#equation-b321a963-aaac-4a20-be33-8ec7f32f9bd9" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-73bd682a-0e14-4bd5-a239-f0a0316fb365">
-<span class="eqno">(5)<a class="headerlink" href="#equation-73bd682a-0e14-4bd5-a239-f0a0316fb365" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-dbeef801-e132-4995-8484-35aa0221e1d8">
+<span class="eqno">(5)<a class="headerlink" href="#equation-dbeef801-e132-4995-8484-35aa0221e1d8" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -701,13 +706,13 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-afb1aa6c-c496-4efb-b035-88cf0f9ce4b0">
-<span class="eqno">(6)<a class="headerlink" href="#equation-afb1aa6c-c496-4efb-b035-88cf0f9ce4b0" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-e44a6a70-104f-4aa3-b6fc-0b77d37852dd">
+<span class="eqno">(6)<a class="headerlink" href="#equation-e44a6a70-104f-4aa3-b6fc-0b77d37852dd" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-ae36465a-fc37-420b-975b-9a01876afae5">
-<span class="eqno">(7)<a class="headerlink" href="#equation-ae36465a-fc37-420b-975b-9a01876afae5" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-ab692a9d-9c4c-47ba-b289-70632316e1e5">
+<span class="eqno">(7)<a class="headerlink" href="#equation-ab692a9d-9c4c-47ba-b289-70632316e1e5" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 \dfrac{D'RV_g}{D'^2R + R_{on}}\dfrac{(CRs + 2)}{(LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on})} &amp; \dfrac{RCs + 1}{LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on}} \\[1em]
 \dfrac{RV_g}{D'^2R + R_{on}}\dfrac{(D'^2R - R_{on}-Ls)}{(LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on})} &amp; \dfrac{D'R}{LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on}}
 \end{bmatrix}\]</div>
@@ -762,11 +767,11 @@ G_{vd}(s) &amp; G_{vg}(s)
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../non-linear-systems/desensitization.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../non-linear-systems/low-noise-amplifier.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Desensitization</p>
+            <p class="prev-next-title">Low Noise Amplifier</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="buck-controller.html" title="next page">
