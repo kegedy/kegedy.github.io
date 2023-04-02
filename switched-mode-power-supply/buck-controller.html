@@ -172,6 +172,11 @@ const thebe_selector_output = ".output, .cell_output"
      Desensitization
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../non-linear-systems/low-noise-amplifier.html">
+     Low Noise Amplifier
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -570,8 +575,8 @@ I &amp;= \dfrac{V}{R}
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-f7c1ee69-4054-4a86-833a-0b5f42a56aec">
-<span class="eqno">(8)<a class="headerlink" href="#equation-f7c1ee69-4054-4a86-833a-0b5f42a56aec" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-83ee16d8-282a-4920-8c2d-f89860d70cb1">
+<span class="eqno">(8)<a class="headerlink" href="#equation-83ee16d8-282a-4920-8c2d-f89860d70cb1" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -619,14 +624,14 @@ B &amp;=
 \end{bmatrix}
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-174b6582-edbd-4491-8f2b-4f4c5fe87b46">
-<span class="eqno">(9)<a class="headerlink" href="#equation-174b6582-edbd-4491-8f2b-4f4c5fe87b46" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-85f31868-63c4-4244-a73c-5806b2f19e37">
+<span class="eqno">(9)<a class="headerlink" href="#equation-85f31868-63c4-4244-a73c-5806b2f19e37" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-506f68cb-d5fa-48ac-935c-6d1c073cd6d2">
-<span class="eqno">(10)<a class="headerlink" href="#equation-506f68cb-d5fa-48ac-935c-6d1c073cd6d2" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-e734ae81-8d46-4887-8418-579c7289fad7">
+<span class="eqno">(10)<a class="headerlink" href="#equation-e734ae81-8d46-4887-8418-579c7289fad7" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -645,13 +650,13 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-77f43fac-0121-41eb-ba9a-4d8cd4d66b26">
-<span class="eqno">(11)<a class="headerlink" href="#equation-77f43fac-0121-41eb-ba9a-4d8cd4d66b26" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-14bf2445-042e-4627-8dd5-37b46b7d34f3">
+<span class="eqno">(11)<a class="headerlink" href="#equation-14bf2445-042e-4627-8dd5-37b46b7d34f3" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-b4c59853-0991-49cf-ba72-a067a0d33427">
-<span class="eqno">(12)<a class="headerlink" href="#equation-b4c59853-0991-49cf-ba72-a067a0d33427" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-96431002-37ee-40fb-aa32-91e6257ef5e8">
+<span class="eqno">(12)<a class="headerlink" href="#equation-96431002-37ee-40fb-aa32-91e6257ef5e8" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 V_g \dfrac{RCs+1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} &amp; 
 D \dfrac{RCs+1}{RRLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} \\[1em]
 R V_g \dfrac{1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} &amp; 
