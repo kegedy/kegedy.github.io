@@ -10,6 +10,9 @@ This is a collection of thoughts and concepts I've worked on over the years. Hop
 
 [Egedy.Kevin.pdf](https://kegedy.github.io/Egedy.Kevin.pdf)
 
+## Colloquium Series
+[UWECE Reseach Colloquium](https://www.youtube.com/@UWECEmedia/featured) 
+
 ## References 
 
 ```{bibliography}
