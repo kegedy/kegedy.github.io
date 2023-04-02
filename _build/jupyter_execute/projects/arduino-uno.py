@@ -5,7 +5,7 @@
 
 # Part of fedeval academy curriculum with Robert Feranec [Learn to Design Your Own Boards](https://academy.fedevel.com/courses/online-want-to-design-your-own-arduino-board). Note, 3D models should be downloaded and used with 3D viewer.
 # 
-# - [Schematic](https://kegedy.github.io/arduino-uno-schematic.pdf  
+# - [Schematic](https://kegedy.github.io/arduino-uno-schematic.pdf)  
 # 
 # - [3D Model: No Variations](https://kegedy.github.io/arduino-uno-3D-model-no-variations.pdf)  
 # 
