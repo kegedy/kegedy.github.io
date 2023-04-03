@@ -32,12 +32,12 @@ parts:
 
 - caption: Microwave Transmission Lines
   chapters:
-  - file: microwave-transmission-lines/common-discussions
+  - file: microwave-transmission-lines/discussions
   - file: microwave-transmission-lines/time-domain-response/time-domain-response
   - file: microwave-transmission-lines/coupled-noise/coupled-noise
 
 - caption: PCB Projects
   chapters:
-  - file: projects/common-discussions/common-discussions
+  - file: projects/discussions/discussions
   - file: projects/arduino-uno
   - file: projects/ISL6236A

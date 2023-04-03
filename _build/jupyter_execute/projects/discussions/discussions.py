@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Common Discussions
+# # Discussions
 
 # ## Q1: Trace width
 # 
