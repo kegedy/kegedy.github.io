@@ -6,55 +6,55 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Non-Linear Systems &#8212; Kevin Egedy</title>
+    <title>Design Review Guide &#8212; Kevin Egedy</title>
     
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Desensitization" href="desensitization.html" />
-    <link rel="prev" title="Current Drivers for Neural Stimulation" href="../linear-integrated-circuits/current-source-drivers.html" />
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Arduino Uno" href="../arduino-uno.html" />
+    <link rel="prev" title="Discussions" href="../discussions/discussions.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -97,19 +97,19 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="bd-sidebar noprint" id="site-navigation">
     <div class="bd-sidebar__content">
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+    <a class="navbar-brand text-wrap" href="../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
+      <img src="../../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Kevin Egedy</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -117,7 +117,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../intro.html">
+                <a class="reference internal" href="../../intro.html">
                     Summary
                 </a>
             </li>
@@ -127,9 +127,9 @@ const thebe_selector_output = ".output, .cell_output"
   Integrated Circuit Design
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../linear-integrated-circuits/index.html">
+  <a class="reference internal" href="../../linear-integrated-circuits/index.html">
    Analog Linear Design
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -139,39 +139,39 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../linear-integrated-circuits/bandgap-reference.html">
+    <a class="reference internal" href="../../linear-integrated-circuits/bandgap-reference.html">
      Bandgap Reference
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../linear-integrated-circuits/current-mirrors.html">
+    <a class="reference internal" href="../../linear-integrated-circuits/current-mirrors.html">
      Current Mirrors
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../linear-integrated-circuits/current-source-drivers.html">
+    <a class="reference internal" href="../../linear-integrated-circuits/current-source-drivers.html">
      Current Drivers for Neural Stimulation
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../non-linear-systems/index.html">
    Non-Linear Systems
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="desensitization.html">
+    <a class="reference internal" href="../../non-linear-systems/desensitization.html">
      Desensitization
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="low-noise-amplifier.html">
+    <a class="reference internal" href="../../non-linear-systems/low-noise-amplifier.html">
      Low Noise Amplifier
     </a>
    </li>
@@ -185,12 +185,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../switched-mode-power-supply/boost-controller.html">
+  <a class="reference internal" href="../../switched-mode-power-supply/boost-controller.html">
    Boost Controller
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../switched-mode-power-supply/buck-controller.html">
+  <a class="reference internal" href="../../switched-mode-power-supply/buck-controller.html">
    Buck Controller
   </a>
  </li>
@@ -202,22 +202,22 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../wireless-power-transfer/variables.html">
+  <a class="reference internal" href="../../wireless-power-transfer/variables.html">
    Definition of Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../wireless-power-transfer/shielded-loop-resonators.html">
+  <a class="reference internal" href="../../wireless-power-transfer/shielded-loop-resonators.html">
    Shielded-Loop Resonators
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../wireless-power-transfer/coupled-resonators-and-voltage-rectification.html">
+  <a class="reference internal" href="../../wireless-power-transfer/coupled-resonators-and-voltage-rectification.html">
    Coupled Resonators
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../wireless-power-transfer/impedance-matching-and-frequency-tuning.html">
+  <a class="reference internal" href="../../wireless-power-transfer/impedance-matching-and-frequency-tuning.html">
    Impedance-Matched Networks
   </a>
  </li>
@@ -229,17 +229,17 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../microwave-transmission-lines/discussions.html">
+  <a class="reference internal" href="../../microwave-transmission-lines/discussions.html">
    Discussions
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../microwave-transmission-lines/time-domain-response/time-domain-response.html">
+  <a class="reference internal" href="../../microwave-transmission-lines/time-domain-response/time-domain-response.html">
    Time-Domain Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../microwave-transmission-lines/coupled-noise/coupled-noise.html">
+  <a class="reference internal" href="../../microwave-transmission-lines/coupled-noise/coupled-noise.html">
    Coupled Noises Analysis
   </a>
  </li>
@@ -249,24 +249,24 @@ const thebe_selector_output = ".output, .cell_output"
   PCB Projects
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../projects/discussions/discussions.html">
+  <a class="reference internal" href="../discussions/discussions.html">
    Discussions
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../projects/design-review-guide/design-review-guide.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Design Review Guide
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../projects/arduino-uno.html">
+  <a class="reference internal" href="../arduino-uno.html">
    Arduino Uno
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../projects/ISL6236A.html">
+  <a class="reference internal" href="../ISL6236A.html">
    ISL6236A
   </a>
  </li>
@@ -321,6 +321,17 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -360,7 +371,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fnon-linear-systems/index.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fprojects/design-review-guide/design-review-guide.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -377,7 +388,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/non-linear-systems/index.md"
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/projects/design-review-guide/design-review-guide.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -405,7 +416,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/non-linear-systems/index.md"
+        <a href="../../_sources/projects/design-review-guide/design-review-guide.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -416,7 +427,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -442,23 +453,84 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#altium-pcb-filter">
+   Altium PCB Filter
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-assembly-text-is-oriented-correctly">
+     Check assembly text is oriented correctly
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-traces-of-desired-widths-on-a-given-layer">
+     Find traces of desired widths on a given layer
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Non-Linear Systems</h1>
+                <h1>Design Review Guide</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#altium-pcb-filter">
+   Altium PCB Filter
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-assembly-text-is-oriented-correctly">
+     Check assembly text is oriented correctly
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-traces-of-desired-widths-on-a-given-layer">
+     Find traces of desired widths on a given layer
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -466,18 +538,32 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="non-linear-systems">
-<h1>Non-Linear Systems<a class="headerlink" href="#non-linear-systems" title="Permalink to this headline">#</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Under Construction</p>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="desensitization.html">Desensitization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="low-noise-amplifier.html">Low Noise Amplifier</a></li>
+  <section class="tex2jax_ignore mathjax_ignore" id="design-review-guide">
+<h1>Design Review Guide<a class="headerlink" href="#design-review-guide" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://resources.altium.com/p/pcb-design-and-review-checklist#before-submitting-your-board-for-pcb-design-review">Altium: PCB Review Pre-Checklist</a></p>
+<p><strong>Required</strong></p>
+<ul class="simple">
+<li><p>Validate project/schematic</p></li>
+<li><p>Update PCB from schematic</p></li>
+<li><p>Repour all polygons</p></li>
+<li><p>Check design rule report passes with no errors</p></li>
 </ul>
+<section id="altium-pcb-filter">
+<h2>Altium PCB Filter<a class="headerlink" href="#altium-pcb-filter" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://www.altium.com/documentation/altium-designer/working-with-the-query-language#%21pcb_filter_panel">Altium Designer Query Language</a></p>
+<section id="check-assembly-text-is-oriented-correctly">
+<h3>Check assembly text is oriented correctly<a class="headerlink" href="#check-assembly-text-is-oriented-correctly" title="Permalink to this headline">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IsText</span> <span class="ow">and</span> <span class="n">OnLayer</span><span class="p">(</span><span class="s1">&#39;ASM  Top&#39;</span><span class="p">)</span> <span class="ow">and</span>  <span class="p">(</span><span class="n">Rotation</span> <span class="o">=</span> <span class="mi">180000</span><span class="p">)</span>
+</pre></div>
 </div>
+</section>
+<section id="find-traces-of-desired-widths-on-a-given-layer">
+<h3>Find traces of desired widths on a given layer<a class="headerlink" href="#find-traces-of-desired-widths-on-a-given-layer" title="Permalink to this headline">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">OnLayer</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">OnLayer</span><span class="p">(</span><span class="s1">&#39;L2&#39;</span><span class="p">))</span> <span class="ow">and</span> <span class="n">IsTrack</span> <span class="ow">and</span> <span class="p">(</span><span class="n">Width</span> <span class="o">&gt;</span> <span class="mf">0.381</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -493,7 +579,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./non-linear-systems"
+            path: "./projects/design-review-guide"
         },
         predefinedOutput: true
     }
@@ -507,17 +593,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../linear-integrated-circuits/current-source-drivers.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../discussions/discussions.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Current Drivers for Neural Stimulation</p>
+            <p class="prev-next-title">Discussions</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="desensitization.html" title="next page">
+    <a class='right-next' id="next-link" href="../arduino-uno.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Desensitization</p>
+        <p class="prev-next-title">Arduino Uno</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -542,7 +628,7 @@ title="Print to PDF"
     </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
 
   </body>
