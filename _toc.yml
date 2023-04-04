@@ -5,6 +5,11 @@ format: jb-book
 root: intro
 parts: 
 
+- caption: Analog Sensor Systems
+  chapters:
+    - file: analog-sensor-systems/strain-gage/strain-gage
+    - file: analog-sensor-systems/TIA/TIA
+
 - caption: Integrated Circuit Design
   chapters:
   - file: linear-integrated-circuits/index
@@ -18,23 +23,6 @@ parts:
     - file: non-linear-systems/desensitization
     - file: non-linear-systems/low-noise-amplifier
 
-- caption: Analog Sensor Systems
-  chapters:
-    - file: analog-sensor-systems/strain-gage/strain-gage
-    - file: analog-sensor-systems/TIA/TIA
-
-- caption: Switched-Mode Power Supply
-  chapters:
-    - file: switched-mode-power-supply/boost-controller
-    - file: switched-mode-power-supply/buck-controller
-
-- caption: Wireless Power Transfer
-  chapters:
-  - file: wireless-power-transfer/variables
-  - file: wireless-power-transfer/shielded-loop-resonators
-  - file: wireless-power-transfer/coupled-resonators-and-voltage-rectification
-  - file: wireless-power-transfer/impedance-matching-and-frequency-tuning
-
 - caption: Microwave Transmission Lines
   chapters:
   - file: microwave-transmission-lines/discussions
@@ -47,3 +35,15 @@ parts:
   - file: projects/design-review-guide/design-review-guide
   - file: projects/arduino-uno
   - file: projects/ISL6236A
+
+- caption: Switched-Mode Power Supply
+  chapters:
+    - file: switched-mode-power-supply/boost-controller
+    - file: switched-mode-power-supply/buck-controller
+
+- caption: Wireless Power Transfer
+  chapters:
+  - file: wireless-power-transfer/variables
+  - file: wireless-power-transfer/shielded-loop-resonators
+  - file: wireless-power-transfer/coupled-resonators-and-voltage-rectification
+  - file: wireless-power-transfer/impedance-matching-and-frequency-tuning
