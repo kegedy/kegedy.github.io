@@ -146,13 +146,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../linear-integrated-circuits/current-mirrors.html">
-     Current Mirrors
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../../linear-integrated-circuits/current-source-drivers.html">
-     Current Drivers for Neural Stimulation
+     Electrode Current Drivers
     </a>
    </li>
   </ul>
@@ -178,6 +173,23 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Analog Sensor Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../analog-sensor-systems/strain-gage/strain-gage.html">
+   Strain-Gage: Signal Conditioning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../analog-sensor-systems/TIA/TIA.html">
+   TIA: Wideband &amp; Low Noise
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -553,18 +565,30 @@ title="Print to PDF"
 <p><a class="reference external" href="https://resources.altium.com/p/pcb-trace-inductance-and-width-how-wide-too-wide">PCB Trace Inductance and Width: How Wide is Too Wide?</a></p>
 <ul class="simple">
 <li><p>Goal: minimize PCB trace inductance per unit length while keeping impedance constant</p></li>
-<li><p>Wheeler implementation produces less than 0.7% error which is much better than IPC-2141</p></li>
+<li><p>IPC 2142 formulas are only highly accurate within a particular impedance range</p></li>
+<li><p>Waddell’s implementation produces less than 0.7% error which is much better than IPC-2141</p></li>
 </ul>
+<p>$</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
- L &amp;= \dfrac{Z_0(w,h,t)}{c} \sqrt{\epsilon_{eff}(w,h,t)}  \\[0.5em]
- C &amp;= \dfrac{L}{Z_0(w,h,t)^2} \\[0.5em]
+ L &amp;= \dfrac{Z_0(\frac{w}{h}, \frac{t}{h})}{c} \sqrt{\epsilon_{eff}(\frac{w}{h}, \frac{t}{h})}  \\[1em]
+ C &amp;= \dfrac{L}{Z_0(\frac{w}{h}, \frac{t}{h})^2} \\[1em]
  Z_0 &amp;= \text{Waddell’s equations for microstrip impedance}
 \end{align*}\]</div>
+<p>$</p>
+<p>$</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+ \text{Minimize }L \bigg(\dfrac{w}{h}, \dfrac{t}{h} \bigg) &amp;= \dfrac{Z_0 (\frac{w}{h}, \frac{t}{h})}{c} \sqrt{\epsilon_{eff}(\dfrac{w}{h}, \dfrac{t}{h})} \\[1em]
+ \text{s.t. } &amp; 0 &lt; \dfrac{w}{h} &lt; a \\[1em]
+  &amp; Z_0 = 50 \Omega \\[1em]
+  &amp; 0 &lt; \dfrac{t}{h} &lt; b
+\end{align*}\]</div>
+<p>$</p>
 <figure class="align-default" id="id1">
 <img alt="../../_images/trace-geometry.png" src="../../_images/trace-geometry.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Trace Geometry</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Trace Geometry</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -585,7 +609,7 @@ title="Print to PDF"
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../../_images/Rsense.jpg"><img alt="../../_images/Rsense.jpg" src="../../_images/Rsense.jpg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Sense Resistor in Switch Mode Power Supply</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Sense Resistor in Switch Mode Power Supply</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -596,7 +620,7 @@ title="Print to PDF"
 <figure class="align-default" id="id3">
 <img alt="../../_images/TypicalApplication.png" src="../../_images/TypicalApplication.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Typical Application</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Typical Application</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <table class="colwidths-auto table">
@@ -668,8 +692,8 @@ R_{\text{G_off}} &amp;= 0.89 \Omega \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Resistor Size</strong></p>
 <p>Additionally, power dissipated through the resistor is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3704ddf8-7fc6-426b-abc6-6a35892f4f9c">
-<span class="eqno">(13)<a class="headerlink" href="#equation-3704ddf8-7fc6-426b-abc6-6a35892f4f9c" title="Permalink to this equation">#</a></span>\[\begin{equation} 
+<div class="amsmath math notranslate nohighlight" id="equation-0c5757fb-106e-4bef-9f04-79ccb32c9756">
+<span class="eqno">(13)<a class="headerlink" href="#equation-0c5757fb-106e-4bef-9f04-79ccb32c9756" title="Permalink to this equation">#</a></span>\[\begin{equation} 
 P = C V^2 f 
 \end{equation}\]</div>
 <p>for selecting components.</p>
