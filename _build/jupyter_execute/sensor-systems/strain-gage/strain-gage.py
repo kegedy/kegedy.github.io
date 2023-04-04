@@ -12,11 +12,15 @@
 # ```
 
 # ```{figure} img/TopView1.png
-# Top View LTspice Part 1
+# Instrumentation Amplifier
 # ```
 
 # ```{figure} img/TopView2.png
-# Top View LTspice Part 2
+# Bandpass Filter
+# ```
+
+# ```{figure} img/TopView3.png
+# ADC Driver
 # ```
 
 # ```{figure} img/FrequencyResponse.png

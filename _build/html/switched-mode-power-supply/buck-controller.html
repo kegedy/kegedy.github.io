@@ -126,23 +126,6 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Analog Sensor Systems
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../analog-sensor-systems/strain-gage/strain-gage.html">
-   Strain-Gage: Signal Conditioning
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../analog-sensor-systems/TIA/TIA.html">
-   TIA: Wideband &amp; Low Noise
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Integrated Circuit Design
  </span>
 </p>
@@ -243,10 +226,32 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Sensor Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sensor-systems/strain-gage/strain-gage.html">
+   Strain-Gage: Signal Conditioning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sensor-systems/TIA/TIA.html">
+   TIA: Wideband &amp; Low Noise
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Switched-Mode Power Supply
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="discussions.html">
+   Discussions
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="boost-controller.html">
    Boost Controller
@@ -592,8 +597,8 @@ I &amp;= \dfrac{V}{R}
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-8248154f-18e9-492d-8df0-2985e6ca66a8">
-<span class="eqno">(9)<a class="headerlink" href="#equation-8248154f-18e9-492d-8df0-2985e6ca66a8" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-e4655ad3-e290-44f5-81d9-a43a62544a13">
+<span class="eqno">(9)<a class="headerlink" href="#equation-e4655ad3-e290-44f5-81d9-a43a62544a13" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -641,14 +646,14 @@ B &amp;=
 \end{bmatrix}
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3e4c21b6-bfd7-4798-984a-095294ba6df3">
-<span class="eqno">(10)<a class="headerlink" href="#equation-3e4c21b6-bfd7-4798-984a-095294ba6df3" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-b3c3b0eb-e2f9-4a59-84be-db1731b69218">
+<span class="eqno">(10)<a class="headerlink" href="#equation-b3c3b0eb-e2f9-4a59-84be-db1731b69218" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e88b5ec4-3844-4b5d-aca8-991b5c055a6b">
-<span class="eqno">(11)<a class="headerlink" href="#equation-e88b5ec4-3844-4b5d-aca8-991b5c055a6b" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-789ce723-8a85-4d1f-9e19-4dd56cb98436">
+<span class="eqno">(11)<a class="headerlink" href="#equation-789ce723-8a85-4d1f-9e19-4dd56cb98436" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -667,13 +672,13 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-feab7b2f-282a-4135-b26c-bd1a481dd0e6">
-<span class="eqno">(12)<a class="headerlink" href="#equation-feab7b2f-282a-4135-b26c-bd1a481dd0e6" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-6d2a3c51-48a2-440f-a4b3-483201da3110">
+<span class="eqno">(12)<a class="headerlink" href="#equation-6d2a3c51-48a2-440f-a4b3-483201da3110" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-0e50e13f-4a02-472a-90a5-52a93860292f">
-<span class="eqno">(13)<a class="headerlink" href="#equation-0e50e13f-4a02-472a-90a5-52a93860292f" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-86d845bb-812f-466e-bdf3-a6450139d8e7">
+<span class="eqno">(13)<a class="headerlink" href="#equation-86d845bb-812f-466e-bdf3-a6450139d8e7" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 V_g \dfrac{RCs+1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} &amp; 
 D \dfrac{RCs+1}{RRLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} \\[1em]
 R V_g \dfrac{1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} &amp; 

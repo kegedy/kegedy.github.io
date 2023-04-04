@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>TIA: Wideband &amp; Low Noise &#8212; Kevin Egedy</title>
+    <title>Strain-Gage: Signal Conditioning &#8212; Kevin Egedy</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Analog Linear Design" href="../../linear-integrated-circuits/index.html" />
-    <link rel="prev" title="Strain-Gage: Signal Conditioning" href="../strain-gage/strain-gage.html" />
+    <link rel="next" title="TIA: Wideband &amp; Low Noise" href="../TIA/TIA.html" />
+    <link rel="prev" title="ISL6236A" href="../../projects/ISL6236A.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -123,23 +123,6 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Analog Sensor Systems
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../strain-gage/strain-gage.html">
-   Strain-Gage: Signal Conditioning
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   TIA: Wideband &amp; Low Noise
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Integrated Circuit Design
  </span>
@@ -241,10 +224,32 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Sensor Systems
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Strain-Gage: Signal Conditioning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../TIA/TIA.html">
+   TIA: Wideband &amp; Low Noise
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Switched-Mode Power Supply
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../switched-mode-power-supply/discussions.html">
+   Discussions
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../switched-mode-power-supply/boost-controller.html">
    Boost Controller
@@ -383,7 +388,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fanalog-sensor-systems/TIA/TIA.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fsensor-systems/strain-gage/strain-gage.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -400,7 +405,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/analog-sensor-systems/TIA/TIA.ipynb"
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/sensor-systems/strain-gage/strain-gage.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -428,7 +433,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/analog-sensor-systems/TIA/TIA.ipynb"
+        <a href="../../_sources/sensor-systems/strain-gage/strain-gage.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -477,7 +482,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>TIA: Wideband & Low Noise</h1>
+                <h1>Strain-Gage: Signal Conditioning</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -489,26 +494,38 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tia-wideband-low-noise">
-<h1>TIA: Wideband &amp; Low Noise<a class="headerlink" href="#tia-wideband-low-noise" title="Permalink to this headline">#</a></h1>
-<p>Project: <a class="reference external" href="https://kegedy.github.io/TIA.pdf">Low-Noise Wideband Transimpedance Amplifier</a></p>
-<p>Date: June 3, 2021</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="strain-gage-signal-conditioning">
+<h1>Strain-Gage: Signal Conditioning<a class="headerlink" href="#strain-gage-signal-conditioning" title="Permalink to this headline">#</a></h1>
+<p>Project: <a class="reference external" href="https://kegedy.github.io/strain-gauge.pdf">Strain-Gage Low Noise Signal Conditioning</a></p>
+<p>Date: July 7, 2020</p>
 <figure class="align-default" id="id1">
-<img alt="../../_images/top_level.png" src="../../_images/top_level.png" />
+<img alt="../../_images/architecture.png" src="../../_images/architecture.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">System Architecture</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">System Architecture</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
-<img alt="../../_images/noise-analysis-circuit.png" src="../../_images/noise-analysis-circuit.png" />
+<img alt="../../_images/TopView1.png" src="../../_images/TopView1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Noise Analysis Circuit</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Instrumentation Amplifier</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
-<img alt="../../_images/noise_bode.png" src="../../_images/noise_bode.png" />
+<img alt="../../_images/TopView2.png" src="../../_images/TopView2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Noise Analysis Bode Plot</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Bandpass Filter</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id4">
+<img alt="../../_images/TopView3.png" src="../../_images/TopView3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">ADC Driver</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id5">
+<img alt="../../_images/FrequencyResponse.png" src="../../_images/FrequencyResponse.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Frequency Response</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -526,7 +543,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./analog-sensor-systems/TIA"
+            path: "./sensor-systems/strain-gage"
         },
         predefinedOutput: true
     }
@@ -540,17 +557,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../strain-gage/strain-gage.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../../projects/ISL6236A.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Strain-Gage: Signal Conditioning</p>
+            <p class="prev-next-title">ISL6236A</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../linear-integrated-circuits/index.html" title="next page">
+    <a class='right-next' id="next-link" href="../TIA/TIA.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Analog Linear Design</p>
+        <p class="prev-next-title">TIA: Wideband &amp; Low Noise</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

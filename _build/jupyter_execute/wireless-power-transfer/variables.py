@@ -7,7 +7,7 @@
 
 # | Symbol  | <div style="width:150px">Unit</div>  | <div style="width:250px">Definition</div>  |
 # |:-------:|:------:|:------------|
-# | $\beta$       | $\text{meter}^{-1}$  | Wavenumber of wave in conductor $= 2\pi/\lambda$   |
+# | $\beta$       | 1 / meter            | Wavenumber of wave in conductor $= 2\pi/\lambda$   |
 # | $\epsilon$    | farads / meter       | Permittivity per meter of the dielectric in cable  |
 # | $\epsilon_0$  | farads / meter       | Permittivity of free space (constant)  |
 # | $\epsilon_{\text{eff}}$  | farads / meter  | Effective relative permittivity per meter of cable  |

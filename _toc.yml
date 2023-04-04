@@ -5,11 +5,6 @@ format: jb-book
 root: intro
 parts: 
 
-- caption: Analog Sensor Systems
-  chapters:
-    - file: analog-sensor-systems/strain-gage/strain-gage
-    - file: analog-sensor-systems/TIA/TIA
-
 - caption: Integrated Circuit Design
   chapters:
   - file: linear-integrated-circuits/index
@@ -36,8 +31,14 @@ parts:
   - file: projects/arduino-uno
   - file: projects/ISL6236A
 
+- caption: Sensor Systems
+  chapters:
+    - file: sensor-systems/strain-gage/strain-gage
+    - file: sensor-systems/TIA/TIA
+
 - caption: Switched-Mode Power Supply
   chapters:
+    - file: switched-mode-power-supply/discussions
     - file: switched-mode-power-supply/boost-controller
     - file: switched-mode-power-supply/buck-controller
 
