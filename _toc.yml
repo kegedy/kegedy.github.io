@@ -11,12 +11,17 @@ parts:
     sections:
 #    - file: linear-integrated-circuits/single-stage
     - file: linear-integrated-circuits/bandgap-reference
-    - file: linear-integrated-circuits/current-mirrors
+#    - file: linear-integrated-circuits/current-mirrors
     - file: linear-integrated-circuits/current-source-drivers
   - file: non-linear-systems/index
     sections:
     - file: non-linear-systems/desensitization
     - file: non-linear-systems/low-noise-amplifier
+
+- caption: Analog Sensor Systems
+  chapters:
+    - file: analog-sensor-systems/strain-gage/strain-gage
+    - file: analog-sensor-systems/TIA/TIA
 
 - caption: Switched-Mode Power Supply
   chapters:

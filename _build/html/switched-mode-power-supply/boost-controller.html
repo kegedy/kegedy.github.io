@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Buck Controller" href="buck-controller.html" />
-    <link rel="prev" title="Low Noise Amplifier" href="../non-linear-systems/low-noise-amplifier.html" />
+    <link rel="prev" title="TIA" href="../analog-sensor-systems/TIA/TIA.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -146,13 +146,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../linear-integrated-circuits/current-mirrors.html">
-     Current Mirrors
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../linear-integrated-circuits/current-source-drivers.html">
-     Current Drivers for Neural Stimulation
+     Electrode Current Drivers
     </a>
    </li>
   </ul>
@@ -178,6 +173,23 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Analog Sensor Systems
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../analog-sensor-systems/strain-gage/strain-gage.html">
+   Strain-Gage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../analog-sensor-systems/TIA/TIA.html">
+   TIA
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -573,14 +585,14 @@ C\frac{d}{dt} \langle v(t)\rangle &amp;=
 \end{align*}\]</div>
 <p><strong>Differential Solution</strong></p>
 <p>x =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-78b51ab1-e294-41a9-bd07-8f2e97067a86">
-<span class="eqno">(1)<a class="headerlink" href="#equation-78b51ab1-e294-41a9-bd07-8f2e97067a86" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-71de224f-8fb3-455c-b211-5a3ad5c2442a">
+<span class="eqno">(1)<a class="headerlink" href="#equation-71de224f-8fb3-455c-b211-5a3ad5c2442a" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 \langle i(t)\rangle \\
 \langle v(t)\rangle
 \end{bmatrix}\]</div>
 <p>u =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-29bbbbcf-3ede-47a1-8768-e8cd2ab37d18">
-<span class="eqno">(2)<a class="headerlink" href="#equation-29bbbbcf-3ede-47a1-8768-e8cd2ab37d18" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-dac25670-262d-44a7-9042-ee64d2dee42c">
+<span class="eqno">(2)<a class="headerlink" href="#equation-dac25670-262d-44a7-9042-ee64d2dee42c" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 d(t) \\
 \langle v_g(t)\rangle
 \end{bmatrix}\]</div>
@@ -610,8 +622,8 @@ d(t) \\
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-54d67a20-9454-41d6-8aad-0292ce0ba566">
-<span class="eqno">(3)<a class="headerlink" href="#equation-54d67a20-9454-41d6-8aad-0292ce0ba566" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-fc9e419d-3c6a-4009-9452-46f7b852bf9a">
+<span class="eqno">(3)<a class="headerlink" href="#equation-fc9e419d-3c6a-4009-9452-46f7b852bf9a" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -685,14 +697,14 @@ B &amp;=
 \end{bmatrix} \\[1em]
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-59386b78-55ea-492e-a49f-c3b588f8c324">
-<span class="eqno">(4)<a class="headerlink" href="#equation-59386b78-55ea-492e-a49f-c3b588f8c324" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-c34f338d-cd5a-461e-b7fa-0258c6acc795">
+<span class="eqno">(4)<a class="headerlink" href="#equation-c34f338d-cd5a-461e-b7fa-0258c6acc795" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3c0dbfc9-1a37-41a9-af4d-109a516c9767">
-<span class="eqno">(5)<a class="headerlink" href="#equation-3c0dbfc9-1a37-41a9-af4d-109a516c9767" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-155a2971-a30d-4730-9149-71a018628ad8">
+<span class="eqno">(5)<a class="headerlink" href="#equation-155a2971-a30d-4730-9149-71a018628ad8" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -711,13 +723,13 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fc65b652-b8a7-4a06-99e1-a23bab179af7">
-<span class="eqno">(6)<a class="headerlink" href="#equation-fc65b652-b8a7-4a06-99e1-a23bab179af7" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-3fbf0e03-e135-43e6-8b47-827b96e16bf5">
+<span class="eqno">(6)<a class="headerlink" href="#equation-3fbf0e03-e135-43e6-8b47-827b96e16bf5" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-53f29b0b-3a54-483e-ba20-eb10d69814c4">
-<span class="eqno">(7)<a class="headerlink" href="#equation-53f29b0b-3a54-483e-ba20-eb10d69814c4" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-9b4aa9e4-ac6e-4e64-afb2-d5e085fd8525">
+<span class="eqno">(7)<a class="headerlink" href="#equation-9b4aa9e4-ac6e-4e64-afb2-d5e085fd8525" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 \dfrac{D'RV_g}{D'^2R + R_{on}}\dfrac{(CRs + 2)}{(LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on})} &amp; \dfrac{RCs + 1}{LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on}} \\[1em]
 \dfrac{RV_g}{D'^2R + R_{on}}\dfrac{(D'^2R - R_{on}-Ls)}{(LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on})} &amp; \dfrac{D'R}{LCRs^2 + RR_{on}Cs + Ls + D'^2R +R_{on}}
 \end{bmatrix}\]</div>
@@ -772,11 +784,11 @@ G_{vd}(s) &amp; G_{vg}(s)
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../non-linear-systems/low-noise-amplifier.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../analog-sensor-systems/TIA/TIA.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Low Noise Amplifier</p>
+            <p class="prev-next-title">TIA</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="buck-controller.html" title="next page">

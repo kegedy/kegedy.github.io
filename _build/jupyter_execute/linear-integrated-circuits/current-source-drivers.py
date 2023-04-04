@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Current Drivers for Neural Stimulation
+# # Electrode Current Drivers
 
 # Design a PTAT current sink driver with largest output
 # impedance possible. Assume $I_{source}$ is an ideal current source.

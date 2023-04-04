@@ -44,7 +44,14 @@ parse:
 
 sphinx:
   config:
-    html_extra_path: ['resume','projects/arduino-uno/pdfs', 'projects/ISL6236A/pdfs']
+    html_extra_path: 
+      [
+        'resume',
+        'projects/arduino-uno/pdfs', 
+        'projects/ISL6236A/pdfs', 
+        'analog-sensor-systems/strain-gage/pdf', 
+        'analog-sensor-systems/TIA/pdf'
+      ]
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     mathjax3_config:
       chtml: {

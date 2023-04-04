@@ -7,14 +7,26 @@
 # 
 # [PCB Trace Inductance and Width: How Wide is Too Wide?](https://resources.altium.com/p/pcb-trace-inductance-and-width-how-wide-too-wide)
 
-# - Goal: minimize PCB trace inductance per unit length while keeping impedance constant  
-# - Wheeler implementation produces less than 0.7% error which is much better than IPC-2141
+# - Goal: minimize PCB trace inductance per unit length while keeping impedance constant 
+# - IPC 2142 formulas are only highly accurate within a particular impedance range 
+# - Waddell’s implementation produces less than 0.7% error which is much better than IPC-2141
 # 
+# $
 # \begin{align*}
-#  L &= \dfrac{Z_0(w,h,t)}{c} \sqrt{\epsilon_{eff}(w,h,t)}  \\[0.5em]
-#  C &= \dfrac{L}{Z_0(w,h,t)^2} \\[0.5em]
+#  L &= \dfrac{Z_0(\frac{w}{h}, \frac{t}{h})}{c} \sqrt{\epsilon_{eff}(\frac{w}{h}, \frac{t}{h})}  \\[1em]
+#  C &= \dfrac{L}{Z_0(\frac{w}{h}, \frac{t}{h})^2} \\[1em]
 #  Z_0 &= \text{Waddell’s equations for microstrip impedance}
 # \end{align*}
+# $
+# 
+# $
+# \begin{align*}
+#  \text{Minimize }L \bigg(\dfrac{w}{h}, \dfrac{t}{h} \bigg) &= \dfrac{Z_0 (\frac{w}{h}, \frac{t}{h})}{c} \sqrt{\epsilon_{eff}(\dfrac{w}{h}, \dfrac{t}{h})} \\[1em]
+#  \text{s.t. } & 0 < \dfrac{w}{h} < a \\[1em]
+#   & Z_0 = 50 \Omega \\[1em]
+#   & 0 < \dfrac{t}{h} < b
+# \end{align*}
+# $
 
 # ```{figure} trace-geometry.png
 # Trace Geometry
