@@ -479,18 +479,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#altium-pcb-filter">
    Altium PCB Filter
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#check-assembly-text-is-oriented-correctly">
-     Check assembly text is oriented correctly
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find-traces-of-desired-widths-on-a-given-layer">
-     Find traces of desired widths on a given layer
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -515,18 +503,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#altium-pcb-filter">
    Altium PCB Filter
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#check-assembly-text-is-oriented-correctly">
-     Check assembly text is oriented correctly
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find-traces-of-desired-widths-on-a-given-layer">
-     Find traces of desired widths on a given layer
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -551,18 +527,14 @@ title="Print to PDF"
 <section id="altium-pcb-filter">
 <h2>Altium PCB Filter<a class="headerlink" href="#altium-pcb-filter" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://www.altium.com/documentation/altium-designer/working-with-the-query-language#%21pcb_filter_panel">Altium Designer Query Language</a></p>
-<section id="check-assembly-text-is-oriented-correctly">
-<h3>Check assembly text is oriented correctly<a class="headerlink" href="#check-assembly-text-is-oriented-correctly" title="Permalink to this headline">#</a></h3>
+<p><strong>Check assembly text is oriented correctly</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IsText</span> <span class="ow">and</span> <span class="n">OnLayer</span><span class="p">(</span><span class="s1">&#39;ASM  Top&#39;</span><span class="p">)</span> <span class="ow">and</span>  <span class="p">(</span><span class="n">Rotation</span> <span class="o">=</span> <span class="mi">180000</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="find-traces-of-desired-widths-on-a-given-layer">
-<h3>Find traces of desired widths on a given layer<a class="headerlink" href="#find-traces-of-desired-widths-on-a-given-layer" title="Permalink to this headline">#</a></h3>
+<p><strong>Find traces of desired widths on a given layer</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">OnLayer</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">OnLayer</span><span class="p">(</span><span class="s1">&#39;L2&#39;</span><span class="p">))</span> <span class="ow">and</span> <span class="n">IsTrack</span> <span class="ow">and</span> <span class="p">(</span><span class="n">Width</span> <span class="o">&gt;</span> <span class="mf">0.381</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
 </section>
 </section>
 
