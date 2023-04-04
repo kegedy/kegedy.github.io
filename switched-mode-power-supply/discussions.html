@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Single Stage Summary &#8212; Kevin Egedy</title>
+    <title>Discussions &#8212; Kevin Egedy</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,10 +51,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"chtml": {"scale": 0.85}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Boost Controller" href="boost-controller.html" />
+    <link rel="prev" title="TIA: Wideband &amp; Low Noise" href="../sensor-systems/TIA/TIA.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -129,7 +129,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="index.html">
+  <a class="reference internal" href="../linear-integrated-circuits/index.html">
    Analog Linear Design
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -139,12 +139,12 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="bandgap-reference.html">
+    <a class="reference internal" href="../linear-integrated-circuits/bandgap-reference.html">
      Bandgap Reference
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="current-source-drivers.html">
+    <a class="reference internal" href="../linear-integrated-circuits/current-source-drivers.html">
      Electrode Current Drivers
     </a>
    </li>
@@ -244,19 +244,19 @@ const thebe_selector_output = ".output, .cell_output"
   Switched-Mode Power Supply
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../switched-mode-power-supply/discussions.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Discussions
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../switched-mode-power-supply/boost-controller.html">
+  <a class="reference internal" href="boost-controller.html">
    Boost Controller
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../switched-mode-power-supply/buck-controller.html">
+  <a class="reference internal" href="buck-controller.html">
    Buck Controller
   </a>
  </li>
@@ -388,7 +388,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Flinear-integrated-circuits/single-stage.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fswitched-mode-power-supply/discussions.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -405,7 +405,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/linear-integrated-circuits/single-stage.ipynb"
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/switched-mode-power-supply/discussions.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -433,7 +433,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/linear-integrated-circuits/single-stage.ipynb"
+        <a href="../_sources/switched-mode-power-supply/discussions.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -470,23 +470,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#future-work">
+   Future Work
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Single Stage Summary</h1>
+                <h1>Discussions</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#future-work">
+   Future Work
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -494,70 +531,15 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="single-stage-summary">
-<h1>Single Stage Summary<a class="headerlink" href="#single-stage-summary" title="Permalink to this headline">#</a></h1>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p></p></th>
-<th class="text-align:center head"><p>Common Source</p></th>
-<th class="text-align:center head"><p>Common Source with <span class="math notranslate nohighlight">\(R_S\)</span></p></th>
-<th class="text-align:center head"><p>Common Gate</p></th>
-<th class="text-align:center head"><p>Common Gate with <span class="math notranslate nohighlight">\(R_S\)</span></p></th>
-<th class="text-align:center head"><p>Common Drain</p></th>
-<th class="text-align:center head"><p>Common Drain with <span class="math notranslate nohighlight">\(R_D\)</span></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(R_{in}\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\infty\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\infty\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\dfrac{1}{g_m}\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\dfrac{1}{g_m}\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\infty\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\infty\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(R_{out}\)</span></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(A_v\)</span></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\omega_H\)</span></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\omega_L\)</span></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>Gain Bandwidth</p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-</tr>
-</tbody>
-</table>
+  <section class="tex2jax_ignore mathjax_ignore" id="discussions">
+<h1>Discussions<a class="headerlink" href="#discussions" title="Permalink to this headline">#</a></h1>
+<section id="future-work">
+<h2>Future Work<a class="headerlink" href="#future-work" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>[Design and Implementation of a (Flying) Flying Capacitor Multilevel Converter]https://ieeexplore.ieee.org/document/10056606)<br />
+S. Coday, N. Ellis, N. Stokowski and R. C. N. Pilawa-Podgurski, “Design and Implementation of a (Flying) Flying Capacitor Multilevel Converter,” 2022 IEEE Applied Power Electronics Conference and Exposition (APEC), Houston, TX, USA, 2022, pp. 542-547, doi: 10.1109/APEC43599.2022.9773635.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -573,7 +555,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./linear-integrated-circuits"
+            path: "./switched-mode-power-supply"
         },
         predefinedOutput: true
     }
@@ -587,6 +569,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../sensor-systems/TIA/TIA.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">TIA: Wideband &amp; Low Noise</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="boost-controller.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Boost Controller</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
