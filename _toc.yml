@@ -39,5 +39,6 @@ parts:
 - caption: PCB Projects
   chapters:
   - file: projects/discussions/discussions
+  - file: projects/design-review-guide/design-review-guide
   - file: projects/arduino-uno
   - file: projects/ISL6236A

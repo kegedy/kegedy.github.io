@@ -7,7 +7,7 @@
 
 # The ISL6236A controller generates dual logic-supply voltages in battery-powered systems. 
 # 
-# Part of fedeval academy curriculum with Robert Feranec [Learn Altium Essentials](https://academy.fedevel.com/courses/online-switching-power-supply-design-course). Based on evaluation kit: [ISL6236EVAL1-Kit](https://kegedy.github.io/ISL6236EVAL1-Kit). 
+# Part of fedeval academy curriculum with Robert Feranec [Learn Altium Essentials](https://academy.fedevel.com/courses/online-switching-power-supply-design-course). Based on evaluation kit: [ISL6236EVAL1-Kit](https://kegedy.github.io/ISL6236EVAL1-Kit.pdf). 
 # 
 # ```{eval-rst}
 # .. note::
