@@ -49,7 +49,7 @@
 
 # ## Q4: Gate driver protection
 # 
-# [Gate resistor for power devices](https://www.infineon.com/dgdl/Infineon-EiceDRIVER-Gate_resistor_for_power_devices-ApplicationNotes-v01_00-EN.pdf?fileId=5546d462518ffd8501523ee694b74f18)  
+# [Gate Resistor for Power Devices](https://www.infineon.com/dgdl/Infineon-EiceDRIVER-Gate_resistor_for_power_devices-ApplicationNotes-v01_00-EN.pdf?fileId=5546d462518ffd8501523ee694b74f18)  
 # [Peak Current of Isolated Gate Drivers](https://www.analog.com/en/analog-dialogue/articles/peak-current-of-isolated-gate-drivers.html)
 # 
 
@@ -70,14 +70,6 @@
 # | :-- | :-- | :-- | :-- | :-- |
 # | 6.0V | 1.3A | 2.4A | 2.0$\Omega$ | 1.2$\Omega$ |
 # | 15V  | 5.5A | 6.0A | 1.25$\Omega$ | 0.9$\Omega$ |
-
-# \begin{center}
-# \begin{tabular}{ c c c }
-#  cell1 & cell2 & cell3 \\ 
-#  cell4 & cell5 & cell6 \\  
-#  cell7 & cell8 & cell9    
-# \end{tabular}
-# \end{center}
 
 # **High Side Calculations**  
 # 
