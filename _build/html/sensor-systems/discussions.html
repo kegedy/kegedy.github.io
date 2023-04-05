@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Analog Linear Design &#8212; Kevin Egedy</title>
+    <title>Discussions &#8212; Kevin Egedy</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bandgap Reference" href="bandgap-reference.html" />
-    <link rel="prev" title="Summary" href="../intro.html" />
+    <link rel="next" title="Strain-Gage: Signal Conditioning" href="strain-gage/strain-gage.html" />
+    <link rel="prev" title="ISL6236A" href="../projects/ISL6236A.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -127,24 +127,24 @@ const thebe_selector_output = ".output, .cell_output"
   Integrated Circuit Design
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../linear-integrated-circuits/index.html">
    Analog Linear Design
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="bandgap-reference.html">
+    <a class="reference internal" href="../linear-integrated-circuits/bandgap-reference.html">
      Bandgap Reference
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="current-source-drivers.html">
+    <a class="reference internal" href="../linear-integrated-circuits/current-source-drivers.html">
      Electrode Current Drivers
     </a>
    </li>
@@ -227,19 +227,19 @@ const thebe_selector_output = ".output, .cell_output"
   Sensor Systems
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../sensor-systems/discussions.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Discussions
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../sensor-systems/strain-gage/strain-gage.html">
+  <a class="reference internal" href="strain-gage/strain-gage.html">
    Strain-Gage: Signal Conditioning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../sensor-systems/TIA/TIA.html">
+  <a class="reference internal" href="TIA/TIA.html">
    TIA: Wideband &amp; Low Noise
   </a>
  </li>
@@ -343,6 +343,17 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -382,7 +393,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Flinear-integrated-circuits/index.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fsensor-systems/discussions.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -399,7 +410,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/linear-integrated-circuits/index.md"
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/sensor-systems/discussions.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -427,7 +438,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/linear-integrated-circuits/index.md"
+        <a href="../_sources/sensor-systems/discussions.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -438,7 +449,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -464,23 +475,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#future-work">
+   Future Work
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Analog Linear Design</h1>
+                <h1>Discussions</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#future-work">
+   Future Work
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -488,27 +536,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="analog-linear-design">
-<h1>Analog Linear Design<a class="headerlink" href="#analog-linear-design" title="Permalink to this headline">#</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Under Construction</p>
-</div>
-<figure class="align-default">
-<img alt="../_images/simple-device.jpg" src="../_images/simple-device.jpg" />
-</figure>
-<figure class="align-default" id="id1">
-<img alt="../_images/MOS-Device-Structure.jpg" src="../_images/MOS-Device-Structure.jpg" />
-<figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">MOS Device Structure</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="bandgap-reference.html">Bandgap Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="current-source-drivers.html">Electrode Current Drivers</a></li>
-</ul>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="discussions">
+<h1>Discussions<a class="headerlink" href="#discussions" title="Permalink to this headline">#</a></h1>
+<section id="future-work">
+<h2>Future Work<a class="headerlink" href="#future-work" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="http://www.mit.edu/~fadel/index.html">Fadel Adib’s research on wireless and sensor technologies</a></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -524,7 +557,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./linear-integrated-circuits"
+            path: "./sensor-systems"
         },
         predefinedOutput: true
     }
@@ -538,17 +571,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../projects/ISL6236A.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Summary</p>
+            <p class="prev-next-title">ISL6236A</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="bandgap-reference.html" title="next page">
+    <a class='right-next' id="next-link" href="strain-gage/strain-gage.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bandgap Reference</p>
+        <p class="prev-next-title">Strain-Gage: Signal Conditioning</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

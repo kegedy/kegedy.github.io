@@ -33,6 +33,7 @@ parts:
 
 - caption: Sensor Systems
   chapters:
+    - file: sensor-systems/discussions
     - file: sensor-systems/strain-gage/strain-gage
     - file: sensor-systems/TIA/TIA
 

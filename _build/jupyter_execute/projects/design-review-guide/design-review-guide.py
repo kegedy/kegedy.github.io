@@ -26,3 +26,18 @@
 # ```
 # (OnLayer('L1') or OnLayer('L2')) and IsTrack and (Width > 0.381)
 # ```
+
+# ## Simulation
+
+# [Altium: How to Simulate a PCB Design](https://resources.altium.com/p/pcb-simulation-software#simulations-during-pcb-layout-and-routing)
+#  - Front-end PCB Simulation and Analysis  
+#  - Impedance Calculations in PCB Stackup Design
+#  - Simulations During PCB Layout and Routing
+#  - Post-Layout Simulations
+#  - More Advanced PCB Simulations
+
+# In[ ]:
+
+
+
+

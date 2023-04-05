@@ -153,6 +153,7 @@ plt.suptitle('Overview Lab Data');
 # <hr>
 
 # ### TDS8200 setup 
+# 
 # Instructions
 # - Read the attached file for instruction
 # - Only Ch 1 must be set to TDR (red LED ON). Under MEASURE
