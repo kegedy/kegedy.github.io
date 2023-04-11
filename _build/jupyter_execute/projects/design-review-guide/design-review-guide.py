@@ -9,7 +9,7 @@
 # - Validate project/schematic
 # - Update PCB from schematic
 # - Repour all polygons
-# - Pass DLR (design rule report) with no errors
+# - Pass DRC (design rule check) with no errors
 
 # ## Altium PCB Filter
 
