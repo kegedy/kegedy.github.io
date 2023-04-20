@@ -1,0 +1,52 @@
+Traceback (most recent call last):
+  File "/home/kegedy/anaconda3/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/home/kegedy/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/kegedy/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/kegedy/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/kegedy/anaconda3/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/home/kegedy/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 664, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/home/kegedy/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/kegedy/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+fig, ax = plt.subplots(1,figsize=(10,5))
+freq = df['Freq.']
+mag = df['Mag_V(vout3)/(V(vp)-V(vm))']
+
+ax.semilogx(freq, mag, color='tab:orange')
+ax.grid(True,which='both')
+ax.set_xlabel('Frequency [Hz]')
+ax.set_ylabel('Magnitude [dB]')
+ax.set_title('OP1177 Frequency Response: Vout/(Vip-Vim)')
+
+# overrides matplotlib -> won't plot bode lines if dimension size isn't big enough
+# manipulate x-axis ticks and labels
+ax.xaxis.set_major_locator(LogLocator(numticks=15)) #(1)
+ax.xaxis.set_minor_locator(LogLocator(numticks=15,subs=np.arange(2,10))) #(2)
+for label in ax.xaxis.get_ticklabels()[::2]:
+    label.set_visible(False) #(3)
+
+ax.legend()
+plt.show();
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipykernel_20264/2445308996.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     12[0m [0;31m# manipulate x-axis ticks and labels[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     13[0m [0max[0m[0;34m.[0m[0mxaxis[0m[0;34m.[0m[0mset_major_locator[0m[0;34m([0m[0mLogLocator[0m[0;34m([0m[0mnumticks[0m[0;34m=[0m[0;36m15[0m[0;34m)[0m[0;34m)[0m [0;31m#(1)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 14[0;31m [0max[0m[0;34m.[0m[0mxaxis[0m[0;34m.[0m[0mset_minor_locator[0m[0;34m([0m[0mLogLocator[0m[0;34m([0m[0mnumticks[0m[0;34m=[0m[0;36m15[0m[0;34m,[0m[0msubs[0m[0;34m=[0m[0mnp[0m[0;34m.[0m[0marange[0m[0;34m([0m[0;36m2[0m[0;34m,[0m[0;36m10[0m[0;34m)[0m[0;34m)[0m[0;34m)[0m [0;31m#(2)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     15[0m [0;32mfor[0m [0mlabel[0m [0;32min[0m [0max[0m[0;34m.[0m[0mxaxis[0m[0;34m.[0m[0mget_ticklabels[0m[0;34m([0m[0;34m)[0m[0;34m[[0m[0;34m:[0m[0;34m:[0m[0;36m2[0m[0;34m][0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     16[0m     [0mlabel[0m[0;34m.[0m[0mset_visible[0m[0;34m([0m[0;32mFalse[0m[0;34m)[0m [0;31m#(3)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'np' is not defined
+NameError: name 'np' is not defined
+
