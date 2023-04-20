@@ -257,6 +257,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../switched-mode-power-supply/controller-requirements.html">
+   Controller Requirements
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../switched-mode-power-supply/boost-controller.html">
    Boost Controller
   </a>
@@ -605,19 +610,17 @@ Z_L &amp;= R_L + jX_L
 </figcaption>
 </figure>
 <p>Voltage and current across load <span class="math notranslate nohighlight">\(Z_L\)</span> is defined as</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-v_A &amp;= v_S \dfrac{Z_L}{Z_S + Z_L} \\[0.5em]
-i &amp;= \dfrac{v_S}{Z_S + Z_L}
-\end{align*}
-\end{split}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\text{v}_A &amp;= \text{v}_S \dfrac{Z_L}{Z_S + Z_L} \\[0.5em]
+i &amp;= \dfrac{\text{v}_S}{Z_S + Z_L}
+\end{align*}\]</div>
 <p>Power <span class="math notranslate nohighlight">\(P_D\)</span> delivered to load <span class="math notranslate nohighlight">\(Z_L\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-P_D = \dfrac{1}{2} Re\{v_A i^* \} &amp;= \dfrac{|v_S|^2}{2} \dfrac{Re\{Z_L \}}{|Z_S + Z_L|^2} \\[0.5em]
-    &amp;= \dfrac{|v_S|^2}{2} \dfrac{R_L}{(R_S+R_L)^2 + (X_S + X_L)^2}
+P_D = \dfrac{1}{2} Re\{\text{v}_A i^* \} &amp;= \dfrac{|\text{v}_S|^2}{2} \dfrac{Re\{Z_L \}}{|Z_S + Z_L|^2} \\[0.5em]
+    &amp;= \dfrac{|\text{v}_S|^2}{2} \dfrac{R_L}{(R_S+R_L)^2 + (X_S + X_L)^2}
 \end{align*}
 \end{split}\]</div>
 <p>Analyzing the power relation, it is shown that maximum power transfer occurs when <span class="math notranslate nohighlight">\(Z_S = Z_L^*\)</span>.</p>
