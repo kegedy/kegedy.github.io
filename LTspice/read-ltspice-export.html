@@ -585,74 +585,41 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filepath</span> <span class="o">=</span> <span class="s1">&#39;data/top_level_OP1177.txt&#39;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">read_ltspice</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="s1">&#39;ac&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
+<div class="output text_html"><style type="text/css">
 </style>
-<table border="1" class="dataframe">
+<table id="T_0279a_">
   <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Freq.</th>
-      <th>V(vout3)/(V(vp)-V(vm))</th>
-      <th>Mag_V(vout3)/(V(vp)-V(vm))</th>
-      <th>Phase_V(vout3)/(V(vp)-V(vm))</th>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th class="col_heading level0 col0" >Freq.</th>
+      <th class="col_heading level0 col1" >V(vout3)/(V(vp)-V(vm))</th>
+      <th class="col_heading level0 col2" >Mag_V(vout3)/(V(vp)-V(vm))</th>
+      <th class="col_heading level0 col3" >Phase_V(vout3)/(V(vp)-V(vm))</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>0.010000</td>
-      <td>(-4.11838015619366e+001dB,-5.59733635143613e-0...</td>
-      <td>-41.183802</td>
-      <td>-0.559734</td>
+      <th id="T_0279a_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_0279a_row0_col0" class="data row0 col0" >0.010</td>
+      <td id="T_0279a_row0_col1" class="data row0 col1" >(-4.11838015619366e+001dB,-5.59733635143613e-001°)</td>
+      <td id="T_0279a_row0_col2" class="data row0 col2" >-41.184</td>
+      <td id="T_0279a_row0_col3" class="data row0 col3" >-0.560</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>0.010233</td>
-      <td>(-4.07837855425980e+001dB,-5.72769990801834e-0...</td>
-      <td>-40.783786</td>
-      <td>-0.572770</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.010471</td>
-      <td>(-4.03837687683898e+001dB,-5.86110176680783e-0...</td>
-      <td>-40.383769</td>
-      <td>-0.586110</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.010715</td>
-      <td>(-3.99837512037328e+001dB,-5.99761275935969e-0...</td>
-      <td>-39.983751</td>
-      <td>-0.599761</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.010965</td>
-      <td>(-3.95837328113945e+001dB,-6.13730537289531e-0...</td>
-      <td>-39.583733</td>
-      <td>-0.613731</td>
+      <th id="T_0279a_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_0279a_row1_col0" class="data row1 col0" >0.010</td>
+      <td id="T_0279a_row1_col1" class="data row1 col1" >(-4.07837855425980e+001dB,-5.72769990801834e-001°)</td>
+      <td id="T_0279a_row1_col2" class="data row1 col2" >-40.784</td>
+      <td id="T_0279a_row1_col3" class="data row1 col3" >-0.573</td>
     </tr>
   </tbody>
 </table>
-</div></div></div>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

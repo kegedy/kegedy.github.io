@@ -17,36 +17,25 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-fig, ax = plt.subplots(1,figsize=(10,5))
-freq = df['Freq.']
-mag = df['Mag_V(vout3)/(V(vp)-V(vm))']
-
-ax.semilogx(freq, mag, color='tab:orange')
-ax.grid(True,which='both')
-ax.set_xlabel('Frequency [Hz]')
-ax.set_ylabel('Magnitude [dB]')
-ax.set_title('OP1177 Frequency Response: Vout/(Vip-Vim)')
-
-# overrides matplotlib -> won't plot bode lines if dimension size isn't big enough
-# manipulate x-axis ticks and labels
-ax.xaxis.set_major_locator(LogLocator(numticks=15)) #(1)
-ax.xaxis.set_minor_locator(LogLocator(numticks=15,subs=np.arange(2,10))) #(2)
-for label in ax.xaxis.get_ticklabels()[::2]:
-    label.set_visible(False) #(3)
-
-ax.legend()
-plt.show();
+filepath = 'data/top_level_OP1177.txt'
+df = read_ltspice(filepath,'ac')
+df.head(n=2).format(precision=3)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_20264/2445308996.py[0m in [0;36m<module>[0;34m[0m
-[1;32m     12[0m [0;31m# manipulate x-axis ticks and labels[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     13[0m [0max[0m[0;34m.[0m[0mxaxis[0m[0;34m.[0m[0mset_major_locator[0m[0;34m([0m[0mLogLocator[0m[0;34m([0m[0mnumticks[0m[0;34m=[0m[0;36m15[0m[0;34m)[0m[0;34m)[0m [0;31m#(1)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 14[0;31m [0max[0m[0;34m.[0m[0mxaxis[0m[0;34m.[0m[0mset_minor_locator[0m[0;34m([0m[0mLogLocator[0m[0;34m([0m[0mnumticks[0m[0;34m=[0m[0;36m15[0m[0;34m,[0m[0msubs[0m[0;34m=[0m[0mnp[0m[0;34m.[0m[0marange[0m[0;34m([0m[0;36m2[0m[0;34m,[0m[0;36m10[0m[0;34m)[0m[0;34m)[0m[0;34m)[0m [0;31m#(2)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     15[0m [0;32mfor[0m [0mlabel[0m [0;32min[0m [0max[0m[0;34m.[0m[0mxaxis[0m[0;34m.[0m[0mget_ticklabels[0m[0;34m([0m[0;34m)[0m[0;34m[[0m[0;34m:[0m[0;34m:[0m[0;36m2[0m[0;34m][0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     16[0m     [0mlabel[0m[0;34m.[0m[0mset_visible[0m[0;34m([0m[0;32mFalse[0m[0;34m)[0m [0;31m#(3)[0m[0;34m[0m[0;34m[0m[0m
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+[0;32m/tmp/ipykernel_20759/3472526357.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0mfilepath[0m [0;34m=[0m [0;34m'data/top_level_OP1177.txt'[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0mdf[0m [0;34m=[0m [0mread_ltspice[0m[0;34m([0m[0mfilepath[0m[0;34m,[0m[0;34m'ac'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 3[0;31m [0mdf[0m[0;34m.[0m[0mhead[0m[0;34m([0m[0mn[0m[0;34m=[0m[0;36m2[0m[0;34m)[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mprecision[0m[0;34m=[0m[0;36m3[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;32m~/anaconda3/lib/python3.7/site-packages/pandas/core/generic.py[0m in [0;36m__getattr__[0;34m(self, name)[0m
+[1;32m   5485[0m         ):
+[1;32m   5486[0m             [0;32mreturn[0m [0mself[0m[0;34m[[0m[0mname[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 5487[0;31m         [0;32mreturn[0m [0mobject[0m[0;34m.[0m[0m__getattribute__[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mname[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   5488[0m [0;34m[0m[0m
+[1;32m   5489[0m     [0;32mdef[0m [0m__setattr__[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mname[0m[0;34m:[0m [0mstr[0m[0;34m,[0m [0mvalue[0m[0;34m)[0m [0;34m->[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mNameError[0m: name 'np' is not defined
-NameError: name 'np' is not defined
+[0;31mAttributeError[0m: 'DataFrame' object has no attribute 'format'
+AttributeError: 'DataFrame' object has no attribute 'format'
 
