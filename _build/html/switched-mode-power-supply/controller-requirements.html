@@ -6,54 +6,57 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Summary &#8212; Kevin Egedy</title>
+    <title>Controller Requirements &#8212; Kevin Egedy</title>
     
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Analog Linear Design" href="linear-integrated-circuits/index.html" />
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"chtml": {"scale": 0.85}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Boost Controller" href="boost-controller.html" />
+    <link rel="prev" title="Discussions" href="discussions.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -96,27 +99,27 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="bd-sidebar noprint" id="site-navigation">
     <div class="bd-sidebar__content">
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
       
-      <img src="_static/logo.png" class="logo" alt="logo">
+      <img src="../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Kevin Egedy</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
                     Summary
                 </a>
             </li>
@@ -128,7 +131,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="linear-integrated-circuits/index.html">
+  <a class="reference internal" href="../linear-integrated-circuits/index.html">
    Analog Linear Design
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -138,19 +141,19 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="linear-integrated-circuits/bandgap-reference.html">
+    <a class="reference internal" href="../linear-integrated-circuits/bandgap-reference.html">
      Bandgap Reference
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="linear-integrated-circuits/current-source-drivers.html">
+    <a class="reference internal" href="../linear-integrated-circuits/current-source-drivers.html">
      Electrode Current Drivers
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="non-linear-systems/index.html">
+  <a class="reference internal" href="../non-linear-systems/index.html">
    Non-Linear Systems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -160,12 +163,12 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="non-linear-systems/desensitization.html">
+    <a class="reference internal" href="../non-linear-systems/desensitization.html">
      Desensitization
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="non-linear-systems/low-noise-amplifier.html">
+    <a class="reference internal" href="../non-linear-systems/low-noise-amplifier.html">
      Low Noise Amplifier
     </a>
    </li>
@@ -179,17 +182,17 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="microwave-transmission-lines/discussions.html">
+  <a class="reference internal" href="../microwave-transmission-lines/discussions.html">
    Discussions
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="microwave-transmission-lines/time-domain-response/time-domain-response.html">
+  <a class="reference internal" href="../microwave-transmission-lines/time-domain-response/time-domain-response.html">
    Time-Domain Analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="microwave-transmission-lines/coupled-noise/coupled-noise.html">
+  <a class="reference internal" href="../microwave-transmission-lines/coupled-noise/coupled-noise.html">
    Coupled Noises Analysis
   </a>
  </li>
@@ -201,22 +204,22 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="projects/discussions/discussions.html">
+  <a class="reference internal" href="../projects/discussions/discussions.html">
    Discussions
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="projects/design-review-guide/design-review-guide.html">
+  <a class="reference internal" href="../projects/design-review-guide/design-review-guide.html">
    Design Review Guide
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="projects/arduino-uno.html">
+  <a class="reference internal" href="../projects/arduino-uno.html">
    Arduino Uno
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="projects/ISL6236A.html">
+  <a class="reference internal" href="../projects/ISL6236A.html">
    ISL6236A
   </a>
  </li>
@@ -228,17 +231,17 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="sensor-systems/discussions.html">
+  <a class="reference internal" href="../sensor-systems/discussions.html">
    Discussions
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="sensor-systems/strain-gage/strain-gage.html">
+  <a class="reference internal" href="../sensor-systems/strain-gage/strain-gage.html">
    Strain-Gage: Signal Conditioning
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="sensor-systems/TIA/TIA.html">
+  <a class="reference internal" href="../sensor-systems/TIA/TIA.html">
    TIA: Wideband &amp; Low Noise
   </a>
  </li>
@@ -248,24 +251,24 @@ const thebe_selector_output = ".output, .cell_output"
   Switched-Mode Power Supply
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="switched-mode-power-supply/discussions.html">
+  <a class="reference internal" href="discussions.html">
    Discussions
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="switched-mode-power-supply/controller-requirements.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Controller Requirements
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="switched-mode-power-supply/boost-controller.html">
+  <a class="reference internal" href="boost-controller.html">
    Boost Controller
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="switched-mode-power-supply/buck-controller.html">
+  <a class="reference internal" href="buck-controller.html">
    Buck Controller
   </a>
  </li>
@@ -277,22 +280,22 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="wireless-power-transfer/variables.html">
+  <a class="reference internal" href="../wireless-power-transfer/variables.html">
    Definition of Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="wireless-power-transfer/shielded-loop-resonators.html">
+  <a class="reference internal" href="../wireless-power-transfer/shielded-loop-resonators.html">
    Shielded-Loop Resonators
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="wireless-power-transfer/coupled-resonators-and-voltage-rectification.html">
+  <a class="reference internal" href="../wireless-power-transfer/coupled-resonators-and-voltage-rectification.html">
    Coupled Resonators
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="wireless-power-transfer/impedance-matching-and-frequency-tuning.html">
+  <a class="reference internal" href="../wireless-power-transfer/impedance-matching-and-frequency-tuning.html">
    Impedance-Matched Networks
   </a>
  </li>
@@ -347,6 +350,17 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -386,7 +400,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fswitched-mode-power-supply/controller-requirements.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -403,7 +417,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/intro.md"
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/switched-mode-power-supply/controller-requirements.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -431,7 +445,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/intro.md"
+        <a href="../_sources/switched-mode-power-supply/controller-requirements.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -442,7 +456,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -491,18 +505,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resume">
-   Resume
+  <a class="reference internal nav-link" href="#plant-approximation">
+   Plant Approximation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#colloquium-series">
-   Colloquium Series
+  <a class="reference internal nav-link" href="#convert-time-requirements">
+   Convert Time Requirements
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
+  <a class="reference internal nav-link" href="#controller-properties">
+   Controller Properties
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#check-design">
+   Check Design
   </a>
  </li>
 </ul>
@@ -514,7 +533,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Summary</h1>
+                <h1>Controller Requirements</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -525,18 +544,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resume">
-   Resume
+  <a class="reference internal nav-link" href="#plant-approximation">
+   Plant Approximation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#colloquium-series">
-   Colloquium Series
+  <a class="reference internal nav-link" href="#convert-time-requirements">
+   Convert Time Requirements
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
+  <a class="reference internal nav-link" href="#controller-properties">
+   Controller Properties
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#check-design">
+   Check Design
   </a>
  </li>
 </ul>
@@ -549,50 +573,81 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="summary">
-<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h1>
-<p>This is a collection of thoughts and concepts I’ve worked on over the years. Hope you enjoy!</p>
-<p>“What I hear, I forget. What I see, I remember. What I do, I understand.” Xunzi (340 - 245 BC)</p>
-<section id="resume">
-<h2>Resume<a class="headerlink" href="#resume" title="Permalink to this headline">#</a></h2>
-<p>April, 2023: <a class="reference external" href="https://kegedy.github.io/Egedy.Kevin.pdf">Egedy.Kevin.pdf</a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="controller-requirements">
+<h1>Controller Requirements<a class="headerlink" href="#controller-requirements" title="Permalink to this headline">#</a></h1>
+<section id="plant-approximation">
+<h2>Plant Approximation<a class="headerlink" href="#plant-approximation" title="Permalink to this headline">#</a></h2>
+<p><strong>Second Order System</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+P(s) = K\dfrac{\omega_0^2}{s^2 + 2\zeta \omega_0^2 s + \omega_0^2}
+\end{align*}\]</div>
 </section>
-<section id="colloquium-series">
-<h2>Colloquium Series<a class="headerlink" href="#colloquium-series" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://www.ece.uw.edu/colloquium/">UWECE Reseach Colloquium</a><br />
-<a class="reference external" href="https://eecs.berkeley.edu/research/colloquium">Berkeley EECS Colloquium</a></p>
+<section id="convert-time-requirements">
+<h2>Convert Time Requirements<a class="headerlink" href="#convert-time-requirements" title="Permalink to this headline">#</a></h2>
+<p>Given</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(t_r\)</span> rise time</p></li>
+<li><p><span class="math notranslate nohighlight">\(t_p\)</span> peak time</p></li>
+<li><p><span class="math notranslate nohighlight">\(t_s\)</span> settling time</p></li>
+</ul>
+<p><strong>Use given phase margin (or calculate) to solve for <span class="math notranslate nohighlight">\(\zeta\)</span>.</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+ M_p &amp;= \dfrac{\text{overshoot}}{V_{ref}} \dfrac{[V]}{[V]}\ \text{ [unitless]} \\[1em]
+ M_p &amp;= e^{-\bigg(\dfrac{\pi \zeta}{\sqrt{1-\zeta^2}}\bigg)}
+\end{align*}\]</div>
+<p><strong>Use <span class="math notranslate nohighlight">\(\zeta\)</span> to solve for <span class="math notranslate nohighlight">\(\omega_0\)</span>.</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+ t_r &amp;= \dfrac{\pi - \tan^{-1}\bigg(\sqrt{\frac{1-\zeta^2}{\zeta}}\bigg)}{\omega_0 \sqrt{1-\zeta^2}} 
+ \approx \dfrac{5}{3 \omega_0 \sqrt{1-\zeta^2}} \\[1em]
+ t_p &amp;= \dfrac{\pi}{\omega_0 \sqrt{1-\zeta^2}}
+\end{align*}\]</div>
+<p><strong>Solve for <span class="math notranslate nohighlight">\(\omega_n\)</span> based on settling requirements</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+ \text{[2% of $V_{ref}$] }\ \ t_s &amp;= \dfrac{4}{\zeta \omega_n}  \\[1em]
+ \text{[5% of $V_{ref}$] }\ \ t_s &amp;= \dfrac{3}{\zeta \omega_n}
+\end{align*}\]</div>
 </section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
-<div class="docutils container" id="id1">
-<dl class="citation">
-<dt class="label" id="id5"><span class="brackets">EM01</span></dt>
-<dd><p>R.W. Erickson and D. Maksimovic. <em>Fundamentals of Power Electronics</em>. Online access with purchase: Springer. Springer US, 2001. ISBN 9780792372707. URL: <a class="reference external" href="https://books.google.com/books?id=On9-rJTR8ygC">https://books.google.com/books?id=On9-rJTR8ygC</a>.</p>
-</dd>
-<dt class="label" id="id4"><span class="brackets">Lee03</span></dt>
-<dd><p>Thomas H. Lee. <em>The Design of CMOS Radio-Frequency Integrated Circuits</em>. Cambridge University Press, 2nd edition, 2003. <a class="reference external" href="https://doi.org/10.1017/CBO9780511817281">doi:10.1017/CBO9780511817281</a>.</p>
-</dd>
-<dt class="label" id="id2"><span class="brackets">Raz01</span></dt>
-<dd><p>Behzad Razavi. <em>Design of Analog CMOS Integrated Circuits</em>. McGraw-Hill, 2nd edition, 2001.</p>
-</dd>
-<dt class="label" id="id3"><span class="brackets">Raz11</span></dt>
-<dd><p>Behzad Razavi. <em>RF Microelectronics (2nd Edition) (Prentice Hall Communications Engineering and Emerging Technologies Series)</em>. Prentice Hall Press, USA, 2nd edition, 2011. ISBN 0137134738.</p>
-</dd>
-</dl>
-</div>
+<section id="controller-properties">
+<h2>Controller Properties<a class="headerlink" href="#controller-properties" title="Permalink to this headline">#</a></h2>
+<p>Open Loop general design:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C(s)\)</span> should have high gain such that <span class="math notranslate nohighlight">\( |C(s) \cdot P(s) | \)</span> has high gain at frequencies where disturbance is present</p></li>
+<li><p><span class="math notranslate nohighlight">\(C(s)\)</span> should have low gain such that <span class="math notranslate nohighlight">\(|C(s) \cdot P(s) |\)</span> has low gain at frequencies where noise is present</p></li>
+</ul>
+<p>Step 1. Integral Controller</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+C(s) = \dfrac{K_1}{s}
+\end{align*}\]</div>
+<p>Step 2. Proportional Integral (PI) Controller</p>
+<ul class="simple">
+<li><p>Add zero immediately after gain cross frequency <span class="math notranslate nohighlight">\(\omega_c\)</span></p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+C(s) &amp;= K_p + \dfrac{K_i}{s} \\[1em]
+ &amp;= \dfrac{sK_p+K_i}{s} \\[1em]
+ &amp;= K_1\dfrac{s/\alpha+1}{s}
+\end{align*}\]</div>
 </section>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
+<section id="check-design">
+<h2>Check Design<a class="headerlink" href="#check-design" title="Permalink to this headline">#</a></h2>
+<p>Bode response should have the following properties</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\text{PM (deg)} &amp;= \bigg[\tan^{-1}\bigg(\frac{2\zeta}{\sqrt{1-2\zeta^2}}\bigg) \bigg] \cdot \dfrac{180}{\pi} \\[1em]
+\omega_c \text{ (rad)} &amp;= \omega_0 \sqrt{1-2\zeta^2}
+\end{align*}\]</div>
+<figure class="align-default">
+<img alt="../_images/matlab-margin.png" src="../_images/matlab-margin.png" />
+</figure>
+<p><a class="reference external" href="https://www.mathworks.com/help/control/ref/dynamicsystem.margin.html">MATLAB Bode Response</a>:
+MATLAB defines multiple cross over frequencies. The gain crossover frequency we’re interested in is Wcp.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -608,7 +663,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./."
+            path: "./switched-mode-power-supply"
         },
         predefinedOutput: true
     }
@@ -622,10 +677,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="linear-integrated-circuits/index.html" title="next page">
+    <a class='left-prev' id="prev-link" href="discussions.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Discussions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="boost-controller.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Analog Linear Design</p>
+        <p class="prev-next-title">Boost Controller</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -650,7 +712,7 @@ title="Print to PDF"
     </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
 
   </body>
