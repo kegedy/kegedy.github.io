@@ -19,6 +19,12 @@
 # 
 # - A higher value of Q results in more peaking in the frequency response and more ringing in the step response
 
+# ## Motivation
+
+# - Goal in designing filters is to maximize SNR and minimize the noise bandwith 
+# - Bandwidth of the signal is fixed by the application and sets the minimum circuit bandwidth.
+# - Active filters improve SNR performance over passive filters by minimizing attenuation in the pass band and providing steep roll-off  
+
 # ## Butterworth vs Bessel vs Chebyshev
 
 # ```{figure} filter-comparison.png
@@ -60,6 +66,7 @@ from matplotlib.ticker import LogLocator
 
 
 fname = 'bessel'
+fc1 = 1
 
 
 # In[3]:
@@ -112,20 +119,21 @@ def HPfilter(fname='butterworth',fc=1,nVar=2,C2Var=1e-6):
 
 
 C2Var=1e-6
-eq = HPfilter(fname=fname,fc=1,nVar=2,C2Var=C2Var)
+eq = HPfilter(fname=fname,fc=fc1,nVar=2,C2Var=C2Var)
 tau = sp.symbols('tau')
 taus = []
-sol = eq
-if eq and len(eq)>1:
-    taus = [dct[tau] for dct in sol]
-    sol = eq[taus.index(min(taus))]
+sol = {}
+if eq:
+    sol = eq[0]
+    if len(eq)>1:
+        taus = [dct[tau] for dct in eq]
+        sol = eq[taus.index(min(taus))]
 eq
 
 
 # In[5]:
 
 
-sol = eq[1]
 s,C1,C2,R1,R2 = sp.symbols('s,C1,C2,R1,R2')
 f = np.logspace(-2, 4, 10000)
 w = 2*np.pi*f
@@ -185,6 +193,13 @@ plt.show();
 # In[7]:
 
 
+fname = 'bessel'
+fc2 = 5e3
+
+
+# In[8]:
+
+
 # Future work: 
     # provide flexibility to pass m or n values
     # provide flexibility to pass capacitor or resistor values
@@ -228,24 +243,25 @@ def LPfilter(fname='butterworth',fc=5e3,mVar=1,C2Var=1e-9):
     return eq
 
 
-# In[8]:
-
-
-C2Var=1e-9
-eq = LPfilter(fname=fname,fc=5e3,mVar=1,C2Var=C2Var)
-tau = sp.symbols('tau')
-taus = []
-sol = eq
-if eq and len(eq)>1:
-    taus = [dct[tau] for dct in sol]
-    sol = eq[taus.index(min(taus))]
-eq
-
-
 # In[9]:
 
 
-sol = eq[0]
+C2Var=1e-9
+eq = LPfilter(fname=fname,fc=fc2,mVar=1,C2Var=C2Var)
+tau = sp.symbols('tau')
+taus = []
+sol = {}
+if eq:
+    sol = eq[0]
+    if len(eq)>1:
+        taus = [dct[tau] for dct in eq]
+        sol = eq[taus.index(min(taus))]        
+eq
+
+
+# In[10]:
+
+
 s,C1,C2,R1,R2 = sp.symbols('s,C1,C2,R1,R2')
 f = np.logspace(-1, 5, 100000)
 w = 2*np.pi*f
@@ -270,17 +286,21 @@ H = H[0][0]
 components
 
 
-# In[10]:
+# In[11]:
 
 
 fig, ax = plt.subplots(figsize=(8,4))
 
 x1 = np.where(20*np.log10(abs(H))<=-3)[0][0]
 label1 = "fc: {:.2f}Hz".format(f[x1])
+x2 = np.where(f>=50000)[0][0]
+label2 = "{:.2f}dB".format(20*np.log10(abs(H[x2])))
+label2 = f"10fc: {label2}"
 
 ax.set_title(f'{fname.title()}: Low Pass Filter')
 ax.semilogx(f, 20*np.log10(abs(H)),label=r'2nd Order LP')
 ax.scatter(f[x1],20*np.log10(abs(H[x1])),label=label1,color='tab:blue')
+ax.scatter(f[x2],20*np.log10(abs(H[x2])),label=label2,color='tab:blue')
 ax.set_ylabel('Magnitude [dB]')
 ax.grid(which='both', axis='both')
 ax.legend()
@@ -291,7 +311,7 @@ plt.show();
 
 # ## Band Pass
 
-# In[11]:
+# In[12]:
 
 
 f = np.logspace(-1, 5, 100000)
@@ -302,7 +322,7 @@ H = H(1j*w)
 H = H[0][0]
 
 
-# In[12]:
+# In[13]:
 
 
 fig, ax = plt.subplots(figsize=(10,5))
@@ -312,15 +332,11 @@ label0 = "{:.0f}Hz".format(f[x0])
 x1 = 20000+np.where(20*np.log10(abs(H[20000:]))<=-3)[0][0]
 label1 = "{:.0f}Hz".format(f[x1])
 label1 = f"BW: [{label0}, {label1}]" 
-x2 = np.where(f>=50000)[0][0]
-label2 = "{:.2f}dB".format(20*np.log10(abs(H[x2])))
-label2 = f"10fc: {label2}"
 
 ax.set_title(f'{fname.title()}: Band Pass Response')
 ax.semilogx(f, 20*np.log10(abs(H)),color='tab:blue') # label=r'$4^{th}$ Order Sallen-Key BP')
 ax.scatter(f[x0],20*np.log10(abs(H[x0])),color='tab:blue')
 ax.scatter(f[x1],20*np.log10(abs(H[x1])),label=label1,color='tab:blue')
-ax.scatter(f[x2],20*np.log10(abs(H[x2])),label=label2,color='tab:blue')
 ax.set_ylabel('Magnitude [dB]')
 ax.set_xlabel('Frequency [Hz]')
 ax.grid(which='both', axis='both')
@@ -345,9 +361,3 @@ plt.show();
 # ```{figure} chebyshev-3db.png
 # Chebyshev 3dB
 # ```
-
-# In[ ]:
-
-
-
-

@@ -522,6 +522,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivation">
+   Motivation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#butterworth-vs-bessel-vs-chebyshev">
    Butterworth vs Bessel vs Chebyshev
   </a>
@@ -565,6 +570,11 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivation">
+   Motivation
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#butterworth-vs-bessel-vs-chebyshev">
    Butterworth vs Bessel vs Chebyshev
@@ -616,6 +626,14 @@ Q &amp;= \dfrac{\omega_0}{2\zeta \omega_0}
 <ul class="simple">
 <li><p>A higher value of Q results in more peaking in the frequency response and more ringing in the step response</p></li>
 </ul>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Goal in designing filters is to maximize SNR and minimize the noise bandwith</p></li>
+<li><p>Bandwidth of the signal is fixed by the application and sets the minimum circuit bandwidth.</p></li>
+<li><p>Active filters improve SNR performance over passive filters by minimizing attenuation in the pass band and providing steep roll-off</p></li>
+</ul>
+</section>
 <section id="butterworth-vs-bessel-vs-chebyshev">
 <h2>Butterworth vs Bessel vs Chebyshev<a class="headerlink" href="#butterworth-vs-bessel-vs-chebyshev" title="Permalink to this headline">#</a></h2>
 <figure class="align-default" id="id1">
@@ -662,6 +680,7 @@ n  &amp;= \frac{C_1}{C_2}  \\[1em]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;bessel&#39;</span>
+<span class="n">fc1</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -716,13 +735,15 @@ n  &amp;= \frac{C_1}{C_2}  \\[1em]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C2Var</span><span class="o">=</span><span class="mf">1e-6</span>
-<span class="n">eq</span> <span class="o">=</span> <span class="n">HPfilter</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="n">fname</span><span class="p">,</span><span class="n">fc</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nVar</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">C2Var</span><span class="o">=</span><span class="n">C2Var</span><span class="p">)</span>
+<span class="n">eq</span> <span class="o">=</span> <span class="n">HPfilter</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="n">fname</span><span class="p">,</span><span class="n">fc</span><span class="o">=</span><span class="n">fc1</span><span class="p">,</span><span class="n">nVar</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">C2Var</span><span class="o">=</span><span class="n">C2Var</span><span class="p">)</span>
 <span class="n">tau</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;tau&#39;</span><span class="p">)</span>
 <span class="n">taus</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">eq</span>
-<span class="k">if</span> <span class="n">eq</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
-    <span class="n">taus</span> <span class="o">=</span> <span class="p">[</span><span class="n">dct</span><span class="p">[</span><span class="n">tau</span><span class="p">]</span> <span class="k">for</span> <span class="n">dct</span> <span class="ow">in</span> <span class="n">sol</span><span class="p">]</span>
-    <span class="n">sol</span> <span class="o">=</span> <span class="n">eq</span><span class="p">[</span><span class="n">taus</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">taus</span><span class="p">))]</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">if</span> <span class="n">eq</span><span class="p">:</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">eq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">taus</span> <span class="o">=</span> <span class="p">[</span><span class="n">dct</span><span class="p">[</span><span class="n">tau</span><span class="p">]</span> <span class="k">for</span> <span class="n">dct</span> <span class="ow">in</span> <span class="n">eq</span><span class="p">]</span>
+        <span class="n">sol</span> <span class="o">=</span> <span class="n">eq</span><span class="p">[</span><span class="n">taus</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">taus</span><span class="p">))]</span>
 <span class="n">eq</span>
 </pre></div>
 </div>
@@ -744,8 +765,7 @@ n  &amp;= \frac{C_1}{C_2}  \\[1em]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">eq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">s</span><span class="p">,</span><span class="n">C1</span><span class="p">,</span><span class="n">C2</span><span class="p">,</span><span class="n">R1</span><span class="p">,</span><span class="n">R2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;s,C1,C2,R1,R2&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">,</span><span class="n">C1</span><span class="p">,</span><span class="n">C2</span><span class="p">,</span><span class="n">R1</span><span class="p">,</span><span class="n">R2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;s,C1,C2,R1,R2&#39;</span><span class="p">)</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
 <span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span>
 
@@ -797,7 +817,7 @@ n  &amp;= \frac{C_1}{C_2}  \\[1em]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/filters_13_0.png" src="../../_images/filters_13_0.png" />
+<img alt="../../_images/filters_15_0.png" src="../../_images/filters_15_0.png" />
 </div>
 </div>
 <figure class="align-default" id="id3">
@@ -818,6 +838,14 @@ n  &amp;= \frac{C_2}{C_1}  \\[1em]
 </section>
 <section id="low-pass">
 <h2>Low Pass<a class="headerlink" href="#low-pass" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;bessel&#39;</span>
+<span class="n">fc2</span> <span class="o">=</span> <span class="mf">5e3</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Future work: </span>
@@ -868,13 +896,15 @@ n  &amp;= \frac{C_2}{C_1}  \\[1em]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C2Var</span><span class="o">=</span><span class="mf">1e-9</span>
-<span class="n">eq</span> <span class="o">=</span> <span class="n">LPfilter</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="n">fname</span><span class="p">,</span><span class="n">fc</span><span class="o">=</span><span class="mf">5e3</span><span class="p">,</span><span class="n">mVar</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">C2Var</span><span class="o">=</span><span class="n">C2Var</span><span class="p">)</span>
+<span class="n">eq</span> <span class="o">=</span> <span class="n">LPfilter</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="n">fname</span><span class="p">,</span><span class="n">fc</span><span class="o">=</span><span class="n">fc2</span><span class="p">,</span><span class="n">mVar</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">C2Var</span><span class="o">=</span><span class="n">C2Var</span><span class="p">)</span>
 <span class="n">tau</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;tau&#39;</span><span class="p">)</span>
 <span class="n">taus</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">eq</span>
-<span class="k">if</span> <span class="n">eq</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
-    <span class="n">taus</span> <span class="o">=</span> <span class="p">[</span><span class="n">dct</span><span class="p">[</span><span class="n">tau</span><span class="p">]</span> <span class="k">for</span> <span class="n">dct</span> <span class="ow">in</span> <span class="n">sol</span><span class="p">]</span>
-    <span class="n">sol</span> <span class="o">=</span> <span class="n">eq</span><span class="p">[</span><span class="n">taus</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">taus</span><span class="p">))]</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">if</span> <span class="n">eq</span><span class="p">:</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">eq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">taus</span> <span class="o">=</span> <span class="p">[</span><span class="n">dct</span><span class="p">[</span><span class="n">tau</span><span class="p">]</span> <span class="k">for</span> <span class="n">dct</span> <span class="ow">in</span> <span class="n">eq</span><span class="p">]</span>
+        <span class="n">sol</span> <span class="o">=</span> <span class="n">eq</span><span class="p">[</span><span class="n">taus</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">taus</span><span class="p">))]</span>        
 <span class="n">eq</span>
 </pre></div>
 </div>
@@ -891,8 +921,7 @@ n  &amp;= \frac{C_2}{C_1}  \\[1em]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol</span> <span class="o">=</span> <span class="n">eq</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">s</span><span class="p">,</span><span class="n">C1</span><span class="p">,</span><span class="n">C2</span><span class="p">,</span><span class="n">R1</span><span class="p">,</span><span class="n">R2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;s,C1,C2,R1,R2&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">,</span><span class="n">C1</span><span class="p">,</span><span class="n">C2</span><span class="p">,</span><span class="n">R1</span><span class="p">,</span><span class="n">R2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;s,C1,C2,R1,R2&#39;</span><span class="p">)</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
 <span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">f</span>
 
@@ -932,10 +961,14 @@ n  &amp;= \frac{C_2}{C_1}  \\[1em]
 
 <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">))</span><span class="o">&lt;=-</span><span class="mi">3</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">label1</span> <span class="o">=</span> <span class="s2">&quot;fc: </span><span class="si">{:.2f}</span><span class="s2">Hz&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">x1</span><span class="p">])</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">f</span><span class="o">&gt;=</span><span class="mi">50000</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">label2</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">dB&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="n">x2</span><span class="p">])))</span>
+<span class="n">label2</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;10fc: </span><span class="si">{</span><span class="n">label2</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">fname</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1">: Low Pass Filter&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">)),</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;2nd Order LP&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">x1</span><span class="p">],</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="n">x1</span><span class="p">])),</span><span class="n">label</span><span class="o">=</span><span class="n">label1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">x2</span><span class="p">],</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="n">x2</span><span class="p">])),</span><span class="n">label</span><span class="o">=</span><span class="n">label2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitude [dB]&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -944,7 +977,7 @@ n  &amp;= \frac{C_2}{C_1}  \\[1em]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/filters_20_0.png" src="../../_images/filters_20_0.png" />
+<img alt="../../_images/filters_23_0.png" src="../../_images/filters_23_0.png" />
 </div>
 </div>
 <hr></section>
@@ -971,15 +1004,11 @@ n  &amp;= \frac{C_2}{C_1}  \\[1em]
 <span class="n">x1</span> <span class="o">=</span> <span class="mi">20000</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="mi">20000</span><span class="p">:]))</span><span class="o">&lt;=-</span><span class="mi">3</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">label1</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:.0f}</span><span class="s2">Hz&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">x1</span><span class="p">])</span>
 <span class="n">label1</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;BW: [</span><span class="si">{</span><span class="n">label0</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">label1</span><span class="si">}</span><span class="s2">]&quot;</span> 
-<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">f</span><span class="o">&gt;=</span><span class="mi">50000</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">label2</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">dB&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="n">x2</span><span class="p">])))</span>
-<span class="n">label2</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;10fc: </span><span class="si">{</span><span class="n">label2</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">fname</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1">: Band Pass Response&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">)),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span> <span class="c1"># label=r&#39;$4^{th}$ Order Sallen-Key BP&#39;)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">x0</span><span class="p">],</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="n">x0</span><span class="p">])),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">x1</span><span class="p">],</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="n">x1</span><span class="p">])),</span><span class="n">label</span><span class="o">=</span><span class="n">label1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">x2</span><span class="p">],</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="n">x2</span><span class="p">])),</span><span class="n">label</span><span class="o">=</span><span class="n">label2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitude [dB]&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
@@ -989,7 +1018,7 @@ n  &amp;= \frac{C_2}{C_1}  \\[1em]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/filters_24_0.png" src="../../_images/filters_24_0.png" />
+<img alt="../../_images/filters_27_0.png" src="../../_images/filters_27_0.png" />
 </div>
 </div>
 </section>
