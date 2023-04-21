@@ -522,6 +522,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#butterworth-vs-bessel-vs-chebyshev">
+   Butterworth vs Bessel vs Chebyshev
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#high-pass">
    High Pass
   </a>
@@ -560,6 +565,11 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#butterworth-vs-bessel-vs-chebyshev">
+   Butterworth vs Bessel vs Chebyshev
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#high-pass">
    High Pass
@@ -606,6 +616,8 @@ Q &amp;= \dfrac{\omega_0}{2\zeta \omega_0}
 <ul class="simple">
 <li><p>A higher value of Q results in more peaking in the frequency response and more ringing in the step response</p></li>
 </ul>
+<section id="butterworth-vs-bessel-vs-chebyshev">
+<h2>Butterworth vs Bessel vs Chebyshev<a class="headerlink" href="#butterworth-vs-bessel-vs-chebyshev" title="Permalink to this headline">#</a></h2>
 <figure class="align-default" id="id1">
 <img alt="../../_images/filter-comparison.png" src="../../_images/filter-comparison.png" />
 <figcaption>
@@ -629,6 +641,7 @@ Q &amp;= \dfrac{\omega_0}{2\zeta \omega_0}
 </div>
 </div>
 </div>
+</section>
 <section id="high-pass">
 <h2>High Pass<a class="headerlink" href="#high-pass" title="Permalink to this headline">#</a></h2>
 <figure class="align-default" id="id2">
@@ -784,7 +797,7 @@ n  &amp;= \frac{C_1}{C_2}  \\[1em]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/filters_12_0.png" src="../../_images/filters_12_0.png" />
+<img alt="../../_images/filters_13_0.png" src="../../_images/filters_13_0.png" />
 </div>
 </div>
 <figure class="align-default" id="id3">
@@ -920,7 +933,7 @@ n  &amp;= \frac{C_2}{C_1}  \\[1em]
 <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">))</span><span class="o">&lt;=-</span><span class="mi">3</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">label1</span> <span class="o">=</span> <span class="s2">&quot;fc: </span><span class="si">{:.2f}</span><span class="s2">Hz&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">x1</span><span class="p">])</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Bessel: Low Pass Filter&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">fname</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1">: Low Pass Filter&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">)),</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;2nd Order LP&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">x1</span><span class="p">],</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="n">x1</span><span class="p">])),</span><span class="n">label</span><span class="o">=</span><span class="n">label1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitude [dB]&#39;</span><span class="p">)</span>
@@ -931,7 +944,7 @@ n  &amp;= \frac{C_2}{C_1}  \\[1em]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/filters_19_0.png" src="../../_images/filters_19_0.png" />
+<img alt="../../_images/filters_20_0.png" src="../../_images/filters_20_0.png" />
 </div>
 </div>
 <hr></section>
@@ -962,7 +975,7 @@ n  &amp;= \frac{C_2}{C_1}  \\[1em]
 <span class="n">label2</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">dB&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="n">x2</span><span class="p">])))</span>
 <span class="n">label2</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;10fc: </span><span class="si">{</span><span class="n">label2</span><span class="si">}</span><span class="s2">&quot;</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Bessel: Band Pass Response&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">fname</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1">: Band Pass Response&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">)),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span> <span class="c1"># label=r&#39;$4^{th}$ Order Sallen-Key BP&#39;)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">x0</span><span class="p">],</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="n">x0</span><span class="p">])),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">x1</span><span class="p">],</span><span class="mi">20</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="n">x1</span><span class="p">])),</span><span class="n">label</span><span class="o">=</span><span class="n">label1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
@@ -976,7 +989,7 @@ n  &amp;= \frac{C_2}{C_1}  \\[1em]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/filters_23_0.png" src="../../_images/filters_23_0.png" />
+<img alt="../../_images/filters_24_0.png" src="../../_images/filters_24_0.png" />
 </div>
 </div>
 </section>
