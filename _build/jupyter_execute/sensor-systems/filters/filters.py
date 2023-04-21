@@ -19,6 +19,8 @@
 # 
 # - A higher value of Q results in more peaking in the frequency response and more ringing in the step response
 
+# ## Butterworth vs Bessel vs Chebyshev
+
 # ```{figure} filter-comparison.png
 # Filter Performance
 # ```
@@ -276,7 +278,7 @@ fig, ax = plt.subplots(figsize=(8,4))
 x1 = np.where(20*np.log10(abs(H))<=-3)[0][0]
 label1 = "fc: {:.2f}Hz".format(f[x1])
 
-ax.set_title('Bessel: Low Pass Filter')
+ax.set_title(f'{fname.title()}: Low Pass Filter')
 ax.semilogx(f, 20*np.log10(abs(H)),label=r'2nd Order LP')
 ax.scatter(f[x1],20*np.log10(abs(H[x1])),label=label1,color='tab:blue')
 ax.set_ylabel('Magnitude [dB]')
@@ -314,7 +316,7 @@ x2 = np.where(f>=50000)[0][0]
 label2 = "{:.2f}dB".format(20*np.log10(abs(H[x2])))
 label2 = f"10fc: {label2}"
 
-ax.set_title('Bessel: Band Pass Response')
+ax.set_title(f'{fname.title()}: Band Pass Response')
 ax.semilogx(f, 20*np.log10(abs(H)),color='tab:blue') # label=r'$4^{th}$ Order Sallen-Key BP')
 ax.scatter(f[x0],20*np.log10(abs(H[x0])),color='tab:blue')
 ax.scatter(f[x1],20*np.log10(abs(H[x1])),label=label1,color='tab:blue')
