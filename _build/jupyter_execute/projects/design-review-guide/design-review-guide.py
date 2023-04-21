@@ -36,6 +36,14 @@
 #  - Post-Layout Simulations
 #  - More Advanced PCB Simulations
 
+# ## Power Distribution Network
+
+# Goal of [PDN analyzer](https://resources.altium.com/p/the-basics-of-pdn-for-the-pcb-designer) is to ensure sufficient current and voltage to all loads.
+# 
+# Requirements:
+# - Sufficient copper between sources and loads
+# - Capacitor sizes, values, numbers, and placement 
+
 # In[ ]:
 
 

@@ -30,19 +30,17 @@
 
 # Voltage and current across load $Z_L$ is defined as
 # 
-# $$
 # \begin{align*}
-# v_A &= v_S \dfrac{Z_L}{Z_S + Z_L} \\[0.5em]
-# i &= \dfrac{v_S}{Z_S + Z_L}
+# \text{v}_A &= \text{v}_S \dfrac{Z_L}{Z_S + Z_L} \\[0.5em]
+# i &= \dfrac{\text{v}_S}{Z_S + Z_L}
 # \end{align*}
-# $$
 
 # Power $P_D$ delivered to load $Z_L$ is 
 # 
 # $$
 # \begin{align*}
-# P_D = \dfrac{1}{2} Re\{v_A i^* \} &= \dfrac{|v_S|^2}{2} \dfrac{Re\{Z_L \}}{|Z_S + Z_L|^2} \\[0.5em]
-#     &= \dfrac{|v_S|^2}{2} \dfrac{R_L}{(R_S+R_L)^2 + (X_S + X_L)^2}
+# P_D = \dfrac{1}{2} Re\{\text{v}_A i^* \} &= \dfrac{|\text{v}_S|^2}{2} \dfrac{Re\{Z_L \}}{|Z_S + Z_L|^2} \\[0.5em]
+#     &= \dfrac{|\text{v}_S|^2}{2} \dfrac{R_L}{(R_S+R_L)^2 + (X_S + X_L)^2}
 # \end{align*}
 # $$
 

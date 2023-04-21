@@ -18,6 +18,10 @@ parts:
     - file: non-linear-systems/desensitization
     - file: non-linear-systems/low-noise-amplifier
 
+- caption: LTspice Help
+  chapters:
+  - file: LTspice/read-ltspice-export
+
 - caption: Microwave Transmission Lines
   chapters:
   - file: microwave-transmission-lines/discussions
@@ -34,6 +38,7 @@ parts:
 - caption: Sensor Systems
   chapters:
     - file: sensor-systems/discussions
+    - file: sensor-systems/filters/filters
     - file: sensor-systems/strain-gage/strain-gage
     - file: sensor-systems/TIA/TIA
 

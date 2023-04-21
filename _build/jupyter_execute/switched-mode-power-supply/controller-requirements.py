@@ -8,7 +8,7 @@
 # **Second Order System**
 # 
 # \begin{align*}
-# P(s) = K\dfrac{\omega_0^2}{s^2 + 2\zeta \omega_0^2 s + \omega_0^2}
+# P(s) = K\dfrac{\omega_0^2}{s^2 + 2\zeta \omega_0 s + \omega_0^2}
 # \end{align*}
 
 # ## Convert Time Requirements
