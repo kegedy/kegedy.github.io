@@ -27,6 +27,12 @@
 # (OnLayer('L1') or OnLayer('L2')) and IsTrack and (Width > 0.381)
 # ```
 
+# **Find unrouted pads on PCB**
+# 
+# ```
+# (Net='No Net') and (IsPad=True)
+# ```
+
 # ## Simulation
 
 # [Altium: How to Simulate a PCB Design](https://resources.altium.com/p/pcb-simulation-software#simulations-during-pcb-layout-and-routing)
@@ -36,13 +42,24 @@
 #  - Post-Layout Simulations
 #  - More Advanced PCB Simulations
 
+# ## Decoupling Capacitors
+
+# Resource: [Decoupling Capacitor Calculations](https://resources.altium.com/p/what-size-decoupling-capacitor-should-i-use-my-digital-ics)
+# 
+# - Use a combination of inrush current calculations and impedance spectrums to minimize PDN impedance
+
 # ## Power Distribution Network
 
-# Goal of [PDN analyzer](https://resources.altium.com/p/the-basics-of-pdn-for-the-pcb-designer) is to ensure sufficient current and voltage to all loads.
+# Goal is to ensure sufficient current and voltage to all loads.
 # 
 # Requirements:
 # - Sufficient copper between sources and loads
-# - Capacitor sizes, values, numbers, and placement 
+# - Capacitor values and placement
+# - VIAs sizes
+# 
+# Tools:
+# - [PDN analyzer](https://resources.altium.com/p/the-basics-of-pdn-for-the-pcb-designer)
+# - [Saturn PCB Design Toolkit](https://saturnpcb.com/saturn-pcb-toolkit/) 
 
 # In[ ]:
 

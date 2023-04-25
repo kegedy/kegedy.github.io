@@ -530,6 +530,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decoupling-capacitors">
+   Decoupling Capacitors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#power-distribution-network">
    Power Distribution Network
   </a>
@@ -561,6 +566,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#simulation">
    Simulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decoupling-capacitors">
+   Decoupling Capacitors
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -599,6 +609,10 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">OnLayer</span><span class="p">(</span><span class="s1">&#39;L1&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">OnLayer</span><span class="p">(</span><span class="s1">&#39;L2&#39;</span><span class="p">))</span> <span class="ow">and</span> <span class="n">IsTrack</span> <span class="ow">and</span> <span class="p">(</span><span class="n">Width</span> <span class="o">&gt;</span> <span class="mf">0.381</span><span class="p">)</span>
 </pre></div>
 </div>
+<p><strong>Find unrouted pads on PCB</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Net</span><span class="o">=</span><span class="s1">&#39;No Net&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">IsPad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="simulation">
 <h2>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">#</a></h2>
@@ -611,13 +625,26 @@ title="Print to PDF"
 <li><p>More Advanced PCB Simulations</p></li>
 </ul>
 </section>
+<section id="decoupling-capacitors">
+<h2>Decoupling Capacitors<a class="headerlink" href="#decoupling-capacitors" title="Permalink to this headline">#</a></h2>
+<p>Resource: <a class="reference external" href="https://resources.altium.com/p/what-size-decoupling-capacitor-should-i-use-my-digital-ics">Decoupling Capacitor Calculations</a></p>
+<ul class="simple">
+<li><p>Use a combination of inrush current calculations and impedance spectrums to minimize PDN impedance</p></li>
+</ul>
+</section>
 <section id="power-distribution-network">
 <h2>Power Distribution Network<a class="headerlink" href="#power-distribution-network" title="Permalink to this headline">#</a></h2>
-<p>Goal of <a class="reference external" href="https://resources.altium.com/p/the-basics-of-pdn-for-the-pcb-designer">PDN analyzer</a> is to ensure sufficient current and voltage to all loads.</p>
+<p>Goal is to ensure sufficient current and voltage to all loads.</p>
 <p>Requirements:</p>
 <ul class="simple">
 <li><p>Sufficient copper between sources and loads</p></li>
-<li><p>Capacitor sizes, values, numbers, and placement</p></li>
+<li><p>Capacitor values and placement</p></li>
+<li><p>VIAs sizes</p></li>
+</ul>
+<p>Tools:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://resources.altium.com/p/the-basics-of-pdn-for-the-pcb-designer">PDN analyzer</a></p></li>
+<li><p><a class="reference external" href="https://saturnpcb.com/saturn-pcb-toolkit/">Saturn PCB Design Toolkit</a></p></li>
 </ul>
 </section>
 </section>

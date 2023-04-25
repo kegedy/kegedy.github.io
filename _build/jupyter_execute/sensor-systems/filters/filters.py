@@ -21,8 +21,9 @@
 
 # ## Motivation
 
+# Bandwidth of the signal is fixed by the application and sets the minimum circuit bandwidth. So how do we improve?
+# 
 # - Goal in designing filters is to maximize SNR and minimize the noise bandwith 
-# - Bandwidth of the signal is fixed by the application and sets the minimum circuit bandwidth.
 # - Active filters improve SNR performance over passive filters by minimizing attenuation in the pass band and providing steep roll-off  
 
 # ## Butterworth vs Bessel vs Chebyshev
@@ -41,7 +42,6 @@ import sympy as sp
 from sympy.utilities.lambdify import lambdify
 import matplotlib.pyplot as plt
 import matplotlib
-get_ipython().run_line_magic('matplotlib', 'inline')
 from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"
 from matplotlib.ticker import LogLocator

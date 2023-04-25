@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Time-Domain Analysis
-# 
+
 # Due: January 22, 2020
 # 
 # Author: Kevin Egedy
