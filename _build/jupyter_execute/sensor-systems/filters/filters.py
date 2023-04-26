@@ -41,7 +41,7 @@ import pandas as pd
 import sympy as sp
 from sympy.utilities.lambdify import lambdify
 import matplotlib.pyplot as plt
-import matplotlib
+get_ipython().run_line_magic('matplotlib', 'inline')
 from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"
 from matplotlib.ticker import LogLocator

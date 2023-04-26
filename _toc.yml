@@ -17,6 +17,7 @@ parts:
     sections:
     - file: non-linear-systems/desensitization
     - file: non-linear-systems/low-noise-amplifier
+    - file: non-linear-systems/impedance-transformation
 
 - caption: LTspice Help
   chapters:

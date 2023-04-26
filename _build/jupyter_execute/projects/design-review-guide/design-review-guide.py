@@ -48,6 +48,13 @@
 # 
 # - Use a combination of inrush current calculations and impedance spectrums to minimize PDN impedance
 
+# ```{figure} img/new-caps-z-spectrum.png
+# ---
+# width: 400px
+# ---
+# PDN Impedance
+# ```
+
 # ## Power Distribution Network
 
 # Goal is to ensure sufficient current and voltage to all loads.
