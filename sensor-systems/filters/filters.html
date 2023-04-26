@@ -527,6 +527,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#equivalent-noise-bandwidth">
+   Equivalent Noise Bandwidth
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#motivation">
    Motivation
   </a>
@@ -575,6 +580,11 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#equivalent-noise-bandwidth">
+   Equivalent Noise Bandwidth
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#motivation">
    Motivation
@@ -631,12 +641,40 @@ Q &amp;= \dfrac{\omega_0}{2\zeta \omega_0}
 <ul class="simple">
 <li><p>A higher value of Q results in more peaking in the frequency response and more ringing in the step response</p></li>
 </ul>
+<section id="equivalent-noise-bandwidth">
+<h2>Equivalent Noise Bandwidth<a class="headerlink" href="#equivalent-noise-bandwidth" title="Permalink to this headline">#</a></h2>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\omega_{enbw} &amp;= \int_0^{\infty} \bigg| \dfrac{H(jw)}{H_{max}} \bigg|^2 d\omega \\[1em]
+\end{align*}\]</div>
+<p><strong>Example: RC Filter</strong></p>
+<p>Transfer function of lowpass filter:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+H(jw) &amp;= \dfrac{H_{max}}{1+j\frac{\omega}{\omega_c}}
+\end{align*}\]</div>
+<p>Equivalent noise bandwidth</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\omega_{enbw} &amp;= \int_0^{\infty} \bigg| \dfrac{H(jw)}{H_{max}} \bigg|^2 d\omega \\[1em]
+ &amp;= \int_0^{\infty} \dfrac{1}{1+(\frac{\omega}{\omega_c})^2} d\omega \\[1em]
+ &amp;= \omega_c \tan^{-1}\dfrac{\omega}{\omega_c}\bigg|_{\ 0}^{\ \infty} \\[1em]
+ &amp;= \dfrac{\pi}{2} \omega_c \\[1em]
+\end{align*}\]</div>
+<p><strong>Thus</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\omega_{enbw} &amp;= \dfrac{\pi}{2} \omega_{c} \\[1em]
+ &amp;= \dfrac{\pi}{2} \omega_{3dB} \\[1em]
+ &amp;= 1.57 \omega_{3dB}
+ \end{align*}\]</div>
+</section>
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">#</a></h2>
 <p>Bandwidth of the signal is fixed by the application and sets the minimum circuit bandwidth. So how do we improve?</p>
 <ul class="simple">
 <li><p>Goal in designing filters is to maximize SNR and minimize the noise bandwith</p></li>
-<li><p>Active filters improve SNR performance over passive filters by minimizing attenuation in the pass band and providing steep roll-off</p></li>
+<li><p>Active filters improve SNR performance over passive filters by minimizing attenuation in the pass band and providing steeper roll-off</p></li>
 </ul>
 </section>
 <section id="butterworth-vs-bessel-vs-chebyshev">
@@ -821,7 +859,7 @@ n  &amp;= \frac{C_1}{C_2}  \\[1em]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/filters_15_0.png" src="../../_images/filters_15_0.png" />
+<img alt="../../_images/filters_18_0.png" src="../../_images/filters_18_0.png" />
 </div>
 </div>
 <figure class="align-default" id="id3">
@@ -981,7 +1019,7 @@ n  &amp;= \frac{C_2}{C_1}  \\[1em]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/filters_23_0.png" src="../../_images/filters_23_0.png" />
+<img alt="../../_images/filters_26_0.png" src="../../_images/filters_26_0.png" />
 </div>
 </div>
 <hr></section>
@@ -1022,7 +1060,7 @@ n  &amp;= \frac{C_2}{C_1}  \\[1em]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/filters_27_0.png" src="../../_images/filters_27_0.png" />
+<img alt="../../_images/filters_30_0.png" src="../../_images/filters_30_0.png" />
 </div>
 </div>
 </section>
