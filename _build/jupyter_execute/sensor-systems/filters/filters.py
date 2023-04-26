@@ -19,12 +19,40 @@
 # 
 # - A higher value of Q results in more peaking in the frequency response and more ringing in the step response
 
+# ## Equivalent Noise Bandwidth
+
+# \begin{align*}
+# \omega_{enbw} &= \int_0^{\infty} \bigg| \dfrac{H(jw)}{H_{max}} \bigg|^2 d\omega \\[1em]
+# \end{align*}
+
+# **Example: RC Filter**
+# 
+# Transfer function of lowpass filter:
+# \begin{align*}
+# H(jw) &= \dfrac{H_{max}}{1+j\frac{\omega}{\omega_c}}
+# \end{align*}
+# 
+# Equivalent noise bandwidth
+# \begin{align*}
+# \omega_{enbw} &= \int_0^{\infty} \bigg| \dfrac{H(jw)}{H_{max}} \bigg|^2 d\omega \\[1em]
+#  &= \int_0^{\infty} \dfrac{1}{1+(\frac{\omega}{\omega_c})^2} d\omega \\[1em]
+#  &= \omega_c \tan^{-1}\dfrac{\omega}{\omega_c}\bigg|_{\ 0}^{\ \infty} \\[1em]
+#  &= \dfrac{\pi}{2} \omega_c \\[1em]
+# \end{align*}
+# 
+# **Thus**
+# \begin{align*}
+# \omega_{enbw} &= \dfrac{\pi}{2} \omega_{c} \\[1em]
+#  &= \dfrac{\pi}{2} \omega_{3dB} \\[1em]
+#  &= 1.57 \omega_{3dB}
+#  \end{align*}
+
 # ## Motivation
 
 # Bandwidth of the signal is fixed by the application and sets the minimum circuit bandwidth. So how do we improve?
 # 
 # - Goal in designing filters is to maximize SNR and minimize the noise bandwith 
-# - Active filters improve SNR performance over passive filters by minimizing attenuation in the pass band and providing steep roll-off  
+# - Active filters improve SNR performance over passive filters by minimizing attenuation in the pass band and providing steeper roll-off  
 
 # ## Butterworth vs Bessel vs Chebyshev
 

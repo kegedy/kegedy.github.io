@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"chtml": {"scale": 0.85}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Impedance Transformation" href="impedance-transformation.html" />
@@ -534,6 +536,33 @@ title="Print to PDF"
 <p><span class="caption-number">Fig. 5 </span><span class="caption-text">Inductive Degeneration</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>Looking at the gate of the LNA, a test voltage is applied to find the input impedance.<br />
+<em>Exclude the additional capacitance between the gate and source.</em></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+Z_{in} &amp;= \dfrac{1}{sC_{gs}} + L_1 s + \dfrac{g_m L_1}{C_{gs}}
+\end{align*}\]</div>
+<p>At resonance, the third term provides a real impedance that is matched to the source impedance <span class="math notranslate nohighlight">\(R_s\)</span> (<span class="math notranslate nohighlight">\(50 \Omega\)</span>). This is simplified given <span class="math notranslate nohighlight">\(\omega_T \approx \dfrac{g_m}{C_{gs}}\)</span>.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+Re(Z_{in}) &amp;= \dfrac{g_m L_1}{C_{gs}} \\[1em]
+R_s &amp;\approx L_1 \omega_T \\[1em]
+L_1 &amp;\approx \dfrac{R_s}{\omega_T} = \dfrac{50}{2\pi \cdot 110G} \\[1em]
+L_1 &amp;= 72 pH
+\end{align*}\]</div>
+<p>As a designer, there are two issues with this value.</p>
+<ol class="simple">
+<li><p>It cannot be implemented with most PDKs. Inductors on chip are planar (2D) and have limited range.</p></li>
+<li><p>It doesn’t resonant well due to small capacitance <span class="math notranslate nohighlight">\(C_{gs}\)</span>.</p></li>
+</ol>
+<p>However, it is possible to add a small capacitor in parallel with <span class="math notranslate nohighlight">\(C_{gs}\)</span> such that <span class="math notranslate nohighlight">\(C_{tot} = C_{gs} + C_{gs}'\)</span>.</p>
+<p>The input impedance is now</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+Z_{in} &amp;= \dfrac{1}{sC_{tot}} + L_1 s + \dfrac{g_m L_1}{C_{tot}}
+\end{align*}\]</div>
+<p><strong>Remaining Steps</strong></p>
+<p>Pick minimum value for <span class="math notranslate nohighlight">\(L_1\)</span> that exists in the PDK and has sufficient <span class="math notranslate nohighlight">\(Q\)</span>. Then, perform ac small signal analysis to find input impedance and slowly increase <span class="math notranslate nohighlight">\(C_{gs}'\)</span>.</p>
 </section>
 
     <script type="text/x-thebe-config">
