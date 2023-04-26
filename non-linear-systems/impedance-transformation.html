@@ -577,22 +577,6 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="impedance-transformation">
 <h1>Impedance Transformation<a class="headerlink" href="#impedance-transformation" title="Permalink to this headline">#</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="kn">from</span> <span class="nn">sympy.utilities.lambdify</span> <span class="kn">import</span> <span class="n">lambdify</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="kn">import</span> <span class="n">InteractiveShell</span>
-<span class="n">InteractiveShell</span><span class="o">.</span><span class="n">ast_node_interactivity</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
-<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">LogLocator</span>
-</pre></div>
-</div>
-</div>
-</div>
 <section id="quality-factor">
 <h2>Quality Factor<a class="headerlink" href="#quality-factor" title="Permalink to this headline">#</a></h2>
 <div class="amsmath math notranslate nohighlight">
@@ -603,13 +587,13 @@ Q_P &amp;= \dfrac{R_p}{|X_p|} \\[1em]
 </section>
 <section id="series-to-parallel">
 <h2>Series to Parallel<a class="headerlink" href="#series-to-parallel" title="Permalink to this headline">#</a></h2>
-<p><strong>R &amp; C</strong></p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/impedance-transformation.jpg"><img alt="../_images/impedance-transformation.jpg" src="../_images/impedance-transformation.jpg" style="width: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 6 </span><span class="caption-text">Series to Parallel Conversion</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p><strong>R &amp; C</strong></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 Q_s &amp;= \dfrac{1}{\omega C_s R_s}\\[1em]
