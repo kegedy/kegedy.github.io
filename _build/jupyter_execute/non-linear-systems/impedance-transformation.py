@@ -3,21 +3,6 @@
 
 # # Impedance Transformation
 
-# In[1]:
-
-
-# Imports
-import numpy as np
-import pandas as pd
-import sympy as sp
-from sympy.utilities.lambdify import lambdify
-import matplotlib.pyplot as plt
-get_ipython().run_line_magic('matplotlib', 'inline')
-from IPython.core.interactiveshell import InteractiveShell
-InteractiveShell.ast_node_interactivity = "all"
-from matplotlib.ticker import LogLocator
-
-
 # ## Quality Factor
 
 # \begin{align*}
@@ -27,13 +12,13 @@ from matplotlib.ticker import LogLocator
 
 # ## Series to Parallel
 
-# **R & C**
-# 
 # ```{figure} impedance-transformation/impedance-transformation.jpg
 # :width: 400px
 # Series to Parallel Conversion
 # ```
 
+# **R & C**
+# 
 # \begin{align*}
 # Q_s &= \dfrac{1}{\omega C_s R_s}\\[1em]
 # Q_P &= \dfrac{\omega C_p R_p}{1} \\[1em]
