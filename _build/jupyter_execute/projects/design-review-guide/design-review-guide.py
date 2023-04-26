@@ -55,6 +55,17 @@
 # PDN Impedance
 # ```
 
+# ## Vias
+
+# Resource: [Via Stitching & Via Shielding](https://www.altium.com/documentation/altium-designer/via-stitching-via-shielding-pcb)
+# 
+# **Via Stitching**
+# - maintains low impedance and short return loops
+# 
+# **Via Shielding**
+# - reduces crosstalk and electromagnetic interference in RF signals
+# - provides low impedance path for EMI to travel, effectively grounding any stray signals that may be present
+
 # ## Power Distribution Network
 
 # Goal is to ensure sufficient current and voltage to all loads.

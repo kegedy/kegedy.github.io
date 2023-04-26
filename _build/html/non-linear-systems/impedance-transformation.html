@@ -596,7 +596,7 @@ Q_P &amp;= \dfrac{R_p}{|X_p|} \\[1em]
 <p><strong>R &amp; C</strong></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-Q_s &amp;= \dfrac{1}{\omega C_s R_s}\\[1em]
+Q_s &amp;= \dfrac{1}{\omega C_s R_s} \\[1em]
 Q_P &amp;= \dfrac{\omega C_p R_p}{1} \\[1em]
 \end{align*}\]</div>
 <p><strong>Equate Impedances</strong></p>
@@ -606,13 +606,13 @@ R_s + \dfrac{1}{j\omega C_s} &amp;= R_p \parallel \dfrac{1}{j\omega C_p} \\[1em]
 \dfrac{j\omega R_s C_s + 1}{j\omega C_s} &amp;= \dfrac{\dfrac{R_p}{j\omega C_p}}{R_p + \dfrac{1}{j\omega C_p}} \\[1em]
 \dfrac{j\omega R_s C_s + 1}{j\omega C_s} &amp;= \dfrac{\dfrac{R_p}{j\omega C_p}}{\dfrac{j\omega R_p C_p + 1}{j\omega C_p}} \\[1em]
 \dfrac{j\omega R_s C_s + 1}{j\omega C_s} &amp;= \dfrac{R_p}{j\omega R_p C_p + 1} \\[1em]
--\omega^2 R_s C_s R_p C_p &amp; + j \omega R_s C_s + j \omega R_P C_p + 1 = j \omega R_p C_s \\[1em]
+-\omega^2 R_s C_s R_p C_p + j \omega R_s C_s &amp;+ j \omega R_P C_p + 1 = j \omega R_p C_s \\[1em]
 \text{equate real} &amp;  \text{ and imaginary}  \\[1em]
 \omega^2 R_s C_s R_p C_p = 1 \ \ &amp; \text{ &amp; } \ \
 R_s C_s + R_P C_p - R_p C_s = 0 \\[1em]
-\cdots \\[1em]
-R_p &amp;= (Q_s^2 + 1)R_s \\[1em]
-C_p &amp;= \dfrac{Q_s^2}{Q_s^2+1}
+\vdots \\[1em]
+R_p = (Q_s^2 + 1)R_s &amp;\approx Q_s^2 R_s \\[1em]
+C_p = \dfrac{Q_s^2}{Q_s^2+1}C_s &amp;\approx C_s
 \end{align*}\]</div>
 <p><strong>R &amp; L</strong></p>
 <div class="amsmath math notranslate nohighlight">
@@ -628,15 +628,16 @@ R_s + j\omega L_s  &amp;= \dfrac{j\omega R_p L_p}{R_p + j\omega L_p} \\[1em]
   &amp;= \dfrac{j\omega R_p L_p}{R_p + j\omega L_p} \dfrac{R_p - j\omega L_p}{R_p - j\omega L_p}\\[1em]
   &amp;= \dfrac{(\omega L_p)^2 R_p + j\omega L_p R_p^2}{R_p^2 + \omega^2 L_p^2}\\[1em]
   \text{equate real} &amp;  \text{ and imaginary}  \\[1em]
-  \cdots  \\[1em]
+  R_s = \dfrac{(\omega_0 L_p)^2 R_p}{R_p^2 + (\omega_0 L_p)^2} \ \ &amp;\text{ &amp; } \ \ \omega_0 L_s = \dfrac{\omega_0 L_p R_p^2}{R_p^2 + (\omega_0 L_p)^2} \\[1em]
+  \vdots  \\[1em]
 R_p &amp;= (Q_s^2 + 1)R_s \\[1em]
-C_p &amp;= \dfrac{Q_s^2}{Q_s^2+1}
+L_p &amp;= \dfrac{Q_s^2}{Q_s^2+1} L_s
 \end{align*}\]</div>
 <p><strong>Thus, as long as <span class="math notranslate nohighlight">\(Q_s^2 \gg 1\)</span> then</strong></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 R_p &amp;\approx Q_s^2 R_s \\[1em]
-C_p &amp;\approx C_s
+L_p &amp;\approx L_s
 \end{align*}\]</div>
 </section>
 </section>
