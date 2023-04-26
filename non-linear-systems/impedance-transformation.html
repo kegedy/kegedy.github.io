@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Non-Linear Systems &#8212; Kevin Egedy</title>
+    <title>Impedance Transformation &#8212; Kevin Egedy</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,10 +51,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"chtml": {"scale": 0.85}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Desensitization" href="desensitization.html" />
-    <link rel="prev" title="Electrode Current Drivers" href="../linear-integrated-circuits/current-source-drivers.html" />
+    <link rel="next" title="Read Export Files" href="../LTspice/read-ltspice-export.html" />
+    <link rel="prev" title="Low Noise Amplifier" href="low-noise-amplifier.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -151,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="index.html">
    Non-Linear Systems
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -159,7 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="desensitization.html">
      Desensitization
@@ -170,8 +172,8 @@ const thebe_selector_output = ".output, .cell_output"
      Low Noise Amplifier
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="impedance-transformation.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Impedance Transformation
     </a>
    </li>
@@ -370,6 +372,17 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -409,7 +422,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fnon-linear-systems/index.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kegedy/kegedy.github.io/issues/new?title=Issue%20on%20page%20%2Fnon-linear-systems/impedance-transformation.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -426,7 +439,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/non-linear-systems/index.md"
+        <a href="https://github.com/kegedy/kegedy.github.io/edit/main/non-linear-systems/impedance-transformation.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -454,7 +467,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/non-linear-systems/index.md"
+        <a href="../_sources/non-linear-systems/impedance-transformation.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -465,7 +478,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -491,23 +504,70 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quality-factor">
+   Quality Factor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#series-to-parallel">
+   Series to Parallel
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Non-Linear Systems</h1>
+                <h1>Impedance Transformation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quality-factor">
+   Quality Factor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#series-to-parallel">
+   Series to Parallel
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -515,19 +575,86 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="non-linear-systems">
-<h1>Non-Linear Systems<a class="headerlink" href="#non-linear-systems" title="Permalink to this headline">#</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Under Construction</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="impedance-transformation">
+<h1>Impedance Transformation<a class="headerlink" href="#impedance-transformation" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">from</span> <span class="nn">sympy.utilities.lambdify</span> <span class="kn">import</span> <span class="n">lambdify</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="kn">import</span> <span class="n">InteractiveShell</span>
+<span class="n">InteractiveShell</span><span class="o">.</span><span class="n">ast_node_interactivity</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">LogLocator</span>
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="desensitization.html">Desensitization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="low-noise-amplifier.html">Low Noise Amplifier</a></li>
-<li class="toctree-l1"><a class="reference internal" href="impedance-transformation.html">Impedance Transformation</a></li>
-</ul>
 </div>
+</div>
+<section id="quality-factor">
+<h2>Quality Factor<a class="headerlink" href="#quality-factor" title="Permalink to this headline">#</a></h2>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+Q_s &amp;= \dfrac{|X_s|}{R_s}  \\[1em]
+Q_P &amp;= \dfrac{R_p}{|X_p|} \\[1em]
+\end{align*}\]</div>
+</section>
+<section id="series-to-parallel">
+<h2>Series to Parallel<a class="headerlink" href="#series-to-parallel" title="Permalink to this headline">#</a></h2>
+<p><strong>R &amp; C</strong></p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/impedance-transformation.jpg"><img alt="../_images/impedance-transformation.jpg" src="../_images/impedance-transformation.jpg" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Series to Parallel Conversion</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+Q_s &amp;= \dfrac{1}{\omega C_s R_s}\\[1em]
+Q_P &amp;= \dfrac{\omega C_p R_p}{1} \\[1em]
+\end{align*}\]</div>
+<p><strong>Equate Impedances</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+R_s + \dfrac{1}{j\omega C_s} &amp;= R_p \parallel \dfrac{1}{j\omega C_p} \\[1em]
+\dfrac{j\omega R_s C_s + 1}{j\omega C_s} &amp;= \dfrac{\dfrac{R_p}{j\omega C_p}}{R_p + \dfrac{1}{j\omega C_p}} \\[1em]
+\dfrac{j\omega R_s C_s + 1}{j\omega C_s} &amp;= \dfrac{\dfrac{R_p}{j\omega C_p}}{\dfrac{j\omega R_p C_p + 1}{j\omega C_p}} \\[1em]
+\dfrac{j\omega R_s C_s + 1}{j\omega C_s} &amp;= \dfrac{R_p}{j\omega R_p C_p + 1} \\[1em]
+-\omega^2 R_s C_s R_p C_p &amp; + j \omega R_s C_s + j \omega R_P C_p + 1 = j \omega R_p C_s \\[1em]
+\text{equate real} &amp;  \text{ and imaginary}  \\[1em]
+\omega^2 R_s C_s R_p C_p = 1 \ \ &amp; \text{ &amp; } \ \
+R_s C_s + R_P C_p - R_p C_s = 0 \\[1em]
+\cdots \\[1em]
+R_p &amp;= (Q_s^2 + 1)R_s \\[1em]
+C_p &amp;= \dfrac{Q_s^2}{Q_s^2+1}
+\end{align*}\]</div>
+<p><strong>R &amp; L</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+Q_s &amp;= \dfrac{\omega L_s}{ R_s}\\[1em]
+Q_P &amp;= \dfrac{R_p}{\omega L_p} \\[1em]
+\end{align*}\]</div>
+<p><strong>Equate Impedances</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+R_s + j\omega L_s &amp;= R_p \parallel j\omega L_p \\[1em]
+R_s + j\omega L_s  &amp;= \dfrac{j\omega R_p L_p}{R_p + j\omega L_p} \\[1em]
+  &amp;= \dfrac{j\omega R_p L_p}{R_p + j\omega L_p} \dfrac{R_p - j\omega L_p}{R_p - j\omega L_p}\\[1em]
+  &amp;= \dfrac{(\omega L_p)^2 R_p + j\omega L_p R_p^2}{R_p^2 + \omega^2 L_p^2}\\[1em]
+  \text{equate real} &amp;  \text{ and imaginary}  \\[1em]
+  \cdots  \\[1em]
+R_p &amp;= (Q_s^2 + 1)R_s \\[1em]
+C_p &amp;= \dfrac{Q_s^2}{Q_s^2+1}
+\end{align*}\]</div>
+<p><strong>Thus, as long as <span class="math notranslate nohighlight">\(Q_s^2 \gg 1\)</span> then</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+R_p &amp;\approx Q_s^2 R_s \\[1em]
+C_p &amp;\approx C_s
+\end{align*}\]</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -557,17 +684,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../linear-integrated-circuits/current-source-drivers.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="low-noise-amplifier.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Electrode Current Drivers</p>
+            <p class="prev-next-title">Low Noise Amplifier</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="desensitization.html" title="next page">
+    <a class='right-next' id="next-link" href="../LTspice/read-ltspice-export.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Desensitization</p>
+        <p class="prev-next-title">Read Export Files</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
