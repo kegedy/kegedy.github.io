@@ -37,7 +37,14 @@
 # R_s C_s + R_P C_p - R_p C_s = 0 \\[1em]
 # \cdots \\[1em]
 # R_p &= (Q_s^2 + 1)R_s \\[1em]
-# C_p &= \dfrac{Q_s^2}{Q_s^2+1}
+# C_p &= \dfrac{Q_s^2}{Q_s^2+1}C_s
+# \end{align*}
+
+# **Thus, as long as $Q_s^2 \gg 1$ then** 
+# 
+# \begin{align*}
+# R_p &\approx Q_s^2 R_s \\[1em]
+# C_p &\approx C_s
 # \end{align*}
 
 # ## R & L
@@ -57,14 +64,14 @@
 #   \text{equate real} &  \text{ and imaginary}  \\[1em]
 #   \cdots  \\[1em]
 # R_p &= (Q_s^2 + 1)R_s \\[1em]
-# C_p &= \dfrac{Q_s^2}{Q_s^2+1}
+# L_p &= \dfrac{Q_s^2}{Q_s^2+1} L_s
 # \end{align*}
 
 # **Thus, as long as $Q_s^2 \gg 1$ then** 
 # 
 # \begin{align*}
 # R_p &\approx Q_s^2 R_s \\[1em]
-# C_p &\approx C_s
+# L_p &\approx L_s
 # \end{align*}
 
 # In[ ]:

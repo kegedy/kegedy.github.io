@@ -2,6 +2,8 @@
 # coding: utf-8
 
 # # Controller Requirements
+# 
+# <hr>
 
 # ## Plant Approximation
 
@@ -10,6 +12,8 @@
 # \begin{align*}
 # P(s) = K\dfrac{\omega_0^2}{s^2 + 2\zeta \omega_0 s + \omega_0^2}
 # \end{align*}
+# 
+# <hr>
 
 # ## Convert Time Requirements
 # 
@@ -39,6 +43,8 @@
 #  \text{[2% of $V_{ref}$] }\ \ t_s &= \dfrac{4}{\zeta \omega_n}  \\[1em]
 #  \text{[5% of $V_{ref}$] }\ \ t_s &= \dfrac{3}{\zeta \omega_n}
 # \end{align*}
+# 
+# <hr>
 
 # ## Controller Properties
 
@@ -59,6 +65,8 @@
 #  &= \dfrac{sK_p+K_i}{s} \\[1em]
 #  &= K_1\dfrac{s/\alpha+1}{s}
 # \end{align*}
+# 
+# <hr>
 
 # ## Check Design
 
@@ -68,6 +76,8 @@
 # \text{PM (deg)} &= \bigg[\tan^{-1}\bigg(\frac{2\zeta}{\sqrt{1-2\zeta^2}}\bigg) \bigg] \cdot \dfrac{180}{\pi} \\[1em]
 # \omega_c \text{ (rad)} &= \omega_0 \sqrt{1-2\zeta^2}
 # \end{align*}
+# 
+# <hr>
 
 # ```{figure} controller-requirements/matlab-margin.png
 # ```
