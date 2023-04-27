@@ -609,14 +609,14 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="controller-requirements">
 <h1>Controller Requirements<a class="headerlink" href="#controller-requirements" title="Permalink to this headline">#</a></h1>
-<section id="plant-approximation">
+<hr><section id="plant-approximation">
 <h2>Plant Approximation<a class="headerlink" href="#plant-approximation" title="Permalink to this headline">#</a></h2>
 <p><strong>Second Order System</strong></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 P(s) = K\dfrac{\omega_0^2}{s^2 + 2\zeta \omega_0 s + \omega_0^2}
 \end{align*}\]</div>
-</section>
+<hr></section>
 <section id="convert-time-requirements">
 <h2>Convert Time Requirements<a class="headerlink" href="#convert-time-requirements" title="Permalink to this headline">#</a></h2>
 <p>Given</p>
@@ -644,7 +644,7 @@ P(s) = K\dfrac{\omega_0^2}{s^2 + 2\zeta \omega_0 s + \omega_0^2}
  \text{[2% of $V_{ref}$] }\ \ t_s &amp;= \dfrac{4}{\zeta \omega_n}  \\[1em]
  \text{[5% of $V_{ref}$] }\ \ t_s &amp;= \dfrac{3}{\zeta \omega_n}
 \end{align*}\]</div>
-</section>
+<hr></section>
 <section id="controller-properties">
 <h2>Controller Properties<a class="headerlink" href="#controller-properties" title="Permalink to this headline">#</a></h2>
 <p>Open Loop general design:</p>
@@ -667,7 +667,7 @@ C(s) &amp;= K_p + \dfrac{K_i}{s} \\[1em]
  &amp;= \dfrac{sK_p+K_i}{s} \\[1em]
  &amp;= K_1\dfrac{s/\alpha+1}{s}
 \end{align*}\]</div>
-</section>
+<hr></section>
 <section id="check-design">
 <h2>Check Design<a class="headerlink" href="#check-design" title="Permalink to this headline">#</a></h2>
 <p>Bode response should have the following properties</p>
@@ -676,7 +676,7 @@ C(s) &amp;= K_p + \dfrac{K_i}{s} \\[1em]
 \text{PM (deg)} &amp;= \bigg[\tan^{-1}\bigg(\frac{2\zeta}{\sqrt{1-2\zeta^2}}\bigg) \bigg] \cdot \dfrac{180}{\pi} \\[1em]
 \omega_c \text{ (rad)} &amp;= \omega_0 \sqrt{1-2\zeta^2}
 \end{align*}\]</div>
-<figure class="align-default">
+<hr><figure class="align-default">
 <img alt="../_images/matlab-margin.png" src="../_images/matlab-margin.png" />
 </figure>
 <p><a class="reference external" href="https://www.mathworks.com/help/control/ref/dynamicsystem.margin.html">MATLAB Bode Response</a>:
