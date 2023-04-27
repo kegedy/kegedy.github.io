@@ -16,6 +16,8 @@
 # \end{align*}
 
 # At resonance, the third term provides a real impedance that is matched to the source impedance $R_s$ ($50 \Omega$). This is simplified given $\omega_T \approx \dfrac{g_m}{C_{gs}}$.
+# 
+# *$\omega_T$ is determined by the gain necessary for your application.*
 
 # \begin{align*}
 # Re(Z_{in}) &= \dfrac{g_m L_1}{C_{gs}} \\[1em]
@@ -30,7 +32,7 @@
 # 2. It doesn't resonant well due to small capacitance $C_{gs}$.
 # 
 # 
-# However, it is possible to add a small capacitor in parallel with $C_{gs}$ such that $C_{tot} = C_{gs} + C_{gs}'$.  
+# However, it is possible to add a small capacitor in parallel with $C_{gs}$ such that $C_{tot} = C_{gs} + C_{gs'}$.  
 # 
 # The input impedance is now  
 # 
@@ -40,7 +42,7 @@
 
 # **Remaining Steps** 
 # 
-# Pick minimum value for $L_1$ that exists in the PDK and has sufficient $Q$. Then, perform ac small signal analysis to find input impedance and slowly increase $C_{gs}'$. 
+# Pick minimum value for $L_1$ that exists in the PDK and has sufficient $Q$. Then, perform ac small signal analysis to find input impedance and slowly increase $C_{gs'}$. 
 
 # In[ ]:
 

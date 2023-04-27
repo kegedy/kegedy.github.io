@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Definition of Variables" href="../wireless-power-transfer/variables.html" />
+    <link rel="next" title="Shielded-Loop Resonators" href="../wireless-power-transfer/shielded-loop-resonators.html" />
     <link rel="prev" title="Boost Controller" href="boost-controller.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -182,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  LTspice Help
+  LTspice
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -301,11 +301,6 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../wireless-power-transfer/variables.html">
-   Definition of Variables
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../wireless-power-transfer/shielded-loop-resonators.html">
    Shielded-Loop Resonators
@@ -629,8 +624,8 @@ I &amp;= \dfrac{V}{R}
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-2805d64f-6ad1-468d-a185-b841ba776c46">
-<span class="eqno">(9)<a class="headerlink" href="#equation-2805d64f-6ad1-468d-a185-b841ba776c46" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-e8ec6430-089c-4f21-8986-43565bcdeab2">
+<span class="eqno">(9)<a class="headerlink" href="#equation-e8ec6430-089c-4f21-8986-43565bcdeab2" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -678,14 +673,14 @@ B &amp;=
 \end{bmatrix}
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3ff961a7-c3ee-4144-948a-c975de906a01">
-<span class="eqno">(10)<a class="headerlink" href="#equation-3ff961a7-c3ee-4144-948a-c975de906a01" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-3408b078-5ebd-4097-b195-0e04aba4cb7c">
+<span class="eqno">(10)<a class="headerlink" href="#equation-3408b078-5ebd-4097-b195-0e04aba4cb7c" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-214d6dbe-ef67-4ba9-958e-94aa6f019e32">
-<span class="eqno">(11)<a class="headerlink" href="#equation-214d6dbe-ef67-4ba9-958e-94aa6f019e32" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-8cd10a50-c101-420d-9204-0bdb6179368d">
+<span class="eqno">(11)<a class="headerlink" href="#equation-8cd10a50-c101-420d-9204-0bdb6179368d" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -704,13 +699,13 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-34db1581-1c8e-47d1-b7fc-7aac341bd2b3">
-<span class="eqno">(12)<a class="headerlink" href="#equation-34db1581-1c8e-47d1-b7fc-7aac341bd2b3" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-320287ab-4493-4003-b8c0-8cfb8337f855">
+<span class="eqno">(12)<a class="headerlink" href="#equation-320287ab-4493-4003-b8c0-8cfb8337f855" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-6a408488-d21f-4361-9617-851bd95bea85">
-<span class="eqno">(13)<a class="headerlink" href="#equation-6a408488-d21f-4361-9617-851bd95bea85" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-849c5c18-5836-40dd-80af-bf57c274af31">
+<span class="eqno">(13)<a class="headerlink" href="#equation-849c5c18-5836-40dd-80af-bf57c274af31" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 V_g \dfrac{RCs+1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} &amp; 
 D \dfrac{RCs+1}{RRLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} \\[1em]
 R V_g \dfrac{1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} &amp; 
@@ -767,10 +762,10 @@ G_{id}(s) &amp;= V_g \dfrac{RCs+1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}}   
             <p class="prev-next-title">Boost Controller</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../wireless-power-transfer/variables.html" title="next page">
+    <a class='right-next' id="next-link" href="../wireless-power-transfer/shielded-loop-resonators.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Definition of Variables</p>
+        <p class="prev-next-title">Shielded-Loop Resonators</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

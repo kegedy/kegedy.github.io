@@ -13,7 +13,7 @@
 # ## Series to Parallel
 
 # ```{figure} impedance-transformation/impedance-transformation.jpg
-# :width: 350px
+# :width: 300px
 # Series to Parallel Conversion
 # ```
 

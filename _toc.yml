@@ -19,7 +19,12 @@ parts:
     - file: non-linear-systems/low-noise-amplifier
     - file: non-linear-systems/impedance-transformation
 
-- caption: LTspice Help
+- caption: Definitions
+  chapters:
+  - file: definitions/constants  
+  - file: definitions/variables
+
+- caption: LTspice
   chapters:
   - file: LTspice/read-ltspice-export
 
@@ -52,7 +57,6 @@ parts:
 
 - caption: Wireless Power Transfer
   chapters:
-  - file: wireless-power-transfer/variables
   - file: wireless-power-transfer/shielded-loop-resonators
   - file: wireless-power-transfer/coupled-resonators-and-voltage-rectification
   - file: wireless-power-transfer/impedance-matching-and-frequency-tuning

@@ -182,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  LTspice Help
+  LTspice
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -301,11 +301,6 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../wireless-power-transfer/variables.html">
-   Definition of Variables
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../wireless-power-transfer/shielded-loop-resonators.html">
    Shielded-Loop Resonators
@@ -543,6 +538,7 @@ title="Print to PDF"
 Z_{in} &amp;= \dfrac{1}{sC_{gs}} + L_1 s + \dfrac{g_m L_1}{C_{gs}}
 \end{align*}\]</div>
 <p>At resonance, the third term provides a real impedance that is matched to the source impedance <span class="math notranslate nohighlight">\(R_s\)</span> (<span class="math notranslate nohighlight">\(50 \Omega\)</span>). This is simplified given <span class="math notranslate nohighlight">\(\omega_T \approx \dfrac{g_m}{C_{gs}}\)</span>.</p>
+<p><em><span class="math notranslate nohighlight">\(\omega_T\)</span> is determined by the gain necessary for your application.</em></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 Re(Z_{in}) &amp;= \dfrac{g_m L_1}{C_{gs}} \\[1em]
@@ -555,14 +551,14 @@ L_1 &amp;= 72 pH
 <li><p>It cannot be implemented with most PDKs. Inductors on chip are planar (2D) and have limited range.</p></li>
 <li><p>It doesn’t resonant well due to small capacitance <span class="math notranslate nohighlight">\(C_{gs}\)</span>.</p></li>
 </ol>
-<p>However, it is possible to add a small capacitor in parallel with <span class="math notranslate nohighlight">\(C_{gs}\)</span> such that <span class="math notranslate nohighlight">\(C_{tot} = C_{gs} + C_{gs}'\)</span>.</p>
+<p>However, it is possible to add a small capacitor in parallel with <span class="math notranslate nohighlight">\(C_{gs}\)</span> such that <span class="math notranslate nohighlight">\(C_{tot} = C_{gs} + C_{gs'}\)</span>.</p>
 <p>The input impedance is now</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 Z_{in} &amp;= \dfrac{1}{sC_{tot}} + L_1 s + \dfrac{g_m L_1}{C_{tot}}
 \end{align*}\]</div>
 <p><strong>Remaining Steps</strong></p>
-<p>Pick minimum value for <span class="math notranslate nohighlight">\(L_1\)</span> that exists in the PDK and has sufficient <span class="math notranslate nohighlight">\(Q\)</span>. Then, perform ac small signal analysis to find input impedance and slowly increase <span class="math notranslate nohighlight">\(C_{gs}'\)</span>.</p>
+<p>Pick minimum value for <span class="math notranslate nohighlight">\(L_1\)</span> that exists in the PDK and has sufficient <span class="math notranslate nohighlight">\(Q\)</span>. Then, perform ac small signal analysis to find input impedance and slowly increase <span class="math notranslate nohighlight">\(C_{gs'}\)</span>.</p>
 </section>
 
     <script type="text/x-thebe-config">
