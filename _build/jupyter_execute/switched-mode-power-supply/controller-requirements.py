@@ -43,8 +43,8 @@
 # ## Controller Properties
 
 # Open Loop general design:
-# - $C(s)$ should have high gain such that $ |C(s) \cdot P(s) | $ has high gain at frequencies where disturbance is present
-# - $C(s)$ should have low gain such that $|C(s) \cdot P(s) |$ has low gain at frequencies where noise is present
+# - $ |C(s) \cdot P(s) | $ has high gain at frequencies where disturbance is present
+# - $|C(s) \cdot P(s) |$ has low gain at frequencies where noise is present
 # 
 # Step 1. Integral Controller 
 # \begin{align*}

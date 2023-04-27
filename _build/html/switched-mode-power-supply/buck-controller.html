@@ -182,6 +182,23 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Definitions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../definitions/constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../definitions/variables.html">
+   Definition of Variables
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   LTspice
  </span>
 </p>
@@ -624,8 +641,8 @@ I &amp;= \dfrac{V}{R}
 \hat{y}(t) &amp;= C \hat{x}(t) + E  \hat{u}(t) 
 \end{align*}\]</div>
 <p><strong>where</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-e8ec6430-089c-4f21-8986-43565bcdeab2">
-<span class="eqno">(9)<a class="headerlink" href="#equation-e8ec6430-089c-4f21-8986-43565bcdeab2" title="Permalink to this equation">#</a></span>\[\begin{matrix}
+<div class="amsmath math notranslate nohighlight" id="equation-dace564a-d67f-411f-aa3b-6ac174d3afe9">
+<span class="eqno">(9)<a class="headerlink" href="#equation-dace564a-d67f-411f-aa3b-6ac174d3afe9" title="Permalink to this equation">#</a></span>\[\begin{matrix}
 x(t) = \hat{x}(t) + X &amp;&amp; X = 
 \begin{bmatrix}
 I \\
@@ -673,14 +690,14 @@ B &amp;=
 \end{bmatrix}
 \end{align*}\]</div>
 <p>C =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3408b078-5ebd-4097-b195-0e04aba4cb7c">
-<span class="eqno">(10)<a class="headerlink" href="#equation-3408b078-5ebd-4097-b195-0e04aba4cb7c" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-a949cc95-0dc4-4be6-8bb2-3c678ca734f7">
+<span class="eqno">(10)<a class="headerlink" href="#equation-a949cc95-0dc4-4be6-8bb2-3c678ca734f7" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 1  \\
 1 &amp; 0
 \end{bmatrix}\]</div>
 <p>E =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8cd10a50-c101-420d-9204-0bdb6179368d">
-<span class="eqno">(11)<a class="headerlink" href="#equation-8cd10a50-c101-420d-9204-0bdb6179368d" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-4dbe93f9-3005-4ba5-bb08-f4dc43646d43">
+<span class="eqno">(11)<a class="headerlink" href="#equation-4dbe93f9-3005-4ba5-bb08-f4dc43646d43" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 0 &amp; 0 \\
 0 &amp; 0
 \end{bmatrix}\]</div>
@@ -699,13 +716,13 @@ sI\hat{x}(s) - A \hat{x}(s) &amp;= B \hat{u}(s) \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Solver</strong></p>
 <p>G(s) =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-320287ab-4493-4003-b8c0-8cfb8337f855">
-<span class="eqno">(12)<a class="headerlink" href="#equation-320287ab-4493-4003-b8c0-8cfb8337f855" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-f3f532dd-9fc4-4f4c-a42b-81b4a0005623">
+<span class="eqno">(12)<a class="headerlink" href="#equation-f3f532dd-9fc4-4f4c-a42b-81b4a0005623" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 G_{id}(s) &amp; G_{ig}(s) \\[1em]
 G_{vd}(s) &amp; G_{vg}(s)
 \end{bmatrix}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-849c5c18-5836-40dd-80af-bf57c274af31">
-<span class="eqno">(13)<a class="headerlink" href="#equation-849c5c18-5836-40dd-80af-bf57c274af31" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="amsmath math notranslate nohighlight" id="equation-31065618-9d09-4bc1-bb8b-3cb1534ef1bb">
+<span class="eqno">(13)<a class="headerlink" href="#equation-31065618-9d09-4bc1-bb8b-3cb1534ef1bb" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
 V_g \dfrac{RCs+1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} &amp; 
 D \dfrac{RCs+1}{RRLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} \\[1em]
 R V_g \dfrac{1}{RLCs^2 + (R R_L C + L)s + R +R_L + R_{on}} &amp; 

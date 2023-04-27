@@ -3,13 +3,6 @@
 
 # # Impedance Transformation
 
-# ## Quality Factor
-
-# \begin{align*}
-# Q_s &= \dfrac{|X_s|}{R_s}  \\[1em]
-# Q_P &= \dfrac{R_p}{|X_p|} \\[1em]
-# \end{align*}
-
 # ## Series to Parallel
 
 # ```{figure} impedance-transformation/impedance-transformation.jpg
@@ -17,7 +10,14 @@
 # Series to Parallel Conversion
 # ```
 
-# **R & C**
+# ## Quality Factor
+
+# \begin{align*}
+# Q_s &= \dfrac{|X_s|}{R_s}  \\[1em]
+# Q_P &= \dfrac{R_p}{|X_p|} \\[1em]
+# \end{align*}
+
+# ## R & C
 # 
 # \begin{align*}
 # Q_s &= \dfrac{1}{\omega C_s R_s}\\[1em]
@@ -40,7 +40,7 @@
 # C_p &= \dfrac{Q_s^2}{Q_s^2+1}
 # \end{align*}
 
-# **R & L**
+# ## R & L
 
 # \begin{align*}
 # Q_s &= \dfrac{\omega L_s}{ R_s}\\[1em]
