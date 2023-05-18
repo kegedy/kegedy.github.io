@@ -10,14 +10,14 @@
 # Series to Parallel Conversion
 # ```
 
-# ## Quality Factor
+# ### Quality Factor
 
 # \begin{align*}
 # Q_s &= \dfrac{|X_s|}{R_s}  \\[1em]
 # Q_P &= \dfrac{R_p}{|X_p|} \\[1em]
 # \end{align*}
 
-# ## R & C
+# ### R & C
 # 
 # \begin{align*}
 # Q_s &= \dfrac{1}{\omega C_s R_s}\\[1em]
@@ -47,7 +47,7 @@
 # C_p &\approx C_s
 # \end{align*}
 
-# ## R & L
+# ### R & L
 
 # \begin{align*}
 # Q_s &= \dfrac{\omega L_s}{ R_s}\\[1em]
@@ -64,14 +64,14 @@
 #   \text{equate real} &  \text{ and imaginary}  \\[1em]
 #   \cdots  \\[1em]
 # R_p &= (Q_s^2 + 1)R_s \\[1em]
-# L_p &= \dfrac{Q_s^2}{Q_s^2+1} L_s
+# L_S &= \dfrac{Q_s^2}{Q_s^2+1} L_P
 # \end{align*}
 
 # **Thus, as long as $Q_s^2 \gg 1$ then** 
 # 
 # \begin{align*}
 # R_p &\approx Q_s^2 R_s \\[1em]
-# L_p &\approx L_s
+# L_S &\approx L_P
 # \end{align*}
 
 # In[ ]:

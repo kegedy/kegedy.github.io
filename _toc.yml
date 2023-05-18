@@ -5,6 +5,11 @@ format: jb-book
 root: intro
 parts: 
 
+- caption: Definitions
+  chapters:
+  - file: definitions/constants  
+  - file: definitions/variables
+
 - caption: Integrated Circuit Design
   chapters:
   - file: linear-integrated-circuits/index
@@ -18,11 +23,6 @@ parts:
     - file: non-linear-systems/desensitization
     - file: non-linear-systems/low-noise-amplifier
     - file: non-linear-systems/impedance-transformation
-
-- caption: Definitions
-  chapters:
-  - file: definitions/constants  
-  - file: definitions/variables
 
 - caption: LTspice
   chapters:

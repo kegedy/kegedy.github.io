@@ -126,6 +126,23 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Definitions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../definitions/constants.html">
+   Constants
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../definitions/variables.html">
+   Definition of Variables
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Integrated Circuit Design
  </span>
 </p>
@@ -178,23 +195,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Definitions
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../definitions/constants.html">
-   Constants
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../definitions/variables.html">
-   Definition of Variables
-  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -1143,6 +1143,8 @@ V_0  &amp;= 0.4179 \\
 0.4179 &amp;= E_i + E_i\frac{R-Z_0}{R+Z_0} &amp; \rightarrow R &amp;= 254.46 \Omega \\
 \tau   &amp;= \frac{R+Z_0}{RZ_0}L &amp; \rightarrow L &amp;= 773 nH
 \end{align}\)</span></p>
+<hr>
+<p><strong>Part1_unknown2</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculated Values</span>
@@ -1151,50 +1153,10 @@ V_0  &amp;= 0.4179 \\
 <span class="n">L</span> <span class="o">=</span> <span class="mi">773</span> <span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span>    <span class="c1"># 786 nH   from &#39;Values of complex loads 2020-v2 better.pdf&#39;</span>
 <span class="n">Z0</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">Ei</span> <span class="o">=</span> <span class="mf">0.25</span>
-
-<span class="c1"># range:[-100ns,100ns] with resolution 0.05ns</span>
-<span class="n">t</span><span class="p">,</span><span class="n">width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.0000001</span><span class="p">,</span><span class="mf">0.0000001</span><span class="p">,</span><span class="mi">4000</span><span class="p">,</span><span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">retstep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Theoretical response</span>
-<span class="c1">#</span>
-<span class="k">def</span> <span class="nf">shuntR_L</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Z0</span><span class="p">,</span><span class="n">Ei</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
-    <span class="n">Tao</span> <span class="o">=</span> <span class="n">L</span><span class="o">*</span><span class="p">(</span><span class="n">Z0</span><span class="o">+</span><span class="n">R</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">Z0</span><span class="o">*</span><span class="n">R</span><span class="p">)</span>
-    <span class="n">const</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">Z0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">Z0</span><span class="p">)</span>
-    <span class="n">x0</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="o">&lt;=-</span><span class="mf">0.00000005</span><span class="p">]</span>
-    <span class="n">x1</span> <span class="o">=</span> <span class="n">t</span><span class="p">[(</span><span class="n">t</span><span class="o">&gt;-</span><span class="mf">0.00000005</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)]</span>
-    <span class="n">x2</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">y0</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="n">y1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Ei</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="n">y2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Ei</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">const</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">Tao</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">y0</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span>\
-            <span class="n">y1</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span>\
-            <span class="n">y2</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-
-<span class="c1"># Plot</span>
-<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">shuntR_L</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Z0</span><span class="p">,</span><span class="n">Ei</span><span class="p">,</span><span class="n">t</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;theoretical values&#39;</span><span class="p">)</span>
-
-<span class="c1"># Labels</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Theoretical Response shuntR_L&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/time-domain-response_32_0.png" src="../../_images/time-domain-response_32_0.png" />
-</div>
-</div>
-<hr>
-<p><strong>Part1_unknown2</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find V0</span>
@@ -1246,7 +1208,7 @@ Time Response Tau     = 24.5ns
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/time-domain-response_35_0.png" src="../../_images/time-domain-response_35_0.png" />
+<img alt="../../_images/time-domain-response_34_0.png" src="../../_images/time-domain-response_34_0.png" />
 </div>
 </div>
 <p><img alt="" src="../../_images/seriesR_C.png" /></p>
@@ -1262,56 +1224,6 @@ V_0  &amp;= 0.3231 \\
 0.3231 &amp;= E_i + E_i\frac{R-Z_0}{R+Z_0} &amp; \rightarrow R &amp;= 91.39 \Omega \\
 \tau   &amp;= (R+Z_0)C &amp; \rightarrow C &amp;= 0.163 nF
 \end{align}\)</span></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculated Values</span>
-<span class="c1">#</span>
-<span class="n">R</span> <span class="o">=</span> <span class="mf">91.39</span>           <span class="c1"># 100 Ohms from &#39;Values of complex loads 2020-v2 better.pdf&#39;</span>
-<span class="n">C</span> <span class="o">=</span> <span class="mf">0.163</span> <span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span> <span class="c1"># 0.184 nF from &#39;Values of complex loads 2020-v2 better.pdf&#39;</span>
-<span class="n">Z0</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">Ei</span> <span class="o">=</span> <span class="mf">0.25</span>
-
-<span class="c1"># range:[-100ns,100ns] with resolution 0.05ns</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.0000001</span><span class="p">,</span><span class="mf">0.0000001</span><span class="p">,</span><span class="mi">4000</span><span class="p">)</span> 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Theoretical Response Part1_unknown2</span>
-<span class="c1">#</span>
-<span class="k">def</span> <span class="nf">seriesR_C</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">Z0</span><span class="p">,</span><span class="n">Ei</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
-    <span class="n">Tao</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">Z0</span><span class="p">)</span><span class="o">*</span><span class="n">C</span>
-    <span class="n">const</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">Z0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">Z0</span><span class="p">)</span>
-    <span class="n">x0</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="o">&lt;=-</span><span class="mf">0.00000005</span><span class="p">]</span>
-    <span class="n">x1</span> <span class="o">=</span> <span class="n">t</span><span class="p">[(</span><span class="n">t</span><span class="o">&gt;-</span><span class="mf">0.00000005</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)]</span>
-    <span class="n">x2</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">y0</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="n">y1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Ei</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="n">y2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Ei</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">const</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">Tao</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">y0</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span>\
-            <span class="n">y1</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span>\
-            <span class="n">y2</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-
-<span class="c1"># Plot</span>
-<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">seriesR_C</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">Z0</span><span class="p">,</span><span class="n">Ei</span><span class="p">,</span><span class="n">t</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;theoretical values&#39;</span><span class="p">)</span>
-
-<span class="c1"># Labels</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Theoretical Response seriesR_C&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/time-domain-response_39_0.png" src="../../_images/time-domain-response_39_0.png" />
-</div>
-</div>
 <hr>
 <p><strong>Part1_unknown3</strong></p>
 <div class="cell docutils container">
@@ -1367,7 +1279,7 @@ Time Response Tau     = 399.8ps
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/time-domain-response_42_0.png" src="../../_images/time-domain-response_42_0.png" />
+<img alt="../../_images/time-domain-response_39_0.png" src="../../_images/time-domain-response_39_0.png" />
 </div>
 </div>
 <p><img alt="" src="../../_images/seriesR_L.png" /></p>
@@ -1383,64 +1295,6 @@ V_0  &amp;= 0.4044 \\
 E_i  &amp;= (1+\frac{R-Z_0}{R+Z_0})E_i &amp; \rightarrow R &amp;= 50 \Omega \\
 \tau &amp;= \frac{L}{Z_0+R}            &amp; \rightarrow L &amp;= 40 nH
 \end{align}\)</span></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculated Values</span>
-<span class="c1">#</span>
-<span class="n">R</span> <span class="o">=</span> <span class="mi">50</span>              <span class="c1"># R = 50 Ohms from &#39;Values of complex loads 2020-v2 better.pdf&#39;</span>
-<span class="n">L</span> <span class="o">=</span> <span class="mi">40</span> <span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span>   <span class="c1"># L = 29 nH from &#39;Values of complex loads 2020-v2 better.pdf&#39;</span>
-<span class="n">Ei</span> <span class="o">=</span> <span class="mf">0.25</span>
-<span class="n">Z0</span> <span class="o">=</span> <span class="mi">50</span> 
-
-<span class="c1"># range:[-2.5ns,2.5ns]</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.0000000025</span><span class="p">,</span><span class="mf">0.0000000025</span><span class="p">,</span><span class="mi">4000</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Theoretical Response Part1_unknown3</span>
-<span class="c1">#</span>
-<span class="k">def</span> <span class="nf">seriesR_L</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Z0</span><span class="p">,</span><span class="n">Ei</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
-    <span class="n">Tao</span> <span class="o">=</span> <span class="n">L</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">Z0</span><span class="p">)</span>
-    <span class="n">const</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">Z0</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">Z0</span><span class="p">)</span>
-    <span class="n">x0</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="o">&lt;=-</span><span class="mf">0.0000000010</span><span class="p">]</span>
-    <span class="n">x1</span> <span class="o">=</span> <span class="n">t</span><span class="p">[(</span><span class="n">t</span><span class="o">&gt;-</span><span class="mf">0.0000000010</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">)]</span>
-    <span class="n">x2</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">t</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">y0</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="n">y1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Ei</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="n">y2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Ei</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">const</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">const</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">Tao</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">y0</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span>\
-            <span class="n">y1</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">+</span>\
-            <span class="n">y2</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Theoretical Response</span>
-<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">vals</span> <span class="o">=</span> <span class="n">seriesR_L</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">Z0</span><span class="p">,</span><span class="n">Ei</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
-
-<span class="c1"># Plot</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">vals</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;theoretical values&#39;</span><span class="p">)</span>
-
-<span class="c1"># Labels</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;sci&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Theoretical Response seriesR_L&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t (s)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/time-domain-response_47_0.png" src="../../_images/time-domain-response_47_0.png" />
-</div>
-</div>
 <p><strong>Uknown Loads Summary</strong></p>
 <p>Unknown1: Shunt R-L</p>
 <table class="colwidths-auto table">
@@ -1578,7 +1432,7 @@ R_s &amp;=&amp; 7.6
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/time-domain-response_53_0.png" src="../../_images/time-domain-response_53_0.png" />
+<img alt="../../_images/time-domain-response_47_0.png" src="../../_images/time-domain-response_47_0.png" />
 </div>
 </div>
 <p>Instructions: The inductance of the DUT</p>
@@ -1665,7 +1519,7 @@ R_s &amp;=&amp; 7.6
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/time-domain-response_57_0.png" src="../../_images/time-domain-response_57_0.png" />
+<img alt="../../_images/time-domain-response_51_0.png" src="../../_images/time-domain-response_51_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1693,7 +1547,7 @@ R_s &amp;=&amp; 7.6
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/time-domain-response_58_0.png" src="../../_images/time-domain-response_58_0.png" />
+<img alt="../../_images/time-domain-response_52_0.png" src="../../_images/time-domain-response_52_0.png" />
 </div>
 </div>
 <p>Solve:</p>

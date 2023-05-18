@@ -8,7 +8,7 @@ This is a collection of thoughts and concepts I've worked on over the years. Hop
 
 ## Resume
 
-April, 2023: [Egedy.Kevin.pdf](https://kegedy.github.io/Egedy.Kevin.pdf)
+May, 2023: [Egedy.Kevin.pdf](https://kegedy.github.io/Egedy.Kevin.pdf)
 
 ## Colloquium Series
 [UWECE Reseach Colloquium](https://www.ece.uw.edu/colloquium/)  

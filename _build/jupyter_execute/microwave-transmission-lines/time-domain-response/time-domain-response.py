@@ -424,6 +424,10 @@ plt.legend();
 # \tau   &= \frac{R+Z_0}{RZ_0}L & \rightarrow L &= 773 nH
 # \end{align}$
 
+# <hr>
+# 
+# **Part1_unknown2**
+
 # In[13]:
 
 
@@ -434,44 +438,8 @@ L = 773 *10**(-9)    # 786 nH   from 'Values of complex loads 2020-v2 better.pdf
 Z0 = 50
 Ei = 0.25
 
-# range:[-100ns,100ns] with resolution 0.05ns
-t,width = np.linspace(-0.0000001,0.0000001,4000,endpoint=False,retstep=True)
-
 
 # In[14]:
-
-
-# Theoretical response
-#
-def shuntR_L(R,L,Z0,Ei,t):
-    Tao = L*(Z0+R)/(Z0*R)
-    const = (R-Z0)/(R+Z0)
-    x0 = t[t<=-0.00000005]
-    x1 = t[(t>-0.00000005) & (t<=0)]
-    x2 = t[t>0]
-    y0 = lambda x: np.zeros(len(x))
-    y1 = lambda x: Ei*np.ones(len(x))
-    y2 = lambda x: Ei*((1+const)*np.exp(-x/Tao))
-    return y0(x0).tolist()+            y1(x1).tolist()+            y2(x2).tolist()
-
-# Plot
-fig,ax = plt.subplots(figsize=(12,4))
-ax.plot(t,shuntR_L(R,L,Z0,Ei,t),label='theoretical values')
-
-# Labels
-ax.ticklabel_format(axis='x',style='sci', scilimits=(-9,-9))
-ax.set_title('Theoretical Response shuntR_L')
-ax.set_xlabel('t (s)')
-ax.set_ylabel('V')
-plt.grid(True)
-plt.legend();
-
-
-# <hr>
-# 
-# **Part1_unknown2**
-
-# In[15]:
 
 
 # Find V0
@@ -489,7 +457,7 @@ print(f'System Response 1-1/e = {round(V1,4)}V at t = {round(x1*res,1)}ns')
 print(f'Time Response Tau     = {round((x1-x0)*res,1)}ns')
 
 
-# In[16]:
+# In[15]:
 
 
 # Measured Values: Part1_unknown2
@@ -531,54 +499,11 @@ plt.legend(loc='lower right');
 # \tau   &= (R+Z_0)C & \rightarrow C &= 0.163 nF
 # \end{align}$
 
-# In[17]:
-
-
-# Calculated Values
-#
-R = 91.39           # 100 Ohms from 'Values of complex loads 2020-v2 better.pdf'
-C = 0.163 *10**(-9) # 0.184 nF from 'Values of complex loads 2020-v2 better.pdf'
-Z0 = 50
-Ei = 0.25
-
-# range:[-100ns,100ns] with resolution 0.05ns
-t = np.linspace(-0.0000001,0.0000001,4000) 
-
-
-# In[18]:
-
-
-# Theoretical Response Part1_unknown2
-#
-def seriesR_C(R,C,Z0,Ei,t):
-    Tao = (R+Z0)*C
-    const = (R-Z0)/(R+Z0)
-    x0 = t[t<=-0.00000005]
-    x1 = t[(t>-0.00000005) & (t<=0)]
-    x2 = t[t>0]
-    y0 = lambda x: np.zeros(len(x))
-    y1 = lambda x: Ei*np.ones(len(x))
-    y2 = lambda x: Ei*(2-(1-const)*np.exp(-x/Tao))
-    return y0(x0).tolist()+            y1(x1).tolist()+            y2(x2).tolist()
-
-# Plot
-fig,ax = plt.subplots(figsize=(12,4))
-ax.plot(t,seriesR_C(R,C,Z0,Ei,t),label='theoretical values')
-
-# Labels
-ax.ticklabel_format(axis='x',style='sci', scilimits=(-9,-9))
-ax.set_title('Theoretical Response seriesR_C')
-ax.set_xlabel('t (s)')
-ax.set_ylabel('V')
-plt.grid(True)
-plt.legend();
-
-
 # <hr>
 # 
 # **Part1_unknown3**
 
-# In[19]:
+# In[16]:
 
 
 # Find V0 
@@ -599,7 +524,7 @@ print(f'System Response 1/e   = {round(V1,4)}V at t = {round(x1*Ures,1)}ps')
 print(f'Time Response Tau     = {round((x1-x0)*Ures,1)}ps')
 
 
-# In[20]:
+# In[17]:
 
 
 # Measured Values: Part1_unknown3
@@ -641,56 +566,6 @@ plt.legend();
 # \end{align}$
 # 
 # 
-
-# In[21]:
-
-
-# Calculated Values
-#
-R = 50              # R = 50 Ohms from 'Values of complex loads 2020-v2 better.pdf'
-L = 40 *10**(-9)   # L = 29 nH from 'Values of complex loads 2020-v2 better.pdf'
-Ei = 0.25
-Z0 = 50 
-
-# range:[-2.5ns,2.5ns]
-t = np.linspace(-0.0000000025,0.0000000025,4000)
-
-
-# In[22]:
-
-
-# Theoretical Response Part1_unknown3
-#
-def seriesR_L(R,L,Z0,Ei,t):
-    Tao = L/(R+Z0)
-    const = (R-Z0)/(R+Z0)
-    x0 = t[t<=-0.0000000010]
-    x1 = t[(t>-0.0000000010) & (t<=0)]
-    x2 = t[t>0]
-    y0 = lambda x: np.zeros(len(x))
-    y1 = lambda x: Ei*np.ones(len(x))
-    y2 = lambda x: Ei*((1+const)+(1-const)*np.exp(-x/Tao))
-    return y0(x0).tolist()+            y1(x1).tolist()+            y2(x2).tolist()
-
-
-# In[23]:
-
-
-# Theoretical Response
-fig,ax = plt.subplots(figsize=(12,4))
-vals = seriesR_L(R,L,Z0,Ei,t)
-
-# Plot
-ax.plot(t,vals,label='theoretical values')
-
-# Labels
-ax.ticklabel_format(axis='x',style='sci', scilimits=(-9,-9))
-ax.set_title('Theoretical Response seriesR_L')
-ax.set_xlabel('t (s)')
-ax.set_ylabel('V')
-plt.grid(True)
-plt.legend();
-
 
 # **Uknown Loads Summary**
 # 
@@ -739,7 +614,7 @@ plt.legend();
 # R_s &=& 7.6
 # \end{eqnarray}$
 
-# In[24]:
+# In[18]:
 
 
 # Find Rise Time
@@ -760,7 +635,7 @@ x0 = np.where((Part2_calib_ch2_Thu>0.023) & (Part2_calib_ch2_Thu<0.024))[0][-1]
 x1 = np.where((Part2_calib_ch2_Thu>0.210) & (Part2_calib_ch2_Thu<0.211))[0][-1]
 
 
-# In[25]:
+# In[19]:
 
 
 # Measured Values: Part2_calib_ch2_Thu
@@ -791,7 +666,7 @@ plt.legend();
 # Questions
 # - From the measured total area under a response curve, compute the inductance of the DUT
 
-# In[26]:
+# In[20]:
 
 
 V0 = max(Part2_board2_280ps)[0]
@@ -800,7 +675,7 @@ x0 = np.argmax(Part2_board2_280ps)
 print(f'V_max is {round(V0,4)}')
 
 
-# In[27]:
+# In[21]:
 
 
 # Area Approximation Part2_board2_280ps Calculation
@@ -831,7 +706,7 @@ A = approx(f,a,b,n,res)
 print(f'Area approximation is {A}')
 
 
-# In[28]:
+# In[22]:
 
 
 # Measured Values: Part2_board2_280ps
@@ -852,7 +727,7 @@ plt.grid(True)
 plt.legend();
 
 
-# In[29]:
+# In[23]:
 
 
 # Area Approximation Part2_board2_280ps Plot
