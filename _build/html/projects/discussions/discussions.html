@@ -683,10 +683,12 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
-<p>Given PVCC = 5V, VBO = 20V and gate driver specs:</p>
+<p>Given gate driver specs, find in series resistance where <span class="math notranslate nohighlight">\(R_G = R_g + r_g\)</span>.<br />
+<span class="math notranslate nohighlight">\(R_g\)</span> is the additional resistance added.<br />
+<span class="math notranslate nohighlight">\(r_g\)</span> is the MOSFET contact resistance.</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Source</p></th>
+<tr class="row-odd"><th class="text-align:left head"><p><span class="math notranslate nohighlight">\(V_{BO}\)</span></p></th>
 <th class="text-align:left head"><p>Source</p></th>
 <th class="text-align:left head"><p>Sink</p></th>
 <th class="text-align:left head"><p><span class="math notranslate nohighlight">\(R_{\text{DS_on}}\)</span></p></th>
@@ -730,8 +732,8 @@ R_{\text{G_off}} &amp;= 0.89 \Omega \\[0.5em]
 \end{align*}\]</div>
 <p><strong>Resistor Size</strong></p>
 <p>Additionally, power dissipated through the resistor is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5bd65a2b-e17a-4b84-b60f-84ed8fe3a492">
-<span class="eqno">(1)<a class="headerlink" href="#equation-5bd65a2b-e17a-4b84-b60f-84ed8fe3a492" title="Permalink to this equation">#</a></span>\[\begin{equation} 
+<div class="amsmath math notranslate nohighlight" id="equation-64413725-609c-47bd-b941-ef531c3e588f">
+<span class="eqno">(1)<a class="headerlink" href="#equation-64413725-609c-47bd-b941-ef531c3e588f" title="Permalink to this equation">#</a></span>\[\begin{equation} 
 P = C V^2 f 
 \end{equation}\]</div>
 <p>for selecting components.</p>

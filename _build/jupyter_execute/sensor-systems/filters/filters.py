@@ -14,7 +14,7 @@
 # **Quality Factor**
 # 
 # \begin{align*}
-# Q &= \dfrac{\omega_0}{2\zeta \omega_0}
+# Q &= \dfrac{1}{2\zeta}
 # \end{align*}
 # 
 # - A higher value of Q results in more peaking in the frequency response and more ringing in the step response

@@ -64,9 +64,11 @@
 # 
 # 
 
-# Given PVCC = 5V, VBO = 20V and gate driver specs:  
+# Given gate driver specs, find in series resistance where $R_G = R_g + r_g$.  
+# $R_g$ is the additional resistance added.  
+# $r_g$ is the MOSFET contact resistance.
 # 
-# | Source | Source | Sink | $R_{\text{DS_on}}$ | $R_{\text{DS_off}}$ |
+# | $V_{BO}$ | Source | Sink | $R_{\text{DS_on}}$ | $R_{\text{DS_off}}$ |
 # | :-- | :-- | :-- | :-- | :-- |
 # | 6.0V | 1.3A | 2.4A | 2.0$\Omega$ | 1.2$\Omega$ |
 # | 15V  | 5.5A | 6.0A | 1.25$\Omega$ | 0.9$\Omega$ |
