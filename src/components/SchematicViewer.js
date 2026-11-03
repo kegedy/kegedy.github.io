@@ -198,12 +198,6 @@ export default function SchematicViewer({file, height = 400}) {
           </button>
         </div>
       </div>
-      <figcaption style={{fontSize: '0.85rem', opacity: 0.8}}>
-        Schematic (xschem): scroll to zoom, drag to pan, double-click to fit.{' '}
-        <a href={url} target="_blank" rel="noopener noreferrer">
-          Open SVG ↗
-        </a>
-      </figcaption>
     </figure>
   );
 }
