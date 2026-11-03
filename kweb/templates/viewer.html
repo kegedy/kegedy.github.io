@@ -13,18 +13,9 @@
 </link>
 <link rel="icon" type="image/png" href={{ url_for("kweb_static", path="img/kweb.png") }}>
 <style>
-    /* Layer panel on the left, collapsible. Canvas resizes itself (viewer.js polls its size). */
+    /* Layer panel on the left, always shown */
     #layout { flex-wrap: nowrap; }
     #rightpanel { order: -1; flex: 0 0 260px; max-width: 260px; }
-    /* Hamburger at the panel's top right; collapsed, the panel shrinks to a strip holding just it */
-    .panel-toggle-item { margin-left: auto; display: flex; align-items: center; }
-    #panel-toggle { padding: 0.25rem 0.4rem; line-height: 0; color: var(--bs-body-color); border: 0; }
-    #panel-toggle:hover { background: var(--bs-tertiary-bg); }
-    #layout.panel-collapsed #rightpanel { flex-basis: 2.5rem; max-width: 2.5rem; overflow: hidden; }
-    #layout.panel-collapsed #navigator > .nav-item:not(.panel-toggle-item),
-    #layout.panel-collapsed #rightpanel-content { display: none; }
-    #layout.panel-collapsed #navigator { border-bottom: 0; justify-content: center; padding-top: 0.4rem; }
-    #layout.panel-collapsed .panel-toggle-item { margin-left: 0; }
     /* Bottom-right stack: Clear Rulers / Zoom Fit (kweb's #menu, moved here).
        Column is as wide as its widest button; every button stretches to that width. */
     #corner-controls { position: absolute; bottom: 0.75rem; right: 0.75rem; z-index: 10;
@@ -37,6 +28,8 @@
     #reload { display: none !important; }
     /* Hide the "move" mode (it moves shapes, which a read-only viewer doesn't need) */
     #btnradiomove, label[for="btnradiomove"] { display: none !important; }
+    /* Inactive mode button (e.g. "ruler") is transparent by default and vanishes over the drawing */
+    #mode-row .btn-check:not(:checked) + .btn { background: rgba(0, 0, 0, 0.85); color: #ccc; }
     /* Layer panel (built by the script at the bottom, replacing kweb's) */
     .layer-toolbar { display: flex; flex-direction: column; gap: 0.4rem; padding: 0.5rem 0.25rem; }
     .layer-toolbar .form-check { margin: 0; }
@@ -117,16 +110,6 @@
                                 aria-controls="rdb-tab-pane"
                                 aria-selected="false"
                                 hidden>RDB</button>
-                    </li>
-                    <li class="nav-item panel-toggle-item" role="presentation">
-                        <button type="button" class="btn" id="panel-toggle"
-                                aria-controls="rightpanel-content" aria-expanded="true"
-                                aria-label="Collapse panel" title="Collapse panel">
-                            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-                                <path d="M2 4h14M2 9h14M2 14h14" stroke="currentColor"
-                                      stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </button>
                     </li>
                 </ul>
                 <div class="tab-content" id="rightpanel-content">
@@ -209,23 +192,8 @@
     <script>var ws_url="{{ url }}"; var params = new URLSearchParams({{ params | tojson | safe }})</script>
     <script type="text/javascript" src={{ url_for("kweb_static", path="viewer.js") }}></script>
     <script>
-        (function () {
-            const layout = document.getElementById("layout");
-            const toggle = document.getElementById("panel-toggle");
-            // viewer.js fills #menu by id, so it still works after the move
-            document.getElementById("corner-controls").prepend(document.getElementById("menu"));
-            function setCollapsed(collapsed) {
-                layout.classList.toggle("panel-collapsed", collapsed);
-                const label = collapsed ? "Expand panel" : "Collapse panel";
-                toggle.setAttribute("aria-label", label);
-                toggle.title = label;
-                toggle.setAttribute("aria-expanded", String(!collapsed));
-            }
-            toggle.addEventListener("click", () =>
-                setCollapsed(!layout.classList.contains("panel-collapsed")));
-            // Start collapsed when embedded in a narrow page
-            setCollapsed(window.innerWidth < 700);
-        })();
+        // viewer.js fills #menu by id, so it still works after the move
+        document.getElementById("corner-controls").prepend(document.getElementById("menu"));
 
         // viewer.js's appendCells (Cells tab) reads a global `addpaddings` that only existed
         // as a side effect of kweb's showLayers, which is replaced below. Define it explicitly.
@@ -302,6 +270,25 @@
                 render();
             }
 
+            // True when `l` is the only visible (leaf) layer
+            function isOnlyVisible(l) {
+                if (!l.v) return false;
+                for (const other of byId.values()) {
+                    if (other !== l && !other.children && other.v) return false;
+                }
+                return true;
+            }
+
+            // Double-click: show only this layer; double-click it again to show all layers
+            function toggleOnly(l) {
+                if (isOnlyVisible(l)) {
+                    setAll(true);
+                    render();
+                } else {
+                    showOnly(l);
+                }
+            }
+
             function row(l) {
                 const r = document.createElement("div");
                 r.className = "layer-row" + (l.v ? "" : " is-hidden")
@@ -335,7 +322,7 @@
                     applySelection();
                 });
                 r.addEventListener("dblclick", e => {
-                    if (e.target !== cb) showOnly(l);
+                    if (e.target !== cb) toggleOnly(l);
                 });
                 return r;
             }
@@ -407,12 +394,14 @@
                 render();
             };
 
-            // Called by viewer.js on "layer-u" (server-side state after a layer-v)
+            // Called by viewer.js on "layer-u" (server's echo after a layer-v). Take the new swatch
+            // image but not `v`: echoes can arrive after newer local changes (quick clicks, network
+            // latency) and would revert them. Visibility only changes here, and "reloaded" resends all.
             window.updateLayerImages = function (updated) {
                 (function apply(items) {
                     items.forEach(u => {
                         const l = byId.get(u.id);
-                        if (l) Object.assign(l, u);
+                        if (l) Object.assign(l, u, {v: l.v});
                         if (u.children) apply(u.children);
                     });
                 })(updated);
