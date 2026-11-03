@@ -13,9 +13,18 @@
 </link>
 <link rel="icon" type="image/png" href={{ url_for("kweb_static", path="img/kweb.png") }}>
 <style>
-    /* Layer panel on the left, always shown */
+    /* Layer panel on the left, collapsible. Canvas resizes itself (viewer.js polls its size). */
     #layout { flex-wrap: nowrap; }
     #rightpanel { order: -1; flex: 0 0 260px; max-width: 260px; }
+    /* Hamburger at the panel's top right; collapsed, the panel shrinks to a strip holding just it */
+    .panel-toggle-item { margin-left: auto; display: flex; align-items: center; }
+    #panel-toggle { padding: 0.25rem 0.4rem; line-height: 0; color: var(--bs-body-color); border: 0; }
+    #panel-toggle:hover { background: var(--bs-tertiary-bg); }
+    #layout.panel-collapsed #rightpanel { flex-basis: 2.5rem; max-width: 2.5rem; overflow: hidden; }
+    #layout.panel-collapsed #navigator > .nav-item:not(.panel-toggle-item),
+    #layout.panel-collapsed #rightpanel-content { display: none; }
+    #layout.panel-collapsed #navigator { border-bottom: 0; justify-content: center; padding-top: 0.4rem; }
+    #layout.panel-collapsed .panel-toggle-item { margin-left: 0; }
     /* Bottom-right stack: Clear Rulers / Zoom Fit (kweb's #menu, moved here).
        Column is as wide as its widest button; every button stretches to that width. */
     #corner-controls { position: absolute; bottom: 0.75rem; right: 0.75rem; z-index: 10;
@@ -111,6 +120,16 @@
                                 aria-selected="false"
                                 hidden>RDB</button>
                     </li>
+                    <li class="nav-item panel-toggle-item" role="presentation">
+                        <button type="button" class="btn" id="panel-toggle"
+                                aria-controls="rightpanel-content" aria-expanded="true"
+                                aria-label="Collapse panel" title="Collapse panel">
+                            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+                                <path d="M2 4h14M2 9h14M2 14h14" stroke="currentColor"
+                                      stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </li>
                 </ul>
                 <div class="tab-content" id="rightpanel-content">
                     <div class="tab-pane fade show active"
@@ -192,8 +211,23 @@
     <script>var ws_url="{{ url }}"; var params = new URLSearchParams({{ params | tojson | safe }})</script>
     <script type="text/javascript" src={{ url_for("kweb_static", path="viewer.js") }}></script>
     <script>
-        // viewer.js fills #menu by id, so it still works after the move
-        document.getElementById("corner-controls").prepend(document.getElementById("menu"));
+        (function () {
+            const layout = document.getElementById("layout");
+            const toggle = document.getElementById("panel-toggle");
+            // viewer.js fills #menu by id, so it still works after the move
+            document.getElementById("corner-controls").prepend(document.getElementById("menu"));
+            function setCollapsed(collapsed) {
+                layout.classList.toggle("panel-collapsed", collapsed);
+                const label = collapsed ? "Expand panel" : "Collapse panel";
+                toggle.setAttribute("aria-label", label);
+                toggle.title = label;
+                toggle.setAttribute("aria-expanded", String(!collapsed));
+            }
+            toggle.addEventListener("click", () =>
+                setCollapsed(!layout.classList.contains("panel-collapsed")));
+            // Start collapsed when embedded in a narrow page
+            setCollapsed(window.innerWidth < 700);
+        })();
 
         // viewer.js's appendCells (Cells tab) reads a global `addpaddings` that only existed
         // as a side effect of kweb's showLayers, which is replaced below. Define it explicitly.
