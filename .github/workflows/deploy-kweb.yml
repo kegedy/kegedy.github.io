@@ -1,0 +1,48 @@
+name: Deploy layout viewer to Hugging Face
+
+# Requires repo secret HF_TOKEN (write token) and repo variable HF_SPACE (e.g. kegedy/gds-viewer)
+
+on:
+  push:
+    branches: [main]
+    paths: ['gds/**', 'kweb/**']
+  workflow_dispatch:
+
+concurrency:
+  group: kweb
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Stage Space files
+        run: |
+          mkdir space
+          cp kweb/Dockerfile kweb/app.py kweb/requirements.txt kweb/README.md space/
+          cp -r kweb/templates space/templates
+          cp -r gds space/gds
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install huggingface_hub
+      - name: Upload to Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE: ${{ vars.HF_SPACE }}
+        run: |
+          python - <<'EOF'
+          import os
+          from huggingface_hub import HfApi
+
+          HfApi(token=os.environ["HF_TOKEN"]).upload_folder(
+              repo_id=os.environ["HF_SPACE"],
+              repo_type="space",
+              folder_path="space",
+              delete_patterns="gds/*",  # remove layouts deleted from this repo
+              commit_message=f"Deploy {os.environ['GITHUB_SHA'][:7]}",
+          )
+          EOF

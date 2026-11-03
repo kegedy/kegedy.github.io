@@ -1,0 +1,97 @@
+---
+title: KLayout Notes
+sidebar_position: 1
+description: How GDS layers are numbered and named in KLayout, with the sky130 layer map.
+---
+
+# KLayout Notes
+
+## Layer numbers: `layer/datatype`
+
+A layer shown as `poly.drawing - 66/20` has two parts:
+
+- **`poly.drawing`**: a human-readable name.
+- **`66/20`**: the **GDS layer number** (66) and the **datatype** (20).
+
+GDS files don't store layer names, only these integer pairs. Every shape in a GDS file carries
+a layer number and a datatype, and the PDK defines what each pair means.
+
+- **Layer number**: which mask layer the shape belongs to (66 = poly, 67 = li1, 68 = met1, …).
+- **Datatype**: what *kind* of shape it is on that layer. This is the part after the dot in
+  the name.
+
+## Datatypes (purposes)
+
+The same physical layer carries several kinds of shapes. For met1 (layer 68):
+
+| Name | Pair | Meaning |
+|---|---|---|
+| `met1.drawing` | 68/20 | The metal geometry that is actually manufactured |
+| `met1.pin` | 68/16 | Marks pin locations, for LVS and routing |
+| `met1.label` | 68/5 | Text labels naming nets |
+| `met1.net` | 68/23 | Net-highlighting shapes |
+| `met1.res` | 68/13 | Marks a metal resistor |
+| `met1.blockage` | 68/10 | "Don't route here" areas for place-and-route |
+| `met1.boundary` | 68/4 | Cell boundary on this layer |
+
+So `met1.drawing` and `met1.pin` are both metal 1. The first becomes metal on the chip; the
+second is bookkeeping for the design tools.
+
+## Where the names come from
+
+The names come from a **layer properties file (`.lyp`)**, an XML file that maps each pair to a
+name, color, and fill pattern:
+
+```xml
+<properties>
+  <fill-color>#ff0000</fill-color>
+  <name>poly.drawing - 66/20</name>
+  <source>66/20@1</source>
+</properties>
+```
+
+`<source>` is the pair to match (`@1` means the first loaded layout) and `<name>` is the label
+shown in the layer panel. Without a `.lyp`, KLayout shows only the raw pairs (`66/20`).
+
+For sky130 the file ships with the PDK at
+`$PDK_ROOT/sky130A/libs.tech/klayout/tech/sky130A.lyp`; this site uses a copy in `gds/`.
+To rename layers or change colors, edit the XML or adjust the layer panel in KLayout and use
+**File → Save Layer Properties**.
+
+## sky130 drawing layers
+
+From `sky130A.lyp`, bottom of the stack to top:
+
+| Layer | Pair | What it is |
+|---|---|---|
+| nwell | 64/20 | N-well (body of PMOS devices) |
+| diff | 65/20 | Active area: transistor source/drain |
+| tap | 65/44 | Active area for well/substrate ties |
+| nsdm | 93/44 | N+ source/drain implant |
+| psdm | 94/20 | P+ source/drain implant |
+| poly | 66/20 | Polysilicon (gates) |
+| npc | 95/20 | Nitride poly cut (under poly contacts) |
+| licon1 | 66/44 | Contact: diff/tap/poly to li1 |
+| li1 | 67/20 | Local interconnect |
+| mcon | 67/44 | Contact: li1 to met1 |
+| met1 | 68/20 | Metal 1 |
+| via | 68/44 | Via: met1 to met2 |
+| met2 | 69/20 | Metal 2 |
+| via2 | 69/44 | Via: met2 to met3 |
+| met3 | 70/20 | Metal 3 |
+| capm | 89/44 | MiM capacitor plate (over met3) |
+| via3 | 70/44 | Via: met3 to met4 |
+| met4 | 71/20 | Metal 4 |
+| via4 | 71/44 | Via: met4 to met5 |
+| met5 | 72/20 | Metal 5 |
+| pad | 76/20 | Passivation opening over bond pads |
+
+## sky130 conventions worth knowing
+
+- **Contacts and vias share the number of the layer they sit on**, with datatype 44:
+  licon1 is 66/44 (poly is 66/20), mcon is 67/44 (li1 is 67/20), via is 68/44 (met1 is 68/20).
+  The datatype is what tells them apart.
+- **"drawing" isn't always datatype 20.** Contacts, vias, `tap` (65/44), and `nsdm` (93/44)
+  use 44 for their drawn shapes.
+- **Don't confuse layer numbers across PDKs.** 66/20 is poly in sky130 but can mean something
+  else entirely in another process; always go through the PDK's `.lyp` or layer map.

@@ -1,0 +1,76 @@
+---
+title: Project Name
+sidebar_position: 10
+description: One-line summary shown in search results and link previews.
+tags: [sky130, analog]
+---
+
+{/*
+  HOW TO USE THIS TEMPLATE
+  1. Copy this file to docs/<project-name>/index.mdx
+  2. Save the schematic as xschem/<project-name>.sch and run
+     scripts/schematic_svg.sh xschem/<project-name>.sch (writes static/schematics/<project-name>.svg).
+     Put plots next to this file in docs/<project-name>/
+  3. Put the layout file in gds/ at the repo root (e.g. gds/<project-name>.gds)
+  4. Fill in the sections below, delete what you don't need, and push.
+
+  MDX GOTCHAS
+  - A bare { or < in normal text breaks the build. Inside $...$ math it's fine.
+    Write "less than" or use `<` in backticks if you need it in prose.
+  - This comment syntax is how you write comments in MDX.
+*/}
+
+import LayoutViewer from '@site/src/components/LayoutViewer';
+import SchematicViewer from '@site/src/components/SchematicViewer';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Project Name
+
+:::info[Summary]
+
+**Process:** sky130 · **Tools:** xschem, ngspice, KLayout · **Status:** in progress
+
+:::
+
+## Overview
+
+What the circuit does, target specs, and why it's interesting.
+
+| Parameter | Target | Simulated |
+|---|---|---|
+| Supply | 1.8 V | |
+| Power | | |
+
+## Theory
+
+Inline math like $g_m = \sqrt{2 \mu_n C_{ox} (W/L) I_D}$ and display math:
+
+$$
+A_v = -g_m \left( r_{o1} \parallel r_{o2} \right) \tag{1}
+$$
+
+## Schematic
+
+<SchematicViewer file="project-name.svg" />
+
+Notes on topology and sizing choices.
+
+## Layout
+
+<LayoutViewer file="project-name.gds" cell="TOP" />
+
+## Results
+
+<Tabs>
+  <TabItem value="dc" label="DC">
+    ![DC sweep](./dc.png)
+  </TabItem>
+  <TabItem value="ac" label="AC">
+    ![AC response](./ac.png)
+  </TabItem>
+</Tabs>
+
+## References
+
+1. Author, *Title*, Publisher, Year.
