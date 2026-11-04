@@ -119,8 +119,9 @@ export default function SchematicViewer({file, height = 400}) {
       const p = toSvgPoint(e.clientX, e.clientY);
       zoomAt(e.deltaY < 0 ? ZOOM_STEP : 1 / ZOOM_STEP, p.x, p.y);
     };
+    // Left or middle button pans (middle matches the layout viewer)
     const onPointerDown = (e) => {
-      if (!svgRef.current || e.button !== 0) return;
+      if (!svgRef.current || (e.button !== 0 && e.button !== 1)) return;
       host.setPointerCapture(e.pointerId);
       drag = {x: e.clientX, y: e.clientY, vb: getViewBox(), scale: svgRef.current.getScreenCTM().a};
       host.style.cursor = 'grabbing';
@@ -139,9 +140,14 @@ export default function SchematicViewer({file, height = 400}) {
       drag = null;
       host.style.cursor = 'grab';
     };
+    // Stop the browser's middle-click autoscroll
+    const onMouseDown = (e) => {
+      if (e.button === 1) e.preventDefault();
+    };
 
     host.addEventListener('wheel', onWheel, {passive: false});
     host.addEventListener('pointerdown', onPointerDown);
+    host.addEventListener('mousedown', onMouseDown);
     host.addEventListener('pointermove', onPointerMove);
     host.addEventListener('pointerup', onPointerUp);
     host.addEventListener('pointercancel', onPointerUp);
@@ -149,6 +155,7 @@ export default function SchematicViewer({file, height = 400}) {
     return () => {
       host.removeEventListener('wheel', onWheel);
       host.removeEventListener('pointerdown', onPointerDown);
+      host.removeEventListener('mousedown', onMouseDown);
       host.removeEventListener('pointermove', onPointerMove);
       host.removeEventListener('pointerup', onPointerUp);
       host.removeEventListener('pointercancel', onPointerUp);

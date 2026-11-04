@@ -9,7 +9,7 @@ import rehypeKatex from 'rehype-katex';
 const config = {
   title: 'Kevin Egedy',
   tagline: 'Circuit design projects: schematics, layouts, and analysis',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo-ke-split.svg?v=1', // bump v when the logo changes so browsers refetch it
 
   future: {
     v4: true,
@@ -55,6 +55,20 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'notes',
+        path: 'notes',
+        routeBasePath: 'notes',
+        sidebarPath: './sidebarsNotes.js',
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
+      },
+    ],
+  ],
+
   stylesheets: [
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.16.47/dist/katex.min.css',
@@ -72,8 +86,8 @@ const config = {
       navbar: {
         title: 'Kevin Egedy',
         logo: {
-          alt: 'Logo',
-          src: 'img/logo.png',
+          alt: 'KE logo',
+          src: 'img/logo-ke-split.svg',
         },
         items: [
           {
@@ -81,6 +95,13 @@ const config = {
             sidebarId: 'projectsSidebar',
             position: 'left',
             label: 'Projects',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'notesSidebar',
+            docsPluginId: 'notes',
+            position: 'left',
+            label: 'Notes',
           },
           {
             href: 'https://github.com/kegedy',

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>KE</title>
+  <!-- KE monogram: the K's arms are one 45° bend that turns into the E's top and bottom
+       bars, and the E's middle bar starts just inside the K's point -->
+  <rect width="512" height="512" rx="72" fill="#000"/>
+
+  <g transform="translate(-4 0)">
+    <!-- K spine -->
+    <rect x="96" y="120" width="52" height="272" fill="#fff"/>
+    <g fill="none" stroke="#fff" stroke-width="46" stroke-linejoin="miter" stroke-linecap="butt">
+      <!-- E top bar, K arms, E bottom bar -->
+      <polyline points="424,143 313,143 200,256 313,369 424,369"/>
+      <!-- E middle bar -->
+      <line x1="256" y1="256" x2="400" y2="256"/>
+    </g>
+  </g>
+</svg>

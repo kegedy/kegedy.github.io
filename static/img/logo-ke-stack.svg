@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>KE</title>
+  <!-- KE monogram: a vertical bar and three E bars with slanted ends -->
+  <rect width="512" height="512" rx="72" fill="#000"/>
+
+  <g fill="#fff" transform="translate(-26 0)">
+    <!-- K spine -->
+    <rect x="140" y="120" width="52" height="272"/>
+    <!-- E bars -->
+    <polygon points="332,120 424,120 424,166 286,166"/>
+    <polygon points="215,233 380,233 380,279 238,279"/>
+    <polygon points="272,346 424,346 424,392 295,392"/>
+  </g>
+</svg>

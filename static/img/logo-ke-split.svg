@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>KE</title>
+  <!-- KE in solid block letters with a horizontal cut through the middle -->
+  <rect width="512" height="512" rx="72" fill="#000"/>
+
+  <g fill="#fff" transform="translate(-4 0)">
+    <!-- K -->
+    <polygon points="80,136 132,136 132,228 214,136 280,136 173,256 280,376 214,376 132,284 132,376 80,376"/>
+    <!-- E -->
+    <polygon points="306,136 440,136 440,188 358,188 358,230 425,230 425,282 358,282 358,324 440,324 440,376 306,376"/>
+  </g>
+
+  <!-- horizontal cut -->
+  <rect x="0" y="251" width="512" height="10" fill="#000"/>
+</svg>

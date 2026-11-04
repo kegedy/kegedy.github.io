@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>KE</title>
+  <!-- KE monogram, tech treatment: gradient fill on a navy grid, with the E's middle bar
+       ending in a separate square "pixel" -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#05070d"/>
+    </linearGradient>
+    <linearGradient id="ink" gradientUnits="userSpaceOnUse" x1="140" y1="120" x2="424" y2="392">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#6366f1"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32,0 V32 M0,32 H32" fill="none" stroke="#fff" stroke-opacity="0.06" stroke-width="2"/>
+    </pattern>
+    <clipPath id="tile"><rect width="512" height="512" rx="112"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#tile)">
+    <rect width="512" height="512" fill="url(#bg)"/>
+    <rect width="512" height="512" fill="url(#grid)"/>
+  </g>
+
+  <g fill="url(#ink)" transform="translate(-26 0)">
+    <!-- K spine -->
+    <rect x="140" y="120" width="52" height="272"/>
+    <!-- E bars -->
+    <polygon points="332,120 424,120 424,166 286,166"/>
+    <polygon points="215,233 358,233 358,279 238,279"/>
+    <polygon points="272,346 424,346 424,392 295,392"/>
+    <!-- pixel -->
+    <rect x="378" y="233" width="46" height="46" fill="#22d3ee"/>
+  </g>
+</svg>
