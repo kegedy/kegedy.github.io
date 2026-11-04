@@ -6,19 +6,27 @@ description: How GDS layers are numbered and named in KLayout, with the sky130 l
 
 # KLayout Notes
 
-## Layer numbers: `layer/datatype`
+## Where the names come from
 
-A layer shown as `poly.drawing - 66/20` has two parts:
+GDS files don't store layer names, only integer pairs of **layer number** and **datatype**
+(for example `66/20`). The names come from a **layer properties file (`.lyp`)**, an XML file
+that maps each pair to a name, color, and fill pattern:
 
-- **`poly.drawing`**: a human-readable name.
-- **`66/20`**: the **GDS layer number** (66) and the **datatype** (20).
+```xml
+<properties>
+  <fill-color>#ff0000</fill-color>
+  <name>poly.drawing - 66/20</name>
+  <source>66/20@1</source>
+</properties>
+```
 
-GDS files don't store layer names, only these integer pairs. Every shape in a GDS file carries
-a layer number and a datatype, and the PDK defines what each pair means.
+`<source>` is the pair to match (`@1` means the first loaded layout) and `<name>` is the label
+shown in the layer panel. Without a `.lyp`, KLayout shows only the raw pairs (`66/20`).
 
-- **Layer number**: which mask layer the shape belongs to (66 = poly, 67 = li1, 68 = met1, …).
-- **Datatype**: what *kind* of shape it is on that layer. This is the part after the dot in
-  the name.
+For sky130 the file ships with the PDK at
+`$PDK_ROOT/sky130A/libs.tech/klayout/tech/sky130A.lyp`; this site uses a copy in `gds/`.
+To rename layers or change colors, edit the XML or adjust the layer panel in KLayout and use
+**File → Save Layer Properties**.
 
 ## Datatypes (purposes)
 
@@ -36,27 +44,6 @@ The same physical layer carries several kinds of shapes. For met1 (layer 68):
 
 So `met1.drawing` and `met1.pin` are both metal 1. The first becomes metal on the chip; the
 second is bookkeeping for the design tools.
-
-## Where the names come from
-
-The names come from a **layer properties file (`.lyp`)**, an XML file that maps each pair to a
-name, color, and fill pattern:
-
-```xml
-<properties>
-  <fill-color>#ff0000</fill-color>
-  <name>poly.drawing - 66/20</name>
-  <source>66/20@1</source>
-</properties>
-```
-
-`<source>` is the pair to match (`@1` means the first loaded layout) and `<name>` is the label
-shown in the layer panel. Without a `.lyp`, KLayout shows only the raw pairs (`66/20`).
-
-For sky130 the file ships with the PDK at
-`$PDK_ROOT/sky130A/libs.tech/klayout/tech/sky130A.lyp`; this site uses a copy in `gds/`.
-To rename layers or change colors, edit the XML or adjust the layer panel in KLayout and use
-**File → Save Layer Properties**.
 
 ## sky130 drawing layers
 

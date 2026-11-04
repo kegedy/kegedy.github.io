@@ -103,7 +103,7 @@ export function Model3D({model, height = 450, legendPosition}) {
  * Interactive 3D view of a layout exported by scripts/gds3d.py
  * (static/models/<name>.glb, with its legend in <name>.json).
  *
- *   <LayoutViewer3D model="example_inverter.glb" />
+ *   <LayoutViewer3D model="inverter.glb" />
  *
  * To show 2D and 3D in one viewer with a toggle, use <LayoutViewer file=… model=…> instead.
  */

@@ -1,18 +1,18 @@
 ---
-title: Vertical PNP BJT (example)
+title: Vertical PNP BJT
 sidebar_position: 3
-description: Example project page for a diode-connected sky130 vertical PNP, with an interactive layout (2D/3D) and schematic.
-tags: [sky130, analog, bjt, example]
+description: A diode-connected sky130 vertical PNP, with an interactive layout (2D/3D) and schematic.
+tags: [sky130, analog, bjt]
 ---
 
 import LayoutViewer from '@site/src/components/LayoutViewer';
 import SchematicViewer from '@site/src/components/SchematicViewer';
 
-# Vertical PNP BJT (example)
+# Vertical PNP BJT
 
 :::info[Summary]
 
-**Process:** sky130 · **Tools:** xschem, KLayout · **Status:** example page.
+**Process:** sky130 · **Tools:** xschem, KLayout · **Status:** draft.
 The layout is illustrative and not DRC-clean.
 
 :::
@@ -26,37 +26,16 @@ collector. Because the collector is the substrate, it is always tied to ground, 
 device is almost always used **diode-connected**, with base and collector both grounded.
 
 This is the device at the heart of bandgap references and on-chip temperature sensors.
-The example uses the sky130 `pnp_05v5_W3p40L3p40` device (3.4 µm × 3.4 µm emitter),
+This design uses the sky130 `pnp_05v5_W3p40L3p40` device (3.4 µm × 3.4 µm emitter),
 biased with a 10 µA current source.
-
-## Theory
-
-With base and collector grounded, the emitter voltage is the emitter–base voltage,
-set by the bias current $I$ and the saturation current $I_S$:
-
-$$
-V_{EB} = V_T \ln\!\left(\frac{I}{I_S}\right), \qquad V_T = \frac{kT}{q} \tag{1}
-$$
-
-$V_{EB}$ falls by roughly 2 mV/K as temperature rises (it is CTAT). The difference
-between two such devices run at different current densities, for example one device
-against $N$ identical devices in parallel at the same total current, rises with
-temperature instead (it is PTAT):
-
-$$
-\Delta V_{EB} = V_T \ln N \tag{2}
-$$
-
-A bandgap reference adds a scaled copy of (2) to (1) so the two temperature
-coefficients cancel.
 
 ## Schematic
 
-<SchematicViewer file="example_bjt.svg" />
+<SchematicViewer file="bjt.svg" />
 
 ## Layout
 
-<LayoutViewer file="example_bjt.gds" cell="PNP" model="example_bjt.glb" height={500} />
+<LayoutViewer file="bjt.gds" cell="PNP" model="bjt.glb" height={500} />
 
 From the centre outwards:
 

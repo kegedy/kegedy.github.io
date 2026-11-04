@@ -1,6 +1,6 @@
-"""Generate gds/example_inverter.gds, an illustrative (not DRC-clean) sky130 inverter.
+"""Generate gds/inverter.gds, an illustrative (not DRC-clean) sky130 inverter.
 
-Usage: python kweb/make_example_gds.py
+Usage: python kweb/make_inverter_gds.py
 """
 
 from pathlib import Path
@@ -73,6 +73,6 @@ for text, layer, x, y in (
 ):
     top.shapes(layout.layer(*layer)).insert(kdb.DText(text, x, y))
 
-out = Path(__file__).resolve().parent.parent / "gds" / "example_inverter.gds"
+out = Path(__file__).resolve().parent.parent / "gds" / "inverter.gds"
 layout.write(str(out))
 print(f"wrote {out}")

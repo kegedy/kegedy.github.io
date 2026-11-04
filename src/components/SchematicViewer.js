@@ -43,7 +43,7 @@ function contentBox(svg) {
  * Zoomable schematic exported by scripts/schematic_svg.sh (static/schematics/<file>).
  * The SVG is inlined and zoomed through its viewBox, so it stays sharp at any zoom.
  *
- *   <SchematicViewer file="example_inverter.svg" />
+ *   <SchematicViewer file="inverter.svg" />
  */
 export default function SchematicViewer({file, height = 400}) {
   const url = useBaseUrl(`/schematics/${file}`);

@@ -1,0 +1,26 @@
+---
+title: CMOS Inverter
+sidebar_position: 2
+description: A static CMOS inverter with an interactive layout (2D/3D) and schematic.
+tags: [sky130, digital]
+---
+
+import LayoutViewer from '@site/src/components/LayoutViewer';
+import SchematicViewer from '@site/src/components/SchematicViewer';
+
+# CMOS Inverter
+
+:::info[Summary]
+
+**Process:** sky130 · **Tools:** xschem, KLayout · **Status:** draft.
+The layout is illustrative and not DRC-clean.
+
+:::
+
+## Schematic
+
+<SchematicViewer file="inverter.svg" />
+
+## Layout
+
+<LayoutViewer file="inverter.gds" cell="INVERTER" model="inverter.glb" height={500} />

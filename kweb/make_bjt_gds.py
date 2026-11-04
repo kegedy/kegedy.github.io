@@ -1,11 +1,11 @@
-"""Generate gds/example_bjt.gds, an illustrative (not DRC-clean) sky130 vertical PNP.
+"""Generate gds/bjt.gds, an illustrative (not DRC-clean) sky130 vertical PNP.
 
 The vertical PNP is built from layers every CMOS process already has: a p+ emitter
 inside an n-well (the base, contacted through an n+ tap ring), with the p-substrate as
 the collector (contacted through an outer p+ tap ring). Emitter is 3.4 x 3.4 um, like
 sky130_fd_pr__pnp_05v5_W3p40L3p40.
 
-Usage: python kweb/make_example_bjt.py
+Usage: python kweb/make_bjt.py
 """
 
 from pathlib import Path
@@ -101,6 +101,6 @@ ring(MET1, *C, CW)
 for text, x, y in (("E", 1.7, 1.7), ("B", 1.7, -0.95), ("C", 1.7, -2.35)):
     top.shapes(layout.layer(*MET1)).insert(kdb.DText(text, x, y))
 
-out = Path(__file__).resolve().parent.parent / "gds" / "example_bjt.gds"
+out = Path(__file__).resolve().parent.parent / "gds" / "bjt.gds"
 layout.write(str(out))
 print(f"wrote {out}")
