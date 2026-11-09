@@ -1,0 +1,5 @@
+{
+  "label": "Bandgap Reference",
+  "position": 4,
+  "link": {"type": "doc", "id": "bandgap/index"}
+}
