@@ -1,7 +1,7 @@
 """Place the bandgap's devices into gds/bandgap.gds (top cell BANDGAP).
 
-First pass: every device in xschem/bandgap_core.sch is placed in a floorplan, but nothing is
-wired yet, so DRC applies and LVS does not.
+Every device in xschem/bandgap_core.sch is placed in a floorplan, then route.py wires every
+net from the schematic's LVS netlist and labels the pins VDD, VSS and VREF.
 
   Top row     PMOS: mirror M1-M3 and bias mirror M12 side by side (matched), amp load
               M7/M8, start-up pull-up M9
@@ -15,12 +15,17 @@ wired yet, so DRC applies and LVS does not.
 Usage: ~/.venvs/sky130-pcells/bin/python layout/bandgap/make_layout.py [out.gds]
 """
 
+import re
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 import klayout.db as kdb
 
 import devices
+import route
+import terminals
 
 REPO = Path(__file__).resolve().parents[2]
 GAP = 2.0       # um between neighbouring devices (clears n-well and tap spacing rules)
@@ -34,6 +39,35 @@ PMOS_ROW = [("M1", "PMOS_LVT_8x4"), ("M2", "PMOS_LVT_8x4"), ("M3", "PMOS_LVT_8x4
 NMOS_ROW = [("M5", "NMOS_LVT_16x4"), ("M6", "NMOS_LVT_16x4"), ("M4", "NMOS_8x4"),
             ("M13", "NMOS_8x4"), ("M10", "NMOS_1x1"), ("M11", "NMOS_0p42x1")]
 TEXT = (83, 44)  # sky130 text.drawing: instance names, ignored by DRC and LVS
+PINS = ["VDD", "VSS", "VREF"]
+# schematic pin order for each device kind -> the LVS deck's terminal names in the layout
+ORDER = {"fet": ["D", "G", "S", "B"], "pnp": ["C", "B", "E"], "res": ["A", "B"], "cap": ["A", "B"]}
+
+
+def schematic_nets():
+    """{instance: (kind, {terminal: net})} from the same LVS netlist run_lvs.sh compares against."""
+    with tempfile.TemporaryDirectory() as tmp:
+        net = Path(tmp) / "bandgap_core.spice"
+        subprocess.run([REPO / "scripts/lvs_netlist.sh", REPO / "xschem/bandgap_core.sch", net],
+                       check=True, capture_output=True)
+        lines = net.read_text().splitlines()
+    out = {}
+    for line in lines:
+        tok = line.split()
+        if not tok or not tok[0][0] in "XC" or tok[0].startswith("*"):
+            continue
+        model = next((t for t in tok if t.startswith("sky130_fd_pr__")), None)
+        if model is None:
+            continue
+        kind = ("fet" if "fet" in model else "pnp" if "pnp" in model else "res" if "res" in model else "cap")
+        nets = tok[1:1 + {"fet": 4, "pnp": 3, "res": 2, "cap": 2}[kind]]
+        name = tok[0][1:] if tok[0][0] == "X" else tok[0]
+        m = re.search(r"\bm=(\d+)", line)
+        mult = int(m.group(1)) if m and kind == "pnp" else 1
+        names = [name] if mult == 1 else [f"{name}_{k}" for k in range(1, mult + 1)]
+        for n in names:
+            out[n] = (kind, dict(zip(ORDER[kind], nets)))
+    return out
 
 
 def main(out):
@@ -41,6 +75,7 @@ def main(out):
     top = layout.create_cell("BANDGAP")
     text = layout.layer(*TEXT)
     placed = {}
+    insts = {}
 
     def place(inst, cell_name, x, y, rot=0):
         """Put the cell's (rotated by rot degrees) bounding box lower-left corner at (x, y) um."""
@@ -52,6 +87,7 @@ def main(out):
         bb = b.transformed(t)
         top.shapes(text).insert(kdb.DText(inst, kdb.DTrans(bb.center())))
         placed[inst] = bb
+        insts[inst] = (cell_name, t)
         return bb
 
     def row(items, y):
@@ -86,10 +122,40 @@ def main(out):
     y = row(NMOS_ROW, y) + ROW_GAP
     row(PMOS_ROW, y)
 
+    # ---- wiring ----
+    nets = schematic_nets()
+    missing = set(nets) ^ set(insts)
+    if missing:
+        raise RuntimeError(f"schematic and layout instances differ: {sorted(missing)}")
+    models = {name: m for name, _, _, m in devices.DEVICES}
+    terms = terminals.extract(layout, cells, models)
+    router = route.Router(layout, top)
+    shapes = {}     # {layer: {net: Region}} of device metal, for obstacles
+    access = []     # (net, terminal shapes in top coordinates)
+    for inst, (kind, tnets) in sorted(nets.items()):
+        cell_name, t = insts[inst]
+        tdbu = kdb.ICplxTrans(t.to_itrans(layout.dbu))
+        for term, net in tnets.items():
+            ts = {lay: reg.transformed(tdbu) for lay, reg in terms[cell_name][term].items()}
+            for lay, reg in ts.items():
+                shapes.setdefault(lay, {}).setdefault(net, kdb.Region())
+                shapes[lay][net] += reg
+            access.append((inst, term, net, ts))
+    router.add_obstacles(shapes)
+    for inst, term, net, ts in access:
+        try:
+            router.access(net, ts)
+        except RuntimeError as e:
+            raise RuntimeError(f"{inst}.{term}: {e}") from None
+    order = sorted(router.pins, key=lambda n: (n in ("VDD", "VSS"), len(router.pins[n])))
+    tries = router.route_all(order)
+    router.write_shapes(PINS)
+
     layout.write(str(out))
     b = top.dbbox()
+    nwire = sum(len(p) for ps in router.routes.values() for p in ps)
     print(f"wrote {out}: BANDGAP {b.width():.1f} x {b.height():.1f} um = {b.area() / 1e6:.4f} mm2, "
-          f"{len(placed)} devices")
+          f"{len(placed)} devices, {len(router.routes)} nets routed ({nwire} grid steps, attempt {tries})")
 
 
 if __name__ == "__main__":

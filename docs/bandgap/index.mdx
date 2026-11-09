@@ -15,7 +15,7 @@ import TabItem from '@theme/TabItem';
 
 <SpecTiles tiles={[
   {label: 'Process', value: 'sky130 · 130 nm', note: 'SkyWater open PDK, 1.8 V devices'},
-  {label: 'Size', value: '97.6 × 77.4 µm', note: '0.0076 mm², devices placed, wiring not yet done'},
+  {label: 'Size', value: '97.8 × 77.4 µm', note: '0.0076 mm², wired, DRC and LVS clean'},
 ]} />
 
 VREF is 1.200 V at 27 °C from a 1.8 V supply. Unless noted, all numbers below are pre-layout simulation in the typical (tt) corner.
@@ -282,7 +282,8 @@ The start-up devices M9 to M11 act as switches and aren't expected to be in satu
 
 <LayoutViewer file="bandgap.gds" cell="BANDGAP" model="bandgap.glb" height={600} />
 
-This is the first pass: all 28 devices are placed, but nothing is wired yet. The floorplan has four bands, from top to bottom:
+All 28 devices are placed and wired, and the layout is **DRC clean and LVS clean** against `xschem/bandgap_core.sch`.
+The floorplan has four bands, from top to bottom:
 
 - **PMOS:** the mirror M1 to M3 and the bias mirror M12 sit side by side, since all four must match.
   Next come the amplifier load M7/M8 and the start-up pull-up M9.
@@ -294,11 +295,24 @@ This is the first pass: all 28 devices are placed, but nothing is wired yet. The
   Any gradient across the array then affects Q1 and the average of Q2 about equally.
   Next to the array are Q3 and the 30 × 30 µm MIM compensation cap.
 
-Bands are 4 µm apart, and that gap is left free for wiring.
+Bands are 4 µm apart, which leaves room for wiring between them.
 
 **How the devices are drawn.** Every device comes from the sky130 PDK's own KLayout generators, the same code behind
 KLayout's SKY130 PCell menu, driven from `layout/bandgap/devices.py`. The PNP is the PDK's fixed GDS cell.
-`make_layout.py` places them and writes `gds/bandgap.gds`:
+
+**How it's wired.** `layout/bandgap/route.py` is a small grid router written for this block. It routes on metal 2, 3 and 4
+with a 1 µm pitch and 0.4 µm wires, which leaves 0.6 µm between tracks, more than any spacing rule on those layers.
+Connectivity comes from the same LVS netlist the check compares against, so the layout is wired from the schematic, not by hand.
+Each terminal needs a way up to the routing layers:
+
+- **Metal-1 terminals** (gates, sources, drains, resistor ends, PNP emitters) get a via where a landing pad clears neighbouring metal.
+- **li-only terminals** (bulk taps, PNP base and collector rings) get a contact up to metal 1. The PMOS taps sit too close
+  to their drains for that, so they get a short li stub out to free space first.
+- **The MIM cap plates** are reached on metal 4. The bottom plate only comes up as a 0.48 µm strip, so a metal-4 bridge runs across to it.
+
+`terminals.py` finds where each terminal's metal is by running the LVS deck on each device alone and reading which
+shapes belong to which terminal, so the router never guesses at the generators' geometry.
+`make_layout.py` places, wires, labels VDD, VSS and VREF, and writes `gds/bandgap.gds`:
 
 ```bash
 ~/.venvs/sky130-pcells/bin/python layout/bandgap/make_layout.py           # writes gds/bandgap.gds
@@ -307,23 +321,35 @@ KLayout's SKY130 PCell menu, driven from `layout/bandgap/devices.py`. The PNP is
 
 The generators need **gdsfactory 8.1** (`layout/requirements.txt`). Newer versions changed the API they use, so they get their own virtual environment.
 
-**What's been checked so far:**
+**What's been checked:**
 
 | Check | Result |
 |---|---|
 | Each of the 12 device types alone, DRC | clean |
 | Each of the 12 device types alone, LVS against a one-device netlist | all match |
-| Placed layout, full DRC | clean |
-| Same layout with devices only 0.2 µm apart (to prove DRC is really checking) | 12 violations (n-well and resistor-implant spacing), as expected |
-| Placed layout, LVS against `xschem/bandgap_core.sch` | **does not match**, as expected for an unwired layout (details below) |
+| Wired layout, full DRC | **clean** |
+| Wired layout, LVS against `xschem/bandgap_core.sch` | **match**: all 21 schematic devices, 14 nets and the VDD, VSS and VREF pins |
+| Same LVS with R2 changed to 18.5 µm in the schematic | fails, as it should |
+| Same LVS with M6's gate moved from AH to BH | fails, as it should |
+| Same LVS with Q2 as 7 units instead of 8 | fails, as it should |
+| Placed devices only 0.2 µm apart (to prove DRC is really checking) | 12 violations, as it should |
 
-**Full-layout LVS today.** All 28 devices are recognised, with the right type for every schematic device. The netlists still don't match:
+The deliberately broken checks matter as much as the passing ones. A check that can't fail proves nothing,
+and the LVS script had been silently passing nothing at all before its three netlist fixes (below).
 
-- **No wiring.** Every device terminal is its own net: the layout has 103 nets against the schematic's 14.
-- **No pins.** VDD, VSS and VREF aren't labelled yet. The only "pins" come from text labels inside the PDK's PNP cell
-  (Collector, Base, Emitter), which have to be stripped before the real labels go in.
-- **Q2 is eight devices in the layout but one `m=8` device in the schematic.** LVS combines parallel devices only once
-  they share nets, so this needs both the wiring and device combining turned on in the LVS run.
+The first routed layout had 13 DRC violations. Each pointed at something the router didn't yet know:
+
+- **Wire segments, not just grid nodes.** A wire running between two grid nodes can pass a via pad that neither node is near.
+  The router now reserves both nodes and segments near each pad.
+- **MIM cap rules.** Other metal 3 has to stay 1.2 µm from the cap's bottom plate, not the usual 0.3 µm. New via3s also need room from the cap's own via3 array.
+- **Notches.** Where a pin's off-grid via pad met its on-grid wire, small steps left gaps narrower than metal-2 spacing inside one net's own metal.
+  Pad, stub and wire are now drawn as aligned rectangles of one width.
+- **Minimum area.** A metal 3 square that only joins a via2 to a via3 was below the 0.24 µm² minimum, so those squares are now 0.5 µm.
+
+Two LVS settings were also needed for the wired layout:
+
+- **Device combining.** The eight Q2 units have to merge into one device to compare with the schematic's `m=8`.
+- **Emitter count.** xschem's `m=8` on a bipolar becomes `NE=8`, the emitter count LVS compares.
 
 Two generator quirks turned up while checking devices one at a time:
 
@@ -382,13 +408,13 @@ Its LVS mismatch, though, was partly the script dropping the schematic devices.
 - **Noise** is high for the same reason: amplifier flicker noise sees the same gain. Larger input devices, or chopping, would help.
 - **Loop gain** is 36 dB with a single-stage amplifier, which sets the −44 dB PSRR.
   A two-stage amplifier would improve both. A cascode doesn't fit in the headroom (see above).
-- **Layout:** placed but not wired. Next comes the wiring, plus pin labels for VDD, VSS and VREF, and then full LVS against `xschem/bandgap_core.sch`.
-  After that, the matching can be refined:
-  - interdigitate the mirror and the RCA/RCB pair (common-centroid) instead of side by side;
+- **Layout:** DRC and LVS clean, but not yet tuned as an analog layout. The router connects nets correctly,
+  but it doesn't know which wires are sensitive. Matched pairs don't get symmetric wiring, and the high-impedance nodes aren't kept short or shielded.
+  Next steps:
+  - re-simulate with the parasitic resistance and capacitance extracted from the layout;
+  - interdigitate the mirror and the RCA/RCB pair (common-centroid) instead of placing them side by side;
   - add dummy devices at the ends of matched rows;
   - add guard rings around the PNP array.
-
-  Finally, re-simulate with the parasitics extracted from the layout.
 
 ## References
 

@@ -8,7 +8,8 @@
 #   Exit status 0 means the netlists match. convert_subckts=true makes the deck read
 #   xschem's X-prefixed sky130 device lines as devices (otherwise they are dropped).
 #   Flat mode: in deep (hierarchical) mode the deck misses PMOS and MIM devices that sit in
-#   sub-cells of the top cell.
+#   sub-cells of the top cell. combine=true merges parallel layout devices (Q2's eight
+#   PNP units) into one, to compare with the schematic's m=8 device.
 #
 # Needs KLayout, xschem (for .sch input) and the sky130A PDK at $PDK_ROOT (default ~/pdk).
 set -euo pipefail
@@ -39,7 +40,7 @@ klayout -b -r "$deck" \
   -rd run_mode=flat -rd thr="$(nproc)" \
   -rd spice_net_names=true -rd spice_comments=false -rd scale=false -rd verbose=false \
   -rd schematic_simplify=false -rd net_only=false -rd top_lvl_pins=true \
-  -rd combine=false -rd purge=false -rd purge_nets=false \
+  -rd combine=true -rd purge=false -rd purge_nets=false \
   -rd convert_subckts=true \
   > "$out/${top}_lvs.log" 2>&1
 status=$?

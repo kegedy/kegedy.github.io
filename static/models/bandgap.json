@@ -18,6 +18,24 @@
     "zmax": 3.725
   },
   {
+    "name": "via2",
+    "color": "#808080",
+    "zmin": 2.46,
+    "zmax": 2.88
+  },
+  {
+    "name": "met2",
+    "color": "#ff00ff",
+    "zmin": 2.1,
+    "zmax": 2.46
+  },
+  {
+    "name": "via",
+    "color": "#808080",
+    "zmin": 1.83,
+    "zmax": 2.1
+  },
+  {
     "name": "met1",
     "color": "#0000ff",
     "zmin": 1.47,

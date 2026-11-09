@@ -63,6 +63,12 @@ def pnp(layout, name):
     top = src.top_cell()
     cell = layout.create_cell(name)
     cell.copy_tree(top)
+    # The PDK cell carries text labels (Collector, Base, Emitter) that LVS would turn into
+    # net names and pins in every PNP; the bandgap's own pin labels go on the top cell.
+    for li in layout.layer_indexes():
+        texts = [s for s in cell.shapes(li).each() if s.is_text()]
+        for t in texts:
+            cell.shapes(li).erase(t)
     return cell
 
 

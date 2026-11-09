@@ -33,6 +33,12 @@ def convert(text):
         w, ln, mf = p["W"], p["L"], int(p.get("MF", 1))
         return f"{name} {a} {b} sky130_fd_pr__{MIM[kind]} A={w * ln:g}p P={2 * (w + ln):g}u m={mf}"
     lines = [mim(l) for l in lines]
+    # Parallel bipolars: LVS combines the layout's units into one device with NE emitters,
+    # but reads xschem's m=N as a single emitter, so write the count as NE
+    def bjt(l):
+        m = re.match(r"(?i)(X\S+\s.*sky130_fd_pr__(?:pnp|npn)_\S+)\s+m=(\d+)\s+mult=\d+(.*)", l)
+        return f"{m.group(1)} NE={m.group(2)} m=1{m.group(3)}" if m and int(m.group(2)) > 1 else l
+    lines = [bjt(l) for l in lines]
     return "\n".join(lines) + "\n"
 
 if __name__ == "__main__":
