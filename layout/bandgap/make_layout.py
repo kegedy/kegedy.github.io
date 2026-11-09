@@ -62,7 +62,8 @@ def schematic_nets():
         kind = ("fet" if "fet" in model else "pnp" if "pnp" in model else "res" if "res" in model else "cap")
         nets = tok[1:1 + {"fet": 4, "pnp": 3, "res": 2, "cap": 2}[kind]]
         name = tok[0][1:] if tok[0][0] == "X" else tok[0]
-        m = re.search(r"\bm=(\d+)", line)
+        # parallel PNP units: lvs_fix.py writes xschem's m=N as the emitter count NE=N
+        m = re.search(r"\bNE=(\d+)", line) or re.search(r"\bm=(\d+)", line)
         mult = int(m.group(1)) if m and kind == "pnp" else 1
         names = [name] if mult == 1 else [f"{name}_{k}" for k in range(1, mult + 1)]
         for n in names:
@@ -149,7 +150,7 @@ def main(out):
             raise RuntimeError(f"{inst}.{term}: {e}") from None
     order = sorted(router.pins, key=lambda n: (n in ("VDD", "VSS"), len(router.pins[n])))
     tries = router.route_all(order)
-    router.write_shapes(PINS)
+    router.write_shapes(sorted(router.routes))   # every net, so extraction keeps schematic names
 
     layout.write(str(out))
     b = top.dbbox()

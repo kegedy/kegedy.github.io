@@ -105,3 +105,28 @@ ax.set(title=f"Mismatch Monte Carlo, {len(v)} runs: mean {mu*1e3:.1f} mV, σ {sd
 ax.grid(axis="x", visible=False)
 save(fig, "mc")
 print(f"mc: n={len(v)} mean={mu:.4f} V sigma={sd*1e3:.2f} mV min={v.min():.4f} max={v.max():.4f}")
+
+# Post-layout comparison (pex/run_pex.sh): schematic vs extracted layout, small multiples
+pex = here / "pex" / "out"
+if (pex / "temp_tt.dat").exists():
+    sch_lay = [("Schematic", out, SERIES[0]), ("Layout (extracted RC)", pex, SERIES[1])]
+    fig, axes = plt.subplots(2, 2, figsize=(10, 7))
+    (at, ap), (asu, an) = axes
+    for label, base, color in sch_lay:
+        d = np.loadtxt(base / ("temp_tt.dat" if base == pex else "temp.dat"))
+        at.plot(d[:, 0], d[:, 1], color=color, label=label)
+        d = np.loadtxt(base / "psrr.dat")
+        ap.semilogx(d[:, 0], d[:, 1], color=color)
+        d = np.loadtxt(base / "startup.dat")
+        asu.plot(d[:, 2] * 1e6, d[:, 3], color=color)
+        d = np.loadtxt(base / "noise.dat")
+        an.loglog(d[:, 0], d[:, 1] * 1e9, color=color)
+    at.set(title="VREF vs temperature (tt)", xlabel="Temperature (°C)", ylabel="VREF (V)")
+    ap.set(title="PSRR", xlabel="Frequency (Hz)", ylabel="VREF / VDD (dB)")
+    asu.set(title="Start-up, 10 µs VDD ramp", xlabel="Time (µs)", ylabel="VREF (V)", xlim=(0, 20))
+    an.set(title="Output noise density", xlabel="Frequency (Hz)", ylabel="Noise (nV/√Hz)")
+    fig.legend(*at.get_legend_handles_labels(), loc="upper center", ncol=2, bbox_to_anchor=(0.5, 1.0))
+    fig.tight_layout(rect=(0, 0, 1, 0.95))
+    fig.savefig(img / "pex.png", dpi=150)
+    plt.close(fig)
+    print("wrote", img / "pex.png")

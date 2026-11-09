@@ -3,7 +3,8 @@
 .control
 save all
 op
-print v(vref) -i(vsup)
+print v(vref)
+print -i(vsup)
 print v(x1.a) v(x1.b) v(x1.pb) v(x1.tail) v(x1.n1) v(x1.s)
 let offset_mv = (v(x1.a) - v(x1.b)) * 1000
 let power_uw = -i(vsup) * 1.8 * 1e6

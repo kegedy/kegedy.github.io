@@ -1,0 +1,10 @@
+out/
+bench.spice
+corner.spice
+op.spice
+temp.spice
+line.spice
+psrr.spice
+startup.spice
+noise.spice
+bsim4v5.out
