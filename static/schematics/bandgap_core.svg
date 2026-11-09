@@ -159,7 +159,7 @@ text {font-family: Sans-Serif;}
 <rect class="l0" x="0" y="0" width="1000" height="700"/>
 <text fill="#cccccc"  xml:space="preserve" font-size="11.8199" transform="translate(87.9268, 194.081)" >Bandgap core: PTAT current + VBE (sky130, VDD 1.8 V, VREF 1.2 V)</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="8.27393" transform="translate(124.296, 254.507)" >Start-up</text>
-<text fill="#cccccc"  xml:space="preserve" font-size="8.27393" transform="translate(278.864, 254.507)" >PTAT core: VA = VB, I = VT ln8 / R1</text>
+<text fill="#cccccc"  xml:space="preserve" font-size="8.27393" transform="translate(278.864, 254.507)" >PTAT core: VA = VB, I = VT ln8 / R1 (RCA/RCB lift the amp inputs)</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="8.27393" transform="translate(560.723, 245.415)" >Error amplifier (NMOS-LVT input, PMOS load)</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="8.27393" transform="translate(851.674, 309.061)" >Comp. ~1.8 pF</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="7.09194" transform="translate(824.397, 389.817)" >loop-break (0 V)</text>
@@ -182,10 +182,14 @@ text {font-family: Sans-Serif;}
 <text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(482.282, 302.926) rotate(270)" >VDD</text>
 <text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(495.941, 303.377)" >VDD</text>
 <text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(426.83, 304.938)" >PB</text>
-<text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(300.458, 357.93)" >A</text>
+<text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(300.458, 326.108)" >AH</text>
+<text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(300.458, 389.753)" >A</text>
+<text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(245.663, 350.399)" >VSS</text>
 <text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(236.571, 432.229)" >VSS</text>
 <text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(298.877, 452.706) rotate(270)" >VSS</text>
-<text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(391.38, 357.93)" >B</text>
+<text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(391.38, 326.108)" >BH</text>
+<text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(391.38, 369.296)" >B</text>
+<text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(336.585, 350.399)" >VSS</text>
 <text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(336.585, 391.314)" >VSS</text>
 <text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(327.493, 459.505)" >VSS</text>
 <text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(389.8, 479.983) rotate(270)" >VSS</text>
@@ -207,8 +211,8 @@ text {font-family: Sans-Serif;}
 <text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(700.496, 303.603) rotate(270)" >N1</text>
 <text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(631.406, 341.306)" >N1</text>
 <text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(773.254, 339.746)" >PBO</text>
-<text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(607.998, 373.129)" >B</text>
-<text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(805.076, 371.569)" >A</text>
+<text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(599.583, 373.129)" >BH</text>
+<text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(805.076, 371.569)" >AH</text>
 <text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(668.693, 371.569)" >VSS</text>
 <text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(727.551, 373.129)" >VSS</text>
 <text fill="#00ccee"  xml:space="preserve" font-size="7.80113" transform="translate(695.95, 434.086) rotate(270)" >TAIL</text>
@@ -248,24 +252,27 @@ text {font-family: Sans-Serif;}
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(298.185, 312.723)" >D</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(298.185, 292.745)" >S</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(297.048, 300.221)" >B</text>
+<text fill="#aaaa00"  xml:space="preserve" font-size="3.54597" transform="translate(276.481, 308.177)" >LVT</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(279.585, 300.221)" >G</text>
-<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(301.594, 296.44)" >pfet_01v8</text>
+<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(301.594, 296.44)" >pfet_01v8_lvt</text>
 <text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(302.163, 312.092)" >1 x 8 / 4</text>
 <text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(302.163, 306.409)" >nf=1</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(370.951, 292.202)" >M2</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(389.107, 312.723)" >D</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(389.107, 292.745)" >S</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(387.97, 300.221)" >B</text>
+<text fill="#aaaa00"  xml:space="preserve" font-size="3.54597" transform="translate(367.403, 308.177)" >LVT</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(370.507, 300.221)" >G</text>
-<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(392.517, 296.44)" >pfet_01v8</text>
+<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(392.517, 296.44)" >pfet_01v8_lvt</text>
 <text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(393.085, 312.092)" >1 x 8 / 4</text>
 <text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(393.085, 306.409)" >nf=1</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(461.874, 292.202)" >M3</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(480.029, 312.723)" >D</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(480.029, 292.745)" >S</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(478.893, 300.221)" >B</text>
+<text fill="#aaaa00"  xml:space="preserve" font-size="3.54597" transform="translate(458.325, 308.177)" >LVT</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(461.429, 300.221)" >G</text>
-<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(483.439, 296.44)" >pfet_01v8</text>
+<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(483.439, 296.44)" >pfet_01v8_lvt</text>
 <text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(484.007, 312.092)" >1 x 8 / 4</text>
 <text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(484.007, 306.409)" >nf=1</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(298.185, 439.951)" >pnp_05v5_W3p40L3p40</text>
@@ -274,6 +281,11 @@ text {font-family: Sans-Serif;}
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(292.502, 444.276)" >c</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(279.301, 427.229)" >b</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(298.185, 434.269)" >m=1</text>
+<text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(286.404, 344.546)" >B</text>
+<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(303.867, 338.8)" >RCA</text>
+<text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(303.867, 357.553)" >1 * 2.85 / 60</text>
+<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(303.867, 345.051)" >res_xhigh_po_2p85</text>
+<text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(303.867, 351.302)" >R=42.11k</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(377.326, 385.461)" >B</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(394.79, 379.715)" >R1</text>
 <text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(394.79, 398.468)" >1 * 0.35 / 2</text>
@@ -285,11 +297,16 @@ text {font-family: Sans-Serif;}
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(383.424, 471.553)" >c</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(370.223, 454.505)" >b</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(389.107, 461.545)" >m=8</text>
+<text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(377.326, 344.546)" >B</text>
+<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(394.79, 338.8)" >RCB</text>
+<text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(394.79, 357.553)" >1 * 2.85 / 60</text>
+<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(394.79, 345.051)" >res_xhigh_po_2p85</text>
+<text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(394.79, 351.302)" >R=42.11k</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(468.249, 385.461)" >B</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(485.712, 379.715)" >R2</text>
-<text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(485.712, 398.468)" >1 * 0.35 / 17.7</text>
+<text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(485.712, 398.468)" >1 * 0.35 / 17.77</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(485.712, 385.966)" >res_xhigh_po_0p35</text>
-<text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(485.712, 392.217)" >R=101.1k</text>
+<text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(485.712, 392.217)" >R=101.5k</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(480.029, 467.228)" >pnp_05v5_W3p40L3p40</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(480.029, 448.475)" >Q3</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(474.347, 443.14)" >e</text>
@@ -300,8 +317,9 @@ text {font-family: Sans-Serif;}
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(580.044, 312.723)" >D</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(580.044, 292.745)" >S</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(578.907, 300.221)" >B</text>
+<text fill="#aaaa00"  xml:space="preserve" font-size="3.54597" transform="translate(558.34, 308.177)" >LVT</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(561.444, 300.221)" >G</text>
-<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(583.453, 296.44)" >pfet_01v8</text>
+<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(583.453, 296.44)" >pfet_01v8_lvt</text>
 <text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(584.022, 312.092)" >1 x 8 / 4</text>
 <text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(584.022, 306.409)" >nf=1</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(556.788, 446.77)" >M13</text>
@@ -316,16 +334,18 @@ text {font-family: Sans-Serif;}
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(646.684, 312.723)" >D</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(646.684, 292.745)" >S</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(647.82, 300.221)" >B</text>
+<text fill="#aaaa00"  xml:space="preserve" font-size="3.54597" transform="translate(660.737, 308.177)" >LVT</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(665.283, 300.221)" >G</text>
-<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(601.199, 296.44)" >pfet_01v8</text>
+<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(580.799, 296.44)" >pfet_01v8_lvt</text>
 <text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(600.631, 312.092)" >1 x 4 / 4</text>
 <text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(626.131, 306.409)" >nf=1</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(752.825, 292.202)" >M8</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(770.981, 312.723)" >D</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(770.981, 292.745)" >S</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(769.844, 300.221)" >B</text>
+<text fill="#aaaa00"  xml:space="preserve" font-size="3.54597" transform="translate(749.277, 308.177)" >LVT</text>
 <text fill="#ff0000"  xml:space="preserve" font-size="3.54597" transform="translate(752.381, 300.221)" >G</text>
-<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(774.39, 296.44)" >pfet_01v8</text>
+<text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(774.39, 296.44)" >pfet_01v8_lvt</text>
 <text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(774.958, 312.092)" >1 x 4 / 4</text>
 <text fill="#aaaa00"  xml:space="preserve" font-size="4.72796" transform="translate(774.958, 306.409)" >nf=1</text>
 <text fill="#cccccc"  xml:space="preserve" font-size="4.72796" transform="translate(634.626, 360.394)" >M5</text>
@@ -420,6 +440,17 @@ text {font-family: Sans-Serif;}
 <path class="l4" d="M292.502 419.747L297.048 415.201"/>
 <path class="l4" d="M287.956 433.385L297.048 442.477"/>
 <path class="l4" d="M287.956 424.293L294.775 422.02L290.229 417.474L287.956 424.293"/>
+<path class="l4" d="M297.048 356.101L297.048 360.647"/>
+<path class="l4" d="M297.048 356.101L300.458 354.965"/>
+<path class="l4" d="M293.639 352.692L300.458 354.965"/>
+<path class="l4" d="M293.639 352.692L300.458 350.419"/>
+<path class="l4" d="M293.639 348.146L300.458 350.419"/>
+<path class="l4" d="M293.639 348.146L300.458 345.872"/>
+<path class="l4" d="M293.639 343.599L300.458 345.872"/>
+<path class="l4" d="M293.639 343.599L300.458 341.326"/>
+<path class="l4" d="M293.639 339.053L300.458 341.326"/>
+<path class="l4" d="M293.639 339.053L297.048 337.917"/>
+<path class="l4" d="M297.048 333.371L297.048 337.917"/>
 <path class="l4" d="M387.97 397.016L387.97 401.562"/>
 <path class="l4" d="M387.97 397.016L391.38 395.88"/>
 <path class="l4" d="M384.561 393.607L391.38 395.88"/>
@@ -436,6 +467,17 @@ text {font-family: Sans-Serif;}
 <path class="l4" d="M383.424 447.024L387.97 442.477"/>
 <path class="l4" d="M378.878 460.662L387.97 469.754"/>
 <path class="l4" d="M378.878 451.57L385.697 449.297L381.151 444.75L378.878 451.57"/>
+<path class="l4" d="M387.97 356.101L387.97 360.647"/>
+<path class="l4" d="M387.97 356.101L391.38 354.965"/>
+<path class="l4" d="M384.561 352.692L391.38 354.965"/>
+<path class="l4" d="M384.561 352.692L391.38 350.419"/>
+<path class="l4" d="M384.561 348.146L391.38 350.419"/>
+<path class="l4" d="M384.561 348.146L391.38 345.872"/>
+<path class="l4" d="M384.561 343.599L391.38 345.872"/>
+<path class="l4" d="M384.561 343.599L391.38 341.326"/>
+<path class="l4" d="M384.561 339.053L391.38 341.326"/>
+<path class="l4" d="M384.561 339.053L387.97 337.917"/>
+<path class="l4" d="M387.97 333.371L387.97 337.917"/>
 <path class="l4" d="M478.893 397.016L478.893 401.562"/>
 <path class="l4" d="M478.893 397.016L482.302 395.88"/>
 <path class="l4" d="M475.483 393.607L482.302 395.88"/>
@@ -571,7 +613,12 @@ text {font-family: Sans-Serif;}
 <path class="l5" d="M295.912 441.341L298.185 441.341L298.185 443.614L295.912 443.614L295.912 441.341z"/>
 <path class="l5" d="M277.727 427.703L280 427.703L280 429.976L277.727 429.976L277.727 427.703z"/>
 <path class="l5" d="M295.912 414.064L298.185 414.064L298.185 416.337L295.912 416.337L295.912 414.064z"/>
-<path class="l5" d="M296.48 355.533L297.616 355.533L297.616 356.669L296.48 356.669L296.48 355.533z"/>
+<path class="l5" d="M295.912 359.511L298.185 359.511L298.185 361.784L295.912 361.784L295.912 359.511z"/>
+<path class="l5" d="M295.912 332.234L298.185 332.234L298.185 334.507L295.912 334.507L295.912 332.234z"/>
+<path class="l5" d="M286.819 345.872L289.092 345.872L289.092 348.146L286.819 348.146L286.819 345.872z"/>
+<path class="l5" d="M296.48 323.71L297.616 323.71L297.616 324.847L296.48 324.847L296.48 323.71z"/>
+<path class="l5" d="M296.48 387.356L297.616 387.356L297.616 388.492L296.48 388.492L296.48 387.356z"/>
+<path class="l5" d="M273.749 346.441L274.886 346.441L274.886 347.577L273.749 347.577L273.749 346.441z"/>
 <path class="l5" d="M264.657 428.271L265.794 428.271L265.794 429.407L264.657 429.407L264.657 428.271z"/>
 <path class="l5" d="M296.48 455.547L297.616 455.547L297.616 456.684L296.48 456.684L296.48 455.547z"/>
 <path class="l5" d="M386.834 400.426L389.107 400.426L389.107 402.699L386.834 402.699L386.834 400.426z"/>
@@ -580,7 +627,12 @@ text {font-family: Sans-Serif;}
 <path class="l5" d="M386.834 468.618L389.107 468.618L389.107 470.891L386.834 470.891L386.834 468.618z"/>
 <path class="l5" d="M368.649 454.979L370.922 454.979L370.922 457.252L368.649 457.252L368.649 454.979z"/>
 <path class="l5" d="M386.834 441.341L389.107 441.341L389.107 443.614L386.834 443.614L386.834 441.341z"/>
-<path class="l5" d="M387.402 355.533L388.539 355.533L388.539 356.669L387.402 356.669L387.402 355.533z"/>
+<path class="l5" d="M386.834 359.511L389.107 359.511L389.107 361.784L386.834 361.784L386.834 359.511z"/>
+<path class="l5" d="M386.834 332.234L389.107 332.234L389.107 334.507L386.834 334.507L386.834 332.234z"/>
+<path class="l5" d="M377.742 345.872L380.015 345.872L380.015 348.146L377.742 348.146L377.742 345.872z"/>
+<path class="l5" d="M387.402 323.71L388.539 323.71L388.539 324.847L387.402 324.847L387.402 323.71z"/>
+<path class="l5" d="M387.402 366.898L388.539 366.898L388.539 368.035L387.402 368.035L387.402 366.898z"/>
+<path class="l5" d="M364.672 346.441L365.808 346.441L365.808 347.577L364.672 347.577L364.672 346.441z"/>
 <path class="l5" d="M364.672 387.356L365.808 387.356L365.808 388.492L364.672 388.492L364.672 387.356z"/>
 <path class="l5" d="M355.579 455.547L356.716 455.547L356.716 456.684L355.579 456.684L355.579 455.547z"/>
 <path class="l5" d="M387.402 482.824L388.539 482.824L388.539 483.961L387.402 483.961L387.402 482.824z"/>
@@ -689,12 +741,18 @@ text {font-family: Sans-Serif;}
 <path class="l1" d="M478.893 274.271L478.893 287.909"/>
 <path class="l1" d="M478.893 301.548L492.531 301.548"/>
 <path class="l1" d="M447.07 301.548L460.708 301.548"/>
-<path class="l1" d="M297.048 315.186L297.048 356.101"/>
-<path class="l1" d="M297.048 356.101L297.048 415.201"/>
+<path class="l1" d="M297.048 315.186L297.048 324.278"/>
+<path class="l1" d="M297.048 324.278L297.048 333.371"/>
+<path class="l1" d="M297.048 360.647L297.048 387.924"/>
+<path class="l1" d="M297.048 387.924L297.048 415.201"/>
+<path class="l1" d="M274.318 347.009L287.956 347.009"/>
 <path class="l1" d="M265.225 428.839L278.864 428.839"/>
 <path class="l1" d="M297.048 442.477L297.048 456.116"/>
-<path class="l1" d="M387.97 315.186L387.97 356.101"/>
-<path class="l1" d="M387.97 356.101L387.97 374.286"/>
+<path class="l1" d="M387.97 315.186L387.97 324.278"/>
+<path class="l1" d="M387.97 324.278L387.97 333.371"/>
+<path class="l1" d="M387.97 360.647L387.97 367.467"/>
+<path class="l1" d="M387.97 367.467L387.97 374.286"/>
+<path class="l1" d="M365.24 347.009L378.878 347.009"/>
 <path class="l1" d="M387.97 401.562L387.97 442.477"/>
 <path class="l1" d="M365.24 387.924L378.878 387.924"/>
 <path class="l1" d="M356.148 456.116L369.786 456.116"/>

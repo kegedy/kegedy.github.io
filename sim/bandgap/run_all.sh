@@ -19,26 +19,38 @@ mkdir -p out
     -n -s -q -x -o "$here/out" bandgap_tb.sch > /dev/null 2>&1)
 sed -n '/^\.subckt bandgap_core/,/^\.ends/p' out/bandgap_tb.spice > bandgap_core.spice
 [ -s bandgap_core.spice ] || { echo "netlisting failed" >&2; exit 1; }
+python3 make_sat.py   # saturation deck covers every MOSFET in the schematic
 
 corner() { echo ".lib $lib $1" > corner.spice; }
 run() {  # run <deck> [corner]
   corner "${2:-tt}"
   ngspice -b "$1.spice" > "out/$1${2:+_$2}.log" 2>&1
-  grep -E '^(v\(|-i\(|offset|power|vmax|vmin|v27|tc_ppm|line|vdd_min|psrr|t_settle|v_final|dc_gain|ugf|pm|vn_1k|onoise_total|mu|sigma)' \
+  grep -E '^(v\(|-i\(|offset|power|vmax|vmin|v27|tc_ppm|line|vdd_min|psrr|t_settle|v_final|dc_gain|ugf|pm|vn_1k|onoise_total|mu|sigma|sat|VDD =)' \
     "out/$1${2:+_$2}.log" | sed "s/^/  /" || true
 }
 
-for deck in op temp line psrr startup loop noise; do
+for deck in op temp line psrr startup loop noise sat; do
   echo "== $deck"; run "$deck"
 done
 
 # 2. Process corners: temperature sweep at each corner
 for c in tt ss ff sf fs; do
-  echo "== temp @ $c"; run temp "$c"; cp out/temp.dat "out/temp_$c.dat"
+  echo "== temp @ $c"; run temp "$c"
+  sort -g -u out/temp_lo.dat out/temp_hi.dat > "out/temp_$c.dat"
 done
 cp out/temp_tt.dat out/temp.dat
 
-# 3. Monte Carlo mismatch
+# 3. Saturation check at the temperature extremes
+corner tt
+for t in -40 125; do
+  echo "== sat @ $t C"
+  sed "s/^\.include bench.spice/.include bench.spice\n.temp $t/" sat.spice > sat_t.spice
+  ngspice -b sat_t.spice > "out/sat_$t.log" 2>&1
+  grep -E '^sat' "out/sat_$t.log" | sed "s/^/  /"
+done
+rm -f sat_t.spice
+
+# 4. Monte Carlo mismatch
 echo "== mc"; run mc tt_mm
 
 corner tt

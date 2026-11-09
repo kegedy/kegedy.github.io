@@ -4,10 +4,12 @@
 .include corner.spice
 .include bandgap_core.spice
 .param vdd=1.8
+* Tighter than the default reltol=1e-3 (1.2 mV on VREF), so sub-mV drift is resolved
+.option reltol=1e-5
 .param tr=10u
 * DC + AC for op/dc/ac/noise; the PWL ramp from 0 V is used only by the transient start-up test
 VSUP VDD 0 DC {vdd} AC 1 PWL(0 0 {tr} {vdd})
 x1 VDD 0 VREF bandgap_core
 * Hint the DC solver toward the operating state (the start-up test checks it gets there unaided)
-.nodeset v(VREF)=1.2
+.nodeset v(VREF)=1.2 v(x1.pb)=1.05 v(x1.a)=0.71 v(x1.b)=0.71
 CL VREF 0 1p

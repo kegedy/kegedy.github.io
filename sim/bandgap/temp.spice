@@ -1,13 +1,23 @@
 * 2. Temperature sweep, -40 to 125 C: VREF drift and box-method TC
+*    Swept outward from 27 C in both directions, so every point continues from the
+*    nodeset-guided operating point (a single -40 -> 125 sweep can jump to an unstable
+*    DC solution at some corners; the transient start-up test confirms the circuit
+*    itself returns to 1.2 V).
 .include bench.spice
 .control
 save v(vref)
-dc temp -40 125 1
-meas dc vmax max v(vref)
-meas dc vmin min v(vref)
+dc temp 27 125 1
+meas dc vmax_hi max v(vref)
+meas dc vmin_hi min v(vref)
 meas dc v27 find v(vref) at=27
-let tc_ppm = (vmax - vmin) / (v27 * 165) * 1e6
-print tc_ppm
-wrdata out/temp.dat v(vref)
+wrdata out/temp_hi.dat v(vref)
+dc temp 27 -40 -1
+meas dc vmax_lo max v(vref)
+meas dc vmin_lo min v(vref)
+wrdata out/temp_lo.dat v(vref)
+let vmax = (dc1.vmax_hi + vmax_lo + abs(dc1.vmax_hi - vmax_lo)) / 2
+let vmin = (dc1.vmin_hi + vmin_lo - abs(dc1.vmin_hi - vmin_lo)) / 2
+let tc_ppm = (vmax - vmin) / (dc1.v27 * 165) * 1e6
+print vmax vmin tc_ppm
 .endc
 .end

@@ -2,3 +2,5 @@ out/
 corner.spice
 bandgap_core.spice
 bsim4v5.out
+sat.spice
+sat_t.spice
