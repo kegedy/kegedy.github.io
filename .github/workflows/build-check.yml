@@ -1,0 +1,33 @@
+name: Build check
+
+# Builds the site on every branch other than main, and on pull requests into main,
+# so a broken page (MDX syntax error, broken link) fails here before it is merged.
+# Nothing is deployed; main is built and published by deploy-site.yml.
+
+on:
+  push:
+    branches-ignore: [main]
+    paths-ignore: ['gds/**', 'kweb/**']
+  pull_request:
+    branches: [main]
+    paths-ignore: ['gds/**', 'kweb/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
