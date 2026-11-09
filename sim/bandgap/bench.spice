@@ -1,0 +1,13 @@
+* Shared test bench: the same circuit as xschem/bandgap_tb.sch.
+* Every deck includes corner.spice (model library + corner, written by run_all.sh),
+* the core subcircuit exported from xschem, and this bench.
+.include corner.spice
+.include bandgap_core.spice
+.param vdd=1.8
+.param tr=10u
+* DC + AC for op/dc/ac/noise; the PWL ramp from 0 V is used only by the transient start-up test
+VSUP VDD 0 DC {vdd} AC 1 PWL(0 0 {tr} {vdd})
+x1 VDD 0 VREF bandgap_core
+* Hint the DC solver toward the operating state (the start-up test checks it gets there unaided)
+.nodeset v(VREF)=1.2
+CL VREF 0 1p

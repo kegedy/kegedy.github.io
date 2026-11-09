@@ -1,0 +1,10 @@
+* 5. Start-up: VDD ramps 0 to 1.8 V in 10 us; VREF must leave the zero-current state
+.include bench.spice
+.control
+save v(vref) v(vdd) v(x1.pb) v(x1.s)
+tran 10n 100u
+meas tran t_settle when v(vref)=1.188 rise=1
+meas tran v_final find v(vref) at=100u
+wrdata out/startup.dat v(vdd) v(vref)
+.endc
+.end

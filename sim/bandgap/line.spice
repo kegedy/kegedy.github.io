@@ -1,0 +1,13 @@
+* 3. Line regulation: VDD swept 0 to 2.2 V; regulation measured over 1.62-1.98 V (1.8 V +/-10%)
+.include bench.spice
+.control
+save v(vref)
+dc VSUP 0 2.2 0.01
+meas dc vlo find v(vref) at=1.62
+meas dc vhi find v(vref) at=1.98
+let line_mv_per_v = (vhi - vlo) / 0.36 * 1000
+print line_mv_per_v
+meas dc vdd_min when v(vref)=1.19 rise=1
+wrdata out/line.dat v(vref)
+.endc
+.end

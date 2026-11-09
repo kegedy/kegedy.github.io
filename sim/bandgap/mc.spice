@@ -1,0 +1,18 @@
+* 8. Monte Carlo (device mismatch, tt_mm library): VREF spread at 27 C
+*    run_all.sh points corner.spice at tt_mm for this deck. Each reset draws new
+*    mismatch values; each sample powers up with the VDD ramp (as in the start-up
+*    test), so a sample that fails to start shows up instead of being hidden by
+*    the DC solver. plot.py computes the mean and sigma from out/mc.txt.
+.include bench.spice
+.control
+save v(vref)
+shell rm -f out/mc.txt
+repeat 200
+  reset
+  tran 50n 40u
+  meas tran vfinal find v(vref) at=40u
+  print vfinal >> out/mc.txt
+  destroy all
+end
+.endc
+.end

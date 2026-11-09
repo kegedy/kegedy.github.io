@@ -1,0 +1,19 @@
+* 6. Loop stability: AC voltage injected in series at the error-amp output
+*    (Vloop, between PBO and PB). Loop gain T = -V(PBO)/V(PB).
+.include bench.spice
+.control
+save v(x1.pb) v(x1.pbo)
+alter @VSUP[acmag] = 0
+alter @v.x1.vloop[acmag] = 1
+ac dec 20 1 1g
+let t = -v(x1.pbo) / v(x1.pb)
+let t_db = db(t)
+let t_ph = 180 / pi * cph(t)
+meas ac dc_gain find t_db at=1
+meas ac ugf when t_db=0 fall=1
+meas ac ph_ugf find t_ph when t_db=0 fall=1
+let pm = 180 + ph_ugf
+print pm
+wrdata out/loop.dat t_db t_ph
+.endc
+.end

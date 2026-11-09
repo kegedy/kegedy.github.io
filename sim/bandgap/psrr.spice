@@ -1,0 +1,12 @@
+* 4. PSRR: 1 V AC on VDD, VREF response from 1 Hz to 100 MHz
+.include bench.spice
+.control
+save v(vref)
+ac dec 20 1 100meg
+let psrr_db = db(v(vref))
+meas ac psrr_dc find psrr_db at=10
+meas ac psrr_10k find psrr_db at=10k
+meas ac psrr_1meg find psrr_db at=1meg
+wrdata out/psrr.dat psrr_db
+.endc
+.end

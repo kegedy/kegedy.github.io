@@ -1,0 +1,11 @@
+* 7. Output noise at VREF, 1 Hz to 10 MHz
+.include bench.spice
+.control
+noise v(vref) VSUP dec 20 1 10meg
+setplot noise1
+setplot noise2
+print onoise_total
+setplot noise1
+wrdata out/noise.dat onoise_spectrum
+.endc
+.end
