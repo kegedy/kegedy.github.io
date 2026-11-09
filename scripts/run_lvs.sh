@@ -7,6 +7,8 @@
 #   Tools > Netlist Browser) and <top_cell>_extracted.cir, the netlist read from the layout.
 #   Exit status 0 means the netlists match. convert_subckts=true makes the deck read
 #   xschem's X-prefixed sky130 device lines as devices (otherwise they are dropped).
+#   Flat mode: in deep (hierarchical) mode the deck misses PMOS and MIM devices that sit in
+#   sub-cells of the top cell.
 #
 # Needs KLayout, xschem (for .sch input) and the sky130A PDK at $PDK_ROOT (default ~/pdk).
 set -euo pipefail
@@ -23,6 +25,8 @@ mkdir -p "$out"
 if [[ $src == *.sch ]]; then
   net="$out/${top}_schematic.spice"
   "$here/lvs_netlist.sh" "$src" "$net"
+  # the schematic's subcircuit is named after the .sch file; compare it with the layout's top cell
+  sed -i "s/^\.subckt $(basename "${src%.sch}") /.subckt $top /I" "$net"
 else
   net=$src
 fi
@@ -32,7 +36,7 @@ set +e
 klayout -b -r "$deck" \
   -rd input="$gds" -rd top_cell="$top" -rd schematic="$net" \
   -rd report="$out/$top.lvsdb" -rd target_netlist="$out/${top}_extracted.cir" \
-  -rd run_mode=deep -rd thr="$(nproc)" \
+  -rd run_mode=flat -rd thr="$(nproc)" \
   -rd spice_net_names=true -rd spice_comments=false -rd scale=false -rd verbose=false \
   -rd schematic_simplify=false -rd net_only=false -rd top_lvl_pins=true \
   -rd combine=false -rd purge=false -rd purge_nets=false \

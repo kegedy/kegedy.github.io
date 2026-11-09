@@ -315,7 +315,15 @@ The generators need **gdsfactory 8.1** (`layout/requirements.txt`). Newer versio
 | Each of the 12 device types alone, LVS against a one-device netlist | all match |
 | Placed layout, full DRC | clean |
 | Same layout with devices only 0.2 µm apart (to prove DRC is really checking) | 12 violations (n-well and resistor-implant spacing), as expected |
-| Placed layout, LVS | not yet meaningful: nothing is wired |
+| Placed layout, LVS against `xschem/bandgap_core.sch` | **does not match**, as expected for an unwired layout (details below) |
+
+**Full-layout LVS today.** All 28 devices are recognised, with the right type for every schematic device. The netlists still don't match:
+
+- **No wiring.** Every device terminal is its own net: the layout has 103 nets against the schematic's 14.
+- **No pins.** VDD, VSS and VREF aren't labelled yet. The only "pins" come from text labels inside the PDK's PNP cell
+  (Collector, Base, Emitter), which have to be stripped before the real labels go in.
+- **Q2 is eight devices in the layout but one `m=8` device in the schematic.** LVS combines parallel devices only once
+  they share nets, so this needs both the wiring and device combining turned on in the LVS run.
 
 Two generator quirks turned up while checking devices one at a time:
 
@@ -354,6 +362,14 @@ width deliberately changed to 2 µm fails. Getting there took three fixes to how
   `scripts/lvs_fix.py` adds the `u` suffix.
 - **MIM caps.** The deck extracts them as `sky130_fd_pr__model__cap_mim` and compares area and perimeter, not capacitance.
   `lvs_fix.py` rewrites xschem's `cap_mim_m3_1 W= L=` into that form.
+
+Two more problems only appeared with the full layout:
+
+- **Flat mode.** In the deck's hierarchical (`deep`) mode, all seven PMOS transistors and the MIM cap disappeared once they were
+  placed as sub-cells, even though each was recognised as a top cell on its own. I bisected it by removing device groups:
+  even a layout with only the PMOS cells extracted nothing, while a flattened copy extracted everything. `run_lvs.sh` now uses `flat` mode.
+- **Cell names.** The schematic subcircuit is named after its file (`bandgap_core`), but the layout's top cell is `BANDGAP`.
+  When given a `.sch`, `run_lvs.sh` renames the subcircuit to match.
 
 That also changes the earlier [inverter](../inverter/index.mdx) result. DRC still finds 9 real violations in that illustrative layout.
 Its LVS mismatch, though, was partly the script dropping the schematic devices.
