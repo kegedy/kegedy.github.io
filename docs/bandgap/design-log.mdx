@@ -319,8 +319,14 @@ These didn't change the circuit, but each one cost a detour:
 | Schematic readability | The amplifier block's labels overlapped | Spread the block out; re-simulated to confirm identical results |
 | Noise measurement | `meas` doesn't work on noise analyses in ngspice | Spot noise read from the data in `plot.py` |
 | LVS netlist | xschem's LVS mode flag didn't take effect; the top level was a commented-out `.subckt` | Post-process the netlist: un-comment the subckt, strip simulation-only parameters, short 0 V probes |
-| Passing LVS demo | The PDK's KLayout transistor generators need `gdsfactory`; magic crashed in headless mode | Deferred to the bandgap layout |
+| Passing LVS demo | I wrongly reported that gdsfactory wasn't installed (it was, in `scripts/.venv`, but too new for the PDK generators); magic crashed in headless mode | A separate venv with gdsfactory 8.1, which the generators were written for |
+| LVS always failing | The deck dropped xschem's `X`-prefixed devices, read micron sizes as metres, and didn't recognise xschem's MIM cap name | `convert_subckts=true`, `u` suffixes and a MIM rewrite in `scripts/lvs_fix.py`; proved with a matching and a deliberately wrong netlist |
+| Resistor length | The PDK resistor generator draws the body 0.12 µm longer than asked (6 % on R1) | `layout/bandgap/devices.py` asks for 0.12 µm less |
 | Site build | No Node in WSL | Installed Node 22 with nvm |
+
+The LVS fixes also corrected one of my own conclusions. I had said the inverter's LVS mismatch meant its drains weren't connected.
+With the schematic read properly, the extracted layout shows the drains *are* connected. The real problems are
+sources and n-well not tied to supply nets, and no pins.
 
 ## Lessons
 

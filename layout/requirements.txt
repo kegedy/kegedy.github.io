@@ -1,0 +1,4 @@
+# For layout/bandgap/*.py: the sky130 PDK KLayout generators target the gdsfactory 8.1 API
+# python -m venv ~/.venvs/sky130-pcells && ~/.venvs/sky130-pcells/bin/pip install -r layout/requirements.txt
+gdsfactory==8.1.0
+kfactory==0.17.8

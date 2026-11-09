@@ -5,7 +5,8 @@
 #   An xschem .sch is netlisted first in LVS mode (scripts/lvs_netlist.sh).
 #   default out_dir: lvs/ next to the GDS. Writes <top_cell>.lvsdb (open it in KLayout:
 #   Tools > Netlist Browser) and <top_cell>_extracted.cir, the netlist read from the layout.
-#   Exit status 0 means the netlists match.
+#   Exit status 0 means the netlists match. convert_subckts=true makes the deck read
+#   xschem's X-prefixed sky130 device lines as devices (otherwise they are dropped).
 #
 # Needs KLayout, xschem (for .sch input) and the sky130A PDK at $PDK_ROOT (default ~/pdk).
 set -euo pipefail
@@ -35,6 +36,7 @@ klayout -b -r "$deck" \
   -rd spice_net_names=true -rd spice_comments=false -rd scale=false -rd verbose=false \
   -rd schematic_simplify=false -rd net_only=false -rd top_lvl_pins=true \
   -rd combine=false -rd purge=false -rd purge_nets=false \
+  -rd convert_subckts=true \
   > "$out/${top}_lvs.log" 2>&1
 status=$?
 set -e

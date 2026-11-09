@@ -1,22 +1,24 @@
 ---
 title: Bandgap Reference
 sidebar_position: 4
-description: A 1.2 V sky130 bandgap reference, with xschem schematics, a full ngspice test suite, and KLayout DRC/LVS scripts.
+description: A 1.2 V sky130 bandgap reference, with xschem schematics, a full ngspice test suite, a first-pass layout, and KLayout DRC/LVS scripts.
 tags: [sky130, analog, bandgap, ngspice, klayout]
 ---
 
+import LayoutViewer from '@site/src/components/LayoutViewer';
 import SchematicViewer from '@site/src/components/SchematicViewer';
+import SpecTiles from '@site/src/components/SpecTiles';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Bandgap Reference
 
-:::info[Summary]
+<SpecTiles tiles={[
+  {label: 'Process', value: 'sky130 · 130 nm', note: 'SkyWater open PDK, 1.8 V devices'},
+  {label: 'Size', value: '97.6 × 77.4 µm', note: '0.0076 mm², devices placed, wiring not yet done'},
+]} />
 
-**Process:** sky130 (130 nm) · **Tools:** xschem, ngspice, KLayout · **Status:** schematic and simulation done, no layout yet.
-VREF is 1.200 V at 27 °C from a 1.8 V supply. All numbers below are pre-layout simulation in the typical (tt) corner unless noted.
-
-:::
+VREF is 1.200 V at 27 °C from a 1.8 V supply. Unless noted, all numbers below are pre-layout simulation in the typical (tt) corner.
 
 ## Overview
 
@@ -276,9 +278,54 @@ Two devices set the limits:
 
 The start-up devices M9 to M11 act as switches and aren't expected to be in saturation.
 
+## Layout
+
+<LayoutViewer file="bandgap.gds" cell="BANDGAP" model="bandgap.glb" height={600} />
+
+This is the first pass: all 28 devices are placed, but nothing is wired yet. The floorplan has four bands, from top to bottom:
+
+- **PMOS:** the mirror M1 to M3 and the bias mirror M12 sit side by side, since all four must match.
+  Next come the amplifier load M7/M8 and the start-up pull-up M9.
+- **NMOS:** the amplifier input pair M5/M6 side by side, the tail M4 and its bias diode M13, and the start-up devices M10/M11.
+- **Resistors, on their side:** the matched RCA/RCB pair one above the other, then R2 and R1.
+  Standing upright, the two 60 µm resistors set the height of the whole block (87.6 × 99.1 µm).
+  Turning them sideways cut the area by 13 %.
+- **Bipolars and cap:** Q1 and the eight Q2 units as a 3 × 3 common-centroid array, with Q1 in the centre.
+  Any gradient across the array then affects Q1 and the average of Q2 about equally.
+  Next to the array are Q3 and the 30 × 30 µm MIM compensation cap.
+
+Bands are 4 µm apart, and that gap is left free for wiring.
+
+**How the devices are drawn.** Every device comes from the sky130 PDK's own KLayout generators, the same code behind
+KLayout's SKY130 PCell menu, driven from `layout/bandgap/devices.py`. The PNP is the PDK's fixed GDS cell.
+`make_layout.py` places them and writes `gds/bandgap.gds`:
+
+```bash
+~/.venvs/sky130-pcells/bin/python layout/bandgap/make_layout.py           # writes gds/bandgap.gds
+~/.venvs/sky130-pcells/bin/python layout/bandgap/check_devices.py out/    # DRC + LVS each device type alone
+```
+
+The generators need **gdsfactory 8.1** (`layout/requirements.txt`). Newer versions changed the API they use, so they get their own virtual environment.
+
+**What's been checked so far:**
+
+| Check | Result |
+|---|---|
+| Each of the 12 device types alone, DRC | clean |
+| Each of the 12 device types alone, LVS against a one-device netlist | all match |
+| Placed layout, full DRC | clean |
+| Same layout with devices only 0.2 µm apart (to prove DRC is really checking) | 12 violations (n-well and resistor-implant spacing), as expected |
+| Placed layout, LVS | not yet meaningful: nothing is wired |
+
+Two generator quirks turned up while checking devices one at a time:
+
+- **Resistors:** the PDK's resistor generator draws the body 0.12 µm longer than asked. For R1 (2 µm) that's a 6 % error
+  in the resistor that sets the bias current, so `devices.py` asks for 0.12 µm less.
+- **The PDK code:** it doesn't run on current gdsfactory, which is why it has its own environment.
+
 ## DRC and LVS with KLayout
 
-There's no bandgap layout yet, but the checking flow is ready. The scripts wrap the decks that ship
+The scripts wrap the decks that ship
 with the PDK in `$PDK_ROOT/sky130A/libs.tech/klayout/`: `drc/sky130A_mr.drc` (manufacturing rules) and
 `lvs/sky130.lvs`. Each deck runs through KLayout in batch mode as `klayout -b -r <deck> -rd name=value …`.
 
@@ -298,14 +345,18 @@ Each script writes a database you can open in KLayout to see every error on the 
 - **DRC** writes `drc/<cell>_drc.lyrdb`. Open it in **Tools → Marker Browser**.
 - **LVS** writes `lvs/<cell>.lvsdb`. Open it in **Tools → Netlist Browser**. It also writes the netlist extracted from the layout, `lvs/<cell>_extracted.cir`.
 
-I tried the scripts on the existing [inverter](../inverter/index.mdx) layout, which is illustrative:
+**LVS now passes, and fails when it should.** A PDK-generated NMOS matches its netlist, and the same netlist with the
+width deliberately changed to 2 µm fails. Getting there took three fixes to how the schematic netlist is fed to the deck:
 
-- **DRC** ran in about 1.5 s and found 9 violations in 2 rules (`ct.2` mcon spacing and `li.5` licon enclosure).
-- **LVS** extracted both transistors with the right W and L and reported a mismatch. That's correct: the
-  layout has no pin labels and its drains aren't connected.
+- **`convert_subckts=true`.** xschem writes sky130 devices as subcircuit calls (`XM1 … sky130_fd_pr__nfet_01v8`). Without this option
+  the deck silently drops them, so every schematic device vanished and its nets merged into one.
+- **Units.** xschem writes `L=0.15` meaning microns, and KLayout reads a bare number as metres, a factor of 10⁶.
+  `scripts/lvs_fix.py` adds the `u` suffix.
+- **MIM caps.** The deck extracts them as `sky130_fd_pr__model__cap_mim` and compares area and perimeter, not capacitance.
+  `lvs_fix.py` rewrites xschem's `cap_mim_m3_1 W= L=` into that form.
 
-I haven't yet shown LVS passing on a clean layout.
-The PDK's KLayout transistor generators need `gdsfactory`, which isn't installed here, so the first clean-layout run will come with the bandgap layout.
+That also changes the earlier [inverter](../inverter/index.mdx) result. DRC still finds 9 real violations in that illustrative layout.
+Its LVS mismatch, though, was partly the script dropping the schematic devices.
 
 ## Known limitations and next steps
 
@@ -315,8 +366,13 @@ The PDK's KLayout transistor generators need `gdsfactory`, which isn't installed
 - **Noise** is high for the same reason: amplifier flicker noise sees the same gain. Larger input devices, or chopping, would help.
 - **Loop gain** is 36 dB with a single-stage amplifier, which sets the −44 dB PSRR.
   A two-stage amplifier would improve both. A cascode doesn't fit in the headroom (see above).
-- **Layout:** the next step. Q2 goes in a common-centroid array of nine PNPs (eight plus Q1 in the centre), R1, R2 and the RCA/RCB pair are built from matched unit resistors,
-  and the mirror is interdigitated. Then the layout goes through DRC and LVS with the scripts above.
+- **Layout:** placed but not wired. Next comes the wiring, plus pin labels for VDD, VSS and VREF, and then full LVS against `xschem/bandgap_core.sch`.
+  After that, the matching can be refined:
+  - interdigitate the mirror and the RCA/RCB pair (common-centroid) instead of side by side;
+  - add dummy devices at the ends of matched rows;
+  - add guard rings around the PNP array.
+
+  Finally, re-simulate with the parasitics extracted from the layout.
 
 ## References
 

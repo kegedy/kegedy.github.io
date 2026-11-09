@@ -1,0 +1,62 @@
+[
+  {
+    "name": "met4",
+    "color": "#5e00e6",
+    "zmin": 4.115,
+    "zmax": 4.96
+  },
+  {
+    "name": "via3",
+    "color": "#808080",
+    "zmin": 3.725,
+    "zmax": 4.115
+  },
+  {
+    "name": "met3",
+    "color": "#00ffff",
+    "zmin": 2.88,
+    "zmax": 3.725
+  },
+  {
+    "name": "met1",
+    "color": "#0000ff",
+    "zmin": 1.47,
+    "zmax": 1.83
+  },
+  {
+    "name": "mcon",
+    "color": "#808080",
+    "zmin": 1.04,
+    "zmax": 1.47
+  },
+  {
+    "name": "li1",
+    "color": "#ffe6bf",
+    "zmin": 0.94,
+    "zmax": 1.04
+  },
+  {
+    "name": "licon1",
+    "color": "#808080",
+    "zmin": 0.0,
+    "zmax": 0.94
+  },
+  {
+    "name": "poly",
+    "color": "#ff0000",
+    "zmin": 0.0,
+    "zmax": 0.18
+  },
+  {
+    "name": "tap",
+    "color": "#d9cc00",
+    "zmin": -0.12,
+    "zmax": 0.0
+  },
+  {
+    "name": "diff",
+    "color": "#00ff00",
+    "zmin": -0.12,
+    "zmax": 0.0
+  }
+]
