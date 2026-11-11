@@ -7,15 +7,14 @@ tags: [sky130, digital]
 
 import LayoutViewer from '@site/src/components/LayoutViewer';
 import SchematicViewer from '@site/src/components/SchematicViewer';
+import SpecTiles from '@site/src/components/SpecTiles';
 
 # CMOS Inverter
 
-:::info[Summary]
-
-**Process:** sky130 · **Tools:** xschem, KLayout · **Status:** draft.
-The layout is illustrative and not DRC-clean.
-
-:::
+<SpecTiles tiles={[
+  {label: 'Process', value: 'sky130 · 130 nm', note: 'SkyWater open PDK, 1.8 V devices'},
+  {label: 'Size', value: '2.4 × 5.6 µm', note: '13.4 µm², illustrative, not DRC clean'},
+]} />
 
 ## Schematic
 
