@@ -38,7 +38,7 @@
     #fullscreen-btn { display: flex; align-items: center; justify-content: center; min-height: 31px; }
     /* Hide the "move" mode (it moves shapes, which a read-only viewer doesn't need) */
     #btnradiomove, label[for="btnradiomove"] { display: none !important; }
-    /* Mode buttons are replaced by keyboard shortcuts (K: ruler, Esc: select, Shift+K: clear rulers and select) and a hint label */
+    /* Mode buttons are replaced by keyboard shortcuts (K: ruler, Shift+K: clear rulers and select) and a hint label */
     #mode-row { display: none !important; }
     #mode-hint { display: inline-block; pointer-events: none !important; padding: 0.2rem 0.55rem;
                  border-radius: var(--bs-border-radius-sm); background: rgba(0, 0, 0, 0.75); color: #ccc;
@@ -213,7 +213,7 @@
             // viewer.js fills #menu by id, so it still works after the move
             document.getElementById("corner-controls").prepend(document.getElementById("menu"));
 
-            // Keyboard modes instead of the mode buttons: K switches to ruler, Esc back to select,
+            // Keyboard modes instead of the mode buttons: K switches to ruler,
             // Shift+K clears all rulers and returns to select
             const hint = document.createElement("div");
             hint.id = "mode-hint";
@@ -221,7 +221,7 @@
             let mode = "select";
             function showMode() {
                 hint.innerHTML = mode === "ruler"
-                    ? "Ruler · <kbd>Esc</kbd> to select · <kbd>Shift</kbd>+<kbd>K</kbd> to clear and select"
+                    ? "Ruler · <kbd>Shift</kbd>+<kbd>K</kbd> to clear and select"
                     : "Select · <kbd>K</kbd> for ruler";
             }
             function setMode(m) {
@@ -233,10 +233,13 @@
                 showMode();
             }
             showMode();
+            // Esc does nothing in the viewer; the browser still uses it to leave full screen.
+            // Stopping it here (capture phase) keeps kweb from forwarding it to the server.
+            window.addEventListener("keydown", e => {
+                if (e.key === "Escape") e.stopImmediatePropagation();
+            }, true);
             window.addEventListener("keydown", e => {
                 if (e.ctrlKey || e.metaKey || e.altKey || e.repeat) return;
-                // Esc: kweb also forwards it to the server, which cancels a ruler being drawn
-                if (e.key === "Escape") { setMode("select"); return; }
                 if (e.code !== "KeyK") return;
                 if (e.target.closest && e.target.closest("input, textarea, select, [contenteditable]")) return;
                 e.preventDefault();
