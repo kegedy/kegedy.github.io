@@ -28,30 +28,9 @@ The schematic test suite for the [bandgap reference](./index.mdx). How the resul
 The output is unbuffered: VREF comes straight from the R2 branch, so it can't drive a resistive load.
 A real system would add a unity-gain buffer or LDO after it.
 
-## Schematic test suite
+## Results
 
-Every test lives in `sim/bandgap/`. The decks share `bench.spice`, the same circuit as the
-testbench schematic. `run_all.sh` first netlists the schematic with xschem, so the tests always
-simulate exactly what is drawn.
-
-```bash
-sim/bandgap/run_all.sh          # netlist + all tests (about 1 minute); logs and data in sim/bandgap/out/
-python3 sim/bandgap/plot.py     # regenerate the plots on this page
-ngspice sim/bandgap/temp.spice  # or run one deck interactively (after run_all.sh)
-```
-
-| # | Deck | What it checks | Result (tt, 27 °C) |
-|---|---|---|---|
-| 1 | `op.spice` | Operating point, supply current, amplifier offset $V_A - V_B$ | 1.2000 V, 20 µA, 0.04 mV |
-| 2 | `temp.spice` | DC sweep −40 to 125 °C, box-method TC | 14.4 mV, 73 ppm/°C |
-| 3 | `line.spice` | VDD swept 0 to 2.2 V | 9.9 mV/V; minimum VDD 1.51 V |
-| 4 | `psrr.spice` | AC from VDD to VREF, 1 Hz to 100 MHz | −44 dB to 10 kHz, −40 dB at 1 MHz |
-| 5 | `startup.spice` | Transient with a 10 µs VDD ramp from 0 V | settles at 8.4 µs |
-| 6 | `loop.spice` | Loop gain, injected at Vloop | 36 dB, 1.1 MHz, PM 89° |
-| 7 | `noise.spice` | Output noise density, 1 Hz to 10 MHz | 1.6 µV/√Hz at 1 kHz; 629 µV rms total |
-| 8 | `temp.spice` × 5 | Temperature sweep at tt, ss, ff, sf, fs | 69 to 76 ppm/°C |
-| 9 | `mc.spice` | 200 mismatch samples (`tt_mm`), each powered up by the VDD ramp | mean ≈ 1.20 to 1.21 V, σ ≈ 45 to 50 mV |
-| 10 | `sat.spice` | Every transistor's $\lvert V_{DS} \rvert$ against $V_{DSAT}$, at 1.8 and 1.62 V, run at −40, 27 and 125 °C | all analog devices saturated; worst margin 0.11 V |
+Plots from the schematic test suite. The table and notes below describe each test.
 
 <Tabs>
   <TabItem value="temp" label="Temperature">
@@ -76,6 +55,31 @@ ngspice sim/bandgap/temp.spice  # or run one deck interactively (after run_all.s
     ![Monte Carlo histogram](./img/mc.png)
   </TabItem>
 </Tabs>
+
+## Schematic test suite
+
+Every test lives in `sim/bandgap/`. The decks share `bench.spice`, the same circuit as the
+testbench schematic. `run_all.sh` first netlists the schematic with xschem, so the tests always
+simulate exactly what is drawn.
+
+```bash
+sim/bandgap/run_all.sh          # netlist + all tests (about 1 minute); logs and data in sim/bandgap/out/
+python3 sim/bandgap/plot.py     # regenerate the plots on this page
+ngspice sim/bandgap/temp.spice  # or run one deck interactively (after run_all.sh)
+```
+
+| # | Deck | What it checks | Result (tt, 27 °C) |
+|---|---|---|---|
+| 1 | `op.spice` | Operating point, supply current, amplifier offset $V_A - V_B$ | 1.2000 V, 20 µA, 0.04 mV |
+| 2 | `temp.spice` | DC sweep −40 to 125 °C, box-method TC | 14.4 mV, 73 ppm/°C |
+| 3 | `line.spice` | VDD swept 0 to 2.2 V | 9.9 mV/V; minimum VDD 1.51 V |
+| 4 | `psrr.spice` | AC from VDD to VREF, 1 Hz to 100 MHz | −44 dB to 10 kHz, −40 dB at 1 MHz |
+| 5 | `startup.spice` | Transient with a 10 µs VDD ramp from 0 V | settles at 8.4 µs |
+| 6 | `loop.spice` | Loop gain, injected at Vloop | 36 dB, 1.1 MHz, PM 89° |
+| 7 | `noise.spice` | Output noise density, 1 Hz to 10 MHz | 1.6 µV/√Hz at 1 kHz; 629 µV rms total |
+| 8 | `temp.spice` × 5 | Temperature sweep at tt, ss, ff, sf, fs | 69 to 76 ppm/°C |
+| 9 | `mc.spice` | 200 mismatch samples (`tt_mm`), each powered up by the VDD ramp | mean ≈ 1.20 to 1.21 V, σ ≈ 45 to 50 mV |
+| 10 | `sat.spice` | Every transistor's $\lvert V_{DS} \rvert$ against $V_{DSAT}$, at 1.8 and 1.62 V, run at −40, 27 and 125 °C | all analog devices saturated; worst margin 0.11 V |
 
 Notes on the tests:
 
