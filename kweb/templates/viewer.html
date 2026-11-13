@@ -38,7 +38,7 @@
     #fullscreen-btn { display: flex; align-items: center; justify-content: center; min-height: 31px; }
     /* Hide the "move" mode (it moves shapes, which a read-only viewer doesn't need) */
     #btnradiomove, label[for="btnradiomove"] { display: none !important; }
-    /* Mode buttons are replaced by keyboard shortcuts (K: ruler, Esc: select, Shift+K: clear rulers) and a hint label */
+    /* Mode buttons are replaced by keyboard shortcuts (K: ruler, Esc: select, Shift+K: clear rulers and select) and a hint label */
     #mode-row { display: none !important; }
     #mode-hint { display: inline-block; pointer-events: none !important; padding: 0.2rem 0.55rem;
                  border-radius: var(--bs-border-radius-sm); background: rgba(0, 0, 0, 0.75); color: #ccc;
@@ -214,14 +214,14 @@
             document.getElementById("corner-controls").prepend(document.getElementById("menu"));
 
             // Keyboard modes instead of the mode buttons: K switches to ruler, Esc back to select,
-            // Shift+K clears all rulers
+            // Shift+K clears all rulers and returns to select
             const hint = document.createElement("div");
             hint.id = "mode-hint";
             document.getElementById("modes").append(hint);
             let mode = "select";
             function showMode() {
                 hint.innerHTML = mode === "ruler"
-                    ? "Ruler · <kbd>Esc</kbd> to select · <kbd>Shift</kbd>+<kbd>K</kbd> clears rulers"
+                    ? "Ruler · <kbd>Esc</kbd> to select · <kbd>Shift</kbd>+<kbd>K</kbd> to clear and select"
                     : "Select · <kbd>K</kbd> for ruler";
             }
             function setMode(m) {
@@ -242,6 +242,7 @@
                 e.preventDefault();
                 if (e.shiftKey) {
                     if (socket.readyState === WebSocket.OPEN) socket.send(JSON.stringify({ msg: "clear-annotations" }));
+                    setMode("select");
                 } else {
                     setMode("ruler");
                 }
