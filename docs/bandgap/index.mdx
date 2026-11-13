@@ -45,8 +45,9 @@ The rest of the design is on its own pages:
 
 - [Theory](./theory.mdx): the bandgap equations and how $R_2/R_1$ sets VREF and drift.
 - [Circuit tuning](./tuning.mdx): how every transistor was kept in saturation at 1.8 V.
-- [Simulations](./simulations.mdx): the full ngspice test suite, before and after layout.
-- [Layout and verification](./layout.mdx): how the layout is drawn and wired, DRC, LVS and parasitic extraction.
+- [Simulations](./simulations.mdx): the full ngspice test suite on the schematic.
+- [Layout and verification](./layout.mdx): how the layout is drawn and wired, and the DRC and LVS checks.
+- [Post-layout simulation](./post-layout.mdx): the same tests on the layout with its extracted parasitics.
 - [Limitations and next steps](./limitations.mdx).
 - [Design log](./design-log.mdx): every unexpected simulation result along the way.
 
@@ -109,4 +110,4 @@ The floorplan has four bands, from top to bottom:
 
 Bands are 4 µm apart, which leaves room for wiring between them.
 
-How it's drawn and wired, the DRC and LVS checks, and post-layout results are on [Layout and verification](./layout.mdx).
+How it's drawn and wired and the DRC and LVS checks are on [Layout and verification](./layout.mdx). Results with the layout's parasitics are on [Post-layout simulation](./post-layout.mdx).
