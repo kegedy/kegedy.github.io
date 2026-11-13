@@ -1,0 +1,52 @@
+---
+title: Bandgap Theory
+sidebar_label: Theory
+sidebar_position: 1
+description: How the sky130 bandgap reference sets a temperature-stable 1.2 V, and how R2/R1 trades output voltage against drift.
+tags: [sky130, analog, bandgap]
+---
+
+# Bandgap Theory
+
+The equations behind the [bandgap reference](./index.mdx). Numbers are pre-layout simulation in the typical (tt) corner.
+
+Two diode-connected PNPs carry the same current $I$. Q2 is eight unit devices in parallel, so its
+current density is eight times lower and its $V_{BE}$ is smaller by
+
+$$
+\Delta V_{BE} = V_{BE1} - V_{BE2} = V_T \ln 8, \qquad V_T = \frac{kT}{q} \tag{1}
+$$
+
+An error amplifier forces the two branch voltages $V_A$ and $V_B$ to be equal, which puts all of
+$\Delta V_{BE}$ across R1. That sets a PTAT bias current:
+
+$$
+I = \frac{V_T \ln 8}{R_1} \tag{2}
+$$
+
+A third PMOS copies $I$ into R2 and a third unit PNP, Q3:
+
+$$
+V_{REF} = V_{BE3} + \frac{R_2}{R_1} V_T \ln 8 \tag{3}
+$$
+
+The first term falls with temperature and the second rises. The ratio $R_2/R_1$ sets the balance,
+and since it's a ratio of matched resistors, the absolute resistor value cancels out.
+xschem's symbol annotations estimate $R_1$ = 11.4 kΩ and $R_2$ = 102 kΩ from sheet resistance, a ratio of 8.9.
+In simulation the PDK model gives $R_1$ = 14.5 kΩ. The simulation measures 54.5 mV across R1, matching $V_T \ln 8$ = 53.7 mV,
+which sets $I$ = 3.75 µA per branch at 27 °C.
+
+The $V_{BE}$ slope isn't perfectly linear, so a first-order bandgap always leaves a slight bow in its
+curve. The ratio that puts VREF at exactly 1.200 V places the peak of that bow near −40 °C,
+not mid-range. Lengthening R2 trades a higher VREF for a flatter curve:
+
+| R2 length | VREF at 27 °C | Drift (−40 to 125 °C) |
+|---|---|---|
+| 17.77 µm (this design) | 1.200 V | 73 ppm/°C |
+| 18.4 µm | 1.217 V | 33 ppm/°C |
+
+## References
+
+1. B. Razavi, *Design of Analog CMOS Integrated Circuits*, 2nd ed., McGraw-Hill, 2017, ch. 12 (bandgap references).
+2. P. R. Gray, P. J. Hurst, S. H. Lewis, R. G. Meyer, *Analysis and Design of Analog Integrated Circuits*, 5th ed., Wiley, 2009, ch. 4.
+3. SkyWater, *SKY130 PDK documentation*, https://skywater-pdk.readthedocs.io

@@ -1,0 +1,26 @@
+---
+title: Bandgap Limitations
+sidebar_label: Limitations and next steps
+sidebar_position: 5
+description: Where the sky130 bandgap falls short, mismatch, noise, loop gain and layout, and what would fix each.
+tags: [sky130, analog, bandgap]
+---
+
+# Bandgap Limitations and Next Steps
+
+What still limits the [bandgap reference](./index.mdx), and what would improve it.
+
+- **Mismatch dominates accuracy.** σ ≈ 45 to 50 mV (about 4 %) is much larger than the temperature drift.
+  Offset from the amplifier, the PMOS mirror and the RCA/RCB pair is multiplied by about $1 + R_2/R_1$ ≈ 10 on its way to the output.
+  Common-centroid layout of the resistor pair and mirror, larger devices, or a trim on R2 would bring it down.
+- **Noise** is high for the same reason: amplifier flicker noise sees the same gain. Larger input devices, or chopping, would help.
+- **Loop gain** is 36 dB with a single-stage amplifier, which sets the −44 dB PSRR.
+  A two-stage amplifier would improve both. A cascode doesn't fit in the headroom (see [Circuit tuning](./tuning.mdx)).
+- **Layout:** DRC and LVS clean, but not yet tuned as an analog layout. The router connects nets correctly,
+  but it doesn't know which wires are sensitive. Matched pairs don't get symmetric wiring, and the high-impedance nodes aren't kept short or shielded.
+  Post-layout simulation shows the cost is small, except PSRR near 1 MHz, which PB's capacitance to ground costs 6 dB.
+  Next steps:
+  - reroute PB on higher metal, or keep it short, then re-extract;
+  - interdigitate the mirror and the RCA/RCB pair (common-centroid) instead of placing them side by side;
+  - add dummy devices at the ends of matched rows;
+  - add guard rings around the PNP array.

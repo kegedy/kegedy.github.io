@@ -1,0 +1,106 @@
+---
+title: Bandgap Circuit Tuning
+sidebar_label: Circuit tuning
+sidebar_position: 2
+description: How the sky130 bandgap was tuned to keep every transistor saturated at 1.8 V, from −40 to 125 °C.
+tags: [sky130, analog, bandgap, ngspice]
+---
+
+# Bandgap Circuit Tuning: Headroom and Saturation
+
+How the [bandgap reference](./index.mdx) circuit got to its final form. Numbers are pre-layout simulation in the typical (tt) corner.
+
+At 1.8 V, the hard part of this circuit isn't the bandgap equation. It's fitting every transistor
+into the supply with enough voltage left to stay in saturation. A device that slips into triode
+loses its output resistance, so mirrors stop copying and the amplifier loses gain. The operating point can still look
+plausible (VREF reads about 1.2 V), so the only reliable check is to read
+$\lvert V_{DS} \rvert$ and $V_{DSAT}$ for every device. ngspice exposes both:
+
+```spice
+let margin = abs(@m.x1.xm4.msky130_fd_pr__nfet_01v8[vds]) - @m.x1.xm4.msky130_fd_pr__nfet_01v8[vdsat]
+```
+
+A positive margin means saturation. `sat.spice` prints this for every transistor, and `run_all.sh` runs it at
+−40, 27 and 125 °C, each at 1.8 V and 1.62 V. Each change below was driven by what that check showed.
+The [design log](./design-log.mdx) has the complete version, including every unexpected simulation result along the way.
+
+**1. First pass: standard PMOS input pair, NMOS load.** VREF came out at 1.228 V with a reasonable
+temperature curve, but the saturation check showed the amplifier's tail transistor in deep triode:
+$\lvert V_{DS} \rvert$ = 45 mV against $V_{DSAT}$ = 230 mV. Adding up the stack from the inputs to VDD shows why:
+
+$$
+V_{DD} \geq V_{CM} + \lvert V_{GS,in} \rvert + V_{DSAT,tail} \approx 0.72 + 1.04 + 0.23 = 1.99\ \text{V}
+$$
+
+The inputs sit at $V_A \approx V_B \approx$ 0.72 V, a $V_{BE}$ above ground, and a standard sky130 PMOS has
+$\lvert V_{TH} \rvert$ ≈ 1.03 V at these lengths. The stack needs about 2 V, and only 1.8 V is available.
+
+**2. LVT input pair.** Switching M5/M6 to `pfet_01v8_lvt` ($\lvert V_{TH} \rvert$ ≈ 0.56 V) cut about 0.4 V
+from the stack. The tail moved to $\lvert V_{DS} \rvert$ = 0.42 V against 0.22 V, and every device passed.
+The full test suite still failed, though:
+
+- PSRR was −20 dB and line regulation 107 mV/V.
+- VREF only reached its final value above VDD ≈ 1.71 V.
+
+There were two causes. First, the tail node sat at a fixed $V_B + \lvert V_{GS,in} \rvert$ ≈ 1.39 V, so
+every millivolt of supply droop came straight out of the tail's 0.42 V. At 1.62 V it dropped out again.
+Second, with an NMOS load the amplifier's output was referenced to ground. But the PMOS mirror
+gates it drives have to sit at a fixed $V_{SG}$ below VDD, so the loop had to correct every supply change.
+
+**3. NMOS LVT input pair, PMOS mirror load.** Flipping the amplifier fixes both problems:
+
+- The input stack now hangs from ground. The tail node is $V_{CM} - V_{GS,in}$ ≈ 0.72 − 0.50 = 0.21 V,
+  set by the PNPs rather than by VDD, so supply changes no longer squeeze it.
+- The PMOS load references the output to VDD, so PB follows the supply without the loop having to correct it.
+
+PSRR improved to −40 dB and minimum VDD dropped to 1.52 V. The load devices were sized for the
+same current density as the main mirror: M7/M8 carry half the current at half the W/L. That gives them the same
+$V_{SG}$ as M1 to M3, so the amplifier's two drains sit at the voltage the mirror gates need.
+This removes the amplifier's built-in (systematic) offset, which fell from 2 mV to 0.29 mV.
+
+**4. Upsizing for matching without moving the bias point.** Quadrupling the area of every matched
+device at the same W/L ratio (for example 4/2 µm to 8/4 µm) keeps each $V_{GS}$ and $V_{DSAT}$
+almost the same, so the headroom analysis above still holds. Mismatch drops, and the longer channels raise the amplifier gain:
+loop gain went from 32 to 37 dB, PSRR to −46 dB, and offset to 0.10 mV.
+
+**5. The hot corner.** At this point every device passed at 27 °C, with the tail M4 tightest at 0.09 V.
+Running the same check at 125 °C showed M4 in triode, with a margin of −61 mV. Two things go wrong when hot.
+$V_{BE}$ falls to about 0.5 V, taking the input common-mode and the tail node (0.11 V) down with it. Meanwhile M4's $V_{DSAT}$ grows to 0.18 V.
+Making M4 five times wider barely helped: its $V_{DSAT}$ only fell to 0.10 V, still no better than break-even.
+The tail node itself had to come up, and there are two ways to do that:
+
+- **Lift the input common-mode.** RCA and RCB put an equal $I \cdot R_C$ ≈ 0.16 V above A and B. The amplifier compares AH and BH.
+  The two branch currents are equal, so forcing $V_{AH} = V_{BH}$ still forces $V_A = V_B$, and equation 3 on the [Theory](./theory.mdx) page doesn't change.
+- **Pay for it at the top.** That 0.16 V has to come out of the PMOS side, which had plenty to spare.
+  Switching M1 to M3, M12 and the loads M7/M8 to `pfet_01v8_lvt` drops their $V_{SG}$ from 1.26 V to about 0.75 V.
+  PB moves from 0.54 V to 1.05 V, and the input pair's drains rise with it.
+
+The tail node moved to 0.35 V at 27 °C, and every analog device now stays saturated across −40 to 125 °C and 1.62 to 1.8 V.
+
+**6. The cost: mismatch.** The resistor pair has a price. Any mismatch between RCA and RCB adds $I \cdot \Delta R_C$
+straight to the amplifier offset, which is multiplied by about 10 on its way to VREF. With narrow 0.35 µm resistors,
+Monte Carlo σ jumped from 30 to about 100 mV. Taking them out of the offset path brought it back to 29 mV, which proved they were the cause.
+Switching to the wide `res_xhigh_po_2p85` (2.85 × 60 µm, about 54 times the area of the 0.35 × 9 µm original)
+brought σ down to about 45 to 50 mV. That's still worse than before. This is a real trade-off between
+hot-temperature saturation and accuracy. Layout or trim has to close the gap (see [Limitations](./limitations.mdx)).
+
+**Final margins** (`sat.spice`, tt). The worst case is across −40, 27 and 125 °C at both supplies:
+
+| Device | Role | $\lvert V_{DS} \rvert$ at 27 °C, 1.8 V | $V_{DSAT}$ | Margin at 27 °C, 1.8 V | Worst margin (where) |
+|---|---|---|---|---|---|
+| M1, M2 | PTAT mirror | 0.92 V | 0.24 V | 0.68 V | 0.49 V (−40 °C, 1.62 V) |
+| M3 | Output mirror | 0.60 V | 0.24 V | 0.36 V | **0.11 V** (125 °C, 1.62 V) |
+| M7, M8 | Amplifier load | 0.74 V | 0.24 V | 0.50 V | 0.33 V (125 °C) |
+| M5, M6 | Amplifier input | 0.71 V | 0.07 V | 0.64 V | 0.38 V (−40 °C, 1.62 V) |
+| M4 | Amplifier tail | 0.35 V | 0.12 V | 0.23 V | **0.11 V** (125 °C, 1.62 V) |
+| M12 | Tail-bias mirror | 1.14 V | 0.24 V | 0.90 V | 0.65 V (125 °C, 1.62 V) |
+| M13 | Tail-bias diode | 0.66 V | 0.12 V | 0.53 V | 0.46 V (125 °C) |
+
+Two devices set the limits:
+
+- **M3, the output mirror,** has a margin of simply $V_{DD} - V_{REF} - V_{DSAT}$. It shrinks one-for-one with supply, and VREF
+  starts falling away at about 1.5 V (it stays within 10 mV of nominal down to 1.51 V). It's also why a 1.2 V output from a 1.8 V supply leaves
+  no room to cascode the mirror; a cascode would improve PSRR, but it would need another ~0.3 V.
+- **M4, the tail,** is set by the input common-mode, so it's tightest when hot, when $V_{BE}$ is lowest.
+
+The start-up devices M9 to M11 act as switches and aren't expected to be in saturation.
