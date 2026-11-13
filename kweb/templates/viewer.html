@@ -25,25 +25,24 @@
     #layout.panel-collapsed #rightpanel-content { display: none; }
     #layout.panel-collapsed #navigator { border-bottom: 0; justify-content: center; padding-top: 0.4rem; }
     #layout.panel-collapsed .panel-toggle-item { margin-left: 0; }
-    /* Bottom-right stack: Clear Rulers / Zoom Fit (kweb's #menu, moved here).
-       Column is as wide as its widest button; every button stretches to that width. */
+    /* Bottom-right stack: Zoom Fit / full screen (kweb's #menu, moved here).
+       Fixed at the width the column had with Clear Rulers in it, which the site's 2D/3D toggle
+       and 3D full-screen button line up with (CONTROLS_WIDTH in LayoutViewer.js). */
     #corner-controls { position: absolute; bottom: 0.75rem; right: 0.75rem; z-index: 10;
                        display: flex; flex-direction: column; align-items: stretch; gap: 0.5rem;
-                       width: max-content; }
+                       width: 91px; }
     #menu { display: flex; flex-direction: column; gap: 0.5rem; padding: 0 !important; flex: none; width: auto; }
     #corner-controls .btn { margin: 0 !important; width: 100%; padding: 0.25rem 0.5rem;
                             font-size: 0.875rem; border-radius: var(--bs-border-radius-sm); }
     /* kweb's Reload button (re-reads the file from disk) isn't useful on the hosted site */
     #reload { display: none !important; }
+    /* Rulers are cleared with Shift+K instead */
+    #clearRulers { display: none !important; }
     #fullscreen-btn { display: flex; align-items: center; justify-content: center; min-height: 31px; }
     /* Hide the "move" mode (it moves shapes, which a read-only viewer doesn't need) */
     #btnradiomove, label[for="btnradiomove"] { display: none !important; }
-    /* Mode buttons are replaced by keyboard shortcuts (K: ruler, Shift+K: clear rulers and select) and a hint label */
+    /* Mode buttons are replaced by keyboard shortcuts (K: ruler, Shift+K: clear rulers and select) */
     #mode-row { display: none !important; }
-    #mode-hint { display: inline-block; pointer-events: none !important; padding: 0.2rem 0.55rem;
-                 border-radius: var(--bs-border-radius-sm); background: rgba(0, 0, 0, 0.75); color: #ccc;
-                 font-size: 0.8rem; white-space: nowrap; }
-    #mode-hint kbd { padding: 0.05rem 0.3rem; font-size: 0.75rem; background: #444; color: #eee; }
     /* Layer panel (built by the script at the bottom, replacing kweb's) */
     .layer-toolbar { display: flex; flex-direction: column; gap: 0.4rem; padding: 0.5rem 0.25rem; }
     .layer-toolbar .form-check { margin: 0; }
@@ -215,24 +214,14 @@
 
             // Keyboard modes instead of the mode buttons: K switches to ruler,
             // Shift+K clears all rulers and returns to select
-            const hint = document.createElement("div");
-            hint.id = "mode-hint";
-            document.getElementById("modes").append(hint);
             let mode = "select";
-            function showMode() {
-                hint.innerHTML = mode === "ruler"
-                    ? "Ruler · <kbd>Shift</kbd>+<kbd>K</kbd> to clear and select"
-                    : "Select · <kbd>K</kbd> for ruler";
-            }
             function setMode(m) {
                 if (m === mode || socket.readyState !== WebSocket.OPEN) return;
                 mode = m;
                 socket.send(JSON.stringify({ msg: "select-mode", value: m }));
                 const radio = document.getElementById("btnradio" + m);  // keep kweb's hidden radios in step
                 if (radio) radio.checked = true;
-                showMode();
             }
-            showMode();
             // Esc does nothing in the viewer; the browser still uses it to leave full screen.
             // Stopping it here (capture phase) keeps kweb from forwarding it to the server.
             window.addEventListener("keydown", e => {

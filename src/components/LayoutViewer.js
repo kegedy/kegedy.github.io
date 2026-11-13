@@ -2,7 +2,7 @@ import {useState} from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {Model3D, CAPTION_3D} from '@site/src/components/LayoutViewer3D';
 
-// Lines up with kweb's Clear Rulers / Zoom Fit column inside the iframe (measured from
+// Lines up with kweb's Zoom Fit / full-screen column inside the iframe (measured from
 // kweb/templates/viewer.html): same right edge and width, mirrored to the top corner.
 // Includes the iframe's 1px border.
 const CONTROLS_INSET = 21; // px from the viewer's top and right edges
