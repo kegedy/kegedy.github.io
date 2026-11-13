@@ -89,6 +89,8 @@ export default function LayoutViewer({
           src={src}
           title={`Layout: ${file}`}
           loading="lazy"
+          allow="fullscreen"
+          allowFullScreen
           style={{
             display: mode === '2D' ? 'block' : 'none',
             width: '100%',
@@ -103,6 +105,7 @@ export default function LayoutViewer({
               model={model}
               height={height}
               legendPosition={{top: CONTROLS_INSET + 31 + 8, right: CONTROLS_INSET}}
+              buttonPosition={{bottom: CONTROLS_INSET, right: CONTROLS_INSET, width: CONTROLS_WIDTH}}
             />
           </div>
         )}

@@ -1,5 +1,6 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import {useFullscreen, FullscreenIcon} from '@site/src/components/fullscreen';
 
 const MODEL_VIEWER =
   'https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js';
@@ -61,7 +62,23 @@ export const CAPTION_3D =
  * The 3D model with its legend, without figure/caption (also used by LayoutViewer's 3D mode).
  * `legendPosition` overrides the legend's top/right offsets.
  */
-export function Model3D({model, height = 450, legendPosition}) {
+const fsButtonStyle = {
+  position: 'absolute',
+  bottom: 12,
+  right: 12,
+  width: 36,
+  height: 31,
+  padding: 0,
+  color: '#000',
+  background: '#808080',
+  border: '1px solid #808080',
+  borderRadius: 4,
+  cursor: 'pointer',
+};
+
+export function Model3D({model, height = 450, legendPosition, buttonPosition}) {
+  const frameRef = useRef(null);
+  const fullscreen = useFullscreen(frameRef);
   const src = useBaseUrl(`/models/${model}`);
   const legendUrl = useBaseUrl(`/models/${model.replace(/\.glb$/, '.json')}`);
   const [legend, setLegend] = useState([]);
@@ -75,7 +92,7 @@ export function Model3D({model, height = 450, legendPosition}) {
   }, [legendUrl]);
 
   return (
-    <div style={{position: 'relative'}}>
+    <div ref={frameRef} style={{position: 'relative', height: fullscreen.active ? '100%' : undefined, background: '#111'}}>
       <model-viewer
         src={src}
         alt={`3D view of ${model}`}
@@ -88,13 +105,23 @@ export function Model3D({model, height = 450, legendPosition}) {
         style={{
           display: 'block',
           width: '100%',
-          height,
+          height: fullscreen.active ? '100%' : height,
           background: '#111',
           border: '1px solid var(--ifm-color-emphasis-300)',
-          borderRadius: 8,
+          borderRadius: fullscreen.active ? 0 : 8,
         }}
       />
       {legend.length > 0 && <Legend layers={legend} position={legendPosition} />}
+      {fullscreen.supported && (
+        <button
+          type="button"
+          style={{...fsButtonStyle, ...buttonPosition}}
+          onClick={fullscreen.toggle}
+          aria-label={fullscreen.active ? 'Exit full screen' : 'Full screen'}
+          title={fullscreen.active ? 'Exit full screen' : 'Full screen'}>
+          <FullscreenIcon active={fullscreen.active} />
+        </button>
+      )}
     </div>
   );
 }

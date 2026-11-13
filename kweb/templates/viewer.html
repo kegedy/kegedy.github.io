@@ -35,6 +35,7 @@
                             font-size: 0.875rem; border-radius: var(--bs-border-radius-sm); }
     /* kweb's Reload button (re-reads the file from disk) isn't useful on the hosted site */
     #reload { display: none !important; }
+    #fullscreen-btn { display: flex; align-items: center; justify-content: center; min-height: 31px; }
     /* Hide the "move" mode (it moves shapes, which a read-only viewer doesn't need) */
     #btnradiomove, label[for="btnradiomove"] { display: none !important; }
     /* Inactive mode button (e.g. "ruler") is transparent by default and vanishes over the drawing */
@@ -207,6 +208,36 @@
             const toggle = document.getElementById("panel-toggle");
             // viewer.js fills #menu by id, so it still works after the move
             document.getElementById("corner-controls").prepend(document.getElementById("menu"));
+
+            // Full screen, below Zoom Fit. Embedded on the site, the iframe needs allow="fullscreen".
+            const root = document.documentElement;
+            const fsElement = () => document.fullscreenElement || document.webkitFullscreenElement;
+            if (document.fullscreenEnabled || document.webkitFullscreenEnabled) {
+                const fsButton = document.createElement("button");
+                fsButton.type = "button";
+                fsButton.id = "fullscreen-btn";
+                fsButton.className = "btn btn-primary";
+                const enter = '<path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/>';
+                const exit = '<path d="M9 4v5H4M15 4v5h5M15 20v-5h5M9 20v-5H4"/>';
+                const update = () => {
+                    const on = Boolean(fsElement());
+                    fsButton.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+                        'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (on ? exit : enter) + '</svg>';
+                    const label = on ? "Exit full screen" : "Full screen";
+                    fsButton.setAttribute("aria-label", label);
+                    fsButton.title = label;
+                };
+                fsButton.addEventListener("click", () => {
+                    const call = fsElement()
+                        ? (document.exitFullscreen || document.webkitExitFullscreen).call(document)
+                        : (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+                    Promise.resolve(call).catch(() => {});
+                });
+                document.addEventListener("fullscreenchange", update);
+                document.addEventListener("webkitfullscreenchange", update);
+                update();
+                document.getElementById("corner-controls").append(fsButton);
+            }
             function setCollapsed(collapsed) {
                 layout.classList.toggle("panel-collapsed", collapsed);
                 const label = collapsed ? "Expand panel" : "Collapse panel";

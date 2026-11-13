@@ -1,5 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import {useFullscreen, FullscreenIcon} from '@site/src/components/fullscreen';
 
 const GREY = '#808080'; // matches the layout viewer's buttons
 const ZOOM_STEP = 1.2;
@@ -81,6 +82,14 @@ export default function SchematicViewer({file, height = 400}) {
     }
     setViewBox(homeRef.current);
   };
+
+  // Full screen: the frame fills the screen, then the drawing is re-fitted to the new shape
+  const frameRef = useRef(null);
+  const fullscreen = useFullscreen(frameRef);
+  useEffect(() => {
+    const id = requestAnimationFrame(fit);
+    return () => cancelAnimationFrame(id);
+  }, [fullscreen.active]);
 
   // Load the SVG and inline it (our own static file)
   useEffect(() => {
@@ -166,12 +175,13 @@ export default function SchematicViewer({file, height = 400}) {
   return (
     <figure style={{margin: '1.5rem 0'}}>
       <div
+        ref={frameRef}
         style={{
           position: 'relative',
-          height,
+          height: fullscreen.active ? '100%' : height,
           background: '#000',
           border: '1px solid var(--ifm-color-emphasis-300)',
-          borderRadius: 8,
+          borderRadius: fullscreen.active ? 0 : 8,
           overflow: 'hidden',
         }}>
         <div
@@ -203,6 +213,16 @@ export default function SchematicViewer({file, height = 400}) {
           <button type="button" style={buttonStyle} onClick={fit} aria-label="Fit to view" title="Fit to view">
             Fit
           </button>
+          {fullscreen.supported && (
+            <button
+              type="button"
+              style={buttonStyle}
+              onClick={fullscreen.toggle}
+              aria-label={fullscreen.active ? 'Exit full screen' : 'Full screen'}
+              title={fullscreen.active ? 'Exit full screen' : 'Full screen'}>
+              <FullscreenIcon active={fullscreen.active} />
+            </button>
+          )}
         </div>
       </div>
     </figure>
