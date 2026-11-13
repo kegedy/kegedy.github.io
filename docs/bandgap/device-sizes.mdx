@@ -1,0 +1,43 @@
+---
+title: Bandgap Device Sizes
+sidebar_label: Device sizes
+sidebar_position: 3
+description: The sky130 model, width and length of every transistor in the bandgap reference.
+tags: [sky130, analog, bandgap]
+---
+
+# Bandgap Device Sizes
+
+Every transistor in the [bandgap reference](./index.mdx) core, `xschem/bandgap_core.sch`, as xschem netlists it.
+All are single devices (`nf=1`, `m=1`) unless noted. Sizes are in µm.
+
+## MOSFETs
+
+| Device | Role | Model | W (µm) | L (µm) | W/L |
+|---|---|---|---:|---:|---:|
+| M1 | PTAT mirror, branch A | `sky130_fd_pr__pfet_01v8_lvt` | 8 | 4 | 2 |
+| M2 | PTAT mirror, branch B | `sky130_fd_pr__pfet_01v8_lvt` | 8 | 4 | 2 |
+| M3 | Output mirror | `sky130_fd_pr__pfet_01v8_lvt` | 8 | 4 | 2 |
+| M4 | Amplifier tail | `sky130_fd_pr__nfet_01v8` | 8 | 4 | 2 |
+| M5 | Amplifier input (BH, diode side) | `sky130_fd_pr__nfet_01v8_lvt` | 16 | 4 | 4 |
+| M6 | Amplifier input (AH) | `sky130_fd_pr__nfet_01v8_lvt` | 16 | 4 | 4 |
+| M7 | Amplifier load, diode | `sky130_fd_pr__pfet_01v8_lvt` | 4 | 4 | 1 |
+| M8 | Amplifier load, output | `sky130_fd_pr__pfet_01v8_lvt` | 4 | 4 | 1 |
+| M9 | Start-up, weak pull-up | `sky130_fd_pr__pfet_01v8` | 0.42 | 8 | 0.05 |
+| M10 | Start-up, VREF sense | `sky130_fd_pr__nfet_01v8` | 1 | 1 | 1 |
+| M11 | Start-up, pulls PB down | `sky130_fd_pr__nfet_01v8` | 0.42 | 1 | 0.42 |
+| M12 | Tail-bias mirror | `sky130_fd_pr__pfet_01v8_lvt` | 8 | 4 | 2 |
+| M13 | Tail-bias diode | `sky130_fd_pr__nfet_01v8` | 8 | 4 | 2 |
+
+The matched devices all use L = 4 µm for matching and output resistance. M7 and M8 carry half the current of M1 to M3
+at half the W/L, so all of them run at the same $V_{SG}$. Why each device ended up with this model and size is on [Circuit tuning](./tuning.mdx).
+
+## Bipolar transistors
+
+The vertical PNPs are a fixed PDK device, so they have no W or L parameter. The emitter is 3.40 × 3.40 µm.
+
+| Device | Role | Model | Emitter (µm) | Units (`m`) |
+|---|---|---|---|---:|
+| Q1 | PTAT core, branch A | `sky130_fd_pr__pnp_05v5_W3p40L3p40` | 3.40 × 3.40 | 1 |
+| Q2 | PTAT core, branch B | `sky130_fd_pr__pnp_05v5_W3p40L3p40` | 3.40 × 3.40 | 8 |
+| Q3 | Output branch | `sky130_fd_pr__pnp_05v5_W3p40L3p40` | 3.40 × 3.40 | 1 |

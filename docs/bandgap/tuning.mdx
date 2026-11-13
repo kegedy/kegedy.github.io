@@ -22,7 +22,6 @@ let margin = abs(@m.x1.xm4.msky130_fd_pr__nfet_01v8[vds]) - @m.x1.xm4.msky130_fd
 
 A positive margin means saturation. `sat.spice` prints this for every transistor, and `run_all.sh` runs it at
 −40, 27 and 125 °C, each at 1.8 V and 1.62 V. Each change below was driven by what that check showed.
-The [design log](./design-log.mdx) has the complete version, including every unexpected simulation result along the way.
 
 **1. First pass: standard PMOS input pair, NMOS load.** VREF came out at 1.228 V with a reasonable
 temperature curve, but the saturation check showed the amplifier's tail transistor in deep triode:
