@@ -38,8 +38,12 @@
     #fullscreen-btn { display: flex; align-items: center; justify-content: center; min-height: 31px; }
     /* Hide the "move" mode (it moves shapes, which a read-only viewer doesn't need) */
     #btnradiomove, label[for="btnradiomove"] { display: none !important; }
-    /* Inactive mode button (e.g. "ruler") is transparent by default and vanishes over the drawing */
-    #mode-row .btn-check:not(:checked) + .btn { background: rgba(0, 0, 0, 0.85); color: #ccc; }
+    /* Mode buttons are replaced by keyboard shortcuts (K: ruler, Shift+K: select) and a hint label */
+    #mode-row { display: none !important; }
+    #mode-hint { display: inline-block; pointer-events: none !important; padding: 0.2rem 0.55rem;
+                 border-radius: var(--bs-border-radius-sm); background: rgba(0, 0, 0, 0.75); color: #ccc;
+                 font-size: 0.8rem; white-space: nowrap; }
+    #mode-hint kbd { padding: 0.05rem 0.3rem; font-size: 0.75rem; background: #444; color: #eee; }
     /* Layer panel (built by the script at the bottom, replacing kweb's) */
     .layer-toolbar { display: flex; flex-direction: column; gap: 0.4rem; padding: 0.5rem 0.25rem; }
     .layer-toolbar .form-check { margin: 0; }
@@ -208,6 +212,32 @@
             const toggle = document.getElementById("panel-toggle");
             // viewer.js fills #menu by id, so it still works after the move
             document.getElementById("corner-controls").prepend(document.getElementById("menu"));
+
+            // Keyboard modes instead of the mode buttons: K switches to ruler, Shift+K back to select
+            const hint = document.createElement("div");
+            hint.id = "mode-hint";
+            document.getElementById("modes").append(hint);
+            let mode = "select";
+            function showMode() {
+                hint.innerHTML = mode === "ruler"
+                    ? "Ruler · <kbd>Shift</kbd>+<kbd>K</kbd> to select"
+                    : "Select · <kbd>K</kbd> for ruler";
+            }
+            function setMode(m) {
+                if (m === mode || socket.readyState !== WebSocket.OPEN) return;
+                mode = m;
+                socket.send(JSON.stringify({ msg: "select-mode", value: m }));
+                const radio = document.getElementById("btnradio" + m);  // keep kweb's hidden radios in step
+                if (radio) radio.checked = true;
+                showMode();
+            }
+            showMode();
+            window.addEventListener("keydown", e => {
+                if (e.code !== "KeyK" || e.ctrlKey || e.metaKey || e.altKey || e.repeat) return;
+                if (e.target.closest && e.target.closest("input, textarea, select, [contenteditable]")) return;
+                e.preventDefault();
+                setMode(e.shiftKey ? "select" : "ruler");
+            });
 
             // Full screen, below Zoom Fit. Embedded on the site, the iframe needs allow="fullscreen".
             const root = document.documentElement;
