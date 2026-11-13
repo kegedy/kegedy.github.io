@@ -8,10 +8,25 @@ tags: [sky130, analog, bandgap, ngspice]
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import SchematicViewer from '@site/src/components/SchematicViewer';
 
 # Bandgap Simulations
 
 The schematic test suite for the [bandgap reference](./index.mdx). How the results drove the design is in the [design log](./design-log.mdx).
+
+## The cell under test
+
+<SchematicViewer file="bandgap_tb.svg" />
+
+`xschem/bandgap_tb.sch` uses the core as a single symbol (`bandgap_core.sym`, with pins VDD, VSS and VREF) and adds only the outside world:
+
+- **VSUP:** one supply source that carries DC (`vdd`, default 1.8 V), AC 1 V for PSRR,
+  and a PWL ramp from 0 V that only the transient start-up test uses.
+- **CL:** a 1 pF load on VREF.
+- **MODELS / CONTROL:** the sky130 model library and a quick operating point plus temperature sweep, so **Netlist → Simulate** in xschem works straight away.
+
+The output is unbuffered: VREF comes straight from the R2 branch, so it can't drive a resistive load.
+A real system would add a unity-gain buffer or LDO after it.
 
 ## Schematic test suite
 

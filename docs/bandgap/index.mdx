@@ -51,7 +51,7 @@ The rest of the design is on its own pages:
 - [Limitations and next steps](./limitations.mdx).
 - [Design log](./design-log.mdx): every unexpected simulation result along the way.
 
-## Schematic 1: the internal design
+## Schematic
 
 <SchematicViewer file="bandgap_core.svg" />
 
@@ -76,20 +76,6 @@ The core (`xschem/bandgap_core.sch`) has four blocks:
 C1 (a 30 × 30 µm MIM cap, about 1.8 pF) is the dominant-pole compensation on the amplifier output.
 **Vloop** is a 0 V source between the amplifier output (PBO) and the mirror gates (PB). It does nothing
 in normal simulation, and the stability test injects its AC signal there. The LVS netlist script replaces it with a short.
-
-## Schematic 2: the cell under test
-
-<SchematicViewer file="bandgap_tb.svg" />
-
-`xschem/bandgap_tb.sch` uses the core as a single symbol (`bandgap_core.sym`, with pins VDD, VSS and VREF) and adds only the outside world:
-
-- **VSUP:** one supply source that carries DC (`vdd`, default 1.8 V), AC 1 V for PSRR,
-  and a PWL ramp from 0 V that only the transient start-up test uses.
-- **CL:** a 1 pF load on VREF.
-- **MODELS / CONTROL:** the sky130 model library and a quick operating point plus temperature sweep, so **Netlist → Simulate** in xschem works straight away.
-
-The output is unbuffered: VREF comes straight from the R2 branch, so it can't drive a resistive load.
-A real system would add a unity-gain buffer or LDO after it.
 
 ## Layout
 
