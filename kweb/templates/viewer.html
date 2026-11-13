@@ -137,16 +137,7 @@
                          role="tabpanel"
                          aria-labelledby="layers-tab"
                          tabindex="0">
-                        <div id="layer-buttons">
-                            <div class="form-check form-switch ps-2">
-                                <input class="form-check-input ms-0 ps-0"
-                                       type="checkbox"
-                                       role="switch"
-                                       id="layerEmptySwitch"
-                                       checked>
-                                <label class="form-check-label ps-2" for="layerEmptySwitch">Hide Empty Layers</label>
-                            </div>
-                        </div>
+                        <div id="layer-buttons"></div>
                     </div>
                     <div class="tab-pane fade"
                          id="cells-tab-pane"
@@ -246,16 +237,11 @@
                         <button type="button" class="btn btn-outline-secondary" data-action="none">Hide all</button>
                         <button type="button" class="btn btn-outline-secondary" data-action="invert">Invert</button>
                     </div>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="layerEmptySwitch" checked>
-                        <label class="form-check-label" for="layerEmptySwitch">Hide empty layers</label>
-                    </div>
                 </div>
                 <div id="layer-list"></div>`;
 
             const list = document.getElementById("layer-list");
             const filterInput = document.getElementById("layer-filter");
-            const emptySwitch = document.getElementById("layerEmptySwitch");
 
             let layers = [];
             const byId = new Map();     // id -> layer
@@ -277,10 +263,10 @@
                 return !q || label(l).toLowerCase().includes(q) || l.s.toLowerCase().includes(q);
             }
 
-            // Leaf layers currently shown in the list (respects filter and hide-empty)
+            // Leaf layers currently shown in the list (respects the filter; empty layers are never listed)
             function listedLeaves(items = layers, out = []) {
                 items.forEach(l => {
-                    if (emptySwitch.checked && l.empty) return;
+                    if (l.empty) return;
                     if (l.children) listedLeaves(l.children, out);
                     else if (matches(l)) out.push(l);
                 });
@@ -363,7 +349,7 @@
 
             function build(items, parent) {
                 items.forEach(l => {
-                    if (emptySwitch.checked && l.empty) return;
+                    if (l.empty) return;
                     if (l.children) {
                         const g = document.createElement("div");
                         g.className = "layer-group";
@@ -412,7 +398,6 @@
                 render();
             });
             filterInput.addEventListener("input", render);
-            emptySwitch.addEventListener("change", render);
 
             // Called by viewer.js on "loaded" and "reloaded"
             window.showLayers = function (newLayers) {
